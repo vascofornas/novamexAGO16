@@ -1,0 +1,1 @@
+﻿<?xml version="1.0" encoding="utf-8" ?><info>	<infoitem key="UD_Recordset1" value="name:id_mensaje;datatype:int,name:mensaje;datatype:blob" />	<infoitem key="UD_Recordset2" value="name:id_news;datatype:int,name:text_news;datatype:blob,name:user_news;datatype:string,name:date_news;datatype:timestamp,name:title_news;datatype:string,name:active_news;datatype:int" /></info>
