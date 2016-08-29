@@ -24,7 +24,7 @@ $(document).ready(function(){
         "sNext":        " ",
         "sLast":        " ",
       },
-      "sLengthMenu":    "Number of News to show: _MENU_",
+      "sLengthMenu":    "Show / Mostrar: _MENU_",
       "sInfo":          "Total of _TOTAL_ news (showing from _START_ to _END_)",
       "sInfoFiltered":  "(filtered _MAX_ news)"
     }
