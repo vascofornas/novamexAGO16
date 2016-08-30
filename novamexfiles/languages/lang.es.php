@@ -14,8 +14,8 @@ $lang['UNAME'] = 'Nombre de Usuario (alias)';
 $lang['FNAME'] = 'Nombre';
 $lang['SNAME'] = 'Apellidos';
 $lang['EMAIL'] = 'Email';
-$lang['PASSWORD'] = utf8_encode('Contraseña');
-$lang['SIGN_IN'] = utf8_encode('Iniciar Sesión');
+$lang['PASSWORD'] = 'ContraseÃ±a';
+$lang['SIGN_IN'] = 'Iniciar SesiÃ³n';
 $lang['ALREADY_USED_EMAIL_MESSAGE'] = "<div class='alert alert-error'>
 				<button class='close' data-dismiss='alert'>&times;</button>
 					<strong>Lo sentimos !</strong>  Email/Usuario ya existe en nuestro sistema , por favor, intente con otro email/usuario
@@ -33,18 +33,18 @@ $lang['REGISTRATION_OK']= "
 					<div class='alert alert-success'>
 						<button class='close' data-dismiss='alert'>&times;</button>
 						<strong>Registro realizado con exito!</strong>  Hemos enviado un email a $email.
-                    Selecciona el enlace de confirmación en el email para activar su cuenta de usuario. 
+                    Selecciona el enlace de confirmaciÃ³n en el email para activar su cuenta de usuario. 
 			  		</div>
 					";
 
 
 //SIGN_IN
-$lang['PASSWORD_LOST'] = utf8_encode('Ha perdido su contraseña?');
+$lang['PASSWORD_LOST'] ='Ha perdido su contraseÃ±a?';
 
 //FORGOT PASSWORD
-$lang['FORGOT_PASSWORD_TEXT'] = utf8_encode('Introduzca su dirección Email. En breve recibirá un enlace para crear un nuevo password en su bandeja de entrada.!');
-$lang['FORGOT_PASSWORD'] = utf8_encode('Contraseña olvidada');
-$lang['GENERATE_PASSWORD'] = utf8_encode('Generar nueva contraseña');
+$lang['FORGOT_PASSWORD_TEXT'] = 'Introduzca su direcciÃ³n Email. En breve recibirÃ¡ un enlace para crear un nuevo password en su bandeja de entrada.!';
+$lang['FORGOT_PASSWORD'] = 'ContraseÃ±a olvidada';
+$lang['GENERATE_PASSWORD'] = 'Generar nueva contraseÃ±a';
 
 
 // HOME.PHP
@@ -52,8 +52,8 @@ $lang['GENERATE_PASSWORD'] = utf8_encode('Generar nueva contraseña');
 $lang['MEMBER_HOME'] = 'Zona de Miembros';
 $lang['HOME'] = 'Inicio';
 $lang['PROFILE'] = 'Mi Perfil';
-$lang['ADMIN_ZONE'] = utf8_encode('Zona de Administración');
-$lang['LOGOUT'] = utf8_encode('Cerrar Sesion');
+$lang['ADMIN_ZONE'] = 'Zona de AdministraciÃ³n';
+$lang['LOGOUT'] = 'Cerrar Sesion';
 $lang['USER'] = 'Usuario ';
 $lang['MESSAGES'] = 'Mensajes';
 $lang['NEWS'] = 'Noticias';
@@ -74,7 +74,7 @@ $lang['USERS'] = 'Usuarios';
 $lang['MENU_HOME'] = 'Inicio';
 $lang['MENU_ABOUT_US'] = 'Sobre Nosotros';
 $lang['MENU_OUR_PRODUCTS'] = 'Nuestros productos';
-$lang['MENU_CONTACT_US'] = utf8_encode('Contáctenos');
+$lang['MENU_CONTACT_US'] = 'ContÃ¡ctenos';
 $lang['MENU_ADVERTISE'] = 'Publicidad';
 $lang['MENU_SITE_MAP'] = 'Mapa del Sitio';
 // ADMIN_HOME.PHP
@@ -103,5 +103,12 @@ $lang['ADD_DEPARTMENT'] = 'Nuevo Departamento';
 $lang['DEPARTMENT'] = 'Departamento';
 
 
+// ADMIN_USUARIOS.PHP
+$lang['ADD_USER'] = 'Nuevo Usuario';
+$lang['USERNAME'] = 'Nombre de Usuario (alias)';
+$lang['FIRST_NAME'] = 'Nombre';
+$lang['LAST_NAME'] = 'Apellidos';
+$lang['USER_LEVEL'] = 'Nivel de Usuario';
+$lang['ACTIVATED'] = 'Activado?';
 
 ?>

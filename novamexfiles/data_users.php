@@ -172,7 +172,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "DELETE FROM tb_news WHERE id_news = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "DELETE FROM tbl_users WHERE userID = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';

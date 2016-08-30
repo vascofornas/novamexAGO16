@@ -263,7 +263,7 @@ $(document).ready(function(){
       show_loading_message();
       var id      = $(this).data('id');
       var request = $.ajax({
-        url:          'data_news.php?job=delete_company&id=' + id,
+        url:          'data_users.php?job=delete_company&id=' + id,
         cache:        false,
         dataType:     'json',
         contentType:  'application/json; charset=utf-8',
@@ -274,7 +274,7 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            show_message("News with title '" + company_name + "' deleted successfully.", 'success');
+            show_message("User with title '" + company_name + "' deleted successfully.", 'success');
           }, true);
         } else {
           hide_loading_message();

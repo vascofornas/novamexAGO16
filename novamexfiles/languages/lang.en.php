@@ -97,6 +97,15 @@ $lang['BUSINESS_UNIT'] = 'Business Unit';
 $lang['ADD_DEPARTMENT'] = 'Add Department';
 $lang['DEPARTMENT'] = 'Departament';
 
+// ADMIN_USUARIOS.PHP
+$lang['ADD_USER'] = 'Add User';
+$lang['USERNAME'] = 'User Name (alias)';
+$lang['FIRST_NAME'] = 'First Name';
+$lang['LAST_NAME'] = 'Last Name';
+$lang['USER_LEVEL'] = 'User Level';
+$lang['ACTIVATED'] = 'Activated?';
+
+
 
 
 
