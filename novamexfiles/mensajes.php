@@ -1,6 +1,5 @@
 <?php require_once('Connections/conexion.php'); 
-
-
+header('Content-type: text/html; charset=utf-8' , true );
 include_once 'common.php';
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -44,6 +43,8 @@ $query_Recordset2 = "SELECT * FROM tb_news WHERE tb_news.active_news = 1";
 $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
+
+
  
 session_start();
 require_once 'class.user.php';
@@ -59,7 +60,20 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<style>
+div.fixed {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 300px;
+ 
+}
+textarea {
+    background: yellow !important;
+    color:#000;
+    text-shadow:0 1px 0 rgba(0, 0, 0, 0.4);
+}
+</style>
 <title><?php echo $row['userName']?></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
@@ -73,28 +87,13 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_users.js"></script>
+    <script charset="utf-8" src="webapp_departamentos.js"></script>
 
 
 <style type="text/css">
     .bs-example{
     	margin: 20px;
     }
-</style>
-<style>
-div.fixed {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    width: 300px;
- 
-}
-
-</style>
-<style type="text/css">
-body {
-	background-image: url(fondonovamex.jpg);
-}
 </style>
 <style type="text/css">
 .styled-select {
@@ -219,8 +218,8 @@ body {
 </head> 
 <body>
 <div class="fixed">
-<a href="admin_usuarios.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="admin_usuarios.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="mensajes.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+<a href="mensajes.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
 
 </div>
 <br><br>
@@ -241,9 +240,16 @@ body {
             <ul class="nav navbar-nav">
                 <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
                 <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                   <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
-                <li><a href="mensajes.php"><?php echo $lang['MESSAGES']?></a></li>
-               
+                <li><a href="#"><?php echo $lang['PROFILE']?></a></li>
+                     <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?><b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="#"><?php echo $lang['INBOX']?></a></li>
+                        <li><a href="#"><?php echo $lang['SENT']?></a></li>
+                        
+                        
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_5_OPTIONS']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
@@ -290,14 +296,14 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['USERS']?></h1>
+    <h1 align="center"><?php echo $lang['MESSAGES']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_USER']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_MESSAGE']?></button>
         
       </div>
       <table class="datatable" id="table_companies">
@@ -305,13 +311,9 @@ body {
           <tr>
            
             
-            <th><?php echo $lang['USERNAME']?></th>
-            <th><?php echo $lang['FIRST_NAME']?></th>
-            <th><?php echo $lang['LAST_NAME']?></th>
-            <th><?php echo $lang['EMAIL']?></th>
-            <th><?php echo $lang['PASSWORD']?></th>
-            <th><?php echo $lang['USER_LEVEL']?></th>
-            <th><?php echo $lang['ACTIVATED']?></th>
+            <th><?php echo $lang['TITLE']?></th>
+            <th><?php echo $lang['RECEPTOR']?></th>
+         
             
             <th><?php echo $lang['ACTIONS']?></th>
           </tr>
@@ -328,70 +330,52 @@ body {
       <div class="lightbox_close"></div>
       <div class="lightbox_content">
         
-        <h2><?php echo $lang['ADD_USER']?></h2>
+        <h2><?php echo $lang['ADD_MESSAGE']?></h2>
         <form class="form add" id="form_company" data-id="" novalidate>
+        
+         <?php   $sqlBU="SELECT * FROM tbl_users ORDER BY userName";?>
+           
+<div class="input_container">
+        <label for="receptor"><?php echo $lang['TO']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="to" name="to" class="selectpicker"  required>
+           
+           
+        <?php   if ($result=mysqli_query($conexion,$sqlBU))
+  {
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+    printf ("%s (%s)\n",$row[0],$row[1]);
+    echo '<option value='.$row[0].' selected>'.$row[1].' ('.$row[7].' '.$row[8].')'.'</option>';
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+     ?>           
+                
+                
           
           <div class="input_container">
-            <label for="userName"><?php echo $lang['USERNAME']?>: <span class="required">*</span></label>
+            <label for="nombre_departamento"><?php echo $lang['DEPARTMENT']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="userName" id="userName" value="" required>
-            </div>
-          </div>
-          <div class="input_container">
-            <label for="nombre_usuario"><?php echo $lang['FIRST_NAME']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="nombre_usuario" id="nombre_usuario" value="" required>
-            </div>
-          </div>
-          <div class="input_container">
-            <label for="apellidos_usuario"><?php echo $lang['LAST_NAME']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="apellidos_usuario" id="apellidos_usuario" value="" required>
-            </div>
-          </div>
-          <div class="input_container">
-            <label for="userEmail"><?php echo $lang['EMAIL']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="userEmail" id="userEmail" value="" required>
-            </div>
-          </div>
-          
-          <div class="input_container">
-            <label for="userPass"><?php echo $lang['PASSWORD']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="userPass" id="userPass" value="" required>
-            </div>
-          </div>
-          
-           <div class="input_container">
-            <label for="userStatus"><?php echo $lang['ACTIVATED']?>: <span class="required">*</span></label>
-           <div class="styled-select slate">
-              <select  id="userStatus" name="userStatus" class="selectpicker" required >
-              <option selected="selected">Y</option>
-              <option>N</option>
-              
-              </select>
+              <input type="text" class="text" name="nombre_departamento" id="nombre_departamento" value="" required>
             </div>
           </div>
        
-          <div class="input_container">
-            <label for="userLevel"><?php echo $lang['USER_LEVEL']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="userLevel" name="userLevel" class="selectpicker" required>
-              <option selected="selected">Level 1</option>
-              <option>Level 2</option>
-              <option>Level 3</option>
-              <option>Level 4</option>
-              <option>Level 5</option>
+        
+                
+               
+                
+                
+                
               </select>
             </div>
           </div>
-           
-
           
          
           <div class="button_container">
-            <button type="submit"><?php echo $lang['ADD_USER']?></button>
+            <button type="submit"><?php echo $lang['ADD_DEPARTMENT']?></button>
           </div>
         </form>
         
@@ -414,7 +398,7 @@ body {
       <div id="loading_container2">
         <div id="loading_container3">
           <div id="loading_container4">
-            Procesando datos, espere, por favor...
+           <?php echo $lang['PROCESSING']?>
           </div>
         </div>
       </div>

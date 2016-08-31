@@ -111,4 +111,12 @@ $lang['LAST_NAME'] = 'Apellidos';
 $lang['USER_LEVEL'] = 'Nivel de Usuario';
 $lang['ACTIVATED'] = 'Activado?';
 
+// MENSAJES.PHP
+$lang['ADD_MESSAGE'] = 'Nuevo Mensaje';
+$lang['TO'] = 'Para';
+$lang['FROM'] = 'De';
+$lang['MESSAGE_TITLE'] = 'Asunto';
+$lang['MESSAGE_TEXT'] = 'Texto del Mensaje';
+
+
 ?>

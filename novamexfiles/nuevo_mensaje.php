@@ -114,9 +114,9 @@ div.fixed {
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="home.php"><?php echo $lang['HOME']?></a></li>
+                <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
                 <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
-                <li><a href="mensajes.php"><?php echo $lang['MESSAGES']?></a></li>
+                <li class="active"><a href="mensajes.php"><?php echo $lang['MESSAGES']?></a></li>
               
                 
                 
@@ -155,33 +155,102 @@ div.fixed {
 
 <div class = "container">
    <div class = "row" >
-   
-     <div class = "col-xs-6 col-sm-6" >
-         
-         <p><?php echo $row_Recordset1['mensaje']; ?></p>
-      </div>
-      
-     <div class = "col-xs-6 col-sm-6" >
-       <h2 align="center"><strong><?php echo $lang['NEWS']?></strong></h2>
-        
-         <?php do { ?>
-          <h4><?php echo $row_Recordset2['title_news']; ?></h4>
-         <p><?php echo $row_Recordset2['text_news']; ?></p>
-           <p><?php echo $lang['BY']?>: <strong><?php echo $row_Recordset2['user_news']; ?></strong></p>
-           <?php echo $row_Recordset2['date_news']; ?>
-           <?php } while ($row_Recordset2 = mysqli_fetch_assoc($Recordset2)); ?>
-         
-     </div>
+<?php  
 
-      <div class = "clearfix visible-xs"></div>
-      
+$form = true;
+$otitle = '';
+$orecip = '';
+$omessage = '';
+//We check if the form has been sent
+if(isset($_POST['title'], $_POST['recip'], $_POST['message']))
+{
+	$otitle = $_POST['title'];
+	$orecip = $_POST['recip'];
+	$omessage = $_POST['message'];
+	//We remove slashes depending on the configuration
+	if(get_magic_quotes_gpc())
+	{
+		$otitle = stripslashes($otitle);
+		$orecip = stripslashes($orecip);
+		$omessage = stripslashes($omessage);
+	}
+	//We check if all the fields are filled
+	if($_POST['title']!='' and $_POST['recip']!='' and $_POST['message']!='')
+	{
+		//We protect the variables
+		$title = mysqli_real_escape_string($conexion,$otitle);
+		$recip = mysqli_real_escape_string($conexion,$orecip);
+		$message = mysqli_real_escape_string($conexion,nl2br(htmlentities($omessage, ENT_QUOTES, 'UTF-8')));
+		//We check if the recipient exists
+		$dn1 = mysqli_fetch_array(mysqli_query($conexion,'select count(userID) as recip, userID as recipid, (select count(*) from pm) as npm from tbl_users where userName="'.$recip.'"'));
+		if($dn1['recip']==1)
+		{
+			//We check if the recipient is not the actual user
+			if($dn1['recipid']!=$row['userID'])
+			{
+				$id = $dn1['npm']+1;
+				//We send the message
+				if(mysqli_query($conexion,'insert into pm (id, id2, title, user1, user2, message, timestamp, user1read, user2read)values("'.$id.'", "1", "'.$title.'", "'.$row['userID'].'", "'.$dn1['recipid'].'", "'.$message.'", "'.time().'", "yes", "no")'))
+				{
+?>
+<div class="message">The message has successfully been sent.<br />
+<a href="mensajes.php">List of my personnal messages</a></div>
+<?php
+					$form = false;
+				}
+				else
+				{
+					//Otherwise, we say that an error occured
+					$error = 'An error occurred while sending the message';
+				}
+			}
+			else
+			{
+				//Otherwise, we say the user cannot send a message to himself
+				$error = 'You cannot send a message to yourself.';
+			}
+		}
+		else
+		{
+			//Otherwise, we say the recipient does not exists
+			$error = 'The recipient does not exists.';
+		}
+	}
+	else
+	{
+		//Otherwise, we say a field is empty
+		$error = 'A field is empty. Please fill of the fields.';
+	}
+}
+elseif(isset($_GET['recip']))
+{
+	//We get the username for the recipient if available
+	$orecip = $_GET['recip'];
+}
+if($form)
+{
+//We display a message if necessary
+if(isset($error))
+{
+	echo '<div class="message">'.$error.'</div>';
+}
+//We display the form
+				}?>
+<div class="content">
+	<h1>New Personnal Message</h1>
+    <form action="nuevo_mensaje.php" method="post">
+		Please fill the following form to send a personnal message.<br />
+        <label for="title">Title</label><input type="text" value="<?php echo htmlentities($otitle, ENT_QUOTES, 'UTF-8'); ?>" id="title" name="title" /><br />
+        <label for="recip">Recipient<span class="small">(Username)</span></label><input type="text" value="<?php echo htmlentities($orecip, ENT_QUOTES, 'UTF-8'); ?>" id="recip" name="recip" /><br />
+        <label for="message">Message</label><textarea cols="40" rows="5" id="message" name="message"><?php echo htmlentities($omessage, ENT_QUOTES, 'UTF-8'); ?></textarea><br />
+        <input type="submit" value="Send" />
+    </form>
+</div>
    
+    </div>
       
-    
-      
-   </div>
+     
+
 </div>
 </body>
 </html>
-<?php
-?>

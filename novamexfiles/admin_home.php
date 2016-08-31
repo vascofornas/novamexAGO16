@@ -109,16 +109,9 @@ div.fixed {
             <ul class="nav navbar-nav">
                 <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
                 <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                <li><a href="#"><?php echo $lang['PROFILE']?></a></li>
-                     <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?><b class="caret"></b></a>
-                    <ul role="menu" class="dropdown-menu">
-                        <li><a href="#"><?php echo $lang['INBOX']?></a></li>
-                        <li><a href="#"><?php echo $lang['SENT']?></a></li>
-                        
-                        
-                    </ul>
-                </li>
+                <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                <li><a href="mensajes.php"><?php echo $lang['MESSAGES']?></a></li>
+               
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_5_OPTIONS']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
