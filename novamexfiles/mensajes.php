@@ -29,6 +29,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
       break;
   }
   return $theValue;
+  //test dell
 }
 }
 
@@ -68,11 +69,7 @@ div.fixed {
     width: 300px;
  
 }
-textarea {
-    background: yellow !important;
-    color:#000;
-    text-shadow:0 1px 0 rgba(0, 0, 0, 0.4);
-}
+
 </style>
 <title><?php echo $row['userName']?></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -87,7 +84,8 @@ textarea {
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_departamentos.js"></script>
+    <script charset="utf-8" src="webapp_mensajes.js"></script>
+   
 
 
 <style type="text/css">
@@ -96,6 +94,9 @@ textarea {
     }
 </style>
 <style type="text/css">
+textarea {
+  width: 100%;
+}
 .styled-select {
    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
    height: 29px;
@@ -239,17 +240,10 @@ body {
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
-                <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                <li><a href="#"><?php echo $lang['PROFILE']?></a></li>
-                     <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?><b class="caret"></b></a>
-                    <ul role="menu" class="dropdown-menu">
-                        <li><a href="#"><?php echo $lang['INBOX']?></a></li>
-                        <li><a href="#"><?php echo $lang['SENT']?></a></li>
-                        
-                        
-                    </ul>
-                </li>
+             <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
+                   <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                <li><a href="mensajes.php"><?php echo $lang['MESSAGES']?></a></li>
+               
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_5_OPTIONS']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
@@ -296,7 +290,7 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['MESSAGES']?></h1>
+    <h1 align="center"><?php echo $lang['SENT_MESSAGES']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
@@ -312,8 +306,11 @@ body {
            
             
             <th><?php echo $lang['TITLE']?></th>
-            <th><?php echo $lang['RECEPTOR']?></th>
-         
+            
+          <th><?php echo $lang['TO']?></th>
+          <th><?php echo $lang['DATE']?></th>
+          
+          <th><?php echo $lang['READ']?></th>
             
             <th><?php echo $lang['ACTIONS']?></th>
           </tr>
@@ -334,11 +331,12 @@ body {
         <form class="form add" id="form_company" data-id="" novalidate>
         
          <?php   $sqlBU="SELECT * FROM tbl_users ORDER BY userName";?>
+         
            
 <div class="input_container">
         <label for="receptor"><?php echo $lang['TO']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
-              <select  id="to" name="to" class="selectpicker"  required>
+              <select  id="receptor" name="receptor" class="selectpicker"  required>
            
            
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
@@ -353,26 +351,29 @@ body {
   mysqli_free_result($result);
 }
      ?>           
-                
-                
-          
-          <div class="input_container">
-            <label for="nombre_departamento"><?php echo $lang['DEPARTMENT']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="nombre_departamento" id="nombre_departamento" value="" required>
-            </div>
-          </div>
-       
-        
-                
-               
-                
+   
                 
                 
               </select>
             </div>
           </div>
           
+            <div class="input_container">
+            <label for="titulo"><?php echo $lang['MESSAGE_TITLE']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="titulo" id="titulo" value="" required>
+            
+           
+            </div>
+          </div>
+            <div class="input_container">
+            <label for="texto"><?php echo $lang['MESSAGE_TEXT']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <textarea class="form-control" rows="5" id="texto" name="texto" ></textarea>
+
+            </div>
+          </div>
+         
          
           <div class="button_container">
             <button type="submit"><?php echo $lang['ADD_DEPARTMENT']?></button>
