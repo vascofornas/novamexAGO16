@@ -117,6 +117,8 @@ $lang['TO'] = 'Para';
 $lang['FROM'] = 'De';
 $lang['MESSAGE_TITLE'] = 'Asunto';
 $lang['MESSAGE_TEXT'] = 'Texto del Mensaje';
-
+$lang['READ'] = 'Leido';
+$lang['DATE'] = 'Fecha/Hora';
+$lang['SENT_MESSAGES'] = 'Mensajes Enviados';
 
 ?>
