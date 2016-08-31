@@ -116,7 +116,16 @@ div.fixed {
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php"><?php echo $lang['HOME']?></a></li>
                 <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
-                <li><a href="mensajes.php"><?php echo $lang['MESSAGES']?></a></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="mensajes_recibidos.php"><?php echo $lang['RECEIVED_MESSAGES']?></a></li>
+                        <li><a href="mensajes.php"><?php echo $lang['SENT_MESSAGES']?></a></li>
+                     
+                        
+                        
+                    </ul>
+                </li>
               
                 
                 

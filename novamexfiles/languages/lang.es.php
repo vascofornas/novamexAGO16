@@ -120,5 +120,6 @@ $lang['MESSAGE_TEXT'] = 'Texto del Mensaje';
 $lang['READ'] = 'Leido';
 $lang['DATE'] = 'Fecha/Hora';
 $lang['SENT_MESSAGES'] = 'Mensajes Enviados';
+$lang['RECEIVED_MESSAGES'] = 'Mensajes Recibidos';
 
 ?>

@@ -114,6 +114,8 @@ $lang['MESSAGE_TEXT'] = 'Message Text';
 $lang['READ'] = 'Read';
 $lang['DATE'] = 'Date/Time';
 $lang['SENT_MESSAGES'] = 'Sent Messages';
+$lang['RECEIVED_MESSAGES'] = 'Received Messages';
+
 
 
 
