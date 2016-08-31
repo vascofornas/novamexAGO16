@@ -5,8 +5,8 @@ $(document).ready(function(){
     "ajax": "data_mensajes.php?job=get_companies",
     "columns": [
       
-      { "data": "titulo",   "sClass": "company_name" },
-     
+      { "data": "titulo",   },
+      { "data": "texto", },
       { "data": "userName", },
       { "data": "timestamp", },
       { "data": "leido", },
@@ -14,8 +14,9 @@ $(document).ready(function(){
     
       { "data": "functions",      "sClass": "functions" }
     ],
+    "aaSorting": [[ 3, "desc" ]],
     "aoColumnDefs": [
-      { "bSortable": false, "aTargets": [-1] }
+      { "bSortable": true, "aTargets": [-1] }
     ],
     "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
     "oLanguage": {
@@ -25,6 +26,7 @@ $(document).ready(function(){
         "sNext":        " ",
         "sLast":        " ",
       },
+     
       "sLengthMenu":    "Show / Mostrar: _MENU_",
       "sInfo":          "Total of _TOTAL_ Messages (showing from _START_ to _END_)",
       "sInfoFiltered":  "(filtered _MAX_ messages)"
@@ -250,11 +252,11 @@ $(document).ready(function(){
   $(document).on('click', '.function_delete a', function(e){
     e.preventDefault();
     var company_name = $(this).data('name');
-    if (confirm("Do yo want to delete News with title '" + company_name + "'?")){
+    if (confirm("Do yo want to delete Message with title '" + company_name + "'?")){
       show_loading_message();
       var id      = $(this).data('id');
       var request = $.ajax({
-        url:          'data_departamentos.php?job=delete_company&id=' + id,
+        url:          'data_mensajes.php?job=delete_company&id=' + id,
         cache:        false,
         dataType:     'json',
         contentType:  'application/json; charset=utf-8',
@@ -265,7 +267,7 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            show_message("Department with name '" + company_name + "' deleted successfully.", 'success');
+            show_message("Message with name '" + company_name + "' deleted successfully.", 'success');
           }, true);
         } else {
           hide_loading_message();

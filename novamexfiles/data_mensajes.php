@@ -56,7 +56,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_mensajes LEFT JOIN tbl_users ON tb_mensajes.receptor = tbl_users.userID WHERE emisor = '".$row['userID']."' ORDER BY timestamp";
+    $query = "SELECT * FROM tb_mensajes LEFT JOIN tbl_users ON tb_mensajes.receptor = tbl_users.userID WHERE emisor = '".$row['userID']."' ORDER BY timestamp desc";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -66,15 +66,15 @@ if ($job != ''){
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
         $functions  = '<div class="function_buttons"><ul>';
-        $functions .= '<li class="function_edit"><a data-id="'   . $company['id_mensaje'] . '" data-name="' . $company['titulo'] . '"><span>Edit</span></a></li>';
         $functions .= '<li class="function_delete"><a data-id="' . $company['id_mensaje'] . '" data-name="' . $company['titulo'] . '"><span>Delete</span></a></li>';
 		
         $functions .= '</ul></div>';
         $mysql_data[] = array(
          
           "titulo"  => $company['titulo'],
+        		"texto"  => $company['texto'],
         		
-          "userName"    => $company['userName']." (".$company['nombre_usuario']." ".$company['apellidos_usuario'],
+          "userName"    => $company['userName']." (".$company['nombre_usuario']." ".$company['apellidos_usuario'].")",
         		"timestamp"    => $company['timestamp'],
         		
         		"leido"    => $company['leido'],
@@ -91,7 +91,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "SELECT * FROM tb_departamentos WHERE id_departamento = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "SELECT * FROM tb_mensajes WHERE id_mensaje = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
@@ -101,8 +101,8 @@ if ($job != ''){
         $message = 'query success';
         while ($company = mysqli_fetch_array($query)){
           $mysql_data[] = array(
-             "nombre_departamento"  => $company['nombre_departamento'],
-          "unidad_negocio_departamento"    => $company['unidad_negocio_departamento']
+             "titulo"  => $company['titulo'],
+          "texto"    => $company['texto']
           );
         }
       }
@@ -113,7 +113,7 @@ if ($job != ''){
     // Add company
     $query = "INSERT INTO tb_mensajes SET ";
     if (isset($_GET['titulo'])) { $query .= "titulo = '" . mysqli_real_escape_string($db_connection, $_GET['titulo']) . "', "; }
-    if (isset($_GET['texto'])) { $query .= "texto = '" . mysqli_real_escape_string($db_connection, $_GET['titulo']) . "', "; }
+    if (isset($_GET['texto'])) { $query .= "texto = '" . mysqli_real_escape_string($db_connection, $_GET['texto']) . "', "; }
     if (isset($_GET['receptor'])) { $query .= "receptor = '" . mysqli_real_escape_string($db_connection, $_GET['receptor']) . "', "; }
      
    
@@ -158,7 +158,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "DELETE FROM tb_departamentos WHERE id_departamento = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "DELETE FROM tb_mensajes WHERE id_mensaje = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';

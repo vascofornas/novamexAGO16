@@ -305,7 +305,9 @@ body {
           <tr>
            
             
-            <th><?php echo $lang['TITLE']?></th>
+            <th><?php echo $lang['MESSAGE_TITLE']?></th>
+            <th><?php echo $lang['MESSAGE_TEXT']?></th>
+            
             
           <th><?php echo $lang['TO']?></th>
           <th><?php echo $lang['DATE']?></th>
