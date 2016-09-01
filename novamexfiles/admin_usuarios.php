@@ -334,6 +334,9 @@ else
                         <li><a href="admin_news.php"><?php echo $lang['NEWS']?></a></li>
                         <li><a href="admin_bu.php"><?php echo $lang['BUSINESS_UNITS']?></a></li>
                         <li><a href="admin_departamentos.php"><?php echo $lang['DEPARTMENTS']?></a></li>
+                         <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
+                        <li><a href="admin_miembros_equipos.php"><?php echo $lang['TEAM_MEMBERS']?></a></li>
+                        <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
                         
                         <li class="divider"></li>
@@ -391,8 +394,9 @@ else
             <th><?php echo $lang['USERNAME']?></th>
             <th><?php echo $lang['FIRST_NAME']?></th>
             <th><?php echo $lang['LAST_NAME']?></th>
-            <th><?php echo $lang['EMAIL']?></th>
-            <th><?php echo $lang['PASSWORD']?></th>
+         
+           
+            <th><?php echo $lang['BUSINESS_UNIT']?></th>
             <th><?php echo $lang['USER_LEVEL']?></th>
             <th><?php echo $lang['ACTIVATED']?></th>
             
@@ -445,6 +449,41 @@ else
               <input type="text" class="text" name="userPass" id="userPass" value="" required>
             </div>
           </div>
+          
+          
+           <?php   $sqlBU="SELECT * FROM tb_unidades_negocio ORDER BY unidad_negocio";?>
+           
+<div class="input_container">
+        <label for="unidad_negocio"><?php echo $lang['BUSINESS_UNIT']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="unidad_negocio_usuario" name="unidad_negocio_usuario" class="selectpicker"  required>
+           
+           
+        <?php   if ($result2=mysqli_query($conexion,$sqlBU))
+  {
+  // Fetch one and one row
+  while ($row2=mysqli_fetch_row($result2))
+    {
+    
+    echo '<option value='.$row2[0].' selected>'.$row2[1].'</option>';
+    }
+  // Free result set
+  mysqli_free_result($result2);
+}
+     ?>           
+                
+                
+                
+               
+                
+                
+                
+              </select>
+            </div>
+          </div>
+          
+          
+          
           
            <div class="input_container">
             <label for="userStatus"><?php echo $lang['ACTIVATED']?>: <span class="required">*</span></label>

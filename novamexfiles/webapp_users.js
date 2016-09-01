@@ -5,12 +5,11 @@ $(document).ready(function(){
     "ajax": "data_users.php?job=get_companies",
     "columns": [
       
-      { "data": "userName",   "sClass": "company_name" },
+      { "data": "userName",    },
       { "data": "nombre_usuario" },
       { "data": "apellidos_usuario" },
-      { "data": "userEmail" },
-    
-	   { "data": "userPass", },
+  
+	   { "data": "unidad_negocio", },
 	   { "data": "userLevel", },
      { "data": "userStatus", },
 	  
@@ -128,6 +127,7 @@ $(document).ready(function(){
 	$('#form_company #apellidos_usuario').val('');
     $('#form_company #userEmail').val('');
 	 $('#form_company #userPass').val('');
+	 $('#form_company #unidad_negocio_usuario').val('');
 	  $('#form_company #userLevel').val('');
 	   $('#form_company #userStatus').val('');
 	   
@@ -201,6 +201,7 @@ $(document).ready(function(){
         $('#form_company #apellidos_usuario').val(output.data[0].apellidos_usuario);
 		 $('#form_company #userEmail').val(output.data[0].userEmail);
 		  $('#form_company #userPass').val(output.data[0].userPass);
+		  $('#form_company #unidad_negocio_usuario').val(output.data[0].unidad_negocio_usuario);
 		   $('#form_company #userLevel').val(output.data[0].userLevel);
 		    $('#form_company #userStatus').val(output.data[0].userStatus);
         hide_loading_message();

@@ -55,7 +55,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tbl_users ORDER BY userName";
+    $query = "SELECT * FROM tbl_users LEFT JOIN tb_unidades_negocio ON tbl_users.unidad_negocio_usuario =  tb_unidades_negocio.id_unidades_negocio ORDER BY userName";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -74,8 +74,8 @@ if ($job != ''){
           "userName"  => $company['userName'],
           "nombre_usuario"    => $company['nombre_usuario'],
 		  "apellidos_usuario"    => $company['apellidos_usuario'],
-		  "userEmail"    => $company['userEmail'],
-          "userPass"  => $company['userPass'],
+		
+        		"unidad_negocio"  => $company['unidad_negocio'],
 		  "userLevel"  => $company['userLevel'],
 		  "userStatus"  => $company['userStatus'],
 		  
@@ -106,6 +106,7 @@ if ($job != ''){
           "nombre_usuario"    => $company['nombre_usuario'],
 		  "apellidos_usuario"    => $company['apellidos_usuario'],
 		  "userEmail"    => $company['userEmail'],
+          "unidad_negocio_usuario"    => $company['unidad_negocio_usuario'],
           "userPass"  => $company['userPass'],
 		  "userLevel"  => $company['userLevel'],
 		  "userStatus"  => $company['userStatus']
@@ -124,6 +125,7 @@ if ($job != ''){
 	if (isset($_GET['userEmail']))   { $query .= "userEmail   = '" . mysqli_real_escape_string($db_connection, $_GET['userEmail'])   . "', "; }
 	
 	if (isset($_GET['userPass']))   { $query .= "userPass   = '" . md5(mysqli_real_escape_string($db_connection, $_GET['userPass']))   . "', "; }
+	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
 
 	if (isset($_GET['userLevel']))   { $query .= "userLevel   = '" . mysqli_real_escape_string($db_connection, $_GET['userLevel'])   . "', "; }
     if (isset($_GET['userStatus'])) { $query .= "userStatus = '" . mysqli_real_escape_string($db_connection, $_GET['userStatus']) . "'";   }
@@ -151,6 +153,7 @@ if ($job != ''){
 	if (isset($_GET['userEmail']))   { $query .= "userEmail   = '" . mysqli_real_escape_string($db_connection, $_GET['userEmail'])   . "', "; }
 	
 	if (isset($_GET['userPass']))   { $query .= "userPass   = '" . md5(mysqli_real_escape_string($db_connection, $_GET['userPass']))   . "', "; }
+	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
 
 	if (isset($_GET['userLevel']))   { $query .= "userLevel   = '" . mysqli_real_escape_string($db_connection, $_GET['userLevel'])   . "', "; }
     if (isset($_GET['userStatus'])) { $query .= "userStatus = '" . mysqli_real_escape_string($db_connection, $_GET['userStatus']) . "'";   }

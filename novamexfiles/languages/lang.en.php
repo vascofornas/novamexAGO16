@@ -119,6 +119,14 @@ $lang['RECEIVED_MESSAGES'] = 'Received Messages';
 $lang['NO_MESSAGE'] = 'You have no new mail';
 
 
+//EQUPOS Y PROYECTOS
+$lang['TEAMS'] = 'Teams';
+$lang['TEAM'] = 'Team';
+$lang['TEAM_MEMBERS'] = 'Team Members';
+$lang['PROJECTS'] = 'Projects';
+$lang['PROJECT'] = 'Project';
+
+
 
 
 

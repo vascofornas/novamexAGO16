@@ -124,5 +124,13 @@ $lang['SENT_MESSAGES'] = 'Mensajes Enviados';
 $lang['RECEIVED_MESSAGES'] = 'Mensajes Recibidos';
 $lang['NO_MESSAGE'] = 'No tienes mensajes nuevos';
 
+//EQUPOS Y PROYECTOS
+$lang['TEAMS'] = 'Equipos';
+$lang['TEAM'] = 'Equipo';
+$lang['TEAM_MEMBERS'] = 'Miembros del Equipo';
+$lang['PROJECTS'] = 'Proyectos';
+$lang['PROJECT'] = 'Proyecto';
+
+
 
 ?>
