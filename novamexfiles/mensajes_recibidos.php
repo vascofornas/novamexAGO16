@@ -84,7 +84,7 @@ div.fixed {
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_mensajes.js"></script>
+    <script charset="utf-8" src="webapp_mensajes_recibidos.js"></script>
    
 
 
@@ -219,8 +219,8 @@ body {
 </head> 
 <body>
 <div class="fixed">
-<a href="mensajes.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="mensajes.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="mensajes_recibidos.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+<a href="mensajes_recibidos.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
 
 </div>
 <br><br>
@@ -299,7 +299,7 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['SENT_MESSAGES']?></h1>
+    <h1 align="center"><?php echo $lang['RECEIVED_MESSAGES']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
@@ -318,10 +318,10 @@ body {
             <th><?php echo $lang['MESSAGE_TEXT']?></th>
             
             
-          <th><?php echo $lang['TO']?></th>
+          <th><?php echo $lang['FROM']?></th>
           <th><?php echo $lang['DATE']?></th>
           
-          <th><?php echo $lang['READ']?></th>
+          <th><?php echo $lang['ANSWERED']?></th>
             
             <th><?php echo $lang['ACTIONS']?></th>
           </tr>
@@ -345,9 +345,9 @@ body {
          
            
 <div class="input_container">
-        <label for="receptor"><?php echo $lang['TO']?>: <span class="required">*</span></label>
+        <label for="receptor"><?php echo $lang['FROM']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
-              <select  id="receptor" name="receptor" class="selectpicker"  required>
+              <select  id="emisor" name="emisor" class="selectpicker"  required>
            
            
         <?php   if ($result=mysqli_query($conexion,$sqlBU))

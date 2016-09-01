@@ -119,6 +119,7 @@ $lang['MESSAGE_TITLE'] = 'Asunto';
 $lang['MESSAGE_TEXT'] = 'Texto del Mensaje';
 $lang['READ'] = 'Leido';
 $lang['DATE'] = 'Fecha/Hora';
+$lang['ANSWERED'] = 'Contestado?';
 $lang['SENT_MESSAGES'] = 'Mensajes Enviados';
 $lang['RECEIVED_MESSAGES'] = 'Mensajes Recibidos';
 
