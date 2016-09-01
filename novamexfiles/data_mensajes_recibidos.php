@@ -66,6 +66,8 @@ if ($job != ''){
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
         $functions  = '<div class="function_buttons"><ul>';
+        $functions .= '<li class="function_edit"><a data-id="'   . $company['id_mensaje'] . '" data-name="' . $company['titulo'] . '"><span>Edit</span></a></li>';
+         
         $functions .= '<li class="function_delete"><a data-id="' . $company['id_mensaje'] . '" data-name="' . $company['titulo'] . '"><span>Delete</span></a></li>';
 		
         $functions .= '</ul></div>';
@@ -76,8 +78,8 @@ if ($job != ''){
         		
           "userName"    => $company['userName']." (".$company['nombre_usuario']." ".$company['apellidos_usuario'].")",
         		"timestamp"    => $company['timestamp'],
+        		"leido"    => $company['leido'],
         		
-        		"contestado"    => $company['contestado'],
         			
           "functions"     => $functions
         );
@@ -101,6 +103,7 @@ if ($job != ''){
         $message = 'query success';
         while ($company = mysqli_fetch_array($query)){
           $mysql_data[] = array(
+          		"emisor"  => $company['emisor'],
              "titulo"  => $company['titulo'],
           "texto"    => $company['texto']
           );
@@ -136,11 +139,12 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "UPDATE tb_departamentos SET ";
-      if (isset($_GET['nombre_departamento'])) { $query .= "nombre_departamento = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_departamento']) . "', "; }
-      
-      if (isset($_GET['unidad_negocio_departamento'])) { $query .= "unidad_negocio_departamento = '" . mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_departamento']) . "'";   }
-      $query .= "WHERE id_departamento = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "UPDATE tb_mensajes SET ";
+      if (isset($_GET['titulo'])) { $query .= "leido = '" . mysqli_real_escape_string($db_connection, 'YES') . "', "; }
+      if (isset($_GET['texto'])) { $query .= "texto = '" . mysqli_real_escape_string($db_connection, $_GET['texto']) . "', "; }
+       
+      if (isset($_GET['emisor'])) { $query .= "emisor = '" . mysqli_real_escape_string($db_connection, $_GET['emisor']) . "'";   }
+      $query .= "WHERE id_mensaje = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query  = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';

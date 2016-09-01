@@ -111,12 +111,12 @@ $lang['TO'] = 'To';
 $lang['FROM'] = 'From';
 $lang['MESSAGE_TITLE'] = 'Message Title';
 $lang['MESSAGE_TEXT'] = 'Message Text';
-$lang['READ'] = 'Read';
+$lang['READ'] = 'Read?';
 $lang['DATE'] = 'Date/Time';
 $lang['ANSWERED'] = 'Answered?';
 $lang['SENT_MESSAGES'] = 'Sent Messages';
 $lang['RECEIVED_MESSAGES'] = 'Received Messages';
-
+$lang['NO_MESSAGE'] = 'You have no new mail';
 
 
 

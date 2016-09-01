@@ -216,11 +216,84 @@ body {
 	background-image: url(fondonovamex.jpg);
 }
 </style>
+<style>
+/* Firefox old*/
+@-moz-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+/* IE */
+@-ms-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+.blink-image {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
+</style>
 </head> 
 <body>
 <div class="fixed">
 <a href="mensajes_recibidos.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
 <a href="mensajes_recibidos.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<?php 
+
+$query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['userID']."'";
+ if ($result=mysqli_query($conexion,$query))
+  {
+   if(mysqli_num_rows($result) > 0)
+    {
+      ?>
+      <a href="mensajes_recibidos.php"><img class="blink-image" src="email_open.png" width="40" height="40" /></a>
+      <?php 
+    }
+  else
+      echo $lang['NO_MESSAGE'];
+  }
+else
+    echo "Query Failed.";
+    ?>
 
 </div>
 <br><br>
@@ -306,8 +379,6 @@ body {
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_MESSAGE']?></button>
-        
       </div>
       <table class="datatable" id="table_companies">
         <thead>
@@ -320,8 +391,8 @@ body {
             
           <th><?php echo $lang['FROM']?></th>
           <th><?php echo $lang['DATE']?></th>
-          
-          <th><?php echo $lang['ANSWERED']?></th>
+          <th><?php echo $lang['READ']?></th>
+         
             
             <th><?php echo $lang['ACTIONS']?></th>
           </tr>
@@ -347,7 +418,7 @@ body {
 <div class="input_container">
         <label for="receptor"><?php echo $lang['FROM']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
-              <select  id="emisor" name="emisor" class="selectpicker"  required>
+              <select  id="emisor" name="emisor" class="selectpicker"  disabled="true">
            
            
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
@@ -368,11 +439,15 @@ body {
               </select>
             </div>
           </div>
-          
+         
+              <input type="hidden" class="text" name="emisor" id="emisor" value="" readonly>
+            
+           
+            
             <div class="input_container">
             <label for="titulo"><?php echo $lang['MESSAGE_TITLE']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="titulo" id="titulo" value="" required>
+              <input type="text" class="text" name="titulo" id="titulo" value="" readonly>
             
            
             </div>
@@ -380,7 +455,7 @@ body {
             <div class="input_container">
             <label for="texto"><?php echo $lang['MESSAGE_TEXT']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <textarea class="form-control" rows="5" id="texto" name="texto" ></textarea>
+              <textarea class="form-control" rows="5" id="texto" name="texto" readonly></textarea>
 
             </div>
           </div>

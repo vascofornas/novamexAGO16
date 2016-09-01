@@ -117,10 +117,12 @@ $lang['TO'] = 'Para';
 $lang['FROM'] = 'De';
 $lang['MESSAGE_TITLE'] = 'Asunto';
 $lang['MESSAGE_TEXT'] = 'Texto del Mensaje';
-$lang['READ'] = 'Leido';
+$lang['READ'] = 'Leido?';
 $lang['DATE'] = 'Fecha/Hora';
 $lang['ANSWERED'] = 'Contestado?';
 $lang['SENT_MESSAGES'] = 'Mensajes Enviados';
 $lang['RECEIVED_MESSAGES'] = 'Mensajes Recibidos';
+$lang['NO_MESSAGE'] = 'No tienes mensajes nuevos';
+
 
 ?>

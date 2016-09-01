@@ -9,7 +9,7 @@ $(document).ready(function(){
       { "data": "texto", },
       { "data": "userName", },
       { "data": "timestamp", },
-      { "data": "contestado", },
+      { "data": "leido", },
       
     
       { "data": "functions",      "sClass": "functions" }
@@ -193,12 +193,12 @@ $(document).ready(function(){
         $('#form_company .field_container label.error').hide();
         $('#form_company .field_container').removeClass('valid').removeClass('error');
        
+
+        $('#form_company #emisor').val(output.data[0].emisor);
         $('#form_company #titulo').val(output.data[0].titulo);
         $('#form_company #texto').val(output.data[0].texto);
         
-        $('#form_company #emisor').val(output.data[0].emisor);
-        $('#form_company #timestamp').val(output.data[0].timestamp);
-        $('#form_company #contestado').val(output.data[0].contestado);
+       
         hide_loading_message();
         show_lightbox();
       } else {
