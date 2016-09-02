@@ -125,7 +125,9 @@ $lang['TEAM'] = 'Team';
 $lang['TEAM_MEMBERS'] = 'Team Members';
 $lang['PROJECTS'] = 'Projects';
 $lang['PROJECT'] = 'Project';
-
+$lang['ADD_TEAM'] = 'New Team';
+$lang['CREATION_DATE'] = 'Creation Date';
+$lang['TEAM_NAME'] = 'Team Name';
 
 
 

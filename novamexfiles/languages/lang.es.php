@@ -130,7 +130,9 @@ $lang['TEAM'] = 'Equipo';
 $lang['TEAM_MEMBERS'] = 'Miembros del Equipo';
 $lang['PROJECTS'] = 'Proyectos';
 $lang['PROJECT'] = 'Proyecto';
-
+$lang['ADD_TEAM'] = 'Nuevo equipo';
+$lang['CREATION_DATE'] = 'Fecha de Creación';
+$lang['TEAM_NAME'] = 'Nombre del Equipo';
 
 
 ?>
