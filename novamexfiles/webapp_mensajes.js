@@ -116,6 +116,8 @@ $(document).ready(function(){
   // Add company button
   $(document).on('click', '#add_company', function(e){
     e.preventDefault();
+    var foo = []; 
+    
     $('.lightbox_content h2').text('New Message');
     $('#form_company button').text('New Message');
     $('#form_company').attr('class', 'form add');
@@ -125,7 +127,7 @@ $(document).ready(function(){
    
     $('#form_company #titulo').val('');
     $('#form_company #texto').val('');
-    $('#form_company #receptor').val('');
+    $('#form_company #receptor').val();
     $('#form_company #emisor').val('');
     
     

@@ -71,6 +71,11 @@ div.fixed {
 }
 
 </style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script type="text/javascript">
+$(".js-example-basic-multiple").select2();
+</script>
 <title><?php echo $row['userName']?></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
@@ -97,123 +102,16 @@ div.fixed {
 textarea {
   width: 100%;
 }
-.styled-select {
-   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-   height: 29px;
-   overflow: hidden;
-   width: 240px;
-}
 
-.styled-select select {
-   background: transparent;
-   border: none;
-   font-size: 14px;
-   height: 29px;
-   padding: 5px; /* If you add too much padding here, the options won't show in IE */
-   width: 268px;
-}
-
-.styled-select.slate {
-   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
-   height: 34px;
-   width: 240px;
-}
-
-.styled-select.slate select {
-   border: 1px solid #ccc;
-   font-size: 16px;
-   height: 34px;
-   width: 268px;
-}
-
-/* -------------------- Rounded Corners */
-.rounded {
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
-}
-
-.semi-square {
-   -webkit-border-radius: 5px;
-   -moz-border-radius: 5px;
-   border-radius: 5px;
-}
-
-/* -------------------- Colors: Background */
-.slate   { background-color: #ddd; }
-.green   { background-color: #779126; }
-.blue    { background-color: #3b8ec2; }
-.yellow  { background-color: #eec111; }
-.black   { background-color: #000; }
-
-/* -------------------- Colors: Text */
-.slate select   { color: #000; }
-.green select   { color: #fff; }
-.blue select    { color: #fff; }
-.yellow select  { color: #000; }
-.black select   { color: #fff; }
-
-
-/* -------------------- Select Box Styles: danielneumann.com Method */
-/* -------------------- Source: http://danielneumann.com/blog/how-to-style-dropdown-with-css-only/ */
-#mainselection select {
-   border: 0;
-   color: #EEE;
-   background: transparent;
-   font-size: 20px;
-   font-weight: bold;
-   padding: 2px 10px;
-   width: 378px;
-   *width: 350px;
-   *background: #58B14C;
-   -webkit-appearance: none;
-}
-
-#mainselection {
-   overflow:hidden;
-   width:350px;
-   -moz-border-radius: 9px 9px 9px 9px;
-   -webkit-border-radius: 9px 9px 9px 9px;
-   border-radius: 9px 9px 9px 9px;
-   box-shadow: 1px 1px 11px #330033;
-   background: #58B14C url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 319px center;
-}
-
-
-/* -------------------- Select Box Styles: stackoverflow.com Method */
-/* -------------------- Source: http://stackoverflow.com/a/5809186 */
-select#soflow, select#soflow-color {
-   -webkit-appearance: button;
-   -webkit-border-radius: 2px;
-   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-   -webkit-padding-end: 20px;
-   -webkit-padding-start: 2px;
-   -webkit-user-select: none;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-   background-position: 97% center;
-   background-repeat: no-repeat;
-   border: 1px solid #AAA;
-   color: #555;
-   font-size: inherit;
-   margin: 20px;
-   overflow: hidden;
-   padding: 5px 10px;
-   text-overflow: ellipsis;
-   white-space: nowrap;
-   width: 300px;
-}
-
-select#soflow-color {
-   color: #fff;
-   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
-   background-color: #779126;
-   -webkit-border-radius: 20px;
-   -moz-border-radius: 20px;
-   border-radius: 20px;
-   padding-left: 15px;
-}
 body {
 	background-image: url(fondonovamex.jpg);
+}
+select {
+    height: 30px;
+}
+
+select[multiple] {
+    height: auto;
 }
 </style>
 <style>
@@ -272,6 +170,7 @@ body {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
+
 </head> 
 <body>
 <div class="fixed">
@@ -420,7 +319,7 @@ else
 <div class="input_container">
         <label for="receptor"><?php echo $lang['TO']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
-              <select  id="receptor" name="receptor" class="selectpicker"  required>
+              <select  id="receptor" name="receptor[]" class="selectpicker"  style="max-width:90%;" required multiple="multiple">
            
            
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
@@ -429,7 +328,7 @@ else
   while ($row=mysqli_fetch_row($result))
     {
     printf ("%s (%s)\n",$row[0],$row[1]);
-    echo '<option value='.$row[0].' selected>'.$row[1].' ('.$row[7].' '.$row[8].')'.'</option>';
+    echo '<option value='.$row[0].' selected>'.$row[1].'</option>';
     }
   // Free result set
   mysqli_free_result($result);
