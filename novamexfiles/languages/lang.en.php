@@ -130,8 +130,10 @@ $lang['CREATION_DATE'] = 'Creation Date';
 $lang['TEAM_NAME'] = 'Team Name';
 
 
-
-
-
+//MIEMBROS EQUIPO
+$lang['ADD_TEAM_MEMBER'] = 'Add Team Member';
+$lang['EMPLOYEE'] = 'Employee';
+$lang['START_DATE'] = 'Start Date';
+$lang['END_DATE'] = 'End Date';
 
 ?>
