@@ -278,7 +278,7 @@ else
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_MESSAGE']?></button>
+        <a href="nuevo_mensaje.php"><img src="email-11-512.png"></a> 
         
       </div>
       <table class="datatable" id="table_companies">

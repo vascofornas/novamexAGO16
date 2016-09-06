@@ -78,7 +78,23 @@ if (isset($_POST["submit"])) {
 	if (isset($_POST['receptor'])){
 		for ($i=0;$i<count($receptores);$i++)
 		{
-		
+			$query = "INSERT INTO tb_mensajes SET ";
+			if (isset($_POST['titulo'])) { $query .= "titulo = '" . mysqli_real_escape_string($conexion, $_POST['titulo']) . "', "; }
+			if (isset($_POST['texto'])) { $query .= "texto = '" . mysqli_real_escape_string($conexion, $_POST['texto']) . "', "; }
+			if (isset($_POST['receptor'])) { $query .= "receptor = '" . $receptores[$i] . "', "; }
+			 
+			 
+			$query .= "emisor = '" . $row['userID'] . "'";
+			
+			
+			$query = mysqli_query($conexion, $query);
+			if (!$query){
+				$result  = 'error';
+				$message = 'query error';
+			} else {
+				$result  = 'success';
+				$message = 'query success';
+			}
 		}
 	}
 	if (isset($_POST['receptor_equipos'])){
@@ -86,6 +102,12 @@ if (isset($_POST["submit"])) {
 
 	for ($i=0;$i<count($receptores_equipo);$i++)
 	{
+		
+		
+		
+		
+		
+		
 		
 	}
 		
@@ -98,7 +120,7 @@ if (isset($_POST["submit"])) {
 	
 	}
 	else {
-		echo "NO HAY RECEPTORES";
+		
 	}
 
 	
