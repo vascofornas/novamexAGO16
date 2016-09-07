@@ -140,5 +140,12 @@ $lang['EMPLOYEE'] = 'Empleado';
 $lang['START_DATE'] = 'Fecha de Alta';
 $lang['END_DATE'] = 'Fecha de Baja';
 
+//PROYECTOS
+$lang['ADD_PROJECT'] = 'Nuevo Proyecto';
+$lang['PROJECT_DESCRIPTION'] = 'Descripcion del proyecto';
+$lang['PROJECT_TYPE'] = 'Tipo de proyecto';
 
+$lang['EVALUATOR'] = 'Evaluador';
+
+$lang['POINTS'] = 'Puntos';
 ?>
