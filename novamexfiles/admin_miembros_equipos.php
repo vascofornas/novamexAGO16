@@ -494,9 +494,9 @@ else
             </div>
           </div>
           <div class="input_container">
-            <label for="fecha_baja"><?php echo $lang['END_DATE']?>: <span class="required">*</span></label>
+            <label for="fecha_baja"><?php echo $lang['END_DATE']?>: </label>
             <div class="field_container">
-              <input type="text" class="text" name="fecha_baja" id="fecha_baja" value="" required>
+              <input type="text" class="text" name="fecha_baja" id="fecha_baja" value = "2050-12-31" >
             </div>
           </div>
        
