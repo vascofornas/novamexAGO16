@@ -76,7 +76,7 @@ if ($job != ''){
           "titulo"  => $company['titulo'],
         		"texto"  => $company['texto'],
         		
-          "userName"    => $company['userName']." (".$company['nombre_usuario']." ".$company['apellidos_usuario'].")",
+          "userName"    => $company['nombre_usuario']." ".$company['apellidos_usuario'],
         		"timestamp"    => $company['timestamp'],
         		"leido"    => $company['leido'],
         		
