@@ -104,6 +104,7 @@ $lang['FIRST_NAME'] = 'First Name';
 $lang['LAST_NAME'] = 'Last Name';
 $lang['USER_LEVEL'] = 'User Level';
 $lang['ACTIVATED'] = 'Activated?';
+$lang['SUPERVISOR'] = 'Supervisor';
 
 // MENSAJES.PHP
 $lang['ADD_MESSAGE'] = 'New Message';

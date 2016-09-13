@@ -129,6 +129,7 @@ $(document).ready(function(){
 	 $('#form_company #userPass').val('');
 	 $('#form_company #unidad_negocio_usuario').val('');
 	  $('#form_company #userLevel').val('');
+	  $('#form_company #supervisor_usuario').val('');
 	   $('#form_company #userStatus').val('');
 	   
     show_lightbox();
@@ -202,7 +203,8 @@ $(document).ready(function(){
 		 $('#form_company #userEmail').val(output.data[0].userEmail);
 		  $('#form_company #userPass').val(output.data[0].userPass);
 		  $('#form_company #unidad_negocio_usuario').val(output.data[0].unidad_negocio_usuario);
-		   $('#form_company #userLevel').val(output.data[0].userLevel);
+		  $('#form_company #supervisor_usuario').val(output.data[0].supervisor_usuario);
+		  $('#form_company #userLevel').val(output.data[0].userLevel);
 		    $('#form_company #userStatus').val(output.data[0].userStatus);
         hide_loading_message();
         show_lightbox();

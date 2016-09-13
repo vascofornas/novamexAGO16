@@ -482,6 +482,37 @@ else
             </div>
           </div>
           
+            <?php   $sqlSU="SELECT * FROM tbl_users ORDER BY userName";?>
+           
+<div class="input_container">
+        <label for="supervisor_usuario"><?php echo $lang['SUPERVISOR']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="supervisor_usuario" name="supervisor_usuario" class="selectpicker"  required>
+           
+           
+        <?php   if ($result3=mysqli_query($conexion,$sqlSU))
+  {
+  // Fetch one and one row
+  while ($row3=mysqli_fetch_row($result3))
+    {
+    
+    echo '<option value='.$row3[0].' selected>'.$row3[1].'</option>';
+    }
+  // Free result set
+  mysqli_free_result($result3);
+}
+     ?>           
+                
+                
+                
+               
+                
+                
+                
+              </select>
+            </div>
+          </div>
+          
           
           
           

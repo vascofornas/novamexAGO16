@@ -76,6 +76,7 @@ if ($job != ''){
 		  "apellidos_usuario"    => $company['apellidos_usuario'],
 		
         		"unidad_negocio"  => $company['unidad_negocio'],
+        		"supervisor_usuario"  => $company['supervisor_usuario'],
 		  "userLevel"  => $company['userLevel'],
 		  "userStatus"  => $company['userStatus'],
 		  
@@ -107,7 +108,8 @@ if ($job != ''){
 		  "apellidos_usuario"    => $company['apellidos_usuario'],
 		  "userEmail"    => $company['userEmail'],
           "unidad_negocio_usuario"    => $company['unidad_negocio_usuario'],
-          "userPass"  => $company['userPass'],
+          		"supervisor_usuario"    => $company['supervisor_usuario'],
+          		"userPass"  => $company['userPass'],
 		  "userLevel"  => $company['userLevel'],
 		  "userStatus"  => $company['userStatus']
           );
@@ -126,7 +128,8 @@ if ($job != ''){
 	
 	if (isset($_GET['userPass']))   { $query .= "userPass   = '" . md5(mysqli_real_escape_string($db_connection, $_GET['userPass']))   . "', "; }
 	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
-
+	if (isset($_GET['supervisor_usuario']))   { $query .= "supervisor_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['supervisor_usuario']))   . "', "; }
+	
 	if (isset($_GET['userLevel']))   { $query .= "userLevel   = '" . mysqli_real_escape_string($db_connection, $_GET['userLevel'])   . "', "; }
     if (isset($_GET['userStatus'])) { $query .= "userStatus = '" . mysqli_real_escape_string($db_connection, $_GET['userStatus']) . "'";   }
 	 
@@ -154,7 +157,8 @@ if ($job != ''){
 	
 	if (isset($_GET['userPass']))   { $query .= "userPass   = '" . md5(mysqli_real_escape_string($db_connection, $_GET['userPass']))   . "', "; }
 	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
-
+	if (isset($_GET['supervisor_usuario']))   { $query .= "supervisor_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['supervisor_usuario']))   . "', "; }
+	
 	if (isset($_GET['userLevel']))   { $query .= "userLevel   = '" . mysqli_real_escape_string($db_connection, $_GET['userLevel'])   . "', "; }
     if (isset($_GET['userStatus'])) { $query .= "userStatus = '" . mysqli_real_escape_string($db_connection, $_GET['userStatus']) . "'";   }
       $query .= "WHERE userID = '" . mysqli_real_escape_string($db_connection, $id) . "'";
