@@ -51,12 +51,16 @@ $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
  
 session_start();
 require_once 'class.user.php';
+
+
+
+
 $user_home = new USER();
 if (!$user_home->is_logged_in())
 {
 	$user_home->redirect('index.php');
 }
-$stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
+$stmt = $user_home->runQuery("SELECT t1.* , t3.unidad_negocio as uni, t2.userName as super FROM tbl_users t1 LEFT JOIN tb_unidades_negocio t3 ON t1.unidad_negocio_usuario = t3.id_unidades_negocio LEFT JOIN tbl_users t2 ON t1.supervisor_usuario = t2.userID WHERE t1.userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -72,6 +76,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <style type="text/css">
     .bs-example{
     	margin: 20px;
@@ -147,6 +152,32 @@ div.fixed {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {	
+	
+	// submit form using $.ajax() method
+	
+	$('#reg-form').submit(function(e){
+		
+		e.preventDefault(); // Prevent Default Submission
+		
+		$.ajax({
+			url: 'edituser.php',
+			type: 'POST',
+			data: $(this).serialize() // it will serialize the form data
+		})
+		.done(function(data){
+			$('#form-content').fadeOut('slow', function(){
+				$('#form-content').fadeIn('slow').html(data);
+			});
+		})
+		.fail(function(){
+			alert('Ajax Submit Failed ...');	
+		});
+	});
+	
+});
+</script>
 </head> 
 <body>
   <div class="fixed">
@@ -243,16 +274,55 @@ else
      
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3>MIS DATOS PERSONALES</H3>
+  <hr>
+  <h4>DATOS NO MODIFICABLES</h4>
+  <p><strong>Nombre de usuario: </strong><?php echo $row['userName']?></p>
+  <p><strong>Email: </strong><?php echo $row['userEmail']?></p>
+  <p><strong>Nivel de usuario: </strong><?php echo $row['userLevel']?></p>
+   <p><strong>Unidad de Negocio: </strong><?php echo $row['uni']?></p>
+   		   <p><strong>Supervisor: </strong><?php echo $row['super']?></p>
+   		   <br>
+  <h4>DATOS MODIFICABLES</h4>
   
-  
-  
+    <div id="form-content">
+     <form method="post" id="reg-form" autocomplete="off">
+			
+	<div class="form-group">
+	<label>Nombre</label>
+	<input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre" value ="<?php echo $row['nombre_usuario']?>"required />
+	</div>
+				
+	<div class="form-group">
+	<label>Apellidos</label>
+	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="Apellidos" value ="<?php echo $row['apellidos_usuario']?>"required />
+	</div>
+				
+	<div class="form-group">
+	<label>Contraseña</label>
+	<input type="password" class="form-control" name="userPass" id="userPass" placeholder="Contraseña" value ="<?php echo $row['userPass']?>"required />
+	</div>
+				
+		
+	<hr />
+				
+	<div class="form-group">
+	<button class="btn btn-primary">Submit</button>
+	</div>
+				
+    </form>     
+</div>
+    
+    
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3>PROYECTOS</H3>
+  <HR>
   
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">PROYECTOS</div>
 </div>
       
      <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">EVALUACION A PROVEEDOR INTERNO</div>
+  <div class="col-sm-6 col-md-5 col-lg-6">EVALUACION A PROVEEDOR INTERNO
+  </div>
   <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">REQUERIMIENTOS DE CLIENTES INTERNOS</div>
 </div>
   <div class="row">
@@ -264,5 +334,4 @@ else
 </div>
 </body>
 </html>
-<?php
-?>
+
