@@ -154,4 +154,8 @@ $lang['UPDATE_DATA'] = 'Update data';
 $lang['SUCCESS'] = 'Success!';
 $lang['UPDATED'] = 'Data updated successfully';
 
+//MIS PROYECTOS
+$lang['MY_PROJECTS'] = 'My Projects';
+$lang['AS_TEAM_MEMBER'] = 'As Team Member';
+$lang['LANGUAGE'] = 'Default Language';
 ?>

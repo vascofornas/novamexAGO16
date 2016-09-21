@@ -295,14 +295,20 @@ else
 	<div class="form-group">
 	<label><?php echo $lang['LAST_NAME']?></label>
 	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['apellidos_usuario']?>"required />
-	</div>
-				
-	<div class="form-group">
-	<label><?php echo $lang['PASSWORD']?></label>
-	<input type="password" class="form-control" name="userPass" id="userPass" placeholder="<?php echo $lang['PASSWORD']?>" value ="<?php echo $row['userPass']?>"required />
-	<input type="hidden" class="form-control" name="userID" id="useriD" placeholder="<?php echo $lang['PASSWORD']?>" value ="<?php echo $row['userID']?>"required />
+	<input type="hidden" class="form-control" name="userID" id="userID" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['userID']?>"required />
 	
 	</div>
+	
+	<div class="form-group">
+	<label><?php echo $lang['LANGUAGE']?></label>
+    <select class="form-control" name="idioma_usuario" id="idioma_usuario">
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    
+  	</select>
+  </div>		
+				
+
 				
 		
 	<hr />
@@ -316,9 +322,9 @@ else
     
     
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3>PROYECTOS</H3>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['MY_PROJECTS']?></H3>
   <HR>
-  
+  <h4><?php echo $lang['AS_TEAM_MEMBER']?></h4>
   </div>
 </div>
       
