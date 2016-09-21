@@ -182,7 +182,7 @@ $(document).ready(function() {
 <body>
   <div class="fixed">
 <a href="miperfil.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="miperfil?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="miperfil.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
 
 <?php 
 
@@ -273,40 +273,42 @@ else
    
      
     <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3>MIS DATOS PERSONALES</H3>
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PERSONAL_INFO']?></H3>
   <hr>
-  <h4>DATOS NO MODIFICABLES</h4>
-  <p><strong>Nombre de usuario: </strong><?php echo $row['userName']?></p>
+  <h4><?php echo $lang['NOT_EDITABLE_DATA']?></h4>
+  <p><strong><?php echo $lang['USERNAME']?>: </strong><?php echo $row['userName']?></p>
   <p><strong>Email: </strong><?php echo $row['userEmail']?></p>
-  <p><strong>Nivel de usuario: </strong><?php echo $row['userLevel']?></p>
-   <p><strong>Unidad de Negocio: </strong><?php echo $row['uni']?></p>
+  <p><strong><?php echo $lang['USER_LEVEL']?>: </strong><?php echo $row['userLevel']?></p>
+   <p><strong><?php echo $lang['BUSINESS_UNIT']?>: </strong><?php echo $row['uni']?></p>
    		   <p><strong>Supervisor: </strong><?php echo $row['super']?></p>
    		   <br>
-  <h4>DATOS MODIFICABLES</h4>
+  <h4><?php echo $lang['EDITABLE_DATA']?></h4>
   
     <div id="form-content">
      <form method="post" id="reg-form" autocomplete="off">
 			
 	<div class="form-group">
-	<label>Nombre</label>
-	<input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="Nombre" value ="<?php echo $row['nombre_usuario']?>"required />
+	<label><?php echo $lang['FIRST_NAME']?></label>
+	<input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="<?php echo $lang['FIRST_NAME']?>" value ="<?php echo $row['nombre_usuario']?>"required />
 	</div>
 				
 	<div class="form-group">
-	<label>Apellidos</label>
-	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="Apellidos" value ="<?php echo $row['apellidos_usuario']?>"required />
+	<label><?php echo $lang['LAST_NAME']?></label>
+	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['apellidos_usuario']?>"required />
 	</div>
 				
 	<div class="form-group">
-	<label>Contraseña</label>
-	<input type="password" class="form-control" name="userPass" id="userPass" placeholder="Contraseña" value ="<?php echo $row['userPass']?>"required />
+	<label><?php echo $lang['PASSWORD']?></label>
+	<input type="password" class="form-control" name="userPass" id="userPass" placeholder="<?php echo $lang['PASSWORD']?>" value ="<?php echo $row['userPass']?>"required />
+	<input type="hidden" class="form-control" name="userID" id="useriD" placeholder="<?php echo $lang['PASSWORD']?>" value ="<?php echo $row['userID']?>"required />
+	
 	</div>
 				
 		
 	<hr />
 				
 	<div class="form-group">
-	<button class="btn btn-primary">Submit</button>
+	<button class="btn btn-primary"><?php echo $lang['UPDATE_DATA']?></button>
 	</div>
 				
     </form>     

@@ -149,4 +149,14 @@ $lang['PROJECT_TYPE'] = 'Tipo de proyecto';
 $lang['EVALUATOR'] = 'Evaluador';
 
 $lang['POINTS'] = 'Puntos';
+//MIS DATOS PERSONALES
+$lang['PERSONAL_INFO'] = 'Datos personales';
+$lang['NOT_EDITABLE_DATA'] = 'Datos no editables';
+$lang['EDITABLE_DATA'] = 'Datos editables';
+$lang['UPDATE_DATA'] = 'Actualizar datos';
+$lang['SUCCESS'] = 'Correcto!';
+$lang['UPDATED'] = 'Datos actualizados correctamente';
+
+
+
 ?>

@@ -146,4 +146,12 @@ $lang['EVALUATOR'] = 'Evaluator';
 
 $lang['POINTS'] = 'Points';
 
+//MIS DATOS PERSONALES
+$lang['PERSONAL_INFO'] = 'Personal Information';
+$lang['NOT_EDITABLE_DATA'] = 'Non-editable data';
+$lang['EDITABLE_DATA'] = 'Editable data';
+$lang['UPDATE_DATA'] = 'Update data';
+$lang['SUCCESS'] = 'Success!';
+$lang['UPDATED'] = 'Data updated successfully';
+
 ?>
