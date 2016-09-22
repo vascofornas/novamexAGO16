@@ -207,8 +207,8 @@ else
                 
                 <?php
 				$nivel = $row['userLevel'];
-				$nivelDeseado = "Level 1";
-				if (strcmp($nivelDeseado,$nivel) < 0) {
+			
+				if ($nivel != "Level 1") {
 					?>
                     <li>
                     <a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a>

@@ -326,21 +326,17 @@ else
                     </ul>
                 </li>
                
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_5_OPTIONS']?> <b class="caret"></b></a>
-                    <ul role="menu" class="dropdown-menu">
-                        <li><a href="admin_welcome_message.php"><?php echo $lang['WELCOME_MESSAGE']?></a></li>
-                        <li><a href="admin_news.php"><?php echo $lang['NEWS']?></a></li>
-                        <li><a href="admin_bu.php"><?php echo $lang['BUSINESS_UNITS']?></a></li>
-                        <li><a href="admin_departamentos.php"><?php echo $lang['DEPARTMENTS']?></a></li>
-                        <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
-                        
-                        <li class="divider"></li>
-                        
-                    </ul>
-                </li>
-                
-                
+                <?php
+				$nivel = $row['userLevel'];
+			
+				if ($nivel != "Level 1") {
+					?>
+                    <li>
+                    <a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a>
+                    </li>
+                    <?php 
+				}
+				?>
                 
                 
                 

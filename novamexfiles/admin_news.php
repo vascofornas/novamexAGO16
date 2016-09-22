@@ -325,24 +325,33 @@ else
                     </ul>
                 </li>
                
+                    <?php
+				$nivel = $row['userLevel'];
+			
+				if ($nivel == "Level 5") {
+					?>
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_5_OPTIONS']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="admin_welcome_message.php"><?php echo $lang['WELCOME_MESSAGE']?></a></li>
                         <li><a href="admin_news.php"><?php echo $lang['NEWS']?></a></li>
+                        <li class="divider"></li>
                         <li><a href="admin_bu.php"><?php echo $lang['BUSINESS_UNITS']?></a></li>
                         <li><a href="admin_departamentos.php"><?php echo $lang['DEPARTMENTS']?></a></li>
-                         <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
+                        <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
                         <li><a href="admin_miembros_equipos.php"><?php echo $lang['TEAM_MEMBERS']?></a></li>
+                        <li class="divider"></li>
                         <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
-                        <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
+                        <li><a href="admin_tipo_proyectos.php"><?php echo $lang['PROJECT_TYPES']?></a></li>
                         
                         <li class="divider"></li>
+                        <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
+                        
+                        
                         
                     </ul>
                 </li>
-                
-                
+                <?php }?>
                 
                 
                 
