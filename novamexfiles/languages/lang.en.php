@@ -141,6 +141,34 @@ $lang['END_DATE'] = 'End Date';
 $lang['ADD_PROJECT'] = 'Add Project';
 $lang['PROJECT_DESCRIPTION'] = 'Project Description';
 $lang['PROJECT_TYPE'] = 'Project Type';
+$lang['PROJECT_TYPES'] = 'Project Types';
+$lang['ADD_PROJECT_TYPE'] = 'New Project Type';
+$lang['PROJECT_TYPE_NAME'] = 'Project Type Name';
+
+$lang['PROJECT_TYPE_POINTS'] = 'Project Type Points';
+
+$lang['PROJECT_TYPE_REVISIONS'] = 'Project Type # of Revisions';
+$lang['PROJECT_TYPE_OPTION1'] = 'Project Type Option #1';
+$lang['PROJECT_TYPE_OPTION2'] = 'Project Type Option #2';
+$lang['PROJECT_TYPE_OPTION3'] = 'Project Type Option #3';
+$lang['PROJECT_TYPE_OPTION4'] = 'Project Type Option #4';
+$lang['PROJECT_TYPE_OPTION5'] = 'Project Type Option #5';
+$lang['PROJECT_TYPE_OPTION6'] = 'Project Type Option #6';
+$lang['PROJECT_TYPE_OPTION7'] = 'Project Type Option #7';
+$lang['PROJECT_TYPE_OPTION8'] = 'Project Type Option #8';
+$lang['PROJECT_TYPE_OPTION9'] = 'Project Type Option #9';
+$lang['PROJECT_TYPE_OPTION10'] = 'Project Type Option #10';
+$lang['PROJECT_TYPE_PERCENTAGE1'] = 'Project Type Percentage #1';
+$lang['PROJECT_TYPE_PERCENTAGE2'] = 'Project Type Percentage #2';
+$lang['PROJECT_TYPE_PERCENTAGE3'] = 'Project Type Percentage #3';
+$lang['PROJECT_TYPE_PERCENTAGE4'] = 'Project Type Percentage #4';
+$lang['PROJECT_TYPE_PERCENTAGE5'] = 'Project Type Percentage #5';
+$lang['PROJECT_TYPE_PERCENTAGE6'] = 'Project Type Percentage #6';
+$lang['PROJECT_TYPE_PERCENTAGE7'] = 'Project Type Percentage #7';
+$lang['PROJECT_TYPE_PERCENTAGE8'] = 'Project Type Percentage #8';
+$lang['PROJECT_TYPE_PERCENTAGE9'] = 'Project Type Percentage #9';
+$lang['PROJECT_TYPE_PERCENTAGE10'] = 'Project Type Percentage #10';
+
 
 $lang['EVALUATOR'] = 'Evaluator';
 
@@ -178,5 +206,7 @@ $lang['UPLOAD_DELIVERABLE'] = 'Upload Deliverable';
 $lang['FILE_DELIVERABLE'] = 'Deliverable File';
 $lang['FILE_NAME'] = 'Deliverable File Name';
 $lang['SELECT_FILE'] = 'Select File';
+$lang['PROJECT_EVAL'] = 'Project Evaluations';
+$lang['PORCENTAJE_ACUMULADO'] = 'Total Percentage';
 
 ?>

@@ -177,8 +177,34 @@ $lang['FILE_DELIVERABLE'] = 'Archivo Entregable';
 $lang['FILE_NAME'] = 'Nombre del Archivo Entregable';
 $lang['SELECT_FILE'] = 'Seleccione Archivo';
 $lang['PROJECT_TYPES'] = 'Tipos de Proyectos';
+$lang['PROJECT_EVAL'] = 'Evaluaciones de Proyectos';
+$lang['ADD_PROJECT_TYPE'] = 'Nuevo Tipo de Proyecto';
+$lang['PROJECT_TYPE_NAME'] = 'Nombre del Tipo de Proyecto';
 
+$lang['PROJECT_TYPE_POINTS'] = 'Puntos del Tipo de Proyecto';
 
+$lang['PROJECT_TYPE_REVISIONS'] = 'Numero de Revisiones';
+
+$lang['PROJECT_TYPE_OPTION1'] = 'Opcion 1';
+$lang['PROJECT_TYPE_OPTION2'] = 'Opcion 2';
+$lang['PROJECT_TYPE_OPTION3'] = 'Opcion 3';
+$lang['PROJECT_TYPE_OPTION4'] = 'Opcion 4';
+$lang['PROJECT_TYPE_OPTION5'] = 'Opcion 5';
+$lang['PROJECT_TYPE_OPTION6'] = 'Opcion 6';
+$lang['PROJECT_TYPE_OPTION7'] = 'Opcion 7';
+$lang['PROJECT_TYPE_OPTION8'] = 'Opcion 8';
+$lang['PROJECT_TYPE_OPTION9'] = 'Opcion 9';
+$lang['PROJECT_TYPE_OPTION10'] = 'Opcion 10';
+$lang['PROJECT_TYPE_PERCENTAGE1'] = 'Porcentaje Opcion 1';
+$lang['PROJECT_TYPE_PERCENTAGE2'] = 'Porcentaje Opcion 2';
+$lang['PROJECT_TYPE_PERCENTAGE3'] = 'Porcentaje Opcion 3';
+$lang['PROJECT_TYPE_PERCENTAGE4'] = 'Porcentaje Opcion 4';
+$lang['PROJECT_TYPE_PERCENTAGE5'] = 'Porcentaje Opcion 5';
+$lang['PROJECT_TYPE_PERCENTAGE6'] = 'Porcentaje Opcion 6';
+$lang['PROJECT_TYPE_PERCENTAGE7'] = 'Porcentaje Opcion 7';
+$lang['PROJECT_TYPE_PERCENTAGE8'] = 'Porcentaje Opcion 8';
+$lang['PROJECT_TYPE_PERCENTAGE9'] = 'Porcentaje Opcion 9';
+$lang['PROJECT_TYPE_PERCENTAGE10'] = 'Porcentaje Opcion 10';
+$lang['PORCENTAJE_ACUMULADO'] = 'Porcentaje acumulado';
 
 ?>
-

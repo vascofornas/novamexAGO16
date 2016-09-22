@@ -88,7 +88,7 @@ textarea {
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_tipo_proyectos.js"></script>
+    <script charset="utf-8" src="webapp_tipos_proyectos.js"></script>
 
  <script>
   $(document).ready(function() {
@@ -170,6 +170,28 @@ textarea {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
+
+<script>
+function myFunction() {
+	var a = parseInt(document.getElementById("porcentaje1").value, 10);
+	  var b = parseInt(document.getElementById("porcentaje2").value, 10);
+	  var c = parseInt(document.getElementById("porcentaje3").value, 10);
+	  var d = parseInt(document.getElementById("porcentaje4").value, 10);
+	  var e = parseInt(document.getElementById("porcentaje5").value, 10);
+	  var f = parseInt(document.getElementById("porcentaje6").value, 10);
+	  var g = parseInt(document.getElementById("porcentaje7").value, 10);
+	  var h = parseInt(document.getElementById("porcentaje8").value, 10);
+	  var i = parseInt(document.getElementById("porcentaje9").value, 10);
+	  var j = parseInt(document.getElementById("porcentaje10").value, 10);
+
+
+
+
+	  var sum =  a + b + c + d + e + f + g + h + i + j ;
+ 
+   alert ( "<?php echo $lang['PORCENTAJE_ACUMULADO']?>: " + sum + "%");
+}
+</script>
 <style type="text/css">
 .styled-select {
    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
@@ -293,8 +315,8 @@ body {
 </head> 
 <body>
 <div class="fixed">
-<a href="admin_proyectos.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="admin_proyectos.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="admin_tipo_proyectos.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+<a href="admin_tipo_proyectos.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
 <?php 
 
 $query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['userID']."'";
@@ -344,24 +366,34 @@ else
                         
                     </ul>
                 </li>
+                      <?php
+				$nivel = $row['userLevel'];
+			
+				if ($nivel == "Level 5") {
+					?>
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_5_OPTIONS']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="admin_welcome_message.php"><?php echo $lang['WELCOME_MESSAGE']?></a></li>
                         <li><a href="admin_news.php"><?php echo $lang['NEWS']?></a></li>
+                        <li class="divider"></li>
                         <li><a href="admin_bu.php"><?php echo $lang['BUSINESS_UNITS']?></a></li>
                         <li><a href="admin_departamentos.php"><?php echo $lang['DEPARTMENTS']?></a></li>
-                         <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
+                        <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
                         <li><a href="admin_miembros_equipos.php"><?php echo $lang['TEAM_MEMBERS']?></a></li>
+                        <li class="divider"></li>
                         <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
+                        <li><a href="admin_tipo_proyectos.php"><?php echo $lang['PROJECT_TYPES']?></a></li>
+                         <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
+                       
+                        <li class="divider"></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
                         
-                        <li class="divider"></li>
+                        
                         
                     </ul>
                 </li>
-                
-                
+                <?php }?>
                 
                 
                 
@@ -400,7 +432,7 @@ else
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_PROJECT']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_PROJECT_TYPE']?></button>
         
       </div>
       <table class="datatable" id="table_companies">
@@ -408,15 +440,10 @@ else
           <tr>
            
             
-            <th><?php echo $lang['PROJECT']?></th>
-            <th><?php echo $lang['PROJECT_DESCRIPTION']?></th>
-              <th><?php echo $lang['PROJECT_TYPE']?></th>
-              <th><?php echo $lang['TEAM']?></th>
-              <th><?php echo $lang['EVALUATOR']?></th>
-              <th><?php echo $lang['POINTS']?></th>
-              <th><?php echo $lang['START_DATE']?></th>
-               <th><?php echo $lang['END_DATE']?></th>
-         
+            <th><?php echo $lang['PROJECT_TYPE_NAME']?></th>
+            <th><?php echo $lang['PROJECT_TYPE_POINTS']?></th>
+              <th><?php echo $lang['PROJECT_TYPE_REVISIONS']?></th>
+              
          
             
             <th><?php echo $lang['ACTIONS']?></th>
@@ -434,146 +461,177 @@ else
       <div class="lightbox_close"></div>
       <div class="lightbox_content">
         
-        <h2><?php echo $lang['ADD_PROJECT']?></h2>
+        <h2><?php echo $lang['ADD_PROJECT_TYPE']?></h2>
         <form class="form add" id="form_company" data-id="" novalidate>
           
           <div class="input_container">
-            <label for="nombre_proyecto"><?php echo $lang['PROJECT']?>: <span class="required">*</span></label>
+            <label for="nombre_tipo_proyecto"><?php echo $lang['PROJECT_TYPE_NAME']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="nombre_proyecto" id="nombre_proyecto" value="" required>
+              <input type="text" class="text" name="nombre_tipo_proyecto" id="nombre_tipo_proyecto" value="" required>
             </div>
           </div>
           <div class="input_container">
-            <label for="descripcion_proyecto"><?php echo $lang['PROJECT_DESCRIPTION']?>: <span class="required">*</span></label>
+            <label for="puntos_tipo_proyecto"><?php echo $lang['PROJECT_TYPE_POINTS']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="descripcion_proyecto" id="descripcion_proyecto" value="" required>
+              <input type="number" class="text" name="puntos_tipo_proyecto" id="puntos_tipo_proyecto" value="" onchange="myFunction()" required>
             </div>
           </div>
        
-         <?php   $sqltipo="SELECT * FROM tb_tipos_proyectos ORDER BY nombre_tipo_proyecto";?>
-           
-<div class="input_container">
-        <label for="tipo_proyecto"><?php echo $lang['PROJECT_TYPE']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="tipo_proyecto" name="tipo_proyecto" class="selectpicker"  required>
-           
-           
-        <?php   if ($resulttipo=mysqli_query($conexion,$sqltipo))
-  {
-  // Fetch one and one row
-  while ($rowtipo=mysqli_fetch_row($resulttipo))
-    {
-    printf ("%s (%s)\n",$rowtipo[0],$rowtipo[1]);
-    echo '<option value='.$rowtipo[0].' selected>'.$rowtipo[1].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($resulttipo);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
+          <div class="input_container">
+            <label for="num_revisiones"><?php echo $lang['PROJECT_TYPE_REVISIONS']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones" id="num_revisiones" value="" required>
+            </div>
+          </div>
+          <hr>
+          <div class="input_container">
+            <label for="opcion1"><?php echo $lang['PROJECT_TYPE_OPTION1']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion1" id="opcion1" value=""  >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje1"><?php echo $lang['PROJECT_TYPE_PERCENTAGE1']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje1" id="porcentaje1" value="" onchange="myFunction()">
+            </div>
+          </div>
+         <hr>
+          <div class="input_container">
+            <label for="opcion2"><?php echo $lang['PROJECT_TYPE_OPTION2']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion2" id="opcion2" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje2"><?php echo $lang['PROJECT_TYPE_PERCENTAGE2']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje2" id="porcentaje2" value="" onchange="myFunction()">
+            </div>
+          </div>
+         <hr>
+          <div class="input_container">
+            <label for="opcion3"><?php echo $lang['PROJECT_TYPE_OPTION3']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion3" id="opcion3" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje3"><?php echo $lang['PROJECT_TYPE_PERCENTAGE3']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje3" id="porcentaje3" value="" onchange="myFunction()">
+            </div>
+          </div> 
+             <hr>
+          <div class="input_container">
+            <label for="opcion4"><?php echo $lang['PROJECT_TYPE_OPTION4']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion4" id="opcion4" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje4"><?php echo $lang['PROJECT_TYPE_PERCENTAGE4']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje4" id="porcentaje4" value="" onchange="myFunction()">
+            </div>
+          </div>
+       
+            <hr>
+          <div class="input_container">
+            <label for="opcion5"><?php echo $lang['PROJECT_TYPE_OPTION5']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion5" id="opcion5" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje5"><?php echo $lang['PROJECT_TYPE_PERCENTAGE5']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje5" id="porcentaje5" value="" onchange="myFunction()">
             </div>
           </div>
           
           
-           <div class="input_container">
-            <label for="fecha_inicio_proyecto"><?php echo $lang['START_DATE']?>: <span class="required">*</span></label>
+             <hr>
+          <div class="input_container">
+            <label for="opcion6"><?php echo $lang['PROJECT_TYPE_OPTION6']?>: </label>
             <div class="field_container">
-              <input type="text" class="text" name="fecha_inicio_proyecto" id="fecha_inicio_proyecto" value="" required>
+              <input type="text" class="text" name="opcion6" id="opcion6" value=""  >
             </div>
           </div>
-       
-           <div class="input_container">
-            <label for="fecha_final_proyecto"><?php echo $lang['END_DATE']?>: <span class="required">*</span></label>
+                         
+          <div class="input_container">
+            <label for="porcentaje6"><?php echo $lang['PROJECT_TYPE_PERCENTAGE6']?>: </label>
             <div class="field_container">
-              <input type="text" class="text" name="fecha_final_proyecto" id="fecha_final_proyecto" value="" required>
+              <input type="number" class="text" name="porcentaje6" id="porcentaje6" value="" onchange="myFunction()">
             </div>
           </div>
-       
-       
-                <?php   $sqlteam="SELECT * FROM tb_equipos ORDER BY nombre_equipo";?>
-           
-<div class="input_container">
-        <label for="equipo_proyecto"><?php echo $lang['TEAM']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="equipo_proyecto" name="equipo_proyecto" class="selectpicker"  required>
-           
-           
-        <?php   if ($resultteam=mysqli_query($conexion,$sqlteam))
-  {
-  // Fetch one and one row
-  while ($rowteam=mysqli_fetch_row($resultteam))
-    {
-    printf ("%s (%s)\n",$rowteam[0],$rowteam[1]);
-    echo '<option value='.$rowteam[0].' selected>'.$rowteam[1].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($resultteam);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
-            </div>
-          </div>
-       
-       
-       
-        <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY userName";?>
-           
-<div class="input_container">
-        <label for="evaluador_proyecto"><?php echo $lang['EVALUATOR']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="evaluador_proyecto" name="evaluador_proyecto" class="selectpicker"  required>
-           
-           
-        <?php   if ($resultevaluador=mysqli_query($conexion,$sqlevaluador))
-  {
-  // Fetch one and one row
-  while ($rowevaluador=mysqli_fetch_row($resultevaluador))
-    {
-    printf ("%s (%s)\n",$rowevaluador[0],$rowevaluador[1]);
-    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[1].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($resultevaluador);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
-            </div>
-          </div>
-       
-       
-       <div class="input_container">
-            <label for="puntos_proyecto"><?php echo $lang['POINTS']?>: <span class="required">*</span></label>
+               <hr>
+          <div class="input_container">
+            <label for="opcion7"><?php echo $lang['PROJECT_TYPE_OPTION7']?>: </label>
             <div class="field_container">
-              <input type="text" class="text" name="puntos_proyecto" id="puntos_proyecto" value="" required>
+              <input type="text" class="text" name="opcion7" id="opcion7" value="" >
             </div>
           </div>
-       
-       
-       
-         
+                         
+          <div class="input_container">
+            <label for="porcentaje7"><?php echo $lang['PROJECT_TYPE_PERCENTAGE7']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje7" id="porcentaje7" value="" onchange="myFunction()">
+            </div>
+          </div>
+               <hr>
+          <div class="input_container">
+            <label for="opcion8"><?php echo $lang['PROJECT_TYPE_OPTION8']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion8" id="opcion8" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje8"><?php echo $lang['PROJECT_TYPE_PERCENTAGE8']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje8" id="porcentaje8" value="" onchange="myFunction()">
+            </div>
+          </div>
+          
+          
+          
+               <hr>
+          <div class="input_container">
+            <label for="opcion9"><?php echo $lang['PROJECT_TYPE_OPTION9']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion9" id="opcion9" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje9"><?php echo $lang['PROJECT_TYPE_PERCENTAGE9']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje9" id="porcentaje9" value="" onchange="myFunction()">
+            </div>
+          </div>
+          
+               <hr>
+          <div class="input_container">
+            <label for="opcion10"><?php echo $lang['PROJECT_TYPE_OPTION10']?>: </label>
+            <div class="field_container">
+              <input type="text" class="text" name="opcion10" id="opcion10" value="" >
+            </div>
+          </div>
+                         
+          <div class="input_container">
+            <label for="porcentaje10"><?php echo $lang['PROJECT_TYPE_PERCENTAGE10']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="porcentaje10" id="porcentaje10" value="" onchange="myFunction()">
+            </div>
+          </div>
           <div class="button_container">
-            <button type="submit"><?php echo $lang['ADD_PROJECT']?></button>
+            <button type="submit"><?php echo $lang['ADD_PROJECT_TYPE']?></button>
           </div>
         </form>
         

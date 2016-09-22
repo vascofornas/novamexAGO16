@@ -362,7 +362,8 @@ else
                         <li class="divider"></li>
                         <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
                         <li><a href="admin_tipo_proyectos.php"><?php echo $lang['PROJECT_TYPES']?></a></li>
-                        
+                         <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
+                       
                         <li class="divider"></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
                         
