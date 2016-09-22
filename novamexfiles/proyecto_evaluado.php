@@ -48,6 +48,15 @@ $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
+
+
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
+$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
+
+$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -162,7 +171,7 @@ $(document).ready(function() {
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'edituser.php',
+			url: 'editprojectdeliverable.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -181,8 +190,8 @@ $(document).ready(function() {
 </head> 
 <body>
   <div class="fixed">
-<a href="miperfil.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="miperfil.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="proyecto_evaluado.php?lang=en&id=<?php echo $_GET['id'];?>"><img src="usa.png" width="45" height="45" /></a>
+<a href="proyecto_evaluado.php?lang=es&id=<?php echo $_GET['id'];?>"><img src="mexico.png" width="45" height="45" /></a>
 
 <?php 
 
@@ -273,40 +282,39 @@ else
    
      
     <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PERSONAL_INFO']?></H3>
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
   <hr>
-  <h4><?php echo $lang['NOT_EDITABLE_DATA']?></h4>
-  <p><strong><?php echo $lang['USERNAME']?>: </strong><?php echo $row['userName']?></p>
-  <p><strong>Email: </strong><?php echo $row['userEmail']?></p>
-  <p><strong><?php echo $lang['USER_LEVEL']?>: </strong><?php echo $row['userLevel']?></p>
-   <p><strong><?php echo $lang['BUSINESS_UNIT']?>: </strong><?php echo $row['uni']?></p>
-   		   <p><strong>Supervisor: </strong><?php echo $row['super']?></p>
-   		   <br>
-  <h4><?php echo $lang['EDITABLE_DATA']?></h4>
+  
+  <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
+  <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
+  	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
+  <p><strong><?php echo $lang['END_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_final_proyecto']?></p>
+  <p><strong><?php echo $lang['PROJECT_TEAM']?>: </strong><?php echo $row_Recordset3['nombre_equipo']?></p>
+  <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
+  		   <br>
+ 
+    
+    
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['DELIVERABLES']?></H3>
+  <HR>
+  <h4><?php echo $lang['NEW_DELIVERABLE']?></h4>
   
     <div id="form-content">
      <form method="post" id="reg-form" autocomplete="off">
 			
 	<div class="form-group">
-	<label><?php echo $lang['FIRST_NAME']?></label>
-	<input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="<?php echo $lang['FIRST_NAME']?>" value ="<?php echo $row['nombre_usuario']?>"required />
+	<label><?php echo $lang['TITLE_DELIVERABLE']?></label>
+	<input type="text" class="form-control" name="titulo_entregable" id="titulo_entregable" placeholder="<?php echo $lang['TITLE_DELIVERABLE']?>" required />
 	</div>
 				
 	<div class="form-group">
-	<label><?php echo $lang['LAST_NAME']?></label>
-	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['apellidos_usuario']?>"required />
-	<input type="hidden" class="form-control" name="userID" id="userID" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['userID']?>"required />
+	<label><?php echo $lang['DESCRIPTION_DELIVERABLE']?></label>
+	<input type="text" class="form-control" name="descripcion_entregable" id="descripcion_entregable" placeholder="<?php echo $lang['DESCRIPTION_DELIVERABLE']?>" "required />
+	<input type="hidden" class="form-control" name="proyecto_entregable" id="proyecto_entregable" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $_GET['id']?>"required />
 	
 	</div>
-	
-	<div class="form-group">
-	<label><?php echo $lang['LANGUAGE']?></label>
-    <select class="form-control" name="idioma_usuario" id="idioma_usuario">
-    <option value="en">English</option>
-    <option value="es">Spanish</option>
-    
-  	</select>
-  </div>		
+			
 				
 
 				
@@ -314,17 +322,21 @@ else
 	<hr />
 				
 	<div class="form-group">
-	<button class="btn btn-primary"><?php echo $lang['UPDATE_DATA']?></button>
+	<button class="btn btn-primary"><?php echo $lang['UPLOAD_DELIVERABLE']?></button>
 	</div>
 				
     </form>     
-</div>
-    
-    
+
+  
+ 
+  
+
+  
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['MY_PROJECTS']?></H3>
-  <HR>
-  <h4><?php echo $lang['AS_TEAM_MEMBER']?></h4>
+  
+  
+    <HR>
+  <h4><?php echo $lang['DELIVERABLES']?></h4>
   
 <?php
 
@@ -345,49 +357,21 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	
 	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
 	{
-echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+echo $row_proyectos['id_proyecto'] . " " . $row_proyectos['nombre_proyecto'] . " " . $row_proyectos['descripcion_proyecto']."<br>";
 	}
 	else{}
 	}
 	}
 ?>
   
-   <HR>
-  <h4><?php echo $lang['AS_EVALUATOR']?></h4>
+ 
   
-<?php
 
-//run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
-    or die (mysqli_error($dbh));
-
-
-
-//display the results
-while ($row_proyectos = mysqli_fetch_array($loop))
-{
-	//run the query
-	if ($row_proyectos['evaluador_proyecto'] == $row['userID']){
-echo "<strong><a href='proyecto_evaluado.php'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
-	}
-}
-	
-?>
   
   </div>
 </div>
       
-     <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">EVALUACION A PROVEEDOR INTERNO
-  </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">REQUERIMIENTOS DE CLIENTES INTERNOS</div>
-</div>
-  <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">MIS RECONOCIMIENTOS</div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">TAREAS DE PROACTIVIDAD</div>
-</div> 
-      
-   </div>
+
 </div>
 </body>
 </html>

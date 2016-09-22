@@ -157,5 +157,22 @@ $lang['UPDATED'] = 'Data updated successfully';
 //MIS PROYECTOS
 $lang['MY_PROJECTS'] = 'My Projects';
 $lang['AS_TEAM_MEMBER'] = 'As Team Member';
+$lang['AS_EVALUATOR'] = 'As Evaluator';
 $lang['LANGUAGE'] = 'Default Language';
+
+$lang['PROJECT_TYPES'] = 'Project Types';
+$lang['PROJECT_INFO'] = 'Project Data';
+$lang['PROJECT_NAME'] = 'Project Name';
+$lang['START_DATE_PROJECT'] = 'Project Start Date';
+$lang['END_DATE_PROJECT'] = 'Project End Date';
+$lang['PROJECT_TEAM'] = 'Project Team';
+$lang['PROJECT_EVALUATOR'] = 'Project Evaluator';
+$lang['DELIVERABLES'] = 'Deliverables';
+$lang['NEW_DELIVERABLE'] = 'Add New Deliverable';
+$lang['TITLE_DELIVERABLE'] = 'Deliverable Title';
+$lang['DESCRIPTION_DELIVERABLE'] = 'Deliverable Description';
+$lang['CREATED'] = 'Deliverable uploaded successfully';
+
+$lang['UPLOAD_DELIVERABLE'] = 'Upload Deliverable';
+
 ?>

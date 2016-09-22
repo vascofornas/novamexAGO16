@@ -156,7 +156,26 @@ $lang['EDITABLE_DATA'] = 'Datos editables';
 $lang['UPDATE_DATA'] = 'Actualizar datos';
 $lang['SUCCESS'] = 'Correcto!';
 $lang['UPDATED'] = 'Datos actualizados correctamente';
+//MIS PROYECTOS
+$lang['MY_PROJECTS'] = 'Mis Proyectos';
+$lang['AS_TEAM_MEMBER'] = 'Como miembro de Equipo';
+$lang['AS_EVALUATOR'] = 'Como evaluador';
+$lang['LANGUAGE'] = 'Idioma por defecto';
+$lang['PROJECT_INFO'] = 'Datos del proyecto';
+$lang['PROJECT_NAME'] = 'Nombre del Proyecto';
+$lang['START_DATE_PROJECT'] = 'Fecha de inicio del Proyecto';
+$lang['END_DATE_PROJECT'] = 'Fecha final del Proyecto';
+$lang['PROJECT_TEAM'] = 'Equipo del Proyecto';
+$lang['PROJECT_EVALUATOR'] = 'Evaluador del Proyecto';
+$lang['DELIVERABLES'] = 'Entregables del Proyecto';
+$lang['NEW_DELIVERABLE'] = 'Nuevo Entregable';
+$lang['TITLE_DELIVERABLE'] = 'Titulo del Entregable';
+$lang['DESCRIPTION_DELIVERABLE'] = 'Descripcion del Entregable';
+$lang['CREATED'] = 'Entregable subido al servidor'; 
+$lang['UPLOAD_DELIVERABLE'] = 'Subir Entregable';
+
 
 
 
 ?>
+

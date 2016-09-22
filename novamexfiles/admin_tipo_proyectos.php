@@ -88,7 +88,7 @@ textarea {
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_proyectos.js"></script>
+    <script charset="utf-8" src="webapp_tipo_proyectos.js"></script>
 
  <script>
   $(document).ready(function() {
@@ -393,7 +393,7 @@ else
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['PROJECTS']?></h1>
+    <h1 align="center"><?php echo $lang['PROJECT_TYPES']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
