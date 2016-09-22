@@ -50,6 +50,13 @@ $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
 
 
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
+$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
+
+$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -371,6 +378,7 @@ echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable
 	
 	
 ?>
+  
  
   
 
