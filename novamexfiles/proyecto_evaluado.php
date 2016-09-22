@@ -50,13 +50,6 @@ $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
 
 
-mysqli_select_db($conexion, $database_conexion);
-$id = $_GET['id'];
-$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
-$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
-
-$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
-$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -362,9 +355,9 @@ else
   <h4><?php echo $lang['DELIVERABLES']?></h4>
   
 <?php
-
+$id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE proyecto_entregable = $id")
     or die (mysqli_error($dbh));
 
 
@@ -372,21 +365,12 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
 //display the results
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	//run the query
-	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
-	or die (mysqli_error($dbh));
-	while ($row_miembros = mysqli_fetch_array($loop_miembros))
-	{
 	
-	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
-	{
-echo $row_proyectos['id_proyecto'] . " " . $row_proyectos['nombre_proyecto'] . " " . $row_proyectos['descripcion_proyecto']."<br>";
+echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable']."</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
 	}
-	else{}
-	}
-	}
+	
+	
 ?>
-  
  
   
 
