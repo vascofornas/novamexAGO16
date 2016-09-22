@@ -173,6 +173,9 @@ $lang['TITLE_DELIVERABLE'] = 'Titulo del Entregable';
 $lang['DESCRIPTION_DELIVERABLE'] = 'Descripcion del Entregable';
 $lang['CREATED'] = 'Entregable subido al servidor'; 
 $lang['UPLOAD_DELIVERABLE'] = 'Subir Entregable';
+$lang['FILE_DELIVERABLE'] = 'Archivo Entregable';
+$lang['FILE_NAME'] = 'Nombre del Archivo Entregable';
+$lang['SELECT_FILE'] = 'Seleccione Archivo';
 
 
 

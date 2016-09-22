@@ -175,4 +175,8 @@ $lang['CREATED'] = 'Deliverable uploaded successfully';
 
 $lang['UPLOAD_DELIVERABLE'] = 'Upload Deliverable';
 
+$lang['FILE_DELIVERABLE'] = 'Deliverable File';
+$lang['FILE_NAME'] = 'Deliverable File Name';
+$lang['SELECT_FILE'] = 'Select File';
+
 ?>

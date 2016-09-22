@@ -6,6 +6,7 @@ if( $_POST ){
     $titulo_entregable = $_POST['titulo_entregable'];
    $descripcion_entregable = $_POST['descripcion_entregable'];
    $proyecto_entregable = $_POST['proyecto_entregable'];
+   $nombre_entregable = $_POST['nombre_entregable'];
  
     
 
@@ -25,8 +26,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO tb_entregables_proyecto (titulo_entregable, descripcion_entregable, proyecto_entregable)
-VALUES ('$titulo_entregable', '$descripcion_entregable', '$proyecto_entregable')";
+$sql = "INSERT INTO tb_entregables_proyecto (titulo_entregable, descripcion_entregable, proyecto_entregable, nombre_entregable)
+VALUES ('$titulo_entregable', '$descripcion_entregable', '$proyecto_entregable', '$nombre_entregable')";
 
 if ($conn->query($sql) === TRUE) {
     
@@ -58,7 +59,11 @@ $conn->close();
     <td><?php echo $descripcion_entregable ?></td>
     </tr>
     
-   
+   <tr>
+    <td><strong><?php echo $lang['DESCRIPTION_DELIVERABLE']?>: </strong></td>
+    <td><?php echo $nombre_entregable ?></td>
+    </tr>
+    
     <tr>
     
     

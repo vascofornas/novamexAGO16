@@ -187,6 +187,21 @@ $(document).ready(function() {
 	
 });
 </script>
+    <script> 
+
+function subirimagen()
+
+{
+
+	self.name = 'opener';
+
+	remote = open('subirentregable.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+
+	remote.focus();
+	}
+
+
+</script>
 </head> 
 <body>
   <div class="fixed">
@@ -301,7 +316,7 @@ else
   <h4><?php echo $lang['NEW_DELIVERABLE']?></h4>
   
     <div id="form-content">
-     <form method="post" id="reg-form" autocomplete="off">
+     <form method="post" id="reg-form" name="form1" autocomplete="off">
 			
 	<div class="form-group">
 	<label><?php echo $lang['TITLE_DELIVERABLE']?></label>
@@ -316,6 +331,14 @@ else
 	</div>
 			
 				
+ <div class="form-group" id="imagenTicket">
+        <label><?php echo $lang['FILE_DELIVERABLE']?></label>
+      <input name="nombre_entregable" type="text" id="nombre_entregable" class="form-control"  placeholder="<?php echo $lang['FILE_NAME']?>" value="" readonly>
+             
+              <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
+      
+      
+    </div>
 
 				
 		
