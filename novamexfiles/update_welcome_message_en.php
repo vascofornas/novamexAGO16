@@ -20,7 +20,7 @@ if ($_POST['submit']) {
             . $db->connect_error;
         }
 mysqli_set_charset($db,'utf8');
-        $query = "UPDATE tb_welcome_message SET mensaje_es=? WHERE id_mensaje=?";
+        $query = "UPDATE tb_welcome_message SET mensaje_en=? WHERE id_mensaje=?";
         $conn = $db->prepare($query);
 		
         $conn->bind_param('si',$mensaje,$id);

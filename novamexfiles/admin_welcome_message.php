@@ -230,14 +230,41 @@ else
 <div class = "container">
    <div class="row">
    <div class="col-xs-12 col-md-8">
-     <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?></h2>
+     <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?><a href=""><img src="mexico.png" width="45" height="45" /></a>
+     </h2>
    </div>
     <div class="col-xs-12 col-md-8">
       <form method="post" name="form1" action="update_welcome_message.php">
         <div align="center">
           <table align="center">
             <tr valign="baseline">
-              <td><textarea name="mensaje" style="width: 100%;" cols="100%" rows="5"><?php echo htmlentities($row_Recordset1['mensaje'], ENT_COMPAT, 'utf-8'); ?> </textarea></td>
+              <td><textarea name="mensaje" style="width: 100%;" cols="100%" rows="5"><?php echo htmlentities($row_Recordset1['mensaje_es'], ENT_COMPAT, 'utf-8'); ?> </textarea></td>
+            </tr>
+            <tr valign="baseline">
+              <td><input name="submit" type="submit" value="<?php echo $lang['SEND_WELCOME_MESSAGE']?>"></td>
+            </tr>
+          </table>
+          <input type="hidden" name="MM_update" value="form1">
+          <input type="hidden" name="id_mensaje" value="<?php echo $row_Recordset1['id_mensaje']; ?>">
+        </div>
+      </form>
+      <p align="center">&nbsp;</p>
+    </div>
+  
+  </div>
+   </div>
+   
+   <div class = "container">
+   <div class="row">
+   <div class="col-xs-12 col-md-8">
+     <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?><a href=""><img src="usa.png" width="45" height="45" /></a></h2>
+   </div>
+    <div class="col-xs-12 col-md-8">
+      <form method="post" name="form1" action="update_welcome_message_en.php">
+        <div align="center">
+          <table align="center">
+            <tr valign="baseline">
+              <td><textarea name="mensaje" style="width: 100%;" cols="100%" rows="5"><?php echo htmlentities($row_Recordset1['mensaje_en'], ENT_COMPAT, 'utf-8'); ?> </textarea></td>
             </tr>
             <tr valign="baseline">
               <td><input name="submit" type="submit" value="<?php echo $lang['SEND_WELCOME_MESSAGE']?>"></td>

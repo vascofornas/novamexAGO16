@@ -150,8 +150,19 @@ div.fixed {
 </head> 
 <body>
   <div class="fixed">
-<a href="home.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="home.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+  <?php 
+  $idioma_actual = $_SESSION['lang'];
+  
+  
+  if ($idioma_actual == "es"){?>
+  <a href="home.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="home.php?lang=en"><img src="usa.png" width="30" height="30" /></a>
+  <?php }
+  if ($idioma_actual == "en"){?>
+  <a href="home.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+  <a href="home.php?lang=es"><img src="mexico.png" width="30" height="30" /></a>
+
+<?php }?>
 
 <?php 
 
@@ -172,7 +183,7 @@ else
     ?>
 
 </div>
-<br><br>
+<br><br><br>
 <div class="bs-example">
     <nav role="navigation" class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -190,6 +201,7 @@ else
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php"><?php echo $lang['HOME']?></a></li>
                 <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                
                 <li class="dropdown">
                 
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
@@ -242,7 +254,19 @@ else
    
      <div class = "col-xs-6 col-sm-6" >
          
-         <p><?php echo $row_Recordset1['mensaje']; ?></p>
+         
+        
+         
+         
+         
+         <p><?php 
+         
+         if ($idioma_actual == "es"){
+         echo $row_Recordset1['mensaje_es'];}
+         if ($idioma_actual == "en"){
+         	echo $row_Recordset1['mensaje_en'];}
+         	 
+         ?></p>
       </div>
       
      <div class = "col-xs-6 col-sm-6" >
