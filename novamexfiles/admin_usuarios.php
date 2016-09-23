@@ -452,13 +452,7 @@ else
             </div>
           </div>
           
-          <div class="input_container">
-            <label for="userPass"><?php echo $lang['PASSWORD']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="userPass" id="userPass" value="" required>
-            </div>
-          </div>
-          
+         
           
            <?php   $sqlBU="SELECT * FROM tb_unidades_negocio ORDER BY unidad_negocio";?>
            

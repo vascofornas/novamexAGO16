@@ -109,7 +109,7 @@ if ($job != ''){
 		  "userEmail"    => $company['userEmail'],
           "unidad_negocio_usuario"    => $company['unidad_negocio_usuario'],
           		"supervisor_usuario"    => $company['supervisor_usuario'],
-          		"userPass"  => $company['userPass'],
+          		
 		  "userLevel"  => $company['userLevel'],
 		  "userStatus"  => $company['userStatus']
           );
@@ -126,7 +126,6 @@ if ($job != ''){
 	if (isset($_GET['apellidos_usuario']))   { $query .= "apellidos_usuario   = '" . mysqli_real_escape_string($db_connection, $_GET['apellidos_usuario'])   . "', "; }
 	if (isset($_GET['userEmail']))   { $query .= "userEmail   = '" . mysqli_real_escape_string($db_connection, $_GET['userEmail'])   . "', "; }
 	
-	if (isset($_GET['userPass']))   { $query .= "userPass   = '" . md5(mysqli_real_escape_string($db_connection, $_GET['userPass']))   . "', "; }
 	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
 	if (isset($_GET['supervisor_usuario']))   { $query .= "supervisor_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['supervisor_usuario']))   . "', "; }
 	
@@ -155,7 +154,6 @@ if ($job != ''){
 	if (isset($_GET['apellidos_usuario']))   { $query .= "apellidos_usuario   = '" . mysqli_real_escape_string($db_connection, $_GET['apellidos_usuario'])   . "', "; }
 	if (isset($_GET['userEmail']))   { $query .= "userEmail   = '" . mysqli_real_escape_string($db_connection, $_GET['userEmail'])   . "', "; }
 	
-	if (isset($_GET['userPass']))   { $query .= "userPass   = '" . md5(mysqli_real_escape_string($db_connection, $_GET['userPass']))   . "', "; }
 	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
 	if (isset($_GET['supervisor_usuario']))   { $query .= "supervisor_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['supervisor_usuario']))   . "', "; }
 	
