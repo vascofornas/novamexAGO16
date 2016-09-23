@@ -85,8 +85,10 @@ $lang['SEND_WELCOME_MESSAGE'] = 'Enviar';
 // ADMIN_NEWS.PHP
 $lang['ADD_NEWS'] = 'Nueva noticia';
 $lang['NUMBER_OF_NEWS_TO_SHOW'] = 'Numero de noticias a mostrar';
-$lang['TEXT'] = 'Texto';
-$lang['TITLE'] = 'Titulo';
+$lang['TEXT'] = 'Texto en ES';
+$lang['TEXT_EN'] = 'Texto en EN';
+$lang['TITLE'] = 'Titulo en ES';
+$lang['TITLE_EN'] = 'Titulo en EN';
 $lang['ADDED_BY'] = 'Incluida por';
 $lang['DATE'] = 'Fecha';
 $lang['ACTIVE'] = 'Activa ?';

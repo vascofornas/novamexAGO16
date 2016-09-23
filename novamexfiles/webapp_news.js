@@ -5,8 +5,10 @@ $(document).ready(function(){
     "ajax": "data_news.php?job=get_companies",
     "columns": [
       
-      { "data": "text_news",   "sClass": "company_name" },
+      { "data": "text_news",    },
+      { "data": "text_news_en",    },
       { "data": "title_news" },
+      { "data": "title_news_en" },
       { "data": "user_news" },
       { "data": "date_news" },
       { "data": "active_news", },
@@ -121,7 +123,9 @@ $(document).ready(function(){
     $('#form_company .field_container').removeClass('valid').removeClass('error');
    
     $('#form_company #title_news').val('');
+    $('#form_company #title_news_en').val('');
     $('#form_company #text_news').val('');
+    $('#form_company #text_news_en').val(''); 
 	$('#form_company #user_news').val('');
     $('#form_company #active_news').val('');
     show_lightbox();
@@ -189,8 +193,11 @@ $(document).ready(function(){
         $('#form_company .field_container').removeClass('valid').removeClass('error');
        
         $('#form_company #title_news').val(output.data[0].title_news);
+        $('#form_company #title_news_en').val(output.data[0].title_news_en);
         
         $('#form_company #text_news').val(output.data[0].text_news);
+        $('#form_company #text_news_en').val(output.data[0].text_news_en);
+        
         $('#form_company #active_news').val(output.data[0].active_news);
         hide_loading_message();
         show_lightbox();

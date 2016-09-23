@@ -73,7 +73,10 @@ if ($job != ''){
         $mysql_data[] = array(
          
           "text_news"  => $company['text_news'],
+
+        		"text_news_en"  => $company['text_news_en'],
           "title_news"    => $company['title_news'],
+        		"title_news_en"    => $company['title_news_en'],
 		  "user_news"    => $company['user_news'],
 		  "date_news"    => $company['date_news'],
           "active_news"  => $company['active_news'],
@@ -101,6 +104,8 @@ if ($job != ''){
           $mysql_data[] = array(
              "title_news"  => $company['title_news'],
           "text_news"    => $company['text_news'],
+          		"title_news_en"  => $company['title_news_en'],
+          		"text_news_en"    => $company['text_news_en'],
           "active_news"  => $company['active_news']
           );
         }
@@ -113,7 +118,11 @@ if ($job != ''){
     $query = "INSERT INTO tb_news SET ";
     if (isset($_GET['title_news'])) { $query .= "title_news = '" . mysqli_real_escape_string($db_connection, $_GET['title_news']) . "', "; }
     if (isset($_GET['text_news']))   { $query .= "text_news   = '" . mysqli_real_escape_string($db_connection, $_GET['text_news'])   . "', "; }
-	$query .= "user_news = '".$row['userName']. "', ";
+    if (isset($_GET['title_news_en'])) { $query .= "title_news_en = '" . mysqli_real_escape_string($db_connection, $_GET['title_news_en']) . "', "; }
+    if (isset($_GET['text_news_en']))   { $query .= "text_news_en   = '" . mysqli_real_escape_string($db_connection, $_GET['text_news_en'])   . "', "; }
+    
+    
+    $query .= "user_news = '".$row['userName']. "', ";
     if (isset($_GET['active_news'])) { $query .= "active_news = '" . mysqli_real_escape_string($db_connection, $_GET['active_news']) . "'";   }
 	 
     $query = mysqli_query($db_connection, $query);
@@ -135,6 +144,9 @@ if ($job != ''){
       $query = "UPDATE tb_news SET ";
       if (isset($_GET['title_news'])) { $query .= "title_news = '" . mysqli_real_escape_string($db_connection, $_GET['title_news']) . "', "; }
       if (isset($_GET['text_news']))   { $query .= "text_news   = '" . mysqli_real_escape_string($db_connection, $_GET['text_news'])   . "', "; }
+      if (isset($_GET['title_news_en'])) { $query .= "title_news_en = '" . mysqli_real_escape_string($db_connection, $_GET['title_news_en']) . "', "; }
+      if (isset($_GET['text_news_en']))   { $query .= "text_news_en   = '" . mysqli_real_escape_string($db_connection, $_GET['text_news_en'])   . "', "; }
+      
       if (isset($_GET['active_news'])) { $query .= "active_news = '" . mysqli_real_escape_string($db_connection, $_GET['active_news']) . "'";   }
       $query .= "WHERE id_news = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query  = mysqli_query($db_connection, $query);

@@ -269,6 +269,11 @@ body {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+//<![CDATA[
+        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+  //]]>
+  </script>
 </head> 
 <body>
 <div class="fixed">
@@ -400,7 +405,9 @@ else
            
             
             <th><?php echo $lang['TEXT']?></th>
-            <th><?php echo $lang['TITLE']?></th>
+            <th><?php echo $lang['TEXT_EN']?></th>
+            <th><?php echo $lang['TITLE']?></th> 
+            <th><?php echo $lang['TITLE_EN']?></th>
             <th><?php echo $lang['ADDED_BY']?></th>
             <th><?php echo $lang['DATE']?></th>
             <th><?php echo $lang['ACTIVE']?></th>
@@ -429,10 +436,23 @@ else
               <input type="text" class="text" name="title_news" id="title_news" value="" required>
             </div>
           </div>
+          <div class="input_container">
+            <label for="title_news_en"><?php echo $lang['TITLE_EN']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="title_news_en" id="title_news_en" value="" required>
+            </div>
+          </div>
         <div class="input_container">
             <label for="text_news"><?php echo $lang['TEXT']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text"  class="text" name="text_news" id="text_news" value="" required>
+             <textarea class="form-control col-xs-12" rows="5"  style="width: 100%;" cols="100%"  id="comment"></textarea>
+             
+             
+                 </div>
+          <div class="input_container">
+            <label for="text_news_en"><?php echo $lang['TEXT_EN']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text"  class="text" name="text_news_en" id="text_news_en" value="" required>
             </div>
           </div>
        

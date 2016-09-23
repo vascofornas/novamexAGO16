@@ -3,11 +3,17 @@ session_start();
 require_once 'class.user.php';
 require_once 'funciones.php';
 header('Content-type: text/html; charset=utf-8' , true );
+$_SESSION['lang']='en';
 include_once 'common.php';
 $user_login = new USER();
 
 if($user_login->is_logged_in()!="")
 {
+	
+	
+	
+	
+	
 	$user_login->redirect('home.php');
 }
 

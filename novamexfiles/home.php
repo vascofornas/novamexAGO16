@@ -65,9 +65,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
 <meta charset="UTF-8">
 
-  
 
-<title><?php echo $row['userName']?></title>
+<title><?php echo $row['userName'];?>
+</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

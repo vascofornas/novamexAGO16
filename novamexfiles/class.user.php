@@ -68,6 +68,8 @@ class USER
 					{
 						$_SESSION['userSession'] = $userRow['userID'];
 						$_SESSION['userLevel'] = $userRow['userLevel'];
+						$_SESSION['lang'] = $userRow['idioma_usuario'];
+						
 						return true;
 					}
 					else

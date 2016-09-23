@@ -78,8 +78,10 @@ $lang['SEND_WELCOME_MESSAGE'] = 'Send';
 // ADMIN_NEWS.PHP
 $lang['ADD_NEWS'] = 'Add News';
 $lang['NUMBER_OF_NEWS_TO_SHOW'] = 'Number of News to show';
-$lang['TEXT'] = 'Text';
-$lang['TITLE'] = 'Title';
+$lang['TEXT'] = 'Text ES';
+$lang['TEXT_EN'] = 'Text EN';
+$lang['TITLE'] = 'Title ES';
+$lang['TITLE_EN'] = 'Title EN';
 $lang['ADDED_BY'] = 'Added  by';
 $lang['DATE'] = 'Date';
 $lang['ACTIVE'] = 'Active?';
