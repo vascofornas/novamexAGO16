@@ -74,7 +74,14 @@ if(isset($_POST['btn-signup']))
    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
   <style type="text/css">
   body {
-	background-image: url(fondonovamex.jpg);
+	background: rgba(255,220,138,1);
+background: -moz-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,220,138,1)), color-stop(54%, rgba(255,194,41,1)), color-stop(99%, rgba(255,210,97,1)), color-stop(100%, rgba(224,161,0,1)));
+background: -webkit-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -o-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: linear-gradient(to right, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdc8a', endColorstr='#e0a100', GradientType=1 );
 }
   </style>
   <style>
@@ -112,6 +119,9 @@ div.fixed {
      	<hr />
         <button class="btn btn-large btn-primary" type="submit" name="btn-signup"><?php echo $lang['SIGN_UP']?></button>
         <a href="index.php" style="float:right;" class="btn btn-large"><?php echo $lang['SIGN_IN']?></a>
+     <br><br><br>
+        <img src="logonovamex100.png" alt="Mountain View" style="width:414px;height:110px;">
+     
       </form>
 
     </div> <!-- /container -->

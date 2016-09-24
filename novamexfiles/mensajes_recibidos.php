@@ -213,7 +213,14 @@ select#soflow-color {
    padding-left: 15px;
 }
 body {
-	background-image: url(fondonovamex.jpg);
+	background: rgba(255,220,138,1);
+background: -moz-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,220,138,1)), color-stop(54%, rgba(255,194,41,1)), color-stop(99%, rgba(255,210,97,1)), color-stop(100%, rgba(224,161,0,1)));
+background: -webkit-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -o-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: linear-gradient(to right, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdc8a', endColorstr='#e0a100', GradientType=1 );
 }
 </style>
 <style>
@@ -307,15 +314,15 @@ else
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><?php echo $lang['ADMIN_ZONE']?></a>
+            <a href="#" class="navbar-brand"><?php echo $lang['MEMBER_HOME']?></a>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
-             <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                   <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
-                 <li class="dropdown">
+                <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
+                <li class="active"><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                <li class="dropdown">
+                
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="mensajes_recibidos.php"><?php echo $lang['RECEIVED_MESSAGES']?></a></li>
@@ -325,8 +332,11 @@ else
                         
                     </ul>
                 </li>
-               
-                <?php
+              
+                
+                
+                
+               <?php
 				$nivel = $row['userLevel'];
 			
 				if ($nivel != "Level 1") {
@@ -338,19 +348,17 @@ else
 				}
 				?>
                 
-                
-                
             </ul>
             
             <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"></span>
-                     <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
+                    <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
                     <li>
-                    <a tabindex="-1" href="logout.php">Logout</a>
+                    <a tabindex="-1" href="logout.php"><?php echo $lang['LOGOUT']?></a>
                     </li>
                     
                     </ul>

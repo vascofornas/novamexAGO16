@@ -58,7 +58,14 @@ div.fixed {
 </style>
 <style type="text/css">
 body {
-	background-image: url(fondo_web.jpg);
+	background: rgba(255,220,138,1);
+background: -moz-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,220,138,1)), color-stop(54%, rgba(255,194,41,1)), color-stop(99%, rgba(255,210,97,1)), color-stop(100%, rgba(224,161,0,1)));
+background: -webkit-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -o-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: -ms-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+background: linear-gradient(to right, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdc8a', endColorstr='#e0a100', GradientType=1 );
 }
 </style>
 <style>
@@ -230,11 +237,11 @@ else
 <div class = "container">
    <div class="row">
    <div class="col-xs-12 col-md-12">
-     <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?><a href=""><img src="mexico.png" width="45" height="45" /></a>
+     <h2 align="center"><?php echo $lang['ADD_NEWS']?><a href=""></a>
      </h2>
    </div>
     <div class="col-xs-12 col-md-12">
-       <h2><?php echo $lang['ADD_NEWS']?></h2>
+ 
         <form class="form add"  data-id="" action="nueva_noticia.php" method="post">
           
           <div class="input_container">
