@@ -272,12 +272,34 @@ else
      <div class = "col-xs-6 col-sm-6" >
        <h2 align="center"><strong><?php echo $lang['NEWS']?></strong></h2>
         
-         <?php do { ?>
+        
+        
+        
+        <?php 
+         
+         if ($idioma_actual == "es"){
+         
+         	 do { ?>
           <h4><?php echo $row_Recordset2['title_news']; ?></h4>
          <p><?php echo $row_Recordset2['text_news']; ?></p>
            <p><?php echo $lang['BY']?>: <strong><?php echo $row_Recordset2['user_news']; ?></strong></p>
            <?php echo $row_Recordset2['date_news']; ?>
-           <?php } while ($row_Recordset2 = mysqli_fetch_assoc($Recordset2)); ?>
+           <?php } while ($row_Recordset2 = mysqli_fetch_assoc($Recordset2)); 
+         
+         
+         
+         }
+        
+         if ($idioma_actual == "en"){
+         	 do { ?>
+          <h4><?php echo $row_Recordset2['title_news_en']; ?></h4>
+         <p><?php echo $row_Recordset2['text_news_en']; ?></p>
+           <p><?php echo $lang['BY']?>: <strong><?php echo $row_Recordset2['user_news']; ?></strong></p>
+           <?php echo $row_Recordset2['date_news']; ?>
+           <?php } while ($row_Recordset2 = mysqli_fetch_assoc($Recordset2)); 
+         	 }?>
+         	 
+        
          
      </div>
 
@@ -291,5 +313,3 @@ else
 </div>
 </body>
 </html>
-<?php
-?>

@@ -396,7 +396,7 @@ else
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_NEWS']?></button>
+        <button type="button" class="button" ><a href="admin_nueva_noticia.php"><?php echo $lang['ADD_NEWS']?></a></button>
         
       </div>
       <table class="datatable" id="table_companies">

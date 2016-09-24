@@ -66,7 +66,7 @@ if ($job != ''){
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
         $functions  = '<div class="function_buttons"><ul>';
-        $functions .= '<li class="function_edit"><a data-id="'   . $company['id_news'] . '" data-name="' . $company['title_news'] . '"><span>Edit</span></a></li>';
+        $functions .= '<li class=><a href="admin_editar_noticia.php?id='   . $company['id_news'] . '" data-name="' . $company['title_news'] . '"><span>Edit</span></a></li>';
         $functions .= '<li class="function_delete"><a data-id="' . $company['id_news'] . '" data-name="' . $company['title_news'] . '"><span>Delete</span></a></li>';
 		
         $functions .= '</ul></div>';

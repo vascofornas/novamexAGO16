@@ -120,8 +120,8 @@ body {
 </head> 
 <body>
  <div class="fixed">
-<a href="admin_welcome_message.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="admin_welcome_message.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="admin_nueva_noticia.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+<a href="admin_nueva_noticia.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
 <?php 
 
 $query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['userID']."'";
@@ -229,56 +229,73 @@ else
 </div>
 <div class = "container">
    <div class="row">
-   <div class="col-xs-12 col-md-8">
+   <div class="col-xs-12 col-md-12">
      <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?><a href=""><img src="mexico.png" width="45" height="45" /></a>
      </h2>
    </div>
-    <div class="col-xs-12 col-md-8">
-      <form method="post" name="form1" action="update_welcome_message.php">
-        <div align="center">
-          <table align="center">
-            <tr valign="baseline">
-              <td><textarea name="mensaje" style="width: 100%;" cols="100%" rows="5"><?php echo htmlentities($row_Recordset1['mensaje_es'], ENT_COMPAT, 'utf-8'); ?> </textarea></td>
-            </tr>
-            <tr valign="baseline">
-              <td><input name="submit" type="submit" value="<?php echo $lang['SEND_WELCOME_MESSAGE']?>"></td>
-            </tr>
-          </table>
-          <input type="hidden" name="MM_update" value="form1">
-          <input type="hidden" name="id_mensaje" value="<?php echo $row_Recordset1['id_mensaje']; ?>">
-        </div>
-      </form>
-      <p align="center">&nbsp;</p>
+    <div class="col-xs-12 col-md-12">
+       <h2><?php echo $lang['ADD_NEWS']?></h2>
+        <form class="form add"  data-id="" action="nueva_noticia.php" method="post">
+          
+          <div class="input_container">
+            <label for="title_news"><?php echo $lang['TITLE']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text col-xs-12 col-md-12" name="title_news" id="title_news" value="" required>
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="title_news_en"><?php echo $lang['TITLE_EN']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text col-xs-12 col-md-12" name="title_news_en" id="title_news_en" value="" required>
+            </div>
+          </div>
+        <div class="input_container">
+            <label for="text_news"><?php echo $lang['TEXT']?>: <span class="required">*</span></label>
+            <div class="field_container">
+             <textarea class="form-control col-xs-12" rows="5"  style="width: 100%;" cols="100%"  id="text_news" name="text_news"></textarea>
+             
+             
+                 </div>
+         
+               <div class="input_container">
+            <label for="text_news"><?php echo $lang['TEXT_EN']?>: <span class="required">*</span></label>
+            <div class="field_container">
+             <textarea class="form-control col-xs-12" rows="5"  style="width: 100%;" cols="100%"  id="text_news_en" name="text_news_en"></textarea>
+             
+             
+                 </div>
+         
+       
+          
+           
+<div class="input_container">
+        <label for="active_news"><?php echo $lang['ACTIVE']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="active_news" name="active_news" class="selectpicker col-xs-12 col-md-12"  required>
+                <option value="1" selected><?php echo $lang['YES']?></option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+          
+         
+          <div class="button_container">
+          <br><br><br>
+          <input type="hidden" class="text col-xs-12 col-md-12" name="user_news" id="user_news" value="<?php echo $row['userName']?>" required>
+          
+            <button type="submit"><?php echo $lang['ADD_NEWS']?></button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+     
     </div>
   
   </div>
    </div>
    
-   <div class = "container">
-   <div class="row">
-   <div class="col-xs-12 col-md-8">
-     <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?><a href=""><img src="usa.png" width="45" height="45" /></a></h2>
-   </div>
-    <div class="col-xs-12 col-md-8">
-      <form method="post" name="form1" action="update_welcome_message_en.php">
-        <div align="center">
-          <table align="center">
-            <tr valign="baseline">
-              <td><textarea name="mensaje" style="width: 100%;" cols="100%" rows="5"><?php echo htmlentities($row_Recordset1['mensaje_en'], ENT_COMPAT, 'utf-8'); ?> </textarea></td>
-            </tr>
-            <tr valign="baseline">
-              <td><input name="submit" type="submit" value="<?php echo $lang['SEND_WELCOME_MESSAGE']?>"></td>
-            </tr>
-          </table>
-          <input type="hidden" name="MM_update" value="form1">
-          <input type="hidden" name="id_mensaje" value="<?php echo $row_Recordset1['id_mensaje']; ?>">
-        </div>
-      </form>
-      <p align="center">&nbsp;</p>
-    </div>
-  
-  </div>
-   </div>
+
 </body>
 </html>
 <?php
