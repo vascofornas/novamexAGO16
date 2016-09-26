@@ -1,7 +1,5 @@
 <?php require_once('Connections/conexion.php'); 
-
 include_once 'common.php';
-
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -32,6 +30,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
+//TEST visto desde MAC
 
 mysqli_select_db($conexion,$database_conexion);
 $query_Recordset1 = "SELECT * FROM tb_welcome_message WHERE tb_welcome_message.id_mensaje =1";
@@ -60,11 +59,87 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <title><?php echo $row['userName']?></title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<style>
+div.fixed {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 300px;
+ 
+}
+</style>
+<style>
+/* Firefox old*/
+@-moz-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+/* IE */
+@-ms-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+.blink-image {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
+</style>
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oxygen:400,700">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="layout.css">
+    <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+    <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
+    <script charset="utf-8" src="webapp_historico.js"></script>
+
+
 <style type="text/css">
     .bs-example{
     	margin: 20px;
@@ -75,15 +150,6 @@ body {
 	background-image: url(fondonovamex.jpg);
 }
 </style>
-<style>
-div.fixed {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    width: 300px;
- 
-}
-</style>
 </head> 
 <body>
   <div class="fixed">
@@ -92,12 +158,12 @@ div.fixed {
   
   
   if ($idioma_actual == "es"){?>
-  <a href="admin_home.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
-<a href="admin_home.php?lang=en"><img src="usa.png" width="30" height="30" /></a>
+  <a href="admin_historico.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="admin_historico.php?lang=en"><img src="usa.png" width="30" height="30" /></a>
   <?php }
   if ($idioma_actual == "en"){?>
-  <a href="admin_home.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-  <a href="admin_home.php?lang=es"><img src="mexico.png" width="30" height="30" /></a>
+  <a href="admin_historico.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+  <a href="admin_historico.php?lang=es"><img src="mexico.png" width="30" height="30" /></a>
 
 <?php }?>
 
@@ -138,8 +204,8 @@ else
             <ul class="nav navbar-nav">
                 <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
                 <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
-                <li class="dropdown">
+                   <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="mensajes_recibidos.php"><?php echo $lang['RECEIVED_MESSAGES']?></a></li>
@@ -149,7 +215,8 @@ else
                         
                     </ul>
                 </li>
-               <?php
+               
+                       <?php
 				$nivel = $row['userLevel'];
 			
 				if ($nivel == "Level 5") {
@@ -167,8 +234,8 @@ else
                         <li class="divider"></li>
                         <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
                         <li><a href="admin_tipo_proyectos.php"><?php echo $lang['PROJECT_TYPES']?></a></li>
-                        <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
-                        <li class="divider"></li>
+                         <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
+                       <li class="divider"></li>
                           <li><a href="admin_historico.php"><?php echo $lang['HISTORICO']?></a></li>
                        
                         <li class="divider"></li>
@@ -179,9 +246,6 @@ else
                     </ul>
                 </li>
                 <?php }?>
-                
-                
-                
                 
                 
             </ul>
@@ -202,13 +266,88 @@ else
           </ul> 
         </div>
     </nav>
-</div>
-<div class="container">
+</div><div class="container">
 	<div class="row">
 
     </div>
     </div>
 </div>
+
+
+    <p>&nbsp;</p>
+    <h1 align="center"><?php echo $lang['HISTORICO']?></h1>
+    <p align="center">&nbsp;</p>
+    <div id="page_container">
+
+      
+      <table class="datatable" id="table_companies">
+        <thead>
+          <tr>
+           
+            
+            <th><?php echo $lang['EVENT']?></th>
+            <th><?php echo $lang['DATE']?></th>
+            <th><?php echo $lang['USERID']?></th>
+            <th><?php echo $lang['IP']?></th>
+            
+            
+            <th><?php echo $lang['ACTIONS']?></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+</div>
+
+    <div class="lightbox_bg"></div>
+
+    <div class="lightbox_container">
+      <div class="lightbox_close"></div>
+      <div class="lightbox_content">
+        
+        <h2><?php echo $lang['ADD_BU']?></h2>
+        <form class="form add" id="form_company" data-id="" novalidate>
+          
+          <div class="input_container">
+            <label for="unidad_negocio"><?php echo $lang['BUSINESS_UNIT']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="unidad_negocio" id="unidad_negocio" value="" required>
+            </div>
+          </div>
+         
+          
+         
+          <div class="button_container">
+            <button type="submit"><?php echo $lang['ADD_BU']?></button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+
+    <noscript id="noscript_container">
+      <div id="noscript" class="error">
+        <p>JavaScript support is needed to use this page.</p>
+      </div>
+    </noscript>
+
+    <div id="message_container">
+      <div id="message" class="success">
+        <p>This is a success message.</p>
+      </div>
+    </div>
+
+    <div id="loading_container">
+      <div id="loading_container2">
+        <div id="loading_container3">
+          <div id="loading_container4">
+            Procesando datos, espere, por favor...
+          </div>
+        </div>
+      </div>
+    </div>
+    
 </body>
 </html>
 <?php

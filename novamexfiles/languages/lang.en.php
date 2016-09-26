@@ -211,4 +211,11 @@ $lang['SELECT_FILE'] = 'Select File';
 $lang['PROJECT_EVAL'] = 'Project Evaluations';
 $lang['PORCENTAJE_ACUMULADO'] = 'Total Percentage';
 
+//historico
+$lang['HISTORICO'] = 'Events Log';
+$lang['EVENT'] = 'Event';
+$lang['DATE'] = 'Date';
+$lang['USERID'] = 'User / UserID';
+$lang['IP'] = 'IP Address';
+
 ?>

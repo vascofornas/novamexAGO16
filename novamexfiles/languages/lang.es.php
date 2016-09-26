@@ -209,4 +209,11 @@ $lang['PROJECT_TYPE_PERCENTAGE9'] = 'Porcentaje Opcion 9';
 $lang['PROJECT_TYPE_PERCENTAGE10'] = 'Porcentaje Opcion 10';
 $lang['PORCENTAJE_ACUMULADO'] = 'Porcentaje acumulado';
 
+//historico
+$lang['HISTORICO'] = 'Registro de Eventos';
+$lang['EVENT'] = 'Evento';
+$lang['DATE'] = 'Fecha';
+$lang['USERID'] = 'Ususario / ID de usuario';
+$lang['IP'] = 'IP';
+
 ?>
