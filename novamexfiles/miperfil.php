@@ -185,6 +185,20 @@ $(document).ready(function() {
 	
 });
 </script>
+<script type="text/javascript">
+function subirimagen()
+
+{
+
+	self.name = 'opener';
+
+	remote = open('subirfoto.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+
+	remote.focus();
+	}
+
+
+</script>
 </head> 
 <body>
   <div class="fixed">
@@ -260,7 +274,8 @@ else
             <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user"></span>
+                       <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="70" width="70">
+    
                     <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -292,7 +307,7 @@ else
   <h4><?php echo $lang['EDITABLE_DATA']?></h4>
   
     <div id="form-content">
-     <form method="post" id="reg-form" autocomplete="off">
+     <form method="post" id="reg-form" name="form1" autocomplete="off">
 			
 	<div class="form-group">
 	<label><?php echo $lang['FIRST_NAME']?></label>
@@ -314,6 +329,15 @@ else
     
   	</select>
   </div>		
+   <div class="form-group" id="imagenTicket">
+        <label><?php echo $lang['IMAGE']?></label>
+        <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="100" width="100">
+      <input name="imagen_usuario" type="text" id="imagen_usuario" class="form-control"  placeholder="<?php echo $row['imagen_usuario']?>" value="<?php echo $row['imagen_usuario']?>" readonly>
+             
+              <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
+      
+      
+    </div>
 				
 
 				

@@ -217,5 +217,7 @@ $lang['EVENT'] = 'Event';
 $lang['DATE'] = 'Date';
 $lang['USERID'] = 'User / UserID';
 $lang['IP'] = 'IP Address';
+$lang['IMAGE'] = 'User Image';
+$lang['UPLOAD_PICTURE'] = 'Upload User Picture';
 
 ?>

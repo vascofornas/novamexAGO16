@@ -30,11 +30,12 @@ class USER
 	public function register($uname,$email,$upass,$code,$unombre,$uapellidos,$idioma)
 	{
 		try
-		{							
+		{						
+			$imagen = "Icon_user.png";
 			$password = md5($upass);
 			$level = "Level 1";
-			$stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,userEmail,userPass,tokenCode,userLevel,nombre_usuario,apellidos_usuario,idioma_usuario) 
-			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :user_level,:unombre,:uapellidos,:uidioma)");
+			$stmt = $this->conn->prepare("INSERT INTO tbl_users(userName,userEmail,userPass,tokenCode,userLevel,nombre_usuario,apellidos_usuario,idioma_usuario,imagen_usuario) 
+			                                             VALUES(:user_name, :user_mail, :user_pass, :active_code, :user_level,:unombre,:uapellidos,:uidioma,:uimagen)");
 			$stmt->bindparam(":user_name",$uname);
 			$stmt->bindparam(":user_mail",$email);
 			$stmt->bindparam(":user_pass",$password);
@@ -43,7 +44,8 @@ class USER
 				$stmt->bindparam(":unombre",$unombre);
 				$stmt->bindparam(":uapellidos",$uapellidos);
 				$stmt->bindparam(":uidioma",$idioma);
-			
+				$stmt->bindparam(":uimagen",$imagen);
+					
 			$stmt->execute();	
 			return $stmt;
 		}

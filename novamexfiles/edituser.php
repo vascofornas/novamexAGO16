@@ -6,6 +6,7 @@ if( $_POST ){
     $nombre_usuario = $_POST['nombre_usuario'];
    $apellidos_usuario = $_POST['apellidos_usuario'];
    $idioma_usuario = $_POST['idioma_usuario'];
+   $imagen_usuario = $_POST['imagen_usuario'];
  
     
     $id = $_POST['userID'];
@@ -33,11 +34,12 @@ if( $_POST ){
     {
     	
     
-    	$stmt = $db_con->prepare("UPDATE tbl_users SET nombre_usuario=:en, apellidos_usuario=:es, idioma_usuario=:idi WHERE userID=:id");
+    	$stmt = $db_con->prepare("UPDATE tbl_users SET nombre_usuario=:en, apellidos_usuario=:es, idioma_usuario=:idi, imagen_usuario=:idimagen WHERE userID=:id");
     	$stmt->bindParam(":en", $nombre_usuario);
     	$stmt->bindParam(":es", $apellidos_usuario);
 
     	$stmt->bindParam(":idi", $idioma_usuario);
+    	$stmt->bindParam(":idimagen", $imagen_usuario);
     
 
     	$stmt->bindParam(":id", $id);
