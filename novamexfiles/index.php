@@ -25,7 +25,7 @@ if(isset($_POST['btn-login']))
 	if($user_login->login($email,$upass))
 	{
 		
-		$texto = "LOGIN DE USUARIO REGISTRADO";
+		$texto = "INTENTO DE LOGIN DE USUARIO REGISTRADO";
 		
 		add_log($texto,$email);
 		

@@ -34,13 +34,20 @@ if(isset($_GET['id']) && isset($_GET['code']))
 					  <strong>WoW !</strong>  Your Account is Now Activated : <a href='index.php'>Login here</a>
 			       </div>
 			       ";	
+			
+			
+			$texto = "ACTIVACION DE USUARIO REALIZADA";
+			$usuario = $_GET['id'];
+				
+			add_log($texto,$id);
+				
 		}
 		else
 		{
 			$msg = "
 		           <div class='alert alert-error'>
 				   <button class='close' data-dismiss='alert'>&times;</button>
-					  <strong>sorry !</strong>  Your Account is allready Activated : <a href='index.php'>Login here</a>
+					  <strong>sorry !</strong>  Your Account is already Activated : <a href='index.php'>Login here</a>
 			       </div>
 			       ";
 		}

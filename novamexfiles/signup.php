@@ -45,7 +45,12 @@ if(isset($_POST['btn-signup']))
 			$message .= "<a href='http://juarezserver.com/novamex/verify.php?id=$id&code=$code'>".$lang['CLICK_HERE_TO_ACTIVATE']."</a>";
 						
 			$subject = $lang['CONFIRM_REGISTRATION'];
-						
+			
+			$texto = "REGISTRO DE USUARIO REALIZADO";
+			
+			add_log($texto,$email);
+			
+			
 			$reg_user->send_mail($email,$message,$subject);	
 			$msg = $lang['REGISTRATION_OK'];;
 		}

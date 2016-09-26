@@ -1,6 +1,7 @@
 <?php
 
 require_once 'dbconfig.php';
+require_once 'funciones.php';
 
 class USER
 {	
@@ -75,6 +76,9 @@ class USER
 					else
 					{
 						header("Location: index.php?error");
+						$texto = "FALLO EN INTENTO DE LOGIN DE USUARIO REGISTRADO";
+						
+						add_log($texto,$email);
 						exit;
 					}
 				}
@@ -87,6 +91,9 @@ class USER
 			else
 			{
 				header("Location: index.php?error");
+				$texto = "FALLO EN INTENTO DE LOGIN DE USUARIO REGISTRADO";
+				
+				add_log($texto,$email);
 				exit;
 			}		
 		}
