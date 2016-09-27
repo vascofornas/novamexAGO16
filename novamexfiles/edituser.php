@@ -3,8 +3,7 @@ include_once 'common.php';
 
 if( $_POST ){
 	
-    $nombre_usuario = $_POST['nombre_usuario'];
-   $apellidos_usuario = $_POST['apellidos_usuario'];
+   
    $idioma_usuario = $_POST['idioma_usuario'];
    $imagen_usuario = $_POST['imagen_usuario'];
  
@@ -34,9 +33,8 @@ if( $_POST ){
     {
     	
     
-    	$stmt = $db_con->prepare("UPDATE tbl_users SET nombre_usuario=:en, apellidos_usuario=:es, idioma_usuario=:idi, imagen_usuario=:idimagen WHERE userID=:id");
-    	$stmt->bindParam(":en", $nombre_usuario);
-    	$stmt->bindParam(":es", $apellidos_usuario);
+    	$stmt = $db_con->prepare("UPDATE tbl_users SET  idioma_usuario=:idi, imagen_usuario=:idimagen WHERE userID=:id");
+    	
 
     	$stmt->bindParam(":idi", $idioma_usuario);
     	$stmt->bindParam(":idimagen", $imagen_usuario);
@@ -63,18 +61,14 @@ if( $_POST ){
     </td>
     </tr>
     
-    <tr>
-    <td><strong><?php echo $lang['FIRST_NAME']?>: </strong></td>
-    <td><?php echo $nombre_usuario ?></td>
-    </tr>
-    
-    <tr>
-    <td><strong><?php echo $lang['LAST_NAME']?>: </strong></td>
-    <td><?php echo $apellidos_usuario ?></td>
-    </tr>
+   
       <tr>
     <td><strong><?php echo $lang['LANGUAGE']?>: </strong></td>
     <td><?php echo $idioma_usuario ?></td>
+    </tr>
+     <tr>
+    <td><strong><?php echo $lang['IMAGE']?>: </strong></td>
+    <td><?php echo $imagen_usuario ?></td>
     </tr>
     
    

@@ -320,6 +320,9 @@ else
   <hr>
   <h4><?php echo $lang['NOT_EDITABLE_DATA']?></h4>
   <p><strong><?php echo $lang['USERNAME']?>: </strong><?php echo $row['userName']?></p>
+  <p><strong><?php echo $lang['FNAME']?>: </strong><?php echo $row['nombre_usuario']?></p>
+  <p><strong><?php echo $lang['SNAME']?>: </strong><?php echo $row['apellidos_usuario']?></p>
+  
   <p><strong>Email: </strong><?php echo $row['userEmail']?></p>
   <p><strong><?php echo $lang['USER_LEVEL']?>: </strong><?php echo $row['userLevel']?></p>
    <p><strong><?php echo $lang['BUSINESS_UNIT']?>: </strong><?php echo $row['uni']?></p>
@@ -330,17 +333,7 @@ else
     <div id="form-content">
      <form method="post" id="reg-form" name="form1" autocomplete="off">
 			
-	<div class="form-group">
-	<label><?php echo $lang['FIRST_NAME']?></label>
-	<input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="<?php echo $lang['FIRST_NAME']?>" value ="<?php echo $row['nombre_usuario']?>"required />
-	</div>
-				
-	<div class="form-group">
-	<label><?php echo $lang['LAST_NAME']?></label>
-	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['apellidos_usuario']?>"required />
-	<input type="hidden" class="form-control" name="userID" id="userID" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['userID']?>"required />
-	
-	</div>
+
 	
 	<div class="form-group">
 	<label><?php echo $lang['LANGUAGE']?></label>
