@@ -58,7 +58,7 @@ div.fixed {
 </style>
 <style type="text/css">
 body {
-	background-image: url(fondo_web.jpg);
+	background-image: url(white.jpg);
 }
 </style>
 <style>
@@ -119,9 +119,21 @@ body {
 </style>
 </head> 
 <body>
- <div class="fixed">
-<a href="admin_welcome_message.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-<a href="admin_welcome_message.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<div class="fixed">
+  <?php 
+  $idioma_actual = $_SESSION['lang'];
+  
+  
+  if ($idioma_actual == "es"){?>
+  <a href="admin_welcome_message.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+<a href="admin_welcome_message.php?lang=en"><img src="usa.png" width="30" height="30" /></a>
+  <?php }
+  if ($idioma_actual == "en"){?>
+  <a href="admin_welcome_message.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
+  <a href="admin_welcome_message.php?lang=es"><img src="mexico.png" width="30" height="30" /></a>
+
+<?php }?>
+
 <?php 
 
 $query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['userID']."'";
@@ -139,8 +151,9 @@ $query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['us
 else
     echo "Query Failed.";
     ?>
+
 </div>
-<br><br>
+<br><br><br><br>
 <div class="bs-example">
     <nav role="navigation" class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -158,7 +171,24 @@ else
             <ul class="nav navbar-nav">
                 <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
                 <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                    <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                      <li class="dropdown">
+                
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
+                         <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
+                         <li><a href="eval_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
+                          <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
+                      <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
+                    
+                      <li class="divider"></li>
+                       <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
+                       
+                     
+                        
+                        
+                    </ul>
+                </li>
               
                    <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
@@ -172,7 +202,7 @@ else
                 </li>
                 
                
-                   <?php
+                  <?php
 				$nivel = $row['userLevel'];
 			
 				if ($nivel == "Level 5") {
@@ -190,7 +220,9 @@ else
                         <li class="divider"></li>
                         <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
                         <li><a href="admin_tipo_proyectos.php"><?php echo $lang['PROJECT_TYPES']?></a></li>
-                         <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
+                        <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
+                        <li class="divider"></li>
+                          <li><a href="admin_historico.php"><?php echo $lang['HISTORICO']?></a></li>
                        
                         <li class="divider"></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
@@ -202,17 +234,21 @@ else
                 <?php }?>
                 
                 
+                
+                
+                
             </ul>
             
-            <ul class="nav pull-right">
+           <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user"></span>
-                     <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
+                       <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="70" width="70">
+    
+                    <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
                     <li>
-                    <a tabindex="-1" href="logout.php">Logout</a>
+                    <a tabindex="-1" href="logout.php"><?php echo $lang['LOGOUT']?></a>
                     </li>
                     
                     </ul>

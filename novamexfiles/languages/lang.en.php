@@ -62,7 +62,7 @@ $lang['BY'] = 'by ';
 
 // ADMIN_HOME.PHP
 
-$lang['DEPARTMENTS'] = 'Departaments';
+$lang['DEPARTMENTS'] = 'Departments';
 $lang['LEVEL_5_OPTIONS'] = 'Level 5 Options';
 $lang['WELCOME_MESSAGE'] = 'Welcome Message';
 $lang['BUSINESS_UNITS'] = 'Business Units';

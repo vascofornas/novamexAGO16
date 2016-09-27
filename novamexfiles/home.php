@@ -78,15 +78,9 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     }
 </style>
 <style type="text/css">
+
 body {
-	background: rgba(255,220,138,1);
-background: -moz-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,220,138,1)), color-stop(54%, rgba(255,194,41,1)), color-stop(99%, rgba(255,210,97,1)), color-stop(100%, rgba(224,161,0,1)));
-background: -webkit-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
-background: -o-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
-background: -ms-linear-gradient(left, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
-background: linear-gradient(to right, rgba(255,220,138,1) 0%, rgba(255,194,41,1) 54%, rgba(255,210,97,1) 99%, rgba(224,161,0,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffdc8a', endColorstr='#e0a100', GradientType=1 );
+	background-image: url(white.jpg);
 }
 </style>
   <style>
@@ -190,7 +184,7 @@ else
     ?>
 
 </div>
-<br><br><br>
+<br><br><br><br>
 <div class="bs-example">
     <nav role="navigation" class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -207,7 +201,24 @@ else
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php"><?php echo $lang['HOME']?></a></li>
-                <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                 <li class="dropdown">
+                
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
+                         <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
+                         <li><a href="eval_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
+                          <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
+                      <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
+                    
+                      <li class="divider"></li>
+                       <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
+                       
+                     
+                        
+                        
+                    </ul>
+                </li>
                 
                 <li class="dropdown">
                 
@@ -238,10 +249,11 @@ else
                 
             </ul>
             
-            <ul class="nav pull-right">
+           <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user"></span>
+                       <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="70" width="70">
+    
                     <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -261,12 +273,12 @@ else
    
      <div class = "col-xs-6 col-sm-6" >
          
-         
+         <h2 align="center"><strong><img src="welcome.gif" width="243" height="185" /></strong></h2>
         
          
          
          
-         <p><?php 
+        <?php 
          
          if ($idioma_actual == "es"){
          echo $row_Recordset1['mensaje_es'];}
@@ -277,12 +289,13 @@ else
       </div>
       
      <div class = "col-xs-6 col-sm-6" >
-       <h2 align="center"><strong><?php echo $lang['NEWS']?></strong></h2>
+       <h2 align="center"><img class="blink-image" src="news.png" width="180" height="180" /></strong></h2>
+       <br>
         
         
         
         
-        <?php 
+       <?php 
          
          if ($idioma_actual == "es"){
          

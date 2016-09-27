@@ -72,7 +72,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 </style>
 <style type="text/css">
 body {
-	background-image: url(fondonovamex.jpg);
+	
 }
 </style>
 <style>
@@ -83,7 +83,73 @@ div.fixed {
     width: 300px;
  
 }
+body {
+	background-image: url(black.jpg);
+}
+.blink-image {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
 </style>
+<style>
+/* Firefox old*/
+@-moz-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+/* IE */
+@-ms-keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+/* Opera and prob css3 final iteration */
+@keyframes blink {
+    0% {
+        opacity:1;
+    }
+    50% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+} 
+.blink-image {
+    -moz-animation: blink normal 2s infinite ease-in-out; /* Firefox */
+    -webkit-animation: blink normal 2s infinite ease-in-out; /* Webkit */
+    -ms-animation: blink normal 2s infinite ease-in-out; /* IE */
+    animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
+}
+</style>
+
 </head> 
 <body>
   <div class="fixed">
@@ -120,7 +186,7 @@ else
     ?>
 
 </div>
-<br><br><br>
+<br><br><br><br>
 <div class="bs-example">
     <nav role="navigation" class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -138,7 +204,24 @@ else
             <ul class="nav navbar-nav">
                 <li class="active"><a href="admin_home.php"><?php echo $lang['ADMIN_ZONE']?></a></li>
                 <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
-                <li><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
+                  <li class="dropdown">
+                
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
+                         <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
+                         <li><a href="eval_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
+                          <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
+                      <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
+                    
+                      <li class="divider"></li>
+                       <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
+                       
+                     
+                        
+                        
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
@@ -186,15 +269,16 @@ else
                 
             </ul>
             
-            <ul class="nav pull-right">
+          <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user"></span>
-                     <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
+                       <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="70" width="70">
+    
+                    <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
                     <li>
-                    <a tabindex="-1" href="logout.php">Logout</a>
+                    <a tabindex="-1" href="logout.php"><?php echo $lang['LOGOUT']?></a>
                     </li>
                     
                     </ul>
@@ -205,7 +289,7 @@ else
 </div>
 <div class="container">
 	<div class="row">
-
+<img class="blink-image" src="admin.jpg" width="920" height="368" />
     </div>
     </div>
 </div>
