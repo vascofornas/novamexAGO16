@@ -408,7 +408,7 @@ else
 				<form class="form-horizontal" role="form" method="post" action="nuevo_mensaje.php">
 				
 							<div class="form-group">
-						   <?php   $sqlBU="SELECT * FROM tbl_users ORDER BY userName";?>
+						   <?php   $sqlBU="SELECT * FROM tbl_users ORDER BY apellidos_usuario";?>
 						   
         <label for="expertise" class="col-sm-2 control-label">Para (seleccionar uno o varios destinatarios):</label>
         <div class="col-sm-10">
@@ -420,7 +420,7 @@ else
   while ($rowusers=mysqli_fetch_row($resultusers))
     {
     printf ("%s (%s)\n",$rowusers[0],$rowusers[1]);
-    echo '<option value='.$rowusers[0].' >'.$rowusers[1].'</option>';
+    echo '<option value='.$rowusers[0].' >'.strtoupper($rowusers[8])." ,  ".strtoupper($rowusers[7]).'</option>';
     }
  
   }
@@ -444,7 +444,7 @@ else
   while ($rowteams=mysqli_fetch_row($resultteams))
     {
     printf ("%s (%s)\n",$rowteams[0],$rowteams[1]);
-    echo '<option value='.$rowteams[0].' >'.$rowteams[1].'</option>';
+    echo '<option value='.$rowteams[0].' >'.strtoupper($rowteams[1]).'</option>';
     }
  
   }
