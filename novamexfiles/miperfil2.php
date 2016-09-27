@@ -241,24 +241,7 @@ else
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
-                <li class="dropdown">
-                
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
-                    <ul role="menu" class="dropdown-menu">
-                        <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
-                         <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
-                         <li><a href="eval_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
-                          <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
-                      <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
-                    
-                      <li class="divider"></li>
-                       <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
-                       
-                     
-                        
-                        
-                    </ul>
-                </li>
+                <li class="active"><a href="miperfil.php"><?php echo $lang['PROFILE']?></a></li>
                 <li class="dropdown">
                 
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['MESSAGES']?> <b class="caret"></b></a>
@@ -370,7 +353,72 @@ else
     
     
   </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+  <HR>
+  <h4><?php echo $lang['AS_TEAM_MEMBER']?></h4>
   
+<?php
+
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	//run the query
+	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
+	or die (mysqli_error($dbh));
+	while ($row_miembros = mysqli_fetch_array($loop_miembros))
+	{
+	
+	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
+	{
+echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+	}
+	else{}
+	}
+	}
+?>
+  
+   <HR>
+  <h4><?php echo $lang['AS_EVALUATOR']?></h4>
+  
+<?php
+
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	//run the query
+	if ($row_proyectos['evaluador_proyecto'] == $row['userID']){
+echo "<strong><a href='proyecto_evaluado.php'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+	}
+}
+	
+?>
+  
+  </div>
+</div>
+      
+     <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">EVALUACION A PROVEEDOR INTERNO
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">REQUERIMIENTOS DE CLIENTES INTERNOS</div>
+</div>
+  <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">MIS RECONOCIMIENTOS</div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">TAREAS DE PROACTIVIDAD</div>
+</div> 
+      
+   </div>
 </div>
 </body>
 </html>

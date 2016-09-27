@@ -217,5 +217,9 @@ $lang['USERID'] = 'Ususario / ID de usuario';
 $lang['IP'] = 'IP';
 $lang['IMAGE'] = 'Imagen del Usuario';
 $lang['UPLOAD_PICTURE'] = 'Subir imagen del usuario';
-
+$lang['DATOS_PERSONALES'] = 'Datos Personales';
+$lang['EVALUACION_PROVEEDOR_INTERNO'] = 'Evaluacion a Proveedor Interno';
+$lang['REQUERIMIENTOS_CLIENTE_INTERNO'] = 'Requerimientos de Cliente Interno';
+$lang['MIS_RECONOCIMIENTOS'] = 'Mis Reconocimientos';
+$lang['TAREAS_PROACTIVIDAD'] = 'Tareas de Proactividad';
 ?>

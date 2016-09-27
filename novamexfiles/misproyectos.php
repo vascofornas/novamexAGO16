@@ -241,7 +241,7 @@ else
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
-                <li class="dropdown">
+                    <li class="dropdown">
                 
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
@@ -310,68 +310,62 @@ else
 <div class = "container">
    <div class = "row" >
    
-     
-    <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PERSONAL_INFO']?></H3>
-  <hr>
-  <h4><?php echo $lang['NOT_EDITABLE_DATA']?></h4>
-  <p><strong><?php echo $lang['USERNAME']?>: </strong><?php echo $row['userName']?></p>
-  <p><strong>Email: </strong><?php echo $row['userEmail']?></p>
-  <p><strong><?php echo $lang['USER_LEVEL']?>: </strong><?php echo $row['userLevel']?></p>
-   <p><strong><?php echo $lang['BUSINESS_UNIT']?>: </strong><?php echo $row['uni']?></p>
-   		   <p><strong>Supervisor: </strong><?php echo $row['super']?></p>
-   		   <br>
-  <h4><?php echo $lang['EDITABLE_DATA']?></h4>
+   
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+  <HR>
+  <h4><?php echo $lang['AS_TEAM_MEMBER']?></h4>
   
-    <div id="form-content">
-     <form method="post" id="reg-form" name="form1" autocomplete="off">
-			
-	<div class="form-group">
-	<label><?php echo $lang['FIRST_NAME']?></label>
-	<input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario" placeholder="<?php echo $lang['FIRST_NAME']?>" value ="<?php echo $row['nombre_usuario']?>"required />
-	</div>
-				
-	<div class="form-group">
-	<label><?php echo $lang['LAST_NAME']?></label>
-	<input type="text" class="form-control" name="apellidos_usuario" id="apellidos_usuario" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['apellidos_usuario']?>"required />
-	<input type="hidden" class="form-control" name="userID" id="userID" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $row['userID']?>"required />
-	
-	</div>
-	
-	<div class="form-group">
-	<label><?php echo $lang['LANGUAGE']?></label>
-    <select class="form-control" name="idioma_usuario" id="idioma_usuario">
-    <option value="en">English</option>
-    <option value="es">Spanish</option>
-    
-  	</select>
-  </div>		
-   <div class="form-group" id="imagenTicket">
-        <label><?php echo $lang['IMAGE']?></label>
-        <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="100" width="100">
-      <input name="imagen_usuario" type="text" id="imagen_usuario" class="form-control"  placeholder="<?php echo $row['imagen_usuario']?>" value="<?php echo $row['imagen_usuario']?>" readonly>
-             
-              <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
-      
-      
-    </div>
-				
+<?php
 
-				
-		
-	<hr />
-				
-	<div class="form-group">
-	<button class="btn btn-primary"><?php echo $lang['UPDATE_DATA']?></button>
-	</div>
-				
-    </form>     
-</div>
-    
-    
-  </div>
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	//run the query
+	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
+	or die (mysqli_error($dbh));
+	while ($row_miembros = mysqli_fetch_array($loop_miembros))
+	{
+	
+	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
+	{
+echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+	}
+	else{}
+	}
+	}
+?>
   
+   <HR>
+  <h4><?php echo $lang['AS_EVALUATOR']?></h4>
+  
+<?php
+
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	//run the query
+	if ($row_proyectos['evaluador_proyecto'] == $row['userID']){
+echo "<strong><a href='proyecto_evaluado.php'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+	}
+}
+	
+?>
+  
+  </div>
 </div>
+    
 </body>
 </html>
 

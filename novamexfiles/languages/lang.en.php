@@ -219,5 +219,9 @@ $lang['USERID'] = 'User / UserID';
 $lang['IP'] = 'IP Address';
 $lang['IMAGE'] = 'User Image';
 $lang['UPLOAD_PICTURE'] = 'Upload User Picture';
-
+$lang['DATOS_PERSONALES'] = 'Personal Info';
+$lang['EVALUACION_PROVEEDOR_INTERNO'] = 'Internal Supplier Assesment';
+$lang['REQUERIMIENTOS_CLIENTE_INTERNO'] = 'Internal Customer Requirements';
+$lang['MIS_RECONOCIMIENTOS'] = 'My Awards';
+$lang['TAREAS_PROACTIVIDAD'] = 'Proactivity Tasks';
 ?>
