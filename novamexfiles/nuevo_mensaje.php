@@ -74,7 +74,6 @@ if (isset($_POST["submit"])) {
 	$receptores=$_POST["receptor"]; 
 	$receptores_equipo=$_POST["receptor_equipo"]; 
 
-
 	if (isset($_POST['receptor'])){
 		for ($i=0;$i<count($receptores);$i++)
 		{
@@ -97,11 +96,44 @@ if (isset($_POST["submit"])) {
 			}
 		}
 	}
-	if (isset($_POST['receptor_equipos'])){
+	if (isset($_POST['receptor_equipo'])){
+	
 		
 
-	for ($i=0;$i<count($receptores_equipo);$i++)
+	for ($j=0;$j<count($receptores_equipo);$j++)
 	{
+		
+		$team = $receptores_equipo[$j];
+	
+	
+	$sql = "SELECT usuario FROM tb_miembros_equipos WHERE equipo = '".$team."'";
+$result = $conexion->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    
+    while($row1 = $result->fetch_assoc()) {
+    	$user =  $row1['usuario'];
+    	
+    	mysqli_query($conexion,"INSERT INTO tb_mensajes (`titulo`, `texto`, `emisor`, `receptor`)
+VALUES ('$titulo','$texto', '$emisor', '$user')")
+    	or die(mysqli_error($link));
+    }
+} else {
+
+}
+		
+		
+		
+		
+		
+		
+			
+		
+		
+				
+		
+		
 		
 		
 		
