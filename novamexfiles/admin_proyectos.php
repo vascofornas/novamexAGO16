@@ -455,7 +455,7 @@ else
               <th><?php echo $lang['PROJECT_TYPE']?></th>
               <th><?php echo $lang['TEAM']?></th>
               <th><?php echo $lang['EVALUATOR']?></th>
-              <th><?php echo $lang['POINTS']?></th>
+             
               <th><?php echo $lang['START_DATE']?></th>
                <th><?php echo $lang['END_DATE']?></th>
          
@@ -603,13 +603,6 @@ else
             </div>
           </div>
        
-       
-       <div class="input_container">
-            <label for="puntos_proyecto"><?php echo $lang['POINTS']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="puntos_proyecto" id="puntos_proyecto" value="" required>
-            </div>
-          </div>
        
        
        

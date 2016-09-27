@@ -338,7 +338,7 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	
 	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
 	{
-echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
 	}
 	else{}
 	}
@@ -361,7 +361,7 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 {
 	//run the query
 	if ($row_proyectos['evaluador_proyecto'] == $row['userID']){
-echo "<strong><a href='proyecto_evaluado.php'>".$row_proyectos['nombre_proyecto'] ." (".$lang['POINTS'].": ".$row_proyectos['puntos_proyecto'].")"."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+echo "<strong><a href='proyecto_evaluado.php'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
 	}
 }
 	

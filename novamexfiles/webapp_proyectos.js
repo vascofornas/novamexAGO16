@@ -11,7 +11,7 @@ $(document).ready(function(){
       { "data": "tipo_proyecto", },
       { "data": "equipo_proyecto", },
       { "data": "evaluador_proyecto", },
-      { "data": "puntos_proyecto", },
+    
       
       { "data": "fecha_inicio_proyecto", },
       { "data": "fecha_final_proyecto", },
@@ -135,7 +135,7 @@ $(document).ready(function(){
     $('#form_company #fecha_inicio_proyecto').val('');
     $('#form_company #fecha_final_proyecto').val('');
    
-    $('#form_company #puntos_proyecto').val('');
+  
     show_lightbox();
   });
 
@@ -207,7 +207,7 @@ $(document).ready(function(){
         $('#form_company #evaluador_proyecto').val(output.data[0].evaluador_proyecto);
         $('#form_company #fecha_inicio_proyecto').val(output.data[0].fecha_inicio_proyecto);
         $('#form_company #fecha_final_proyecto').val(output.data[0].fecha_final_proyecto);
-        $('#form_company #puntos_proyecto').val(output.data[0].puntos_proyecto);
+        
         hide_loading_message();
         show_lightbox();
       } else {

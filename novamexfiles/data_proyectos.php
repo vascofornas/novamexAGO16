@@ -80,7 +80,7 @@ if ($job != ''){
         		"tipo_proyecto"    => $company['nombre_tipo_proyecto'],
         		"equipo_proyecto"    => $company['nombre_equipo'],
         		"evaluador_proyecto"    => $company['userName'],
-        		"puntos_proyecto"    => $company['puntos_proyecto'],
+        		
         		"fecha_inicio_proyecto"    => $company['fecha_inicio_proyecto'],
         		"fecha_final_proyecto"    => $company['fecha_final_proyecto'],
         
@@ -112,7 +112,7 @@ if ($job != ''){
         		"tipo_proyecto"    => $company['tipo_proyecto'],
         		"equipo_proyecto"    => $company['equipo_proyecto'],
         		"evaluador_proyecto"    => $company['evaluador_proyecto'],
-        		"puntos_proyecto"    => $company['puntos_proyecto'],
+        		
         		"fecha_inicio_proyecto"    => $company['fecha_inicio_proyecto'],
         		"fecha_final_proyecto"    => $company['fecha_final_proyecto']
           );
@@ -130,9 +130,8 @@ if ($job != ''){
    if (isset($_GET['equipo_proyecto'])) { $query .= "equipo_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['equipo_proyecto']) . "', "; }
    if (isset($_GET['evaluador_proyecto'])) { $query .= "evaluador_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['evaluador_proyecto']) . "', "; }
    if (isset($_GET['fecha_inicio_proyecto'])) { $query .= "fecha_inicio_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_proyecto']) . "', "; }
-   if (isset($_GET['fecha_final_proyecto'])) { $query .= "fecha_final_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_final_proyecto']) . "', "; }
    
-    if (isset($_GET['puntos_proyecto'])) { $query .= "puntos_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['puntos_proyecto']) . "'";   }
+    if (isset($_GET['fecha_final_proyecto'])) { $query .= "fecha_final_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_final_proyecto']) . "'";   }
 	 
     $query = mysqli_query($db_connection, $query);
     if (!$query){
@@ -157,9 +156,8 @@ if ($job != ''){
    if (isset($_GET['equipo_proyecto'])) { $query .= "equipo_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['equipo_proyecto']) . "', "; }
    if (isset($_GET['evaluador_proyecto'])) { $query .= "evaluador_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['evaluador_proyecto']) . "', "; }
    if (isset($_GET['fecha_inicio_proyecto'])) { $query .= "fecha_inicio_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_proyecto']) . "', "; }
-   if (isset($_GET['fecha_final_proyecto'])) { $query .= "fecha_final_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_final_proyecto']) . "', "; }
-   
-    if (isset($_GET['puntos_proyecto'])) { $query .= "puntos_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['puntos_proyecto']) . "'";   }
+  
+    if (isset($_GET['fecha_final_proyecto'])) { $query .= "fecha_final_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_final_proyecto']) . "'";   }
 	 
       $query .= "WHERE id_proyecto = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query  = mysqli_query($db_connection, $query);
