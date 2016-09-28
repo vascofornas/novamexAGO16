@@ -173,6 +173,13 @@ div.fixed {
     width: 300px;
  
 }
+div.logo {
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    width: 414px;
+ 
+}
 
 </style>
 
@@ -276,6 +283,10 @@ $(".js-example-basic-multiple").select2();
   </script>
 </head> 
 <body>
+<div class="logo">
+
+<img src="logonovamex100.png" width="414" height="110" /></a>
+</div>
  <div class="fixed">
   <?php 
   $idioma_actual = $_SESSION['lang'];
