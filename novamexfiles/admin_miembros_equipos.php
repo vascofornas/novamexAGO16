@@ -287,7 +287,7 @@ select#soflow-color {
    padding-left: 15px;
 }
 body {
-	background-image: url(black.jpg);
+	background-image: url(white.jpg);
 }
 </style>
 </head> 
