@@ -48,6 +48,15 @@ $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
+
+
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
+$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
+
+$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -162,7 +171,7 @@ $(document).ready(function() {
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'edituser.php',
+			url: 'editprojectdeliverable.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -178,14 +187,15 @@ $(document).ready(function() {
 	
 });
 </script>
-<script type="text/javascript">
+    <script> 
+
 function subirimagen()
 
 {
 
 	self.name = 'opener';
 
-	remote = open('subirfoto.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+	remote = open('subirentregable.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
 
 	remote.focus();
 	}
@@ -194,18 +204,18 @@ function subirimagen()
 </script>
 </head> 
 <body>
-   <div class="fixed">
+  <div class="fixed">
   <?php 
   $idioma_actual = $_SESSION['lang'];
   
   
   if ($idioma_actual == "es"){?>
-  <a href="misproyectos.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
-<a href="misproyectos.php?lang=en"><img src="usa.png" width="30" height="30" /></a>
+  <a href="proyecto_a_evaluar_crear_revsiones.php?lang=es&id=<?php echo $_GET['id']?>"><img src="mexico.png" width="45" height="45" /></a>
+<a href="proyecto_a_evaluar_crear_revsiones.php?lang=en&id=<?php echo $_GET['id']?>"><img src="usa.png" width="30" height="30" /></a>
   <?php }
   if ($idioma_actual == "en"){?>
-  <a href="misproyectos.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
-  <a href="misproyectos.php?lang=es"><img src="mexico.png" width="30" height="30" /></a>
+  <a href="proyecto_a_evaluar_crear_revsiones.php?lang=en&id=<?php echo $_GET['id']?>"><img src="usa.png" width="45" height="45" /></a>
+  <a href="proyecto_a_evaluar_crear_revsiones.php?lang=es&id=<?php echo $_GET['id']?>"><img src="mexico.png" width="30" height="30" /></a>
 
 <?php }?>
 
@@ -245,7 +255,7 @@ else
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
-                    <li class="dropdown">
+                <li class="dropdown">
                 
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
@@ -278,7 +288,7 @@ else
                 
                 
                 
-               <?php
+                <?php
 				$nivel = $row['userLevel'];
 			
 				if ($nivel != "Level 1") {
@@ -292,7 +302,7 @@ else
                 
             </ul>
             
-            <ul class="nav pull-right">
+          <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
                        <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="70" width="70">
@@ -314,62 +324,205 @@ else
 <div class = "container">
    <div class = "row" >
    
-   
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+     
+    <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
+  <hr>
+  
+  <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
+  <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
+  	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
+  <p><strong><?php echo $lang['END_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_final_proyecto']?></p>
+  <p><strong><?php echo $lang['PROJECT_TEAM']?>: </strong><?php echo $row_Recordset3['nombre_equipo']?></p>
+  <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
+  		   <br>
+ 
+    
+    
+  </div>
+  <div class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS_CREATING']?></H3>
   <HR>
-  <h4><?php echo $lang['AS_TEAM_MEMBER']?></h4>
+ 
+  
+ 
+
+  
+ 
+  
+
+  
+
+  
+  
+    <HR>
+  
   
 <?php
-
+$id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos LEFT JOIN tb_tipos_proyectos ON 
+		tb_proyectos.tipo_proyecto = tb_tipos_proyectos.id_tipo_proyecto WHERE id_proyecto = $id")
     or die (mysqli_error($dbh));
 
 
 
 //display the results
+
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	//run the query
-	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
-	or die (mysqli_error($dbh));
-	while ($row_miembros = mysqli_fetch_array($loop_miembros))
-	{
 	
-	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
-	{
-echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
-	}
-	else{}
-	}
-	}
-?>
-  
-   <HR>
-  <h4><?php echo $lang['AS_EVALUATOR']?></h4>
-  
-<?php
-
-//run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
-    or die (mysqli_error($dbh));
+$numero_revisiones =  $row_proyectos['num_revisiones'];
 
 
+if ($row_proyectos['porcentaje1'] >0){
+	$porcentaje1 = 1;
+	$puntostotales1 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo1 = $row_proyectos['porcentaje1'];
+	$opcion1 = $row_proyectos['opcion1'];
+	
+}
+if ($row_proyectos['porcentaje2'] >0){
+	$porcentaje2 = 1;
+	$puntostotales2 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo2 = $row_proyectos['porcentaje2'];
+	$opcion2 = $row_proyectos['opcion2'];
+}
+if ($row_proyectos['porcentaje3'] >0){
+	$porcentaje3 = 1;
+	$puntostotales3 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo3 = $row_proyectos['porcentaje3'];
+	$opcion3 = $row_proyectos['opcion3'];
+}
+if ($row_proyectos['porcentaje4'] >0){
+	$porcentaje4 = 1;
+	$puntostotales4 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo4 = $row_proyectos['porcentaje4'];
+	$opcion4 = $row_proyectos['opcion4'];
+}
+if ($row_proyectos['porcentaje5']>0){
+	$porcentaje5 = 1;
+	$puntostotales5 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo5 = $row_proyectos['porcentaje5'];
+	$opcion5 = $row_proyectos['opcion5'];
+}
+if ($row_proyectos['porcentaje6'] >0){
+	$porcentaje6 = 1;
+	$puntostotales6 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo6 = $row_proyectos['porcentaje6'];
+	$opcion6 = $row_proyectos['opcion6'];
+}
+if ($row_proyectos['porcentaje7'] >0){
+	$porcentaje7 = 1;
+	$puntostotales7 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo7 = $row_proyectos['porcentaje7'];
+	$opcion7 = $row_proyectos['opcion7'];
+}
+if ($row_proyectos['porcentaje8'] >0){
+	$porcentaje8 = 1;
+	$puntostotales8 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo8 = $row_proyectos['porcentaje8'];
+	$opcion8 = $row_proyectos['opcion8'];
+}
+if ($row_proyectos['porcentaje9'] >0){
+	$porcentaje9 = 1;
+	$puntostotales9 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo9 = $row_proyectos['porcentaje9'];
+	$opcion9 = $row_proyectos['opcion9'];
+}
+if ($row_proyectos['porcentaje10'] >0){
+	$porcentaje10 = 1;
+	$puntostotales10 = $row_proyectos['puntos_tipo_proyecto'];
+	$porcentajetipo10 = $row_proyectos['porcentaje10'];
+	$opcion10 = $row_proyectos['opcion10'];
+}
+}
+	
 
-//display the results
-while ($row_proyectos = mysqli_fetch_array($loop))
-{
-	//run the query
-	if ($row_proyectos['evaluador_proyecto'] == $row['userID']){
-echo "<strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+echo $lang['#_REVISIONS'].": <h3>".$numero_revisiones."</H3> <BR>";
+$num_revision = 1;
+for ($x = 0; $x < $numero_revisiones; $x++) {
+	$num = $x+1;
+	$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision)
+VALUES ('$id','Revision # .$num')";
+	
+	if ($conexion->query($sql) === TRUE) {
+		echo "Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+	} else {
+		echo "Error: " . $sql . "<br>" . $conexion->error;
 	}
+	$last_id = mysqli_insert_id($conexion);
+	
+	if ($porcentaje1 == 1){
+	
+	$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
+	VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1')";
+	
+	if ($conexion->query($sql1) === TRUE) {
+		
+	} else {
+		echo "Error: " . $sql1 . "<br>" . $conexion->error;
+	}
+	
+	
+	}
+	
+
+	if ($porcentaje2 == 1){
+		
+		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
+		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2')";
+	
+		if ($conexion->query($sql2) === TRUE) {
+			
+		} else {
+			echo "Error: " . $sql2 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	if ($porcentaje3 == 1){
+	
+		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
+		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3')";
+	
+		if ($conexion->query($sql3) === TRUE) {
+				
+		} else {
+			echo "Error: " . $sql3 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	if ($porcentaje4 == 1){
+	
+		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
+		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4')";
+	
+		if ($conexion->query($sql4) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql4 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	
+	
+   } //for
+
+if ($num >0){
+echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
 }
 	
 ?>
   
+
+  
   </div>
 </div>
-    
+      
+
+</div>
 </body>
 </html>
 

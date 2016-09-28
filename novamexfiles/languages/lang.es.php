@@ -222,4 +222,16 @@ $lang['EVALUACION_PROVEEDOR_INTERNO'] = 'Evaluacion a Proveedor Interno';
 $lang['REQUERIMIENTOS_CLIENTE_INTERNO'] = 'Requerimientos de Cliente Interno';
 $lang['MIS_RECONOCIMIENTOS'] = 'Mis Reconocimientos';
 $lang['TAREAS_PROACTIVIDAD'] = 'Tareas de Proactividad';
+
+$lang['PROJECT_REVISIONS'] = 'Revisiones del Proyecto';
+$lang['NO_REVISIONS'] = 'CREAR LAS REVISIONES PARA ESTE PROYECTO';
+$lang['PROJECT_REVISIONS_CREATING'] = 'CREANDO LAS REVISIONES PARA ESTE PROYECTO';
+$lang['#_REVISIONS'] = 'NUMERO DE REVISIONES PARA ESTE PROYECTO';
+$lang['REVISION_CREATED'] = 'creada correctamente';
+$lang['CONFIGURAR_REVISIONES'] = 'CONFIGURAR REVISIONES';
+$lang['PROJECT_REVISIONS_EDITING'] = 'EDITAR LAS REVISIONES PARA ESTE PROYECTO';
+$lang['REVISION_NAME'] = 'Nombre de la Revision';
+$lang['REVISION_DATE'] = 'Fecha de la Revision';
+$lang['REVISION_UPDATED'] = 'Revision Actualizada';
+
 ?>

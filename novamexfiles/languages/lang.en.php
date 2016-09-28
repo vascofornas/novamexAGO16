@@ -224,4 +224,17 @@ $lang['EVALUACION_PROVEEDOR_INTERNO'] = 'Internal Supplier Assesment';
 $lang['REQUERIMIENTOS_CLIENTE_INTERNO'] = 'Internal Customer Requirements';
 $lang['MIS_RECONOCIMIENTOS'] = 'My Awards';
 $lang['TAREAS_PROACTIVIDAD'] = 'Proactivity Tasks';
+$lang['PROJECT_REVISIONS'] = 'Project Revisions';
+$lang['NO_REVISIONS'] = 'CREATE REVISIONS FOR THIS PROJECT';
+$lang['PROJECT_REVISIONS_CREATING'] = 'CREATING REVISIONS FOR THIS PROJECT';
+$lang['#_REVISIONS'] = 'NUMBER OF REVISIONS FOR THIS PROJECT';
+$lang['REVISION_CREATED'] = 'created successfully';
+
+$lang['CONFIGURAR_REVISION'] = 'REVISIONS SETTINGS';
+$lang['PROJECT_REVISIONS_EDITING'] = 'EDITING REVISIONS FOR THIS PROJECT';
+$lang['REVISION_NAME'] = 'Revision Name';
+
+$lang['REVISION_DATE'] = 'Revision Date';
+$lang['REVISION_UPDATED'] = 'Revision Updated';
+
 ?>
