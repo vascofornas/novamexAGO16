@@ -644,6 +644,9 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 </div>
 <?php 
 }
+if ($num > 0){
+	echo '<a href="proyecto_a_evaluar.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['GO'].'</a>';
+}
  ?>
  
     

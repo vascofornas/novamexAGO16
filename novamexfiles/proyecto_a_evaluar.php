@@ -370,7 +370,7 @@ $num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
 	$num++;
-echo $row_proyectos['nombre_revision'];
+echo $row_proyectos['nombre_revision']."<BR>";
 }
 	
 if ($num == 0){

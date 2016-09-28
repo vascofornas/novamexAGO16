@@ -233,5 +233,6 @@ $lang['PROJECT_REVISIONS_EDITING'] = 'EDITAR LAS REVISIONES PARA ESTE PROYECTO';
 $lang['REVISION_NAME'] = 'Nombre de la Revision';
 $lang['REVISION_DATE'] = 'Fecha de la Revision';
 $lang['REVISION_UPDATED'] = 'Revision Actualizada';
+$lang['GO'] = 'CONTINUAR';
 
 ?>
