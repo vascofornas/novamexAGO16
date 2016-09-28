@@ -66,6 +66,14 @@ div.fixed {
     width: 300px;
  
 }
+div.logo {
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    width: 414px;
+ 
+}
+
 textarea {
     background: yellow !important;
     color:#000;
@@ -210,7 +218,7 @@ select#soflow-color {
    padding-left: 15px;
 }
 body {
-	background-image: url(black.jpg);
+	background-image: url(white.jpg);
 }
 </style>
 <style>
@@ -276,6 +284,10 @@ body {
   </script>
 </head> 
 <body>
+<div class="logo">
+
+<img src="logonovamex100.png" width="414" height="110" /></a>
+</div>
 <div class="fixed">
   <?php 
   $idioma_actual = $_SESSION['lang'];
