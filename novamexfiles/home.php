@@ -65,7 +65,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
 <meta charset="UTF-8">
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo $row['userName'];?>
 </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -91,6 +91,16 @@ div.fixed {
     width: 300px;
  
 }
+div.logo {
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    width: 414px;
+ 
+}
+
+
+
 </style>
 <style>
 /* Firefox old*/
@@ -150,6 +160,10 @@ div.fixed {
 </style>
 </head> 
 <body>
+<div class="logo">
+
+<img src="logonovamex100.png" width="414" height="110" /></a>
+</div>
   <div class="fixed">
   <?php 
   $idioma_actual = $_SESSION['lang'];

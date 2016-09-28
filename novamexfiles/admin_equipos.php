@@ -68,13 +68,21 @@ div.fixed {
     width: 300px;
  
 }
+div.logo {
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    width: 414px;
+ 
+}
+
 textarea {
     background: yellow !important;
     color:#000;
     text-shadow:0 1px 0 rgba(0, 0, 0, 0.4);
 }
 body {
-	background-image: url(black.jpg);
+	background-image: url(white.jpg);
 }
 </style>
 <title><?php echo $row['userName']?></title>
@@ -291,6 +299,10 @@ body {
 </style>
 </head> 
 <body>
+<div class="logo">
+
+<img src="logonovamex100.png" width="414" height="110" /></a>
+</div>
 <div class="fixed">
   <?php 
   $idioma_actual = $_SESSION['lang'];
