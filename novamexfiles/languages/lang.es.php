@@ -234,5 +234,15 @@ $lang['REVISION_NAME'] = 'Nombre de la Revision';
 $lang['REVISION_DATE'] = 'Fecha de la Revision';
 $lang['REVISION_UPDATED'] = 'Revision Actualizada';
 $lang['GO'] = 'CONTINUAR';
+$lang['EVALUAR_REVISIONES'] = 'EVALUAR REVISION';
+$lang['POINTS'] = 'Puntos';
+
+$lang['COMMENTS'] = 'Comentarios';
+$lang['TOTAL_POINTS'] = 'Puntos totales para este Proyecto';
+$lang['PERCENTAGE_ASSIGNED'] = 'Porcentaje asignado a esta Opcion';
+$lang['RECOMMENDED_POINTS'] = 'Numero maximo de puntos recomendados para esta revision';
+$lang['EVALUATION_UPDATED'] = 'Evaluacion actualizada';
+$lang['EVALUATION_POINTS'] = 'Puntos Evaluacion';
+$lang['EVALUATION_COMMENTS'] = 'Comentarios Evaluacion';
 
 ?>

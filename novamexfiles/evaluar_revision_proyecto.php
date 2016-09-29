@@ -52,7 +52,7 @@ $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
 
 mysqli_select_db($conexion, $database_conexion);
 $id = $_GET['id'];
-$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
+$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_tipos_proyectos ON tb_proyectos.tipo_proyecto = tb_tipos_proyectos.id_tipo_proyecto LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
 $Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
 
 $row_Recordset3 = mysqli_fetch_assoc($Recordset3);
@@ -182,24 +182,189 @@ $(document).ready(function() {
 	
 	// submit form using $.ajax() method
 	
-	$('#reg-form').submit(function(e){
+	
+	$('#reg-form1').submit(function(e){
 		
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'editprojectdeliverable.php',
+			url: 'editevaluacionproyecto.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
 		.done(function(data){
-			$('#form-content').fadeOut('slow', function(){
-				$('#form-content').fadeIn('slow').html(data);
+			$('#form-content1').fadeOut('slow', function(){
+				$('#form-content1').fadeIn('slow').html(data);
 			});
 		})
 		.fail(function(){
 			alert('Ajax Submit Failed ...');	
 		});
 	});
+$('#reg-form2').submit(function(e){
+		
+		e.preventDefault(); // Prevent Default Submission
+		
+		$.ajax({
+			url: 'editevaluacionproyecto.php',
+			type: 'POST',
+			data: $(this).serialize() // it will serialize the form data
+		})
+		.done(function(data){
+			$('#form-content2').fadeOut('slow', function(){
+				$('#form-content2').fadeIn('slow').html(data);
+			});
+		})
+		.fail(function(){
+			alert('Ajax Submit Failed ...');	
+		});
+	});
+$('#reg-form3').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content3').fadeOut('slow', function(){
+			$('#form-content3').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+
+$('#reg-form4').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content4').fadeOut('slow', function(){
+			$('#form-content4').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+$('#reg-form5').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content5').fadeOut('slow', function(){
+			$('#form-content5').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+$('#reg-form6').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content6').fadeOut('slow', function(){
+			$('#form-content6').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+$('#reg-form7').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content7').fadeOut('slow', function(){
+			$('#form-content7').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+$('#reg-form8').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content8').fadeOut('slow', function(){
+			$('#form-content8').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+
+$('#reg-form9').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content9').fadeOut('slow', function(){
+			$('#form-content9').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
+$('#reg-form10').submit(function(e){
+	
+	e.preventDefault(); // Prevent Default Submission
+	
+	$.ajax({
+		url: 'editevaluacionproyecto.php',
+		type: 'POST',
+		data: $(this).serialize() // it will serialize the form data
+	})
+	.done(function(data){
+		$('#form-content10').fadeOut('slow', function(){
+			$('#form-content10').fadeIn('slow').html(data);
+		});
+	})
+	.fail(function(){
+		alert('Ajax Submit Failed ...');	
+	});
+});
 	
 });
 </script>
@@ -230,12 +395,12 @@ function subirimagen()
   
   
   if ($idioma_actual == "es"){?>
-  <a href="proyecto_a_evaluar.php?lang=es&id=<?php echo $_GET['id']?>"><img src="mexico.png" width="45" height="45" /></a>
-<a href="proyecto_a_evaluar.php?lang=en&id=<?php echo $_GET['id']?>"><img src="usa.png" width="30" height="30" /></a>
+  <a href="evaluar_revision_proyecto.php?lang=es&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="mexico.png" width="45" height="45" /></a>
+<a href="evaluar_revision_proyecto.php?lang=en&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="usa.png" width="30" height="30" /></a>
   <?php }
   if ($idioma_actual == "en"){?>
-  <a href="proyecto_a_evaluar.php?lang=en&id=<?php echo $_GET['id']?>"><img src="usa.png" width="45" height="45" /></a>
-  <a href="proyecto_a_evaluar.php?lang=es&id=<?php echo $_GET['id']?>"><img src="mexico.png" width="30" height="30" /></a>
+  <a href="evaluar_revision_proyecto.php?lang=en&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="usa.png" width="45" height="45" /></a>
+  <a href="evaluar_revision_proyecto.php?lang=es&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="mexico.png" width="30" height="30" /></a>
 
 <?php }?>
 
@@ -360,28 +525,11 @@ else
     
     
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
-  <HR>
- 
-  
- 
-
-  
- 
-  
-
-  
-  
-  
-    
-  
-  
-<?php
-
-
+  <?php 
 $id = $_GET['id'];
+$rev = $_GET['rev'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE proyecto_revisado = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE id_revisiones_proyectos = $rev")
     or die (mysqli_error($dbh));
 
 
@@ -390,44 +538,88 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE pro
 $num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	$cero = 0;
-	//MySqli Select Query
-	$rev = $row_proyectos['id_revisiones_proyectos'];
-$results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev");
-
-
-while($rowx= $results->fetch_assoc()) {
+$nombre = $row_proyectos['nombre_revision'];
+}?>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $nombre?></H3>
+  <HR>
  
- if ($rowx['estado_evaluacion'] == 0){
- 	$cero++;
- }
-}  
+  
+  
+<?php
+$id = $_GET['id'];
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev")
+    or die (mysqli_error($dbh));
 
-	
+
+
+
+$num = 0;
+while ($row_evaluacion = mysqli_fetch_array($loop))
+{
 	$num++;
-	if ($cero > 0){
-		echo '<img class="blink-image" src="rojo.png" width="25" height="25" />';
-	}
-	else{
-		echo '<img class="blink-image" src="verde.png" width="25" height="25" />';
-		
-	}
-echo "<h3>".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR><br>";
-echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
 
-}
+
+
+?>
+
+<div id="form-content<?php echo $num;?>">
+     <form method="post" id="reg-form<?php echo $num;?>" name="form1" autocomplete="off">
+			
+
 	
-if ($num == 0){
+	<div class="input_container">
+	<h3><?php echo $row_evaluacion ['opcion_evaluada']?></h3>
+	<?php echo "<strong>".$lang['TOTAL_POINTS']." ===> ".$row_evaluacion ['puntos_evaluados']."</strong><br>";
+echo "<strong>".$lang['PERCENTAGE_ASSIGNED']." ===> ".$row_evaluacion ['porcentaje_evaluado']."%</strong><br>";
+$recomendados = ($row_evaluacion ['puntos_evaluados']*$row_evaluacion ['porcentaje_evaluado'])/100;
+echo "<strong>".$lang['RECOMMENDED_POINTS']." ===> ".$recomendados/$row_Recordset3['num_revisiones']."</strong><br>";
+?>
+
 	
-	echo '<a href="proyecto_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['NO_REVISIONS'].'</a>';
+            <label for="puntos_obtenidos"><?php echo $lang['POINTS']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="number" class="text" name="puntos_obtenidos" id="puntos_obtenidos"<?php echo $num;?> value="<?php echo $row_evaluacion['puntos_obtenidos'] ?>" required>
+           <input type="hidden" class="text" name="id_evaluacion_proyectos" id="id_evaluacion_proyectos" value="<?php echo $row_evaluacion['id_evaluacion_proyectos'] ?>" >
+           
+            </div>
+          </div>	
+  	<div class="input_container">
+
+            <label for="comentarios_evaluados"><?php echo $lang['COMMENTS']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <textarea   name="comentarios_evaluados" id="comentarios_evaluados"<?php echo $num;?>">  <?php echo $row_evaluacion['comentarios_evaluados'] ?></textarea>
+           
+            </div>
+          </div>
+
+				
+		
+	<hr />
+				
+	<div class="form-group">
+	<button class="btn btn-primary"><?php echo $lang['UPDATE_DATA']?></button>
+	</div>
+				
+    </form>     
+</div>
+<?php 
 }
 if ($num > 0){
-
-echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a><br><br><br><br>';
+	echo '<a href="proyecto_a_evaluar.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['GO'].'</a>';
 }
+ ?>
+ 
+    
+  
 
-	
-?>
+   
+ 
+  
+
+  
+  
+  
   
 
   

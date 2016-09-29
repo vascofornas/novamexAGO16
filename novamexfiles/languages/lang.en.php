@@ -237,5 +237,13 @@ $lang['REVISION_NAME'] = 'Revision Name';
 $lang['REVISION_DATE'] = 'Revision Date';
 $lang['REVISION_UPDATED'] = 'Revision Updated';
 $lang['GO'] = 'GO';
-
+$lang['EVALUAR_REVISIONES'] = 'EVALUATE REVISION';
+$lang['POINTS'] = 'Points';
+$lang['COMMENTS'] = 'Comments';
+$lang['TOTAL_POINTS'] = 'Total Points for this Project';
+$lang['PERCENTAGE_ASSIGNED'] = 'Percentage assigned to this Item';
+$lang['RECOMMENDED_POINTS'] = 'Recommended max number of points at this revision';
+$lang['EVALUATION_UPDATED'] = 'Evaluation Updated';
+$lang['EVALUATION_POINTS'] = 'Evaluation Points';
+$lang['EVALUATION_COMMENTS'] = 'Evaluation Comments';
 ?>

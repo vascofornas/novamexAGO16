@@ -474,8 +474,8 @@ VALUES ('$id','Revision # .$num')";
 	
 	if ($porcentaje1 == 1){
 	
-	$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
-	VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1')";
+	$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+	VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0)";
 	
 	if ($conexion->query($sql1) === TRUE) {
 		
@@ -489,8 +489,8 @@ VALUES ('$id','Revision # .$num')";
 
 	if ($porcentaje2 == 1){
 		
-		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
-		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2')";
+		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2',0)";
 	
 		if ($conexion->query($sql2) === TRUE) {
 			
@@ -502,8 +502,8 @@ VALUES ('$id','Revision # .$num')";
 	}
 	if ($porcentaje3 == 1){
 	
-		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
-		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3')";
+		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3',0)";
 	
 		if ($conexion->query($sql3) === TRUE) {
 				
@@ -515,8 +515,8 @@ VALUES ('$id','Revision # .$num')";
 	}
 	if ($porcentaje4 == 1){
 	
-		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados)
-		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4')";
+		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4',0)";
 	
 		if ($conexion->query($sql4) === TRUE) {
 	
@@ -526,7 +526,87 @@ VALUES ('$id','Revision # .$num')";
 	
 	
 	}
+	if ($porcentaje5 == 1){
 	
+		$sql5 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo5','$opcion5','$id','$puntostotales5',0)";
+	
+		if ($conexion->query($sql5) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql5 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	
+	if ($porcentaje6 == 1){
+	
+		$sql6 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo6','$opcion6','$id','$puntostotales6',0)";
+	
+		if ($conexion->query($sql6) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql6 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	if ($porcentaje7 == 1){
+	
+		$sql7 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo7','$opcion7','$id','$puntostotales7',0)";
+	
+		if ($conexion->query($sql7) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql7 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	
+	if ($porcentaje8 == 1){
+	
+		$sql8 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo8','$opcion8','$id','$puntostotales8',0)";
+	
+		if ($conexion->query($sql8) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql8 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	if ($porcentaje9 == 1){
+	
+		$sql9 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo9','$opcion9','$id','$puntostotales9',0)";
+	
+		if ($conexion->query($sql9) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql9 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
+	
+	if ($porcentaje10 == 1){
+	
+		$sql10 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo10','$opcion10','$id','$puntostotales10',0)";
+	
+		if ($conexion->query($sql10) === TRUE) {
+	
+		} else {
+			echo "Error: " . $sql10 . "<br>" . $conexion->error;
+		}
+	
+	
+	}
 	
    } //for
 
