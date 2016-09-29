@@ -210,8 +210,17 @@ textarea {
   width: 100%;
 }
 
-body {
-	background-image: url(white.jpg);
+html, body{
+  height: 100%;
+}
+body { 
+			background-image: url(sLSdbm.jpg) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+  
 }
 
 </style>

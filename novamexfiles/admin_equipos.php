@@ -81,8 +81,17 @@ textarea {
     color:#000;
     text-shadow:0 1px 0 rgba(0, 0, 0, 0.4);
 }
-body {
-	background-image: url(white.jpg);
+html, body{
+  height: 100%;
+}
+body { 
+			background-image: url(sLSdbm.jpg) ;
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+  
 }
 </style>
 <title><?php echo $row['userName']?></title>
