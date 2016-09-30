@@ -68,7 +68,7 @@ html, body{
   height: 100%;
 }
 body { 
-			background-image: url(white.jpg) ;
+			background-image: url(sLSdbm.jpg) ;
 			background-position: center center;
 			background-repeat:  no-repeat;
 			background-attachment: fixed;
