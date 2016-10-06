@@ -385,22 +385,34 @@ function subirimagen()
 </script>
 </head> 
 <body>
-<div class="logo">
 
-<img src="logonovamex100.png" width="414" height="110" /></a>
-</div>
-  <div class="fixed">
-  <?php 
+<div class="bs-example">
+    <nav role="navigation" class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand"><?php echo $lang['MEMBER_HOME']?></a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+             <img src="logonovamex100.png" width="207" height="55" style="PADDING-TOP: 5px"/></a>
+              <?php 
   $idioma_actual = $_SESSION['lang'];
   
   
   if ($idioma_actual == "es"){?>
-  <a href="evaluar_revision_proyecto.php?lang=es&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="mexico.png" width="45" height="45" /></a>
-<a href="evaluar_revision_proyecto.php?lang=en&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="usa.png" width="30" height="30" /></a>
+  <a href="evaluar_revision_proyecto.php?lang=es&id=<?php echo $_GET['id'].'&rev='.$_GET['rev']?>"><img src="mexico.png" width="45" height="45" /></a>
+<a href="evaluar_revision_proyecto.php?lang=en&id=<?php echo $_GET['id'].'&rev='.$_GET['rev']?>"><img src="usa.png" width="30" height="30" /></a>
   <?php }
   if ($idioma_actual == "en"){?>
-  <a href="evaluar_revision_proyecto.php?lang=en&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="usa.png" width="45" height="45" /></a>
-  <a href="evaluar_revision_proyecto.php?lang=es&id=<?php echo $_GET['id']?>&rev=<?php echo $_GET['rev']?>"><img src="mexico.png" width="30" height="30" /></a>
+  <a href="evaluar_revision_proyecto.php?lang=en&id=<?php echo $_GET['id'].'&rev='.$_GET['rev']?>"><img src="usa.png" width="45" height="45" /></a>
+  <a href="evaluar_revision_proyecto.php?lang=es&id=<?php echo $_GET['id'].'&rev='.$_GET['rev']?>"><img src="mexico.png" width="30" height="30" /></a>
 
 <?php }?>
 
@@ -421,24 +433,6 @@ $query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['us
 else
     echo "Query Failed.";
     ?>
-
-</div>
-<br><br><br><br>
-<div class="bs-example">
-    <nav role="navigation" class="navbar navbar-default">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#" class="navbar-brand"><?php echo $lang['MEMBER_HOME']?></a>
-        </div>
-        <!-- Collection of nav links, forms, and other content for toggling -->
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
                 <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
                 <li class="dropdown">
                 
