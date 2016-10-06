@@ -43,7 +43,7 @@ $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 
 mysqli_select_db($conexion, $database_conexion);
-$query_Recordset2 = "SELECT * FROM tb_news WHERE tb_news.active_news = 1";
+$query_Recordset2 = "SELECT * FROM tb_news WHERE tb_news.active_news = 1 ORDER BY date_news DESC";
 $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
