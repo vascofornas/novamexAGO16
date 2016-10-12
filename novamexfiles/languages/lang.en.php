@@ -117,8 +117,9 @@ $lang['MESSAGE_TEXT'] = 'Message Text';
 $lang['READ'] = 'Read?';
 $lang['DATE'] = 'Date/Time';
 $lang['ANSWERED'] = 'Answered?';
-$lang['SENT_MESSAGES'] = 'Sent Messages';
-$lang['RECEIVED_MESSAGES'] = 'Received Messages';
+$lang['SENT_MESSAGES'] = 'Outbox';
+$lang['RECEIVED_MESSAGES'] = 'Inbox';
+$lang['COMPOSE_MESSAGE'] = 'Compose Message';
 $lang['NO_MESSAGE'] = 'You have no new mail';
 
 

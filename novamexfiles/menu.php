@@ -75,7 +75,7 @@ else
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="mensajes_recibidos.php"><?php echo $lang['RECEIVED_MESSAGES']?></a></li>
                         <li><a href="mensajes.php"><?php echo $lang['SENT_MESSAGES']?></a></li>
-                     
+                     <li><a href="nuevo_mensaje.php"><?php echo $lang['COMPOSE_MESSAGE']?></a></li>
                         
                         
                     </ul>

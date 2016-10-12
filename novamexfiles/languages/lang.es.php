@@ -123,8 +123,9 @@ $lang['MESSAGE_TEXT'] = 'Texto del Mensaje';
 $lang['READ'] = 'Leido?';
 $lang['DATE'] = 'Fecha/Hora';
 $lang['ANSWERED'] = 'Contestado?';
-$lang['SENT_MESSAGES'] = 'Mensajes Enviados';
-$lang['RECEIVED_MESSAGES'] = 'Mensajes Recibidos';
+$lang['SENT_MESSAGES'] = 'Bandeja de salida';
+$lang['RECEIVED_MESSAGES'] = 'Bandeja de entrada';
+$lang['COMPOSE_MESSAGE'] = 'Crear mensaje';
 $lang['NO_MESSAGE'] = 'No tienes mensajes nuevos';
 
 //EQUPOS Y PROYECTOS
