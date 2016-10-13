@@ -4,7 +4,6 @@
 Language: Spanish
 -----------------
 */
-
 header('Content-Type: text/html; charset=utf-8');
 $lang = array();
 
@@ -245,5 +244,6 @@ $lang['RECOMMENDED_POINTS'] = 'Numero maximo de puntos recomendados para esta re
 $lang['EVALUATION_UPDATED'] = 'Evaluacion actualizada';
 $lang['EVALUATION_POINTS'] = 'Puntos Evaluacion';
 $lang['EVALUATION_COMMENTS'] = 'Comentarios Evaluacion';
+$lang['LIMIT_FILE'] = 'Tamaño máximo de archivo: 2 Mb';
 
 ?>

@@ -249,6 +249,7 @@ function subirimagen()
         <label><?php echo $lang['IMAGE']?></label>
         <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="100" width="100">
       <input name="imagen_usuario" type="text" id="imagen_usuario" class="form-control"  placeholder="<?php echo $row['imagen_usuario']?>" value="<?php echo $row['imagen_usuario']?>" readonly>
+      <input name="id_usuario" type="hidden" id="id_usuario" class="form-control"  placeholder="<?php echo $row['imagen_usuario']?>" value="<?php echo $row['userID']?>" readonly>
              
               <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
       

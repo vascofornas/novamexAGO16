@@ -56,7 +56,8 @@ $file_upload="false";
 	}
 	else 
 	{
-		echo "El archivo seleccionado es superior a 2MB, inténtalo de nuevo con otro archivo de tamaño inferior a 200KB.<BR><BR><BR>";?>
+		$texto = $lang['LIMIT_FILE'];
+		echo $texto."<BR><BR><BR>";?>
 <input type='submit' name='submit' value='Reintentar' onClick="window.location.reload()" />
 	
 	

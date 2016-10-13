@@ -247,4 +247,5 @@ $lang['RECOMMENDED_POINTS'] = 'Recommended max number of points at this revision
 $lang['EVALUATION_UPDATED'] = 'Evaluation Updated';
 $lang['EVALUATION_POINTS'] = 'Evaluation Points';
 $lang['EVALUATION_COMMENTS'] = 'Evaluation Comments';
+$lang['LIMIT_FILE'] = 'File Size Limit: 2 Mb';
 ?>

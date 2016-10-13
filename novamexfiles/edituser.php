@@ -8,7 +8,7 @@ if( $_POST ){
    $imagen_usuario = $_POST['imagen_usuario'];
  
     
-    $id = $_POST['userID'];
+    $id = $_POST['id_usuario'];
     
 
 
