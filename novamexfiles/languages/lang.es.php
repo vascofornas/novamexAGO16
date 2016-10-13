@@ -207,6 +207,19 @@ $lang['PROJECT_TYPE_PERCENTAGE7'] = 'Porcentaje Opcion 7';
 $lang['PROJECT_TYPE_PERCENTAGE8'] = 'Porcentaje Opcion 8';
 $lang['PROJECT_TYPE_PERCENTAGE9'] = 'Porcentaje Opcion 9';
 $lang['PROJECT_TYPE_PERCENTAGE10'] = 'Porcentaje Opcion 10';
+
+
+$lang['PROJECT_TYPE_NUM_REVISIONES1'] = ' # Revisiones Opcion 1';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES2'] = ' # Revisiones Opcion 2';
+$lang['PROJECT_TYPE_NUM_REVISIONES3'] = ' # Revisiones Opcion 3';
+$lang['PROJECT_TYPE_NUM_REVISIONES4'] = ' # Revisiones Opcion 4';
+$lang['PROJECT_TYPE_NUM_REVISIONES5'] = ' # Revisiones Opcion 5';
+$lang['PROJECT_TYPE_NUM_REVISIONES6'] = ' # Revisiones Opcion 6';
+$lang['PROJECT_TYPE_NUM_REVISIONES7'] = ' # Revisiones Opcion 7';
+$lang['PROJECT_TYPE_NUM_REVISIONES8'] = ' # Revisiones Opcion 8';
+$lang['PROJECT_TYPE_NUM_REVISIONES9'] = ' # Revisiones Opcion 9';
+$lang['PROJECT_TYPE_NUM_REVISIONES10'] = ' # Revisiones Opcion 10';
 $lang['PORCENTAJE_ACUMULADO'] = 'Porcentaje acumulado';
 
 //historico

@@ -9,7 +9,7 @@ $(document).ready(function(){
      
       { "data": "puntos_tipo_proyecto", },
    
-      { "data": "num_revisiones", },
+      
       
 
       
@@ -124,8 +124,7 @@ $(document).ready(function(){
    
     $('#form_company #nombre_tipo_proyecto').val('');
     $('#form_company #puntos_tipo_proyecto').val('');
-    $('#form_company #num_revisiones').val('');
-    $('#form_company #opcion1').val('');
+   $('#form_company #opcion1').val('');
     $('#form_company #opcion2').val('');
     $('#form_company #opcion3').val('');
     $('#form_company #opcion4').val('');
@@ -147,7 +146,17 @@ $(document).ready(function(){
     $('#form_company #porcentaje9').val('');
     $('#form_company #porcentaje10').val('');
     
-    
+    $('#form_company #num_revisiones1').val('');
+    $('#form_company #num_revisiones2').val('');
+    $('#form_company #num_revisiones3').val('');
+    $('#form_company #num_revisiones4').val('');
+    $('#form_company #num_revisiones5').val('');
+    $('#form_company #num_revisiones6').val('');
+    $('#form_company #num_revisiones7').val('');
+    $('#form_company #num_revisiones8').val('');
+    $('#form_company #num_revisiones9').val('');
+    $('#form_company #num_revisiones10').val('');
+      
     show_lightbox();
   });
 
@@ -214,8 +223,7 @@ $(document).ready(function(){
        
         $('#form_company #nombre_tipo_proyecto').val(output.data[0].nombre_tipo_proyecto);
         $('#form_company #puntos_tipo_proyecto').val(output.data[0].puntos_tipo_proyecto);
-        $('#form_company #num_revisiones').val(output.data[0].num_revisiones);
-        $('#form_company #opcion1').val(output.data[0].opcion1);
+       $('#form_company #opcion1').val(output.data[0].opcion1);
         $('#form_company #opcion2').val(output.data[0].opcion2);
         $('#form_company #opcion3').val(output.data[0].opcion3);
         $('#form_company #opcion4').val(output.data[0].opcion4);
@@ -237,7 +245,17 @@ $(document).ready(function(){
 
         $('#form_company #porcentaje9').val(output.data[0].porcentaje9);
         $('#form_company #porcentaje10').val(output.data[0].porcentaje10);
-        
+        $('#form_company #num_revisiones1').val(output.data[0].num_revisiones1);
+        $('#form_company #num_revisiones2').val(output.data[0].num_revisiones2);
+        $('#form_company #num_revisiones3').val(output.data[0].num_revisiones3);
+        $('#form_company #num_revisiones4').val(output.data[0].num_revisiones4);
+        $('#form_company #num_revisiones5').val(output.data[0].num_revisiones5);
+        $('#form_company #num_revisiones6').val(output.data[0].num_revisiones6);
+        $('#form_company #num_revisiones7').val(output.data[0].num_revisiones7);
+        $('#form_company #num_revisiones8').val(output.data[0].num_revisiones8);
+        $('#form_company #num_revisiones9').val(output.data[0].num_revisiones9);
+        $('#form_company #num_revisiones10').val(output.data[0].num_revisiones10);
+          
         hide_loading_message();
         show_lightbox();
       } else {

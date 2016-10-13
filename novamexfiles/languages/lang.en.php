@@ -172,6 +172,25 @@ $lang['PROJECT_TYPE_PERCENTAGE8'] = 'Project Type Percentage #8';
 $lang['PROJECT_TYPE_PERCENTAGE9'] = 'Project Type Percentage #9';
 $lang['PROJECT_TYPE_PERCENTAGE10'] = 'Project Type Percentage #10';
 
+$lang['PROJECT_TYPE_NUM_REVISIONES1'] = 'Project Type # Revisions #1';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES2'] = 'Project Type # Revisions #2';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES3'] = 'Project Type # Revisions #3';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES4'] = 'Project Type # Revisions #4';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES5'] = 'Project Type # Revisions #5';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES6'] = 'Project Type # Revisions #6';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES7'] = 'Project Type # Revisions #7';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES8'] = 'Project Type # Revisions #8';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES9'] = 'Project Type # Revisions #9';
+
+$lang['PROJECT_TYPE_NUM_REVISIONES10'] = 'Project Type # Revisions #10';
 
 $lang['EVALUATOR'] = 'Evaluator';
 

@@ -357,7 +357,7 @@ body {
             
             <th><?php echo $lang['PROJECT_TYPE_NAME']?></th>
             <th><?php echo $lang['PROJECT_TYPE_POINTS']?></th>
-              <th><?php echo $lang['PROJECT_TYPE_REVISIONS']?></th>
+          
               
          
             
@@ -392,12 +392,7 @@ body {
             </div>
           </div>
        
-          <div class="input_container">
-            <label for="num_revisiones"><?php echo $lang['PROJECT_TYPE_REVISIONS']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="number" class="text" name="num_revisiones" id="num_revisiones" value="" required>
-            </div>
-          </div>
+        
           <hr>
           <div class="input_container">
             <label for="opcion1"><?php echo $lang['PROJECT_TYPE_OPTION1']?>: </label>
@@ -410,6 +405,12 @@ body {
             <label for="porcentaje1"><?php echo $lang['PROJECT_TYPE_PERCENTAGE1']?>: </label>
             <div class="field_container">
               <input type="number" class="text" name="porcentaje1" id="porcentaje1" value="" onchange="myFunction()">
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="num_revisiones1"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES1']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones1" id="num_revisiones1" value="" >
             </div>
           </div>
          <hr>
@@ -426,6 +427,12 @@ body {
               <input type="number" class="text" name="porcentaje2" id="porcentaje2" value="" onchange="myFunction()">
             </div>
           </div>
+          <div class="input_container">
+            <label for="num_revisiones2"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES2']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones2" id="num_revisiones2" value="" >
+            </div>
+          </div>
          <hr>
           <div class="input_container">
             <label for="opcion3"><?php echo $lang['PROJECT_TYPE_OPTION3']?>: </label>
@@ -440,6 +447,12 @@ body {
               <input type="number" class="text" name="porcentaje3" id="porcentaje3" value="" onchange="myFunction()">
             </div>
           </div> 
+          <div class="input_container">
+            <label for="num_revisiones3"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES3']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones3" id="num_revisiones3" value="" >
+            </div>
+          </div>
              <hr>
           <div class="input_container">
             <label for="opcion4"><?php echo $lang['PROJECT_TYPE_OPTION4']?>: </label>
@@ -454,7 +467,12 @@ body {
               <input type="number" class="text" name="porcentaje4" id="porcentaje4" value="" onchange="myFunction()">
             </div>
           </div>
-       
+       <div class="input_container">
+            <label for="num_revisiones4"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES4']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones4" id="num_revisiones4" value="" >
+            </div>
+          </div>
             <hr>
           <div class="input_container">
             <label for="opcion5"><?php echo $lang['PROJECT_TYPE_OPTION5']?>: </label>
@@ -469,7 +487,12 @@ body {
               <input type="number" class="text" name="porcentaje5" id="porcentaje5" value="" onchange="myFunction()">
             </div>
           </div>
-          
+          <div class="input_container">
+            <label for="num_revisiones5"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES5']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones5" id="num_revisiones5" value=""  >
+            </div>
+          </div>
           
              <hr>
           <div class="input_container">
@@ -485,6 +508,12 @@ body {
               <input type="number" class="text" name="porcentaje6" id="porcentaje6" value="" onchange="myFunction()">
             </div>
           </div>
+          <div class="input_container">
+            <label for="num_revisiones6"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES6']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones6" id="num_revisiones6" value="" >
+            </div>
+          </div>
                <hr>
           <div class="input_container">
             <label for="opcion7"><?php echo $lang['PROJECT_TYPE_OPTION7']?>: </label>
@@ -497,6 +526,12 @@ body {
             <label for="porcentaje7"><?php echo $lang['PROJECT_TYPE_PERCENTAGE7']?>: </label>
             <div class="field_container">
               <input type="number" class="text" name="porcentaje7" id="porcentaje7" value="" onchange="myFunction()">
+            </div>
+          </div>
+          <div class="input_container">
+            <label for="num_revisiones7"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES7']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones7" id="num_revisiones7" value="" >
             </div>
           </div>
                <hr>
@@ -514,7 +549,12 @@ body {
             </div>
           </div>
           
-          
+          <div class="input_container">
+            <label for="num_revisiones8"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES8']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones8" id="num_revisiones8" value="" >
+            </div>
+          </div>
           
                <hr>
           <div class="input_container">
@@ -530,7 +570,12 @@ body {
               <input type="number" class="text" name="porcentaje9" id="porcentaje9" value="" onchange="myFunction()">
             </div>
           </div>
-          
+          <div class="input_container">
+            <label for="num_revisiones9"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES9']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones9" id="num_revisiones9" value="" >
+            </div>
+          </div>
                <hr>
           <div class="input_container">
             <label for="opcion10"><?php echo $lang['PROJECT_TYPE_OPTION10']?>: </label>
@@ -543,6 +588,13 @@ body {
             <label for="porcentaje10"><?php echo $lang['PROJECT_TYPE_PERCENTAGE10']?>: </label>
             <div class="field_container">
               <input type="number" class="text" name="porcentaje10" id="porcentaje10" value="" onchange="myFunction()">
+            </div>
+          </div>
+          
+          <div class="input_container">
+            <label for="num_revisiones10"><?php echo $lang['PROJECT_TYPE_NUM_REVISIONES10']?>: </label>
+            <div class="field_container">
+              <input type="number" class="text" name="num_revisiones10" id="num_revisiones10" value="" >
             </div>
           </div>
           <div class="button_container">
