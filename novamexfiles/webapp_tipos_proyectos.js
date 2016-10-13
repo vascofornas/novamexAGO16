@@ -135,27 +135,27 @@ $(document).ready(function(){
     $('#form_company #opcion9').val('');
     $('#form_company #opcion10').val('');
     
-    $('#form_company #porcentaje1').val('');
-    $('#form_company #porcentaje2').val('');
-    $('#form_company #porcentaje3').val('');
-    $('#form_company #porcentaje4').val('');
-    $('#form_company #porcentaje5').val('');
-    $('#form_company #porcentaje6').val('');
-    $('#form_company #porcentaje7').val('');
-    $('#form_company #porcentaje8').val('');
-    $('#form_company #porcentaje9').val('');
-    $('#form_company #porcentaje10').val('');
+    $('#form_company #porcentaje1').val('0');
+    $('#form_company #porcentaje2').val('0');
+    $('#form_company #porcentaje3').val('0');
+    $('#form_company #porcentaje4').val('0');
+    $('#form_company #porcentaje5').val('0');
+    $('#form_company #porcentaje6').val('0');
+    $('#form_company #porcentaje7').val('0');
+    $('#form_company #porcentaje8').val('0');
+    $('#form_company #porcentaje9').val('0');
+    $('#form_company #porcentaje10').val('0');
     
-    $('#form_company #num_revisiones1').val('');
-    $('#form_company #num_revisiones2').val('');
-    $('#form_company #num_revisiones3').val('');
-    $('#form_company #num_revisiones4').val('');
-    $('#form_company #num_revisiones5').val('');
-    $('#form_company #num_revisiones6').val('');
-    $('#form_company #num_revisiones7').val('');
-    $('#form_company #num_revisiones8').val('');
-    $('#form_company #num_revisiones9').val('');
-    $('#form_company #num_revisiones10').val('');
+    $('#form_company #num_revisiones1').val('0');
+    $('#form_company #num_revisiones2').val('0');
+    $('#form_company #num_revisiones3').val('0');
+    $('#form_company #num_revisiones4').val('0');
+    $('#form_company #num_revisiones5').val('0');
+    $('#form_company #num_revisiones6').val('0');
+    $('#form_company #num_revisiones7').val('0');
+    $('#form_company #num_revisiones8').val('0');
+    $('#form_company #num_revisiones9').val('0');
+    $('#form_company #num_revisiones10').val('0');
       
     show_lightbox();
   });

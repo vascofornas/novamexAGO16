@@ -99,6 +99,8 @@ textarea {
  <script>
   $(document).ready(function() {
 
+	
+
     var date = new Date();
     var currentMonth = date.getMonth();
     var currentDate = date.getDate();
@@ -179,7 +181,7 @@ textarea {
 
 <script>
 function myFunction() {
-	var a = parseInt(document.getElementById("porcentaje1").value, 10);
+	  var a = parseInt(document.getElementById("porcentaje1").value, 10);
 	  var b = parseInt(document.getElementById("porcentaje2").value, 10);
 	  var c = parseInt(document.getElementById("porcentaje3").value, 10);
 	  var d = parseInt(document.getElementById("porcentaje4").value, 10);
@@ -196,6 +198,9 @@ function myFunction() {
 	  var sum =  a + b + c + d + e + f + g + h + i + j ;
  
    alert ( "<?php echo $lang['PORCENTAJE_ACUMULADO']?>: " + sum + "%");
+
+
+  
 }
 </script>
 <style type="text/css">
