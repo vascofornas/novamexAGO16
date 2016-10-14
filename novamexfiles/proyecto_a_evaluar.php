@@ -293,7 +293,7 @@ while($rowx= $results->fetch_assoc()) {
 		echo '<img class="blink-image" src="verde.png" width="25" height="25" />';
 		
 	}
-echo "<h3>".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR><br>";
+echo "<h3>".$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR><br>";
 echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
 
 }

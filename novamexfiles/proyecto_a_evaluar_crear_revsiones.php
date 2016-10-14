@@ -34,7 +34,15 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 mysqli_select_db( $conexion,$database_conexion);
 $query_Recordset1 = "SELECT * FROM tb_welcome_message WHERE tb_welcome_message.id_mensaje =1";
 $Recordset1 = mysqli_query( $conexion,$query_Recordset1) or die(mysqli_error());
@@ -282,11 +290,14 @@ if ($row_proyectos['porcentaje1'] >0){//if porcentaje1
 	$opcion1 = $row_proyectos['opcion1'];
 	$num_revisiones1 = $row_proyectos['num_revisiones1'];
 	
+	$codigo1 = generateRandomString();
+	
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones1; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion1')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion1','$codigo1')";
 	
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion1']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -297,8 +308,8 @@ if ($row_proyectos['porcentaje1'] >0){//if porcentaje1
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 		
-		$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0)";
+		$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0,'$num_revisiones1','$codigo1')";
 		
 		if ($conexion->query($sql1) === TRUE) {
 		
@@ -317,13 +328,14 @@ if ($row_proyectos['porcentaje2'] >0){//if porcentaje2
 	$opcion2 = $row_proyectos['opcion2'];
 	$num_revisiones2 = $row_proyectos['num_revisiones2'];
 
-
+	$codigo2 = generateRandomString();
 
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones2; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion2')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion2','$codigo2')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion2']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -334,8 +346,8 @@ if ($row_proyectos['porcentaje2'] >0){//if porcentaje2
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2',0)";
+		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2',0,'$num_revisiones2','$codigo2')";
 
 		if ($conexion->query($sql2) === TRUE) {
 
@@ -355,12 +367,13 @@ if ($row_proyectos['porcentaje3'] >0){//if porcentaje3
 	$porcentajetipo3 = $row_proyectos['porcentaje3'];
 	$opcion3 = $row_proyectos['opcion3'];
 	$num_revisiones3 = $row_proyectos['num_revisiones3'];
-
+	$codigo3 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones3; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion3')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion3','$codigo3')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion3']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -371,8 +384,8 @@ if ($row_proyectos['porcentaje3'] >0){//if porcentaje3
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3',0)";
+		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3',0,'$num_revisiones3','$codigo3')";
 
 		if ($conexion->query($sql3) === TRUE) {
 
@@ -391,12 +404,13 @@ if ($row_proyectos['porcentaje4'] >0){//if porcentaje4
 	$porcentajetipo4 = $row_proyectos['porcentaje4'];
 	$opcion4 = $row_proyectos['opcion4'];
 	$num_revisiones4 = $row_proyectos['num_revisiones4'];
-
+	$codigo4 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones4; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion4')";
+	
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion4','$codigo4')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion4']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -407,8 +421,8 @@ if ($row_proyectos['porcentaje4'] >0){//if porcentaje4
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4',0)";
+		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4',0,'$num_revisiones4','$codigo4')";
 
 		if ($conexion->query($sql4) === TRUE) {
 
@@ -427,12 +441,13 @@ if ($row_proyectos['porcentaje5'] >0){//if porcentaje5
 	$porcentajetipo5 = $row_proyectos['porcentaje5'];
 	$opcion5 = $row_proyectos['opcion5'];
 	$num_revisiones5 = $row_proyectos['num_revisiones5'];
-
+	$codigo5 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones5; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion5')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion5','$codigo5')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion5']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -443,8 +458,8 @@ if ($row_proyectos['porcentaje5'] >0){//if porcentaje5
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql5 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo5','$opcion5','$id','$puntostotales5',0)";
+		$sql5 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo5','$opcion5','$id','$puntostotales5',0,'$num_revisiones5','$codigo5')";
 
 		if ($conexion->query($sql5) === TRUE) {
 
@@ -464,12 +479,13 @@ if ($row_proyectos['porcentaje6'] >0){//if porcentaje6
 	$porcentajetipo6 = $row_proyectos['porcentaje6'];
 	$opcion6 = $row_proyectos['opcion6'];
 	$num_revisiones6 = $row_proyectos['num_revisiones6'];
-
+	$codigo6 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones6; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion6')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion6','$codigo6')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion6']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -480,8 +496,8 @@ if ($row_proyectos['porcentaje6'] >0){//if porcentaje6
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql6 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo6','$opcion6','$id','$puntostotales6',0)";
+		$sql6 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo6','$opcion6','$id','$puntostotales6',0,'$num_revisiones6','$codigo6')";
 
 		if ($conexion->query($sql6) === TRUE) {
 
@@ -500,12 +516,13 @@ if ($row_proyectos['porcentaje7'] >0){//if porcentaje7
 	$porcentajetipo7 = $row_proyectos['porcentaje7'];
 	$opcion7 = $row_proyectos['opcion7'];
 	$num_revisiones7 = $row_proyectos['num_revisiones7'];
-
+	$codigo7 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones7; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion7')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion7','$codigo7')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion7']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -516,8 +533,8 @@ if ($row_proyectos['porcentaje7'] >0){//if porcentaje7
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql7 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo7','$opcion7','$id','$puntostotales7',0)";
+		$sql7 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo7','$opcion7','$id','$puntostotales7',0,'$num_revisiones7','$codigo7')";
 
 		if ($conexion->query($sql7) === TRUE) {
 
@@ -536,12 +553,13 @@ if ($row_proyectos['porcentaje8'] >0){//if porcentaje8
 	$porcentajetipo8 = $row_proyectos['porcentaje8'];
 	$opcion8 = $row_proyectos['opcion8'];
 	$num_revisiones8 = $row_proyectos['num_revisiones8'];
-
+	$codigo8 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones8; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion8')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion8','$codigo8')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion8']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -552,8 +570,8 @@ if ($row_proyectos['porcentaje8'] >0){//if porcentaje8
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql8 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo8','$opcion8','$id','$puntostotales8',0)";
+		$sql8 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo8','$opcion8','$id','$puntostotales8',0,'$num_revisiones8','$codigo8')";
 
 		if ($conexion->query($sql8) === TRUE) {
 
@@ -572,12 +590,13 @@ if ($row_proyectos['porcentaje9'] >0){//if porcentaje9
 	$porcentajetipo9 = $row_proyectos['porcentaje9'];
 	$opcion9 = $row_proyectos['opcion9'];
 	$num_revisiones9 = $row_proyectos['num_revisiones9'];
-
+	$codigo9 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones9; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion9')";
+	
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion9','$codigo9')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion9']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -588,8 +607,8 @@ if ($row_proyectos['porcentaje9'] >0){//if porcentaje9
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql9 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo9','$opcion9','$id','$puntostotales9',0)";
+		$sql9 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo9','$opcion9','$id','$puntostotales9',0,'$num_revisiones9','$codigo9')";
 
 		if ($conexion->query($sql9) === TRUE) {
 
@@ -608,12 +627,13 @@ if ($row_proyectos['porcentaje10'] >0){//if porcentaje10
 	$porcentajetipo10 = $row_proyectos['porcentaje10'];
 	$opcion10 = $row_proyectos['opcion10'];
 	$num_revisiones10 = $row_proyectos['num_revisiones10'];
-
+	$codigo10 = generateRandomString();
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones10; $x++) {//for
 		$num = $x+1;
-		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
-		VALUES ('$id','Revision # .$num','$opcion10')";
+		
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
+		VALUES ('$id','Revision # .$num','$opcion10','$codigo10')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion10']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -624,8 +644,8 @@ if ($row_proyectos['porcentaje10'] >0){//if porcentaje10
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-		$sql10 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo10','$opcion10','$id','$puntostotales10',0)";
+		$sql10 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
+		VALUES ('$last_id','$porcentajetipo10','$opcion10','$id','$puntostotales10',0,'$num_revisiones10','$codigo10')";
 
 		if ($conexion->query($sql10) === TRUE) {
 

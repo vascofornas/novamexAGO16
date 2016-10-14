@@ -421,8 +421,10 @@ $num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
 $nombre = $row_proyectos['nombre_revision'];
+$fecha = $row_proyectos['fecha_revision'];
 }?>
   <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $nombre?></H3>
+  <H4><?php echo $lang['REVISION_DATE']." -> ". $fecha?></H4>
   <HR>
  
   
@@ -451,11 +453,31 @@ while ($row_evaluacion = mysqli_fetch_array($loop))
 
 	
 	<div class="input_container">
-	<h3><?php echo $row_evaluacion ['opcion_evaluada']?></h3>
+	<h3><hr><?php echo $row_evaluacion ['opcion_evaluada'].'</h3><H4><br><br><br>';
+	
+	$codigo = $row_evaluacion['codigo_opcion_evaluacion'];
+$loop_puntos = mysqli_query($conexion, "SELECT * FROM tb_evaluaciones_proyectos 
+		LEFT JOIN tb_revisiones_proyectos ON tb_evaluaciones_proyectos.revision_evaluada = tb_revisiones_proyectos.id_revisiones_proyectos WHERE codigo_opcion_evaluacion = '$codigo'")
+    or die (mysqli_error($dbh));
+$suma_puntos = 0;
+    while ($row_puntos = mysqli_fetch_array($loop_puntos))
+    {
+    	$p =  $row_puntos['puntos_obtenidos'];
+    	$suma_puntos = $suma_puntos+$p;
+    	echo $row_puntos['nombre_revision'].' => '.$p.'<br>';
+    }
+	?></h4>
+	<hr>
+	
+	
+	
+	
 	<?php echo "<strong>".$lang['TOTAL_POINTS']." ===> ".$row_evaluacion ['puntos_evaluados']."</strong><br>";
 echo "<strong>".$lang['PERCENTAGE_ASSIGNED']." ===> ".$row_evaluacion ['porcentaje_evaluado']."%</strong><br>";
+echo "<strong>".$lang['POINTS_ASSIGNED']." ===> ".($row_evaluacion ['porcentaje_evaluado'] * $row_evaluacion ['puntos_evaluados']/100)."</strong><br><HR><BR>";
 $recomendados = ($row_evaluacion ['puntos_evaluados']*$row_evaluacion ['porcentaje_evaluado'])/100;
-echo "<strong>".$lang['RECOMMENDED_POINTS']." ===> ".$recomendados/$row_Recordset3['num_revisiones']."</strong><br>";
+echo "<strong>".$lang['RECOMMENDED_POINTS']." ===> ".$recomendados/$row_evaluacion['num_revisiones_item']."</strong><br>";
+echo "<strong>".$lang['GIVEN_POINTS']." ===> ".$suma_puntos."</strong><br>";
 ?>
 
 	

@@ -267,4 +267,6 @@ $lang['EVALUATION_UPDATED'] = 'Evaluation Updated';
 $lang['EVALUATION_POINTS'] = 'Evaluation Points';
 $lang['EVALUATION_COMMENTS'] = 'Evaluation Comments';
 $lang['LIMIT_FILE'] = 'File Size Limit: 2 Mb';
+$lang['GIVEN_POINTS'] = 'Already given Points';
+$lang['POINTS_ASSIGNED'] = 'Points asssigned to this Item';
 ?>
