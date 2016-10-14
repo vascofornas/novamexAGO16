@@ -270,226 +270,391 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos LEFT JOIN tb_tipos_p
 //display the results
 
 while ($row_proyectos = mysqli_fetch_array($loop))
-{
+{//while
 	
-$numero_revisiones =  $row_proyectos['num_revisiones'];
 
 
-if ($row_proyectos['porcentaje1'] >0){
+
+if ($row_proyectos['porcentaje1'] >0){//if porcentaje1
 	$porcentaje1 = 1;
 	$puntostotales1 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo1 = $row_proyectos['porcentaje1'];
 	$opcion1 = $row_proyectos['opcion1'];
+	$num_revisiones1 = $row_proyectos['num_revisiones1'];
 	
-}
-if ($row_proyectos['porcentaje2'] >0){
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones1; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion1')";
+	
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion1']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+		$last_id = mysqli_insert_id($conexion);
+		}//if 
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+		
+		$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0)";
+		
+		if ($conexion->query($sql1) === TRUE) {
+		
+		}//if 
+		else {
+			echo "Error: " . $sql1 . "<br>" . $conexion->error;
+		}//else
+	
+}//for
+
+}//if opcion1
+if ($row_proyectos['porcentaje2'] >0){//if porcentaje2
 	$porcentaje2 = 1;
 	$puntostotales2 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo2 = $row_proyectos['porcentaje2'];
 	$opcion2 = $row_proyectos['opcion2'];
-}
-if ($row_proyectos['porcentaje3'] >0){
+	$num_revisiones2 = $row_proyectos['num_revisiones2'];
+
+
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones2; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion2')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion2']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2',0)";
+
+		if ($conexion->query($sql2) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql2 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion2
+
+
+if ($row_proyectos['porcentaje3'] >0){//if porcentaje3
 	$porcentaje3 = 1;
 	$puntostotales3 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo3 = $row_proyectos['porcentaje3'];
 	$opcion3 = $row_proyectos['opcion3'];
-}
-if ($row_proyectos['porcentaje4'] >0){
-	$porcentaje4 = 1;
+	$num_revisiones3 = $row_proyectos['num_revisiones3'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones3; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion3')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion3']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3',0)";
+
+		if ($conexion->query($sql3) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql3 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion3
+
+if ($row_proyectos['porcentaje4'] >0){//if porcentaje4
+	$porcentaje4 = 4;
 	$puntostotales4 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo4 = $row_proyectos['porcentaje4'];
 	$opcion4 = $row_proyectos['opcion4'];
-}
-if ($row_proyectos['porcentaje5']>0){
-	$porcentaje5 = 1;
+	$num_revisiones4 = $row_proyectos['num_revisiones4'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones4; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion4')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion4']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4',0)";
+
+		if ($conexion->query($sql4) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql4 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion4
+
+if ($row_proyectos['porcentaje5'] >0){//if porcentaje5
+	$porcentaje5 = 5;
 	$puntostotales5 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo5 = $row_proyectos['porcentaje5'];
 	$opcion5 = $row_proyectos['opcion5'];
-}
-if ($row_proyectos['porcentaje6'] >0){
-	$porcentaje6 = 1;
+	$num_revisiones5 = $row_proyectos['num_revisiones5'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones5; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion5')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion5']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql5 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo5','$opcion5','$id','$puntostotales5',0)";
+
+		if ($conexion->query($sql5) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql5 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion5
+
+
+if ($row_proyectos['porcentaje6'] >0){//if porcentaje6
+	$porcentaje6 = 6;
 	$puntostotales6 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo6 = $row_proyectos['porcentaje6'];
 	$opcion6 = $row_proyectos['opcion6'];
-}
-if ($row_proyectos['porcentaje7'] >0){
-	$porcentaje7 = 1;
+	$num_revisiones6 = $row_proyectos['num_revisiones6'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones6; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion6')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion6']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql6 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo6','$opcion6','$id','$puntostotales6',0)";
+
+		if ($conexion->query($sql6) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql6 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion6
+
+if ($row_proyectos['porcentaje7'] >0){//if porcentaje7
+	$porcentaje7 = 7;
 	$puntostotales7 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo7 = $row_proyectos['porcentaje7'];
 	$opcion7 = $row_proyectos['opcion7'];
-}
-if ($row_proyectos['porcentaje8'] >0){
-	$porcentaje8 = 1;
+	$num_revisiones7 = $row_proyectos['num_revisiones7'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones7; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion7')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion7']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql7 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo7','$opcion7','$id','$puntostotales7',0)";
+
+		if ($conexion->query($sql7) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql7 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion7
+
+if ($row_proyectos['porcentaje8'] >0){//if porcentaje8
+	$porcentaje8 = 8;
 	$puntostotales8 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo8 = $row_proyectos['porcentaje8'];
 	$opcion8 = $row_proyectos['opcion8'];
-}
-if ($row_proyectos['porcentaje9'] >0){
-	$porcentaje9 = 1;
+	$num_revisiones8 = $row_proyectos['num_revisiones8'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones8; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion8')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion8']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql8 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo8','$opcion8','$id','$puntostotales8',0)";
+
+		if ($conexion->query($sql8) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql8 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion8
+
+if ($row_proyectos['porcentaje9'] >0){//if porcentaje9
+	$porcentaje9 = 9;
 	$puntostotales9 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo9 = $row_proyectos['porcentaje9'];
 	$opcion9 = $row_proyectos['opcion9'];
-}
-if ($row_proyectos['porcentaje10'] >0){
-	$porcentaje10 = 1;
+	$num_revisiones9 = $row_proyectos['num_revisiones9'];
+
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones9; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion9')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion9']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql9 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
+		VALUES ('$last_id','$porcentajetipo9','$opcion9','$id','$puntostotales9',0)";
+
+		if ($conexion->query($sql9) === TRUE) {
+
+		}//if
+		else {
+			echo "Error: " . $sql9 . "<br>" . $conexion->error;
+		}//else
+
+	}//for
+
+}//if opcion9
+
+if ($row_proyectos['porcentaje10'] >0){//if porcentaje10
+	$porcentaje10 = 10;
 	$puntostotales10 = $row_proyectos['puntos_tipo_proyecto'];
 	$porcentajetipo10 = $row_proyectos['porcentaje10'];
 	$opcion10 = $row_proyectos['opcion10'];
-}
-}
-	
+	$num_revisiones10 = $row_proyectos['num_revisiones10'];
 
-echo $lang['#_REVISIONS'].": <h3>".$numero_revisiones."</H3> <BR>";
-$num_revision = 1;
-for ($x = 0; $x < $numero_revisiones; $x++) {
-	$num = $x+1;
-	$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision)
-VALUES ('$id','Revision # .$num')";
-	
-	if ($conexion->query($sql) === TRUE) {
-		echo "Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
-	} else {
-		echo "Error: " . $sql . "<br>" . $conexion->error;
-	}
-	$last_id = mysqli_insert_id($conexion);
-	
-	if ($porcentaje1 == 1){
-	
-	$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-	VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0)";
-	
-	if ($conexion->query($sql1) === TRUE) {
-		
-	} else {
-		echo "Error: " . $sql1 . "<br>" . $conexion->error;
-	}
-	
-	
-	}
-	
+	$num_revision = 1;
+	for ($x = 0; $x < $num_revisiones10; $x++) {//for
+		$num = $x+1;
+		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision)
+		VALUES ('$id','Revision # .$num','$opcion10')";
 
-	if ($porcentaje2 == 1){
-		
-		$sql2 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2',0)";
-	
-		if ($conexion->query($sql2) === TRUE) {
-			
-		} else {
-			echo "Error: " . $sql2 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	if ($porcentaje3 == 1){
-	
-		$sql3 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3',0)";
-	
-		if ($conexion->query($sql3) === TRUE) {
-				
-		} else {
-			echo "Error: " . $sql3 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	if ($porcentaje4 == 1){
-	
-		$sql4 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4',0)";
-	
-		if ($conexion->query($sql4) === TRUE) {
-	
-		} else {
-			echo "Error: " . $sql4 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	if ($porcentaje5 == 1){
-	
-		$sql5 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo5','$opcion5','$id','$puntostotales5',0)";
-	
-		if ($conexion->query($sql5) === TRUE) {
-	
-		} else {
-			echo "Error: " . $sql5 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	
-	if ($porcentaje6 == 1){
-	
-		$sql6 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo6','$opcion6','$id','$puntostotales6',0)";
-	
-		if ($conexion->query($sql6) === TRUE) {
-	
-		} else {
-			echo "Error: " . $sql6 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	if ($porcentaje7 == 1){
-	
-		$sql7 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo7','$opcion7','$id','$puntostotales7',0)";
-	
-		if ($conexion->query($sql7) === TRUE) {
-	
-		} else {
-			echo "Error: " . $sql7 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	
-	if ($porcentaje8 == 1){
-	
-		$sql8 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo8','$opcion8','$id','$puntostotales8',0)";
-	
-		if ($conexion->query($sql8) === TRUE) {
-	
-		} else {
-			echo "Error: " . $sql8 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	if ($porcentaje9 == 1){
-	
-		$sql9 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
-		VALUES ('$last_id','$porcentajetipo9','$opcion9','$id','$puntostotales9',0)";
-	
-		if ($conexion->query($sql9) === TRUE) {
-	
-		} else {
-			echo "Error: " . $sql9 . "<br>" . $conexion->error;
-		}
-	
-	
-	}
-	
-	if ($porcentaje10 == 1){
-	
-		$sql10 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,estado_evaluacion)
+		if ($conexion->query($sql) === TRUE) {
+			echo $row_proyectos['opcion10']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+		$sql10 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion)
 		VALUES ('$last_id','$porcentajetipo10','$opcion10','$id','$puntostotales10',0)";
-	
+
 		if ($conexion->query($sql10) === TRUE) {
-	
-		} else {
+
+		}//if
+		else {
 			echo "Error: " . $sql10 . "<br>" . $conexion->error;
-		}
+		}//else
+
+	}//for
+
+}//if opcion10
+
+
+
+
+
+
+
+
+}//while
+	
+
+
+	
+
 	
 	
-	}
 	
-   } //for
+	
 
 if ($num >0){
 echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
@@ -506,4 +671,3 @@ echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class
 </div>
 </body>
 </html>
-
