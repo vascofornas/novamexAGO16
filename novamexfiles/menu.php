@@ -1,22 +1,30 @@
 <div class="bs-example">
+                     
     <nav role="navigation" class="navbar navbar-default">
+    
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+
+            <button type="button" data-target="#navbarCollapse" style="PADDING-TOP: 5px" data-toggle="collapse" class="navbar-toggle">
+                
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"><?php echo $lang['MEMBER_HOME']?></a>
+            
+            <a href="home.php" class="navbar-brand">
+<img   src="logonovamex100.png" width="207" height="55" style="PADDING-TOP: 5px"></a>
+        
+ 
+   
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         
         
         
-        <div id="navbarCollapse" class="collapse navbar-collapse">
+        <div id="navbarCollapse" class="collapse navbar-collapse" style="PADDING-TOP: 15px">
             <ul class="nav navbar-nav">
-            <img src="logonovamex100.png" width="207" height="55" style="PADDING-TOP: 5px"/></a>
               <?php 
   $idioma_actual = $_SESSION['lang'];
   
@@ -48,7 +56,7 @@ $query = "SELECT * from tb_mensajes WHERE leido ='NO' AND receptor = '".$row['us
 else
     echo "Query Failed.";
     ?>
-                <li class="active"><a href="home.php"><?php echo $lang['HOME']?></a></li>
+                <li ><a href="home.php"><?php echo $lang['HOME']?></a></li>
                 
                  <li class="dropdown">
                 
@@ -101,7 +109,7 @@ else
            <ul class="nav pull-right">
             	<li class="dropdown">
                 	<a href="#" role="button"  class="dropdown-toggle" data-toggle="dropdown">
-                       <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="70" width="70">
+                       <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="50" width="50" >
     
                     <?php echo $row['userName']." (". $lang['USER'].$row['userLevel'].")";?> <i class="caret"></i>
                     </a>
