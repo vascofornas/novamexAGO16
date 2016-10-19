@@ -187,39 +187,39 @@ $lang['PROJECT_TYPE_POINTS'] = 'Puntos del Tipo de Proyecto';
 
 $lang['PROJECT_TYPE_REVISIONS'] = 'Numero de Revisiones';
 
-$lang['PROJECT_TYPE_OPTION1'] = 'Opcion 1';
-$lang['PROJECT_TYPE_OPTION2'] = 'Opcion 2';
-$lang['PROJECT_TYPE_OPTION3'] = 'Opcion 3';
-$lang['PROJECT_TYPE_OPTION4'] = 'Opcion 4';
-$lang['PROJECT_TYPE_OPTION5'] = 'Opcion 5';
-$lang['PROJECT_TYPE_OPTION6'] = 'Opcion 6';
-$lang['PROJECT_TYPE_OPTION7'] = 'Opcion 7';
-$lang['PROJECT_TYPE_OPTION8'] = 'Opcion 8';
-$lang['PROJECT_TYPE_OPTION9'] = 'Opcion 9';
-$lang['PROJECT_TYPE_OPTION10'] = 'Opcion 10';
-$lang['PROJECT_TYPE_PERCENTAGE1'] = 'Porcentaje Opcion 1';
-$lang['PROJECT_TYPE_PERCENTAGE2'] = 'Porcentaje Opcion 2';
-$lang['PROJECT_TYPE_PERCENTAGE3'] = 'Porcentaje Opcion 3';
-$lang['PROJECT_TYPE_PERCENTAGE4'] = 'Porcentaje Opcion 4';
-$lang['PROJECT_TYPE_PERCENTAGE5'] = 'Porcentaje Opcion 5';
-$lang['PROJECT_TYPE_PERCENTAGE6'] = 'Porcentaje Opcion 6';
-$lang['PROJECT_TYPE_PERCENTAGE7'] = 'Porcentaje Opcion 7';
-$lang['PROJECT_TYPE_PERCENTAGE8'] = 'Porcentaje Opcion 8';
-$lang['PROJECT_TYPE_PERCENTAGE9'] = 'Porcentaje Opcion 9';
-$lang['PROJECT_TYPE_PERCENTAGE10'] = 'Porcentaje Opcion 10';
+$lang['PROJECT_TYPE_OPTION1'] = 'Fase 1';
+$lang['PROJECT_TYPE_OPTION2'] = 'Fase 2';
+$lang['PROJECT_TYPE_OPTION3'] = 'Fase 3';
+$lang['PROJECT_TYPE_OPTION4'] = 'Fase 4';
+$lang['PROJECT_TYPE_OPTION5'] = 'Fase 5';
+$lang['PROJECT_TYPE_OPTION6'] = 'Fase 6';
+$lang['PROJECT_TYPE_OPTION7'] = 'Fase 7';
+$lang['PROJECT_TYPE_OPTION8'] = 'Fase 8';
+$lang['PROJECT_TYPE_OPTION9'] = 'Fase 9';
+$lang['PROJECT_TYPE_OPTION10'] = 'Fase 10';
+$lang['PROJECT_TYPE_PERCENTAGE1'] = 'Porcentaje Fase 1';
+$lang['PROJECT_TYPE_PERCENTAGE2'] = 'Porcentaje Fase 2';
+$lang['PROJECT_TYPE_PERCENTAGE3'] = 'Porcentaje Fase 3';
+$lang['PROJECT_TYPE_PERCENTAGE4'] = 'Porcentaje Fase 4';
+$lang['PROJECT_TYPE_PERCENTAGE5'] = 'Porcentaje Fase 5';
+$lang['PROJECT_TYPE_PERCENTAGE6'] = 'Porcentaje Fase 6';
+$lang['PROJECT_TYPE_PERCENTAGE7'] = 'Porcentaje Fase 7';
+$lang['PROJECT_TYPE_PERCENTAGE8'] = 'Porcentaje Fase 8';
+$lang['PROJECT_TYPE_PERCENTAGE9'] = 'Porcentaje Fase 9';
+$lang['PROJECT_TYPE_PERCENTAGE10'] = 'Porcentaje Fase 10';
 
 
-$lang['PROJECT_TYPE_NUM_REVISIONES1'] = ' # Revisiones Opcion 1';
+$lang['PROJECT_TYPE_NUM_REVISIONES1'] = ' # Revisiones Fase 1';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES2'] = ' # Revisiones Opcion 2';
-$lang['PROJECT_TYPE_NUM_REVISIONES3'] = ' # Revisiones Opcion 3';
-$lang['PROJECT_TYPE_NUM_REVISIONES4'] = ' # Revisiones Opcion 4';
-$lang['PROJECT_TYPE_NUM_REVISIONES5'] = ' # Revisiones Opcion 5';
-$lang['PROJECT_TYPE_NUM_REVISIONES6'] = ' # Revisiones Opcion 6';
-$lang['PROJECT_TYPE_NUM_REVISIONES7'] = ' # Revisiones Opcion 7';
-$lang['PROJECT_TYPE_NUM_REVISIONES8'] = ' # Revisiones Opcion 8';
-$lang['PROJECT_TYPE_NUM_REVISIONES9'] = ' # Revisiones Opcion 9';
-$lang['PROJECT_TYPE_NUM_REVISIONES10'] = ' # Revisiones Opcion 10';
+$lang['PROJECT_TYPE_NUM_REVISIONES2'] = ' # Revisiones Fase 2';
+$lang['PROJECT_TYPE_NUM_REVISIONES3'] = ' # Revisiones Fase 3';
+$lang['PROJECT_TYPE_NUM_REVISIONES4'] = ' # Revisiones Fase 4';
+$lang['PROJECT_TYPE_NUM_REVISIONES5'] = ' # Revisiones Fase 5';
+$lang['PROJECT_TYPE_NUM_REVISIONES6'] = ' # Revisiones Fase 6';
+$lang['PROJECT_TYPE_NUM_REVISIONES7'] = ' # Revisiones Fase 7';
+$lang['PROJECT_TYPE_NUM_REVISIONES8'] = ' # Revisiones Fase 8';
+$lang['PROJECT_TYPE_NUM_REVISIONES9'] = ' # Revisiones Fase 9';
+$lang['PROJECT_TYPE_NUM_REVISIONES10'] = ' # Revisiones Fase 10';
 $lang['PORCENTAJE_ACUMULADO'] = 'Porcentaje acumulado';
 
 //historico

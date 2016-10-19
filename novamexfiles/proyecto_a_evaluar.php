@@ -229,7 +229,7 @@ function subirimagen()
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
   <hr>
-  
+  <h4>
   <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
   <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
   	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
@@ -244,18 +244,7 @@ function subirimagen()
   <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
   <HR>
  
-  
- 
 
-  
- 
-  
-
-  
-  
-  
-    
-  
   
 <?php
 
@@ -287,14 +276,16 @@ while($rowx= $results->fetch_assoc()) {
 	
 	$num++;
 	if ($cero > 0){
-		echo '<img class="blink-image" src="rojo.png" width="25" height="25" />';
+	
+echo "<h3>".'<img class="blink-image" src="rojo.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
+echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
+		;
 	}
 	else{
-		echo '<img class="blink-image" src="verde.png" width="25" height="25" />';
+		echo "<h3>".'<img class="blink-image" src="verde.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
+		echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
 		
 	}
-echo "<h3>".$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR><br>";
-echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
 
 }
 	
@@ -304,13 +295,13 @@ if ($num == 0){
 }
 if ($num > 0){
 
-echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a><br><br><br><br>';
+echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a><br><br>';
 }
 
 	
 ?>
   
-
+</h4>
   
   </div>
 </div>

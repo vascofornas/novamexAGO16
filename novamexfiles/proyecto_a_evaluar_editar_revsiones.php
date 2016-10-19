@@ -465,7 +465,7 @@ function subirimagen()
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
   <hr>
-  
+  <h4>
   <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
   <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
   	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
@@ -474,7 +474,7 @@ function subirimagen()
   <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
   		   <br>
  
-    
+    </h4>
     
   </div>
   <div class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS_EDITING']?></H3>
@@ -512,7 +512,8 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 
 
 ?>
-
+ <p><strong><?php echo $row_proyectos['opcion_revision']?><strong></p>
+ 
 <div id="form-content<?php echo $num;?>">
      <form method="post" id="reg-form<?php echo $num;?>" name="form1" autocomplete="off">
 			

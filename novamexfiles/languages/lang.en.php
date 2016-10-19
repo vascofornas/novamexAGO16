@@ -151,46 +151,46 @@ $lang['PROJECT_TYPE_NAME'] = 'Project Type Name';
 $lang['PROJECT_TYPE_POINTS'] = 'Project Type Points';
 
 $lang['PROJECT_TYPE_REVISIONS'] = 'Project Type # of Revisions';
-$lang['PROJECT_TYPE_OPTION1'] = 'Project Type Option #1';
-$lang['PROJECT_TYPE_OPTION2'] = 'Project Type Option #2';
-$lang['PROJECT_TYPE_OPTION3'] = 'Project Type Option #3';
-$lang['PROJECT_TYPE_OPTION4'] = 'Project Type Option #4';
-$lang['PROJECT_TYPE_OPTION5'] = 'Project Type Option #5';
-$lang['PROJECT_TYPE_OPTION6'] = 'Project Type Option #6';
-$lang['PROJECT_TYPE_OPTION7'] = 'Project Type Option #7';
-$lang['PROJECT_TYPE_OPTION8'] = 'Project Type Option #8';
-$lang['PROJECT_TYPE_OPTION9'] = 'Project Type Option #9';
-$lang['PROJECT_TYPE_OPTION10'] = 'Project Type Option #10';
-$lang['PROJECT_TYPE_PERCENTAGE1'] = 'Project Type Percentage #1';
-$lang['PROJECT_TYPE_PERCENTAGE2'] = 'Project Type Percentage #2';
-$lang['PROJECT_TYPE_PERCENTAGE3'] = 'Project Type Percentage #3';
-$lang['PROJECT_TYPE_PERCENTAGE4'] = 'Project Type Percentage #4';
-$lang['PROJECT_TYPE_PERCENTAGE5'] = 'Project Type Percentage #5';
-$lang['PROJECT_TYPE_PERCENTAGE6'] = 'Project Type Percentage #6';
-$lang['PROJECT_TYPE_PERCENTAGE7'] = 'Project Type Percentage #7';
-$lang['PROJECT_TYPE_PERCENTAGE8'] = 'Project Type Percentage #8';
-$lang['PROJECT_TYPE_PERCENTAGE9'] = 'Project Type Percentage #9';
-$lang['PROJECT_TYPE_PERCENTAGE10'] = 'Project Type Percentage #10';
+$lang['PROJECT_TYPE_OPTION1'] = 'Project Type Phase #1';
+$lang['PROJECT_TYPE_OPTION2'] = 'Project Type Phase #2';
+$lang['PROJECT_TYPE_OPTION3'] = 'Project Type Phase #3';
+$lang['PROJECT_TYPE_OPTION4'] = 'Project Type Phase #4';
+$lang['PROJECT_TYPE_OPTION5'] = 'Project Type Phase #5';
+$lang['PROJECT_TYPE_OPTION6'] = 'Project Type Phase #6';
+$lang['PROJECT_TYPE_OPTION7'] = 'Project Type Phase #7';
+$lang['PROJECT_TYPE_OPTION8'] = 'Project Type Phase #8';
+$lang['PROJECT_TYPE_OPTION9'] = 'Project Type Phase #9';
+$lang['PROJECT_TYPE_OPTION10'] = 'Project Type Phase #10';
+$lang['PROJECT_TYPE_PERCENTAGE1'] = 'Project Type Percentage Phase #1';
+$lang['PROJECT_TYPE_PERCENTAGE2'] = 'Project Type Percentage Phase #2';
+$lang['PROJECT_TYPE_PERCENTAGE3'] = 'Project Type Percentage Phase #3';
+$lang['PROJECT_TYPE_PERCENTAGE4'] = 'Project Type Percentage Phase #4';
+$lang['PROJECT_TYPE_PERCENTAGE5'] = 'Project Type Percentage Phase #5';
+$lang['PROJECT_TYPE_PERCENTAGE6'] = 'Project Type Percentage Phase #6';
+$lang['PROJECT_TYPE_PERCENTAGE7'] = 'Project Type Percentage Phase #7';
+$lang['PROJECT_TYPE_PERCENTAGE8'] = 'Project Type Percentage Phase #8';
+$lang['PROJECT_TYPE_PERCENTAGE9'] = 'Project Type Percentage Phase #9';
+$lang['PROJECT_TYPE_PERCENTAGE10'] = 'Project Type Percentage Phase #10';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES1'] = 'Project Type # Revisions #1';
+$lang['PROJECT_TYPE_NUM_REVISIONES1'] = 'Project Type # Revisions Phase #1';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES2'] = 'Project Type # Revisions #2';
+$lang['PROJECT_TYPE_NUM_REVISIONES2'] = 'Project Type # Revisions Phase #2';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES3'] = 'Project Type # Revisions #3';
+$lang['PROJECT_TYPE_NUM_REVISIONES3'] = 'Project Type # Revisions Phase #3';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES4'] = 'Project Type # Revisions #4';
+$lang['PROJECT_TYPE_NUM_REVISIONES4'] = 'Project Type # Revisions Phase #4';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES5'] = 'Project Type # Revisions #5';
+$lang['PROJECT_TYPE_NUM_REVISIONES5'] = 'Project Type # Revisions Phase #5';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES6'] = 'Project Type # Revisions #6';
+$lang['PROJECT_TYPE_NUM_REVISIONES6'] = 'Project Type # Revisions Phase #6';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES7'] = 'Project Type # Revisions #7';
+$lang['PROJECT_TYPE_NUM_REVISIONES7'] = 'Project Type # Revisions Phase #7';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES8'] = 'Project Type # Revisions #8';
+$lang['PROJECT_TYPE_NUM_REVISIONES8'] = 'Project Type # Revisions Phase #8';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES9'] = 'Project Type # Revisions #9';
+$lang['PROJECT_TYPE_NUM_REVISIONES9'] = 'Project Type # Revisions Phase #9';
 
-$lang['PROJECT_TYPE_NUM_REVISIONES10'] = 'Project Type # Revisions #10';
+$lang['PROJECT_TYPE_NUM_REVISIONES10'] = 'Project Type # Revisions Phase #10';
 
 $lang['EVALUATOR'] = 'Evaluator';
 

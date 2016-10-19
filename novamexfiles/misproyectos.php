@@ -213,13 +213,14 @@ function subirimagen()
 <?php include 'menu.php';?>
 
 <div class = "container">
+  
    <div class = "row" >
    
    
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['MY_PROJECTS']?></H3>
   <HR>
-  <h4><?php echo $lang['AS_TEAM_MEMBER']?></h4>
-  
+  <h3><?php echo $lang['AS_TEAM_MEMBER']?></h3>
+  <h4>
 <?php
 
 //run the query
@@ -245,10 +246,13 @@ echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto'].
 	}
 	}
 ?>
-  
-   <HR>
-  <h4><?php echo $lang['AS_EVALUATOR']?></h4>
-  
+  </h4>
+   
+   </div>
+   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+  <HR>
+  <h3><?php echo $lang['AS_EVALUATOR']?></h3>
+  <h4>
 <?php
 
 //run the query
@@ -267,10 +271,9 @@ echo "<strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']
 }
 	
 ?>
-  
-  </div>
-</div>
-    
+  </h4>
+  </div></div></div>
+
 </body>
 </html>
 

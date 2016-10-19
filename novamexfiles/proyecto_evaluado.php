@@ -229,7 +229,7 @@ function subirimagen()
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
   <hr>
-  
+  <h4>
   <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
   <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
   	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
@@ -303,7 +303,7 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE pro
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
 	
-echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable']."</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
+echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
 	}
 	
 	
@@ -311,7 +311,7 @@ echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable
   
  
   
-
+</h4>
   
   </div>
 </div>

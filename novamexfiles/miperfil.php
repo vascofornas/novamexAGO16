@@ -14,6 +14,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
+  	
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
       break;    
@@ -220,8 +221,8 @@ function subirimagen()
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PERSONAL_INFO']?></H3>
   <hr>
-  <h4><?php echo $lang['NOT_EDITABLE_DATA']?></h4>
-  <p><strong><?php echo $lang['USERNAME']?>: </strong><?php echo $row['userName']?></p>
+  <h3><?php echo $lang['NOT_EDITABLE_DATA']?></h3>
+ <h4> <p><strong><?php echo $lang['USERNAME']?>: </strong><?php echo $row['userName']?></p>
   <p><strong><?php echo $lang['FNAME']?>: </strong><?php echo $row['nombre_usuario']?></p>
   <p><strong><?php echo $lang['SNAME']?>: </strong><?php echo $row['apellidos_usuario']?></p>
   
@@ -230,9 +231,12 @@ function subirimagen()
    <p><strong><?php echo $lang['BUSINESS_UNIT']?>: </strong><?php echo $row['uni']?></p>
    		   <p><strong>Supervisor: </strong><?php echo $row['super']?></p>
    		   <br>
-  <h4><?php echo $lang['EDITABLE_DATA']?></h4>
+   		   </div>
+   <div class="col-sm-6 col-md-5 col-lg-6">
+  <br><br><br></h4>
+  <h3><?php echo $lang['EDITABLE_DATA']?></h3>
   
-    <div id="form-content">
+   <h4> <div id="form-content">
      <form method="post" id="reg-form" name="form1" autocomplete="off">
 			
 
@@ -253,9 +257,9 @@ function subirimagen()
              
               <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
       
-      
+      </h4>
     </div>
-				
+	</div>
 
 				
 		

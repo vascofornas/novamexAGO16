@@ -237,7 +237,7 @@ function subirimagen()
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
   <hr>
-  
+  <h4>
   <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
   <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
   	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
@@ -247,7 +247,7 @@ function subirimagen()
   		   <br>
  
     
-    
+    </h4>
   </div>
   <div class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS_CREATING']?></H3>
   <HR>
@@ -677,7 +677,7 @@ if ($row_proyectos['porcentaje10'] >0){//if porcentaje10
 	
 
 if ($num >0){
-echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
+echo '<br><a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
 }
 	
 ?>

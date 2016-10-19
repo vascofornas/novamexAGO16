@@ -395,14 +395,14 @@ function subirimagen()
     <div class="row">
   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
   <hr>
-  
+  <h4>
   <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
   <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
   	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
   <p><strong><?php echo $lang['END_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_final_proyecto']?></p>
   <p><strong><?php echo $lang['PROJECT_TEAM']?>: </strong><?php echo $row_Recordset3['nombre_equipo']?></p>
   <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
-  		   <br>
+  		</h4>   <br>
  
     
     
@@ -453,7 +453,7 @@ while ($row_evaluacion = mysqli_fetch_array($loop))
 
 	
 	<div class="input_container">
-	<h3><hr><?php echo $row_evaluacion ['opcion_evaluada'].'</h3><H4><br><br><br>';
+	<h3><hr><?php echo $row_evaluacion ['opcion_evaluada'].'</h3><H4><br>';
 	
 	$codigo = $row_evaluacion['codigo_opcion_evaluacion'];
 $loop_puntos = mysqli_query($conexion, "SELECT * FROM tb_evaluaciones_proyectos 
