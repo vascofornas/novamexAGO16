@@ -6,6 +6,11 @@ if( $_POST ){
     $puntos_obtenidos = $_POST['puntos_obtenidos'];
    $comentarios_evaluados = $_POST['comentarios_evaluados'];
    $id_evaluacion_proyectos = $_POST['id_evaluacion_proyectos'];
+
+   $proyecto_evaluado = $_POST['proyecto_evaluado'];
+   $revision_evaluada = $_POST['revision_evaluada'];
+   $codigo_opcion_evaluacion = $_POST['codigo_opcion_evaluacion'];
+   
  $estado_evaluacion = 1;
     
  $db_host = "localhost";
@@ -31,6 +36,54 @@ WHERE id_evaluacion_proyectos=?"))
 	$stmt->close();
 }
 
+$loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE revision_puntos_temporales =  '$revision_evaluada'")
+		or die (mysqli_error($dbh));
+		$suma_puntos = 0;
+		while ($row_puntos = mysqli_fetch_array($loop_puntos))
+		{
+			
+			$suma_puntos = $suma_puntos+1;
+				}
+		if ($suma_puntos > 0){
+			echo "YA ESTA EVALUADO ".$suma_puntos;
+			
+			
+			
+			if ($stmt = $conn->prepare("UPDATE tb_puntos_temporales SET puntos_temporales = ?, comentarios_puntos_temporales = ?
+			
+			WHERE revision_puntos_temporales=?"))
+			{
+				$stmt->bind_param("dsi", $puntos_obtenidos, $comentarios_evaluados,$revision_evaluada);
+				$stmt->execute();
+				$stmt->close();
+			}
+		}
+		else {
+			echo "NO ESTA EVALUADO ".$suma_puntos;
+			
+			
+					
+				
+			
+						
+						if ($stmt = $conn->prepare("INSERT INTO tb_puntos_temporales SET puntos_temporales = ?, comentarios_puntos_temporales = ?,
+								revision_puntos_temporales = ?
+					
+						"))
+						{
+							$stmt->bind_param("dsi", $puntos_obtenidos, $comentarios_evaluados, $revision_evaluada);
+							$stmt->execute();
+							$stmt->close();
+						}
+						
+			
+			
+			
+			
+			
+			
+		}
+
 
    
 
@@ -47,17 +100,27 @@ WHERE id_evaluacion_proyectos=?"))
     
     <tr>
     <td><strong><?php echo $lang['EVALUATION_POINTS']?>: </strong></td>
-    <td><?php echo $puntos_obtenidos." ".$id_evaluacion_proyectos ?></td>
+    <td><?php echo $puntos_obtenidos ?></td>
     </tr>
     
     <tr>
     <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
     <td><?php echo $comentarios_evaluados ?></td>
     </tr>
- 
+ <tr>
+    <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
+    <td><?php echo $proyecto_evaluado ?></td>
+    </tr>
     <tr>
-    
-    
+    <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
+    <td><?php echo $revision_evaluada ?></td>
+    </tr>
+    <tr>
+    <tr>
+    <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
+    <td><?php echo $codigo_opcion_evaluacion ?></td>
+    </tr>
+    <tr>
     
     </table>
     <?php

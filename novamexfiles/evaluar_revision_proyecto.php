@@ -485,7 +485,9 @@ echo "<strong>".$lang['GIVEN_POINTS']." ===> ".$suma_puntos."</strong><br>";
             <div class="field_container">
               <input type="number" class="text" name="puntos_obtenidos" id="puntos_obtenidos"<?php echo $num;?> value="<?php echo $row_evaluacion['puntos_obtenidos'] ?>" required>
            <input type="hidden" class="text" name="id_evaluacion_proyectos" id="id_evaluacion_proyectos" value="<?php echo $row_evaluacion['id_evaluacion_proyectos'] ?>" >
-           
+            <input type="hidden" class="text" name="proyecto_evaluado" id="proyecto_evaluado" value="<?php echo $row_evaluacion['proyecto_evaluado'] ?>" >
+           <input type="hidden" class="text" name="revision_evaluada" id="revision_evaluada" value="<?php echo $row_evaluacion['revision_evaluada'] ?>" >
+          <input type="hidden" class="text" name="codigo_opcion_evaluacion" id="codigo_opcion_evaluacion" value="<?php echo $row_evaluacion['codigo_opcion_evaluacion'] ?>" >
             </div>
           </div>	
   	<div class="input_container">
