@@ -45,33 +45,55 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 			$suma_puntos = $suma_puntos+1;
 				}
 		if ($suma_puntos > 0){
-			echo "YA ESTA EVALUADO ".$suma_puntos;
 			
 			
+			$loop_usuarios_editados = mysqli_query($conn, "SELECT * FROM tb_miembros_equipos
+					LEFT JOIN tb_proyectos ON tb_miembros_equipos.equipo = tb_proyectos.equipo_proyecto
+					WHERE tb_proyectos.id_proyecto =   '$proyecto_evaluado'")
+					or die (mysqli_error($dbh));
+					$suma_puntos = 0;
+					while ($row_usuarios_editados = mysqli_fetch_array($loop_usuarios_editados))
+					{
+			
+						$usuario_editado= $row_usuarios_editados['usuario'];
 			
 			if ($stmt = $conn->prepare("UPDATE tb_puntos_temporales SET puntos_temporales = ?, comentarios_puntos_temporales = ?
 			
-			WHERE revision_puntos_temporales=?"))
+			WHERE revision_puntos_temporales=? AND usuario_puntos_temporales = ?"))
 			{
-				$stmt->bind_param("dsi", $puntos_obtenidos, $comentarios_evaluados,$revision_evaluada);
+				$stmt->bind_param("dsii", $puntos_obtenidos, $comentarios_evaluados,$revision_evaluada, $usuario_editado);
 				$stmt->execute();
 				$stmt->close();
 			}
 		}
+		}
 		else {
-			echo "NO ESTA EVALUADO ".$suma_puntos;
 			
 			
-					
+			
+			$loop_usuarios = mysqli_query($conn, "SELECT * FROM tb_miembros_equipos
+					LEFT JOIN tb_proyectos ON tb_miembros_equipos.equipo = tb_proyectos.equipo_proyecto 
+					WHERE tb_proyectos.id_proyecto =   '$proyecto_evaluado'")
+			or die (mysqli_error($dbh));
+			$suma_puntos = 0;
+			while ($row_usuarios = mysqli_fetch_array($loop_usuarios))
+			{
 				
-			
+			$usuario = $row_usuarios['usuario'];
+				
+			echo $usuario."<br>";
 						
-						if ($stmt = $conn->prepare("INSERT INTO tb_puntos_temporales SET puntos_temporales = ?, comentarios_puntos_temporales = ?,
-								revision_puntos_temporales = ?
+						if ($stmt = $conn->prepare("INSERT INTO tb_puntos_temporales 
+								SET puntos_temporales = ?, 
+								comentarios_puntos_temporales = ?,
+								revision_puntos_temporales = ?,
+								usuario_puntos_temporales = ?,
+								codigo_puntos_temporales =?,
+								proyecto_puntos_temporales=?
 					
 						"))
 						{
-							$stmt->bind_param("dsi", $puntos_obtenidos, $comentarios_evaluados, $revision_evaluada);
+							$stmt->bind_param("dsiisi", $puntos_obtenidos, $comentarios_evaluados, $revision_evaluada,$usuario,$codigo_opcion_evaluacion,$proyecto_evaluado);
 							$stmt->execute();
 							$stmt->close();
 						}
@@ -79,7 +101,7 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 			
 			
 			
-			
+			}//usuarios
 			
 			
 		}
@@ -107,20 +129,7 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
     <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
     <td><?php echo $comentarios_evaluados ?></td>
     </tr>
- <tr>
-    <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
-    <td><?php echo $proyecto_evaluado ?></td>
-    </tr>
-    <tr>
-    <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
-    <td><?php echo $revision_evaluada ?></td>
-    </tr>
-    <tr>
-    <tr>
-    <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
-    <td><?php echo $codigo_opcion_evaluacion ?></td>
-    </tr>
-    <tr>
+
     
     </table>
     <?php
