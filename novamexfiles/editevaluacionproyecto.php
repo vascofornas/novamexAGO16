@@ -1,5 +1,7 @@
 <?php
 include_once 'common.php';
+include_once 'funciones.php';
+include_once 'class.user.php';
 
 if( $_POST ){
 	
@@ -99,8 +101,12 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 						}
 						
 			
-			
-			
+			//enviar email cdo puntos asignados
+			 $email_usuario = get_email($usuario);
+			 $message="Hi , Hola";
+			 $message .= $puntos_obtenidos."Points / Puntos";
+			 $subject="Points given to you / Te han asignado puntos por proyecto";
+			 send_mail ($email_usuario,$message,$subject);
 			}//usuarios
 			
 			

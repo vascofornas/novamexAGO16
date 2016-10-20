@@ -1,5 +1,6 @@
 <?php 
-
+require_once 'dbconfig.php';
+require_once('Connections/conexion.php');
   
 // Function to get the client IP address
 function get_client_ip() {
@@ -29,5 +30,43 @@ function add_log ($texto, $usuario){
         $stmt->bind_param("sss", $texto, $usuario, $ip);
 $stmt->execute();
 	  
+}
+function get_email($usuario){
+	
+	$email_del_usuario = "modestovasco@gmail.com";
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+	 
+	$loop = mysqli_query($mysqli, "SELECT * FROM tbl_users WHERE userID = '".$usuario."'")
+	or die (mysqli_error($dbh));
+	
+	
+	
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop))
+	{ 
+	 	$email_del_usuario = $row_usua['userEmail'];
+	}
+	return $email_del_usuario;
+	
+}
+
+function send_mail($email,$message,$subject)
+{
+	require_once('mailer/class.phpmailer.php');
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->SMTPDebug  = 1;
+	$mail->SMTPAuth   = true;
+	$mail->SMTPSecure = "ssl";
+	$mail->Host       = "cs8.webhostbox.net";
+	$mail->Port       = 465;
+	$mail->AddAddress($email);
+	$mail->Username="novamex@juarezserver.com";
+	$mail->Password="Papa020432";
+	$mail->SetFrom('novamex@juarezserver.com','Novamex');
+	$mail->AddReplyTo("novamex@juarezserver.com","Novamex");
+	$mail->Subject    = $subject;
+	$mail->MsgHTML($message);
+	$mail->Send();
 }
 ?>

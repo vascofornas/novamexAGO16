@@ -269,4 +269,7 @@ $lang['EVALUATION_COMMENTS'] = 'Evaluation Comments';
 $lang['LIMIT_FILE'] = 'File Size Limit: 2 Mb';
 $lang['GIVEN_POINTS'] = 'Already given Points';
 $lang['POINTS_ASSIGNED'] = 'Points asssigned to this Item';
+$lang['NON_CONSOLIDATED_POINTS'] = 'Non-consolidated Points';
+
+$lang['CONSOLIDATED_POINTS'] = 'Consolidated Points';
 ?>
