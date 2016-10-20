@@ -101,6 +101,8 @@ else
                         <li class="divider"></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
                         
+                          <li><a href="admin_free_points.php"><?php echo $lang['FREE_POINTS']?></a></li>
+                        
                         
                         
                     </ul>

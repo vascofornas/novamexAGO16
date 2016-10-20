@@ -272,4 +272,5 @@ $lang['POINTS_ASSIGNED'] = 'Points asssigned to this Item';
 $lang['NON_CONSOLIDATED_POINTS'] = 'Non-consolidated Points';
 
 $lang['CONSOLIDATED_POINTS'] = 'Consolidated Points';
+$lang['FREE_POINTS'] = 'Free Points Assignment';
 ?>

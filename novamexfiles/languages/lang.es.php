@@ -264,4 +264,5 @@ $lang['NON_CONSOLIDATED_POINTS'] = 'Puntos NO consolidados';
 
 $lang['CONSOLIDATED_POINTS'] = 'Puntos consolidados';
 
+$lang['FREE_POINTS'] = 'Asignacion libre de puntos';
 ?>

@@ -49,6 +49,74 @@ function get_email($usuario){
 	return $email_del_usuario;
 	
 }
+function get_idioma($usuario){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tbl_users WHERE userID = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$idioma_del_usuario = $row_usua['idioma_usuario'];
+	}
+	return $idioma_del_usuario;
+
+}
+function get_nombre_revision($usuario){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_proyectos WHERE id_revisiones_proyectos = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$nombre_del_usuario = $row_usua['nombre_revision'];
+	}
+	return $nombre_del_usuario;
+
+}
+function get_nombre($usuario){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tbl_users WHERE userID = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$nombre_del_usuario = $row_usua['nombre_usuario'];
+	}
+	return $nombre_del_usuario;
+
+}
+function get_proyecto($proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_proyecto = mysqli_query($mysqli, "SELECT * FROM tb_proyectos WHERE id_proyecto = '".$proyecto."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_proyecto = mysqli_fetch_array($loop_proyecto))
+	{
+		$proyecto = $row_proyecto['nombre_proyecto'];
+	}
+	return $proyecto;
+
+}
 
 function send_mail($email,$message,$subject)
 {

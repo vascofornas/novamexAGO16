@@ -67,6 +67,41 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 				$stmt->execute();
 				$stmt->close();
 			}
+			
+
+			//enviar email cdo puntos asignados
+			$email_usuario = get_email($usuario_editado);
+				
+			$idioma = get_idioma($usuario_editado);
+			$proyecto = get_proyecto($proyecto_evaluado);
+			$nombre = get_nombre($usuario_editado);
+			$nombre_revision = get_nombre_revision($revision_evaluada);
+			
+			if ($idioma == "en"){
+				//email en ingles
+				$message="Hi ".$nombre." !";
+				$message .= "<br>You have got ".$puntos_obtenidos." points at project ".$proyecto." / Revision: ".$nombre_revision;
+				$message .= "<br>Comments: ".$comentarios_evaluados;
+				$message .= "<br><br>Please, remember that they are NON-Consolidated points, to be consolidated at the end of the project.";
+				$message .= "<br><br>Thank you for your effort.";
+				$message .= "<br><br>The NOVAMEX Team.";
+			
+				$subject=" UPDATE from Points given to you at Project: ".$proyecto;
+				send_mail ($email_usuario,$message,$subject);
+			}
+			else
+			{
+				//email en espanol
+				$message="Hola ".$nombre." !";
+				$message .= "<br>Has conseguido ".$puntos_obtenidos." puntos en el proyecto ".$proyecto." / Revision: ".$nombre_revision;
+				$message .= "<br>Comentarios recibidos: ".$comentarios_evaluados;
+				$message .= "<br><br>Recuerda que se trata de puntos NO consolidados, y que se consolidaran una vez finalizado el proyecto.";
+				$message .= "<br><br>Gracias por tu esfuerzo.";
+				$message .= "<br><br>El Equipo NOVAMEX.";
+					
+				$subject=" ACTUALIZACION de puntos recibidos en el proyecto: ".$proyecto;
+				send_mail ($email_usuario,$message,$subject);
+			}
 		}
 		}
 		else {
@@ -82,8 +117,9 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 			{
 				
 			$usuario = $row_usuarios['usuario'];
+			$usuario = $row_usuarios['usuario'];
 				
-			echo $usuario."<br>";
+			
 						
 						if ($stmt = $conn->prepare("INSERT INTO tb_puntos_temporales 
 								SET puntos_temporales = ?, 
@@ -103,10 +139,40 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 			
 			//enviar email cdo puntos asignados
 			 $email_usuario = get_email($usuario);
-			 $message="Hi , Hola";
-			 $message .= $puntos_obtenidos."Points / Puntos";
-			 $subject="Points given to you / Te han asignado puntos por proyecto";
-			 send_mail ($email_usuario,$message,$subject);
+			
+			 $idioma = get_idioma($usuario);
+			 $proyecto = get_proyecto($proyecto_evaluado);
+			 $nombre = get_nombre($usuario);
+			 $nombre_revision = get_nombre_revision($revision_evaluada);
+			 
+			 if ($idioma == "en"){
+			 	//email en ingles
+			 	$message="Hi ".$nombre." !";
+			 	$message .= "<br>You have got ".$puntos_obtenidos." points at project ".$proyecto." / Revision: ".$nombre_revision;
+			 	$message .= "<br>Comments: ".$comentarios_evaluados;
+			 	$message .= "<br><br>Please, remember that they are NON-Consolidated points, to be consolidated at the end of the project.";
+			 	$message .= "<br><br>Thank you for your effort.";
+			 	$message .= "<br><br>The NOVAMEX Team.";
+			 		
+			 	$subject=" Points given to you at Project: ".$proyecto;
+			 	send_mail ($email_usuario,$message,$subject);
+			 }
+			 else 
+			 {
+			 	//email en espanol
+			 	$message="Hola ".$nombre." !";
+			 	$message .= "<br>Has conseguido ".$puntos_obtenidos." puntos en el proyecto ".$proyecto." / Revision: ".$nombre_revision;
+			 	$message .= "<br>Comentarios recibidos: ".$comentarios_evaluados;
+			 	$message .= "<br><br>Recuerda que se trata de puntos NO consolidados, y que se consolidaran una vez finalizado el proyecto.";
+			 	$message .= "<br><br>Gracias por tu esfuerzo.";
+			 	$message .= "<br><br>El Equipo NOVAMEX.";
+			 	
+			 	$subject=" Has recibido puntos en el proyecto: ".$proyecto;
+			 	send_mail ($email_usuario,$message,$subject);
+			 }
+			 
+			 
+			
 			}//usuarios
 			
 			
