@@ -30,12 +30,12 @@
   
   
   if ($idioma_actual == "es"){?>
-  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev']?>"><img src="mexico.png" width="45" height="45" /></a>
-<a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev']?>"><img src="usa.png" width="30" height="30" /></a>
+  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="mexico.png" width="45" height="45" /></a>
+<a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="usa.png" width="30" height="30" /></a>
   <?php }
   if ($idioma_actual == "en"){?>
-  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev']?>"><img src="usa.png" width="45" height="45" /></a>
-  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev']?>"><img src="mexico.png" width="30" height="30" /></a>
+  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="usa.png" width="45" height="45" /></a>
+  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="mexico.png" width="30" height="30" /></a>
 
 <?php }?>
 

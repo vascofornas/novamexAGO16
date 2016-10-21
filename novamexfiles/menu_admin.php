@@ -20,13 +20,13 @@
   
   
   if ($idioma_actual == "es"){?>
-  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es&id=<?php echo  $_GET['id']?>"><img src="mexico.png" width="45" height="45" /></a>
-<a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en&id=<?php echo $_GET['id']?>"><img src="usa.png" width="30" height="30" /></a>
+  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="mexico.png" width="45" height="45" /></a>
+<a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="usa.png" width="30" height="30" /></a>
   <?php }
   if ($idioma_actual == "en"){?>
-  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en&id=<?php echo $_GET['id']?>"><img src="usa.png" width="45" height="45" /></a>
-  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es&id=<?php echo $_GET['id']?>"><img src="mexico.png" width="30" height="30" /></a>
-
+  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=en<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="usa.png" width="45" height="45" /></a>
+  <a href="<?php basename($_SERVER['PHP_SELF'])?>?lang=es<?php echo '&id='.$_GET['id'].'&rev='.$_GET['rev'].'&pu='.$_GET['pu']?>"><img src="mexico.png" width="30" height="30" /></a>
+  
 <?php }?>
 
 <?php 
@@ -76,9 +76,20 @@ else
                         
                     </ul>
                 </li>
-               <?php
+                
+                <?php  
 				$nivel = $row['userLevel'];
-			
+				if ($nivel == "Level 3" || $nivel == "Level 4" || $nivel == "Level 5") {
+				?>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_3_OPTIONS']?> <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="mispuntoslibres_select.php"><?php echo $lang['FREE_POINTS']?></a></li>
+                        
+                    </ul>
+                </li>
+              <?php 
+				}
 				if ($nivel == "Level 5") {
 					?>
                 <li class="dropdown">

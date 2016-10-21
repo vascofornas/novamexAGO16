@@ -63,6 +63,7 @@ $lang['BY'] = 'por ';
 // ADMIN_HOME.PHP
 
 $lang['LEVEL_5_OPTIONS'] = 'Opciones de Nivel 5';
+$lang['LEVEL_3_OPTIONS'] = 'Opciones de Nivel 3';
 $lang['WELCOME_MESSAGE'] = 'Mensaje de Bienvenida';
 $lang['BUSINESS_UNITS'] = 'Unidades de Negocio';
 $lang['DEPARTMENTS'] = 'Departamentos';

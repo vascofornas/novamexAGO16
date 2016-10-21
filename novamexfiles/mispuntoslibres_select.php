@@ -1,6 +1,7 @@
 <?php require_once('Connections/conexion.php'); 
 header('Content-type: text/html; charset=utf-8' , true );
 include_once 'common.php';
+include_once 'funciones.php';
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -106,7 +107,7 @@ textarea {
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_free_points.js"></script>
+    <script charset="utf-8" src="webapp_free_points_level3.js"></script>
 
 
 <style type="text/css">
@@ -293,7 +294,7 @@ body {
 </head> 
 <body>
 
-<?php include 'menu_admin.php';?>
+<?php include 'menu.php';?>
 <div class="container">
 	<div class="row">
 
@@ -308,149 +309,56 @@ body {
     <div id="page_container">
 
       
+<?php
 
-      <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_FREE_POINTS']?></button>
-        
-      </div>
-      <table class="datatable" id="table_companies">
-        <thead>
-          <tr>
-           
-            
-            <th><?php echo $lang['ASSIGNED_BY']?></th>
-            <th><?php echo $lang['ASSIGNED_TO']?></th>
-            <th><?php echo $lang['ASSIGNED_POINTS']?></th>
-            <th><?php echo $lang['MAX_ASSIGNED_POINTS']?></th>
-         <th><?php echo $lang['GIVEN_POINTS']?></th>
-         
-            
-            <th><?php echo $lang['ACTIONS']?></th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
+//run the query
+	
+		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM 
+				tb_puntos_libres
+		WHERE level3_user = '".$row['userID']."' 
+		")
+		or die (mysqli_error($dbh));
+		?>
+		
+		<table class="table" style="background-color:powderblue;" >
+			<thead>
+			<tr>
+			<th><?php echo $lang['ASSIGNED_BY']?></th>
+			<th><?php echo $lang['ASSIGNED_TO']?></th>
+			<th><?php echo $lang['ASSIGNED_POINTS']?></th>
+			<th><?php echo $lang['GIVEN_POINTS']?></th>
+			<th><?php echo $lang['ADD_FREE_POINTS']?></th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<?php
+			$puntos_temporales=0;
+		while ($row_puntos_temporales = mysqli_fetch_array($loop_puntos_temporales))
 
-</div>
+		{
+			$puntos_temporales =  $puntos_temporales + $row_puntos_temporales['puntos_temporales'];
+			?>
+			
+			<tr>
+			<td><?php echo get_nombre($row_puntos_temporales['level5_user'])?></td>
+			<td><?php echo get_nombre($row_puntos_temporales['level3_user'])?></td>
+			<td><?php echo $row_puntos_temporales['total_puntos_libres']?></td>
+			<td><?php echo $row_puntos_temporales['total_puntos_consumidos']?></td>
+			<td><a href="mispuntoslibres.php?pu=<?php echo $row_puntos_temporales['id_puntos_libres']?>" class="btn btn-info" role="button"><?php echo $lang['ADD_FREE_POINTS']?></a></td>
+			
+			</tr>
+			
+			
+			<?php 
+			}
 
-    <div class="lightbox_bg"></div>
-
-    <div class="lightbox_container">
-      <div class="lightbox_close"></div>
-      <div class="lightbox_content">
-        
-        <h2><?php echo $lang['ADD_FREE_POINTS']?></h2>
-        <form class="form add" id="form_company" data-id="" novalidate>
-          
-       
-       
-         <?php   $sqlBU="SELECT * FROM tbl_users WHERE (userLevel = 'Level 5')";?>
-           
-<div class="input_container">
-        <label for="level5_user"><?php echo $lang['ASSIGNED_BY']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="level5_user" name="level5_user" class="selectpicker"  required>
-           
-           
-        <?php   if ($result=mysqli_query($conexion,$sqlBU))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    printf ("%s (%s)\n",$row[0],$row[1]);
-    echo '<option value='.$row[0].' selected>'.$row[7].' '.$row[8].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($result);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
-            </div>
-          </div>
-         <?php   $sqlBU="SELECT * FROM tbl_users WHERE (userLevel = 'Level 3' OR userLevel = 'Level 4' OR userLevel = 'Level 5')";?>
-           
-<div class="input_container">
-        <label for="level3_user"><?php echo $lang['ASSIGNED_TO']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="level3_user" name="level3_user" class="selectpicker"  required>
-           
-           
-        <?php   if ($result=mysqli_query($conexion,$sqlBU))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    printf ("%s (%s)\n",$row[0],$row[1]);
-    echo '<option value='.$row[0].' selected>'.$row[7].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($result);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
-            </div>   </div>      
-     <div class="input_container">
-            <label for="total_puntos_libres"><?php echo $lang['ASSIGNED_POINTS']?> <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="number" class="text" name="total_puntos_libres" id="total_puntos_libres" value="" >
-            </div>
-          </div>  
-     <div class="input_container">
-            <label for="max_puntos_libres"><?php echo $lang['MAX_ASSIGNED_POINTS']?> <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="number" class="text" name="max_puntos_libres" id="max_puntos_libres" value="" >
-            </div>
-          </div>               
-     <div class="input_container">
-            <label for="total_puntos_consumidos"><?php echo $lang['GIVEN_POINTS']?> </label>
-            <div class="field_container">
-              <input type="number" class="text" name="total_puntos_consumidos" id="total_puntos_consumidos" value="" readonly >
-            </div>
-          </div>  
-              
-          <div class="button_container">
-            <button type="submit"><?php echo $lang['ADD_FREE_POINTS']?></button>
-          </div>
-        </form>
-        
-      </div>
-    </div>
-
-    <noscript id="noscript_container">
-      <div id="noscript" class="error">
-        <p>JavaScript support is needed to use this page.</p>
-      </div>
-    </noscript>
-
-    <div id="message_container">
-      <div id="message" class="success">
-        <p>This is a success message.</p>
-      </div>
-    </div>
-
-    <div id="loading_container">
-      <div id="loading_container2">
-        <div id="loading_container3">
-          <div id="loading_container4">
-           <?php echo $lang['PROCESSING']?>
-          </div>
-        </div>
-      </div>
+			
+?></tbody>
+			</table>
+	
+  </h4>
     </div>
     
 </body>

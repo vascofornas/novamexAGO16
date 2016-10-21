@@ -106,7 +106,7 @@ textarea {
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_free_points.js"></script>
+    <script charset="utf-8" src="webapp_free_points_level3.js"></script>
 
 
 <style type="text/css">
@@ -293,7 +293,7 @@ body {
 </head> 
 <body>
 
-<?php include 'menu_admin.php';?>
+<?php include 'menu.php';?>
 <div class="container">
 	<div class="row">
 
@@ -318,11 +318,12 @@ body {
           <tr>
            
             
-            <th><?php echo $lang['ASSIGNED_BY']?></th>
+            
             <th><?php echo $lang['ASSIGNED_TO']?></th>
             <th><?php echo $lang['ASSIGNED_POINTS']?></th>
-            <th><?php echo $lang['MAX_ASSIGNED_POINTS']?></th>
-         <th><?php echo $lang['GIVEN_POINTS']?></th>
+            <th><?php echo $lang['COMMENTS']?></th>
+            <th><?php echo $lang['DATE']?></th>
+       
          
             
             <th><?php echo $lang['ACTIONS']?></th>
@@ -345,12 +346,12 @@ body {
           
        
        
-         <?php   $sqlBU="SELECT * FROM tbl_users WHERE (userLevel = 'Level 5')";?>
+         <?php   $sqlBU="SELECT * FROM tbl_users";?>
            
 <div class="input_container">
-        <label for="level5_user"><?php echo $lang['ASSIGNED_BY']?>: <span class="required">*</span></label>
+        <label for="recibe_usuario"><?php echo $lang['ASSIGNED_TO']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
-              <select  id="level5_user" name="level5_user" class="selectpicker"  required>
+              <select  id="recibe_usuario" name="recibe_usuario" class="selectpicker"  required>
            
            
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
@@ -375,54 +376,26 @@ body {
               </select>
             </div>
           </div>
-         <?php   $sqlBU="SELECT * FROM tbl_users WHERE (userLevel = 'Level 3' OR userLevel = 'Level 4' OR userLevel = 'Level 5')";?>
-           
-<div class="input_container">
-        <label for="level3_user"><?php echo $lang['ASSIGNED_TO']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="level3_user" name="level3_user" class="selectpicker"  required>
-           
-           
-        <?php   if ($result=mysqli_query($conexion,$sqlBU))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    printf ("%s (%s)\n",$row[0],$row[1]);
-    echo '<option value='.$row[0].' selected>'.$row[7].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($result);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
-            </div>   </div>      
+ 
      <div class="input_container">
-            <label for="total_puntos_libres"><?php echo $lang['ASSIGNED_POINTS']?> <span class="required">*</span></label>
+            <label for="puntos_otorgados"><?php echo $lang['ASSIGNED_POINTS']?> <span class="required">*</span></label>
             <div class="field_container">
-              <input type="number" class="text" name="total_puntos_libres" id="total_puntos_libres" value="" >
+              <input type="number" class="text" name="puntos_otorgados" id="puntos_otorgados" value="" >
             </div>
           </div>  
      <div class="input_container">
-            <label for="max_puntos_libres"><?php echo $lang['MAX_ASSIGNED_POINTS']?> <span class="required">*</span></label>
+            <label for="comentarios_otorgados"><?php echo $lang['COMMENTS']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="number" class="text" name="max_puntos_libres" id="max_puntos_libres" value="" >
+              <input type="text" class="text" name="comentarios_otorgados" id="comentarios_otorgados" value="" required>
             </div>
-          </div>               
+          </div>
      <div class="input_container">
-            <label for="total_puntos_consumidos"><?php echo $lang['GIVEN_POINTS']?> </label>
-            <div class="field_container">
-              <input type="number" class="text" name="total_puntos_consumidos" id="total_puntos_consumidos" value="" readonly >
+           <div class="field_container">
+           <?php   $clave = isset($_GET['pu']) ?  $_GET['pu'] : ""; /*TRY DUMPING: $clave*/ ?>
+<?php   var_dump($clave); // JUST TO SEE ITS CONTENTS B4 IT GETS TO THE INPUT. ?>
+              <input type="text" class="text" name="puntos_libres_id" id="puntos_libres_id" value="44444000" >
             </div>
-          </div>  
-              
+          </div>         
           <div class="button_container">
             <button type="submit"><?php echo $lang['ADD_FREE_POINTS']?></button>
           </div>

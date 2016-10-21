@@ -64,6 +64,7 @@ $lang['BY'] = 'by ';
 
 $lang['DEPARTMENTS'] = 'Departments';
 $lang['LEVEL_5_OPTIONS'] = 'Level 5 Options';
+$lang['LEVEL_3_OPTIONS'] = 'Level 3 Options';
 $lang['WELCOME_MESSAGE'] = 'Welcome Message';
 $lang['BUSINESS_UNITS'] = 'Business Units';
 $lang['USERS'] = 'Users';
