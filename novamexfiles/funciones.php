@@ -95,7 +95,7 @@ function get_nombre($usuario){
 	//display the results
 	while ($row_usua = mysqli_fetch_array($loop_idioma))
 	{
-		$nombre_del_usuario = $row_usua['nombre_usuario'];
+		$nombre_del_usuario = $row_usua['nombre_usuario']." ".$row_usua['apellidos_usuario'];
 	}
 	return $nombre_del_usuario;
 

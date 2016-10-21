@@ -265,4 +265,12 @@ $lang['NON_CONSOLIDATED_POINTS'] = 'Puntos NO consolidados';
 $lang['CONSOLIDATED_POINTS'] = 'Puntos consolidados';
 
 $lang['FREE_POINTS'] = 'Asignacion libre de puntos';
+$lang['ADD_FREE_POINTS'] = 'Nueva Asignacion libre de puntos';
+$lang['ASSIGNED_BY'] = 'Puntos Asignados Por';
+$lang['ASSIGNED_TO'] = 'Puntos Asignados A';
+$lang['ASSIGNED_POINTS'] = 'Total de Puntos Asignados';
+
+$lang['MAX_ASSIGNED_POINTS'] = 'Max # Puntos a usuarios';
+
+$lang['GIVEN_POINTS'] = 'Puntos ya distribuidos';
 ?>
