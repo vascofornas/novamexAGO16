@@ -55,6 +55,10 @@ if (!$user_home->is_logged_in())
 $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+$texto = "USUARIO ENTRA EN ZONA DE ADMINISTRADORES";
+$codigo = "007";
+$miemail = get_email($_SESSION['userSession']);
+add_log($texto,$miemail,$codigo);
 ?>
 <!DOCTYPE html>
 <html lang="en">

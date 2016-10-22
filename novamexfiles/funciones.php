@@ -21,13 +21,13 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-function add_log ($texto, $usuario){
+function add_log ($texto, $usuario, $codigo){
 	
 	$ip = get_client_ip();
 	
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
-    $stmt = $mysqli->prepare("INSERT INTO tb_historico (texto,usuario,ip) VALUES (?,?,?)");
-        $stmt->bind_param("sss", $texto, $usuario, $ip);
+    $stmt = $mysqli->prepare("INSERT INTO tb_historico (texto,usuario,ip,codigo) VALUES (?,?,?,?)");
+        $stmt->bind_param("ssss", $texto, $usuario, $ip,$codigo);
 $stmt->execute();
 	  
 }

@@ -193,6 +193,7 @@ body {
            
             
             <th><?php echo $lang['EVENT']?></th>
+            <th><?php echo $lang['CODIGO']?></th>
             <th><?php echo $lang['DATE']?></th>
             <th><?php echo $lang['USERID']?></th>
             <th><?php echo $lang['IP']?></th>

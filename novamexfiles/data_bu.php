@@ -2,6 +2,7 @@
 
 session_start();
 require_once 'class.user.php';
+include_once 'funciones.php';
 $user_home = new USER();
 if (!$user_home->is_logged_in())
 {
@@ -102,6 +103,10 @@ if ($job != ''){
   
   } elseif ($job == 'add_company'){
     
+  	$texto = "USUARIO CREA NUEVA UNIDAD DE NEGOCIO";
+  	$codigo = "013";
+  	$miemail = get_email($_SESSION['userSession']);
+  	add_log($texto,$miemail,$codigo);
     // Add company
     $query = "INSERT INTO tb_unidades_negocio SET ";
     if (isset($_GET['unidad_negocio'])) { $query .= "unidad_negocio = '" . mysqli_real_escape_string($db_connection, $_GET['unidad_negocio']) .   "'"; }
@@ -122,6 +127,10 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	$texto = "USUARIO EDITA UNIDAD DE NEGOCIO";
+    	$codigo = "014";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
       $query = "UPDATE tb_unidades_negocio SET ";
       if (isset($_GET['unidad_negocio'])) { $query .= "unidad_negocio = '" . mysqli_real_escape_string($db_connection, $_GET['unidad_negocio']) . "'";    }
       $query .= "WHERE id_unidades_negocio = '" . mysqli_real_escape_string($db_connection, $id) . "'";
@@ -142,6 +151,10 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	$texto = "USUARIO ELIMINA UNIDAD DE NEGOCIO";
+    	$codigo = "015";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
       $query = "DELETE FROM tb_unidades_negocio WHERE id_unidades_negocio = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){

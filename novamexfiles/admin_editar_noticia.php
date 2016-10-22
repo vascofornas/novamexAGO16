@@ -1,5 +1,6 @@
 <?php require_once('Connections/conexion.php');
 include_once 'common.php';
+include_once 'funciones.php';
 $noticia=$_GET['id'];
 mysqli_select_db($conexion,$database_conexion);
 $query_Recordset1 = "SELECT * FROM tb_news WHERE id_news = '".$noticia."'";

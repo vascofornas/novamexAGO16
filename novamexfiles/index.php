@@ -26,8 +26,8 @@ if(isset($_POST['btn-login']))
 	{
 		
 		$texto = "INTENTO DE LOGIN DE USUARIO REGISTRADO";
-		
-		add_log($texto,$email);
+		$codigo = "001";
+		add_log($texto,$email,$codigo);
 		
 		$user_login->redirect('home.php');
 	}

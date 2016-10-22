@@ -2,6 +2,7 @@
 
 session_start();
 require_once 'class.user.php';
+include_once 'funciones.php';
 $user_home = new USER();
 if (!$user_home->is_logged_in())
 {
@@ -109,6 +110,10 @@ if ($job != ''){
   } elseif ($job == 'add_company'){
     
     // Add company
+  	$texto = "USUARIO CREA NUEVO EQUIPO";
+  	$codigo = "019";
+  	$miemail = get_email($_SESSION['userSession']);
+  	add_log($texto,$miemail,$codigo);
     $query = "INSERT INTO tb_equipos SET ";
     if (isset($_GET['nombre_equipo'])) { $query .= "nombre_equipo = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_equipo']) . "', "; }
     if (isset($_GET['unidad_negocio_equipo'])) { $query .= "unidad_negocio_equipo = '" . mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_equipo']) . "', "; }
@@ -131,6 +136,10 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	$texto = "USUARIO EDITA EQUIPO";
+    	$codigo = "020";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
       $query = "UPDATE tb_equipos SET ";
       if (isset($_GET['nombre_equipo'])) { $query .= "nombre_equipo = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_equipo']) . "', "; }
       if (isset($_GET['unidad_negocio_equipo'])) { $query .= "unidad_negocio_equipo = '" . mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_equipo']) . "', "; }
@@ -154,6 +163,10 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	$texto = "USUARIO BORRA EQUIPO";
+    	$codigo = "021";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
       $query = "DELETE FROM tb_equipos WHERE id_equipo = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){

@@ -47,8 +47,8 @@ if(isset($_POST['btn-signup']))
 			$subject = $lang['CONFIRM_REGISTRATION'];
 			
 			$texto = "REGISTRO DE USUARIO REALIZADO";
-			
-			add_log($texto,$email);
+			$codigo = "004";
+			add_log($texto,$email,$codigo);
 			
 			
 			$reg_user->send_mail($email,$message,$subject);	

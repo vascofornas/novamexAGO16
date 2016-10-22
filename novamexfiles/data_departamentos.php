@@ -2,6 +2,7 @@
 
 session_start();
 require_once 'class.user.php';
+include_once 'funciones.php';
 $user_home = new USER();
 if (!$user_home->is_logged_in())
 {
@@ -107,6 +108,10 @@ if ($job != ''){
   } elseif ($job == 'add_company'){
     
     // Add company
+  	$texto = "USUARIO CREA NUEVO DEPARTAMENTO";
+  	$codigo = "016";
+  	$miemail = get_email($_SESSION['userSession']);
+  	add_log($texto,$miemail,$codigo);
     $query = "INSERT INTO tb_departamentos SET ";
     if (isset($_GET['nombre_departamento'])) { $query .= "nombre_departamento = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_departamento']) . "', "; }
    
@@ -128,6 +133,10 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	$texto = "USUARIO EDITA DEPARTAMENTO";
+    	$codigo = "017";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
       $query = "UPDATE tb_departamentos SET ";
       if (isset($_GET['nombre_departamento'])) { $query .= "nombre_departamento = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_departamento']) . "', "; }
       
@@ -150,6 +159,10 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	$texto = "USUARIO BORRA DEPARTAMENTO";
+    	$codigo = "018";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
       $query = "DELETE FROM tb_departamentos WHERE id_departamento = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){

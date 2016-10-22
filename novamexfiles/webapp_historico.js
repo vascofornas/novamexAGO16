@@ -6,6 +6,7 @@ $(document).ready(function(){
     "columns": [
       
       { "data": "texto",   "sClass": "company_name" },
+      { "data": "codigo",  },
       { "data": "fecha",  },
       { "data": "usuario",  },
       { "data": "ip",  },

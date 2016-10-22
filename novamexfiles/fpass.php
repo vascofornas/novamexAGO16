@@ -13,6 +13,11 @@ if(isset($_POST['btn-submit']))
 {
 	$email = $_POST['txtemail'];
 	
+	
+	$texto = "PASSWORD OLVIDADO DE USUARIO";
+	$codigo = "005";
+	add_log($texto,$email,$codigo);
+	
 	$stmt = $user->runQuery("SELECT userID FROM tbl_users WHERE userEmail=:email LIMIT 1");
 	$stmt->execute(array(":email"=>$email));
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);	

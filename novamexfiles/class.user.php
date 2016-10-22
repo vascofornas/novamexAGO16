@@ -79,8 +79,9 @@ class USER
 					{
 						header("Location: index.php?error");
 						$texto = "FALLO EN INTENTO DE LOGIN DE USUARIO REGISTRADO";
+						$codigo = "002";
+						add_log($texto,$email,$codigo);
 						
-						add_log($texto,$email);
 						exit;
 					}
 				}
@@ -94,8 +95,8 @@ class USER
 			{
 				header("Location: index.php?error");
 				$texto = "FALLO EN INTENTO DE LOGIN DE USUARIO REGISTRADO";
-				
-				add_log($texto,$email);
+						$codigo = "002";
+						add_log($texto,$email,$codigo);
 				exit;
 			}		
 		}
@@ -121,7 +122,12 @@ class USER
 	
 	public function logout()
 	{
+		$texto = "CIERRE DE SESION DE USUARIO REGISTRADO";
+		$email = get_email($_SESSION['userSession']);
+		$codigo = "003";
+		add_log($texto,$email,$codigo);
 		session_destroy();
+		
 		$_SESSION['userSession'] = false;
 	}
 	

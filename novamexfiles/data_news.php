@@ -2,6 +2,7 @@
 
 session_start();
 require_once 'class.user.php';
+include_once 'funciones.php';
 $user_home = new USER();
 if (!$user_home->is_logged_in())
 {
@@ -168,6 +169,10 @@ if ($job != ''){
     } else {
       $query = "DELETE FROM tb_news WHERE id_news = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
+      $texto = "USUARIO ELIMINA NOTICIA";
+      $codigo = "012";
+      $miemail = get_email($_SESSION['userSession']);
+      add_log($texto,$miemail,$codigo);
       if (!$query){
         $result  = 'error';
         $message = 'query error';

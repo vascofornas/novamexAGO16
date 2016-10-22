@@ -5,6 +5,8 @@ $dbusername =  'herasosj_novamex';
 $dbpassword =  'Papa020432';
 $dbname = 'herasosj_novamex';
 
+include_once 'funciones.php';
+
 if ($_POST['title_news']) {
 
 
@@ -23,6 +25,11 @@ if ($_POST['title_news']) {
     $user_news = $_POST['user_news'];    
   
     $link = new PDO("mysql:host=$dbhost;dbname=$dbname",$dbusername,$dbpassword);
+    
+    $texto = "USUARIO ESCRIBE UNA NOTICIA";
+    $codigo = "010";
+    $miemail = get_email($_SESSION['userSession']);
+    add_log($texto,$miemail,$codigo);
     
     $statement = $link->prepare("INSERT INTO tb_news (title_news,title_news_en,text_news,text_news_en,user_news, active_news)
     VALUES(:fn1, :fn2, :fn3, :fn4, :fn5, :fn6)");

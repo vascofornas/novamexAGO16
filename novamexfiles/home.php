@@ -2,6 +2,7 @@
 
 header('Content-type: text/html; charset=utf-8' , true );
 include_once 'common.php';
+include_once 'funciones.php';
 
 require_once('Connections/conexion.php');
 if (!function_exists("GetSQLValueString")) {
@@ -59,6 +60,11 @@ if (!$user_home->is_logged_in())
 $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$texto = "USUARIO ENTRA EN ZONA DE MIEMBROS";
+$codigo = "006";
+$miemail = get_email($_SESSION['userSession']);
+add_log($texto,$miemail,$codigo);
 ?>
 <!DOCTYPE html>
 <html lang="es">

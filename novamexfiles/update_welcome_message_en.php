@@ -4,10 +4,13 @@ define('HOST', 'localhost');
 define('USER', 'herasosj_novamex');
 define('PASS', 'Papa020432');
 define('DBNAME', 'herasosj_novamex');
-
+include_once 'funciones.php';
 if ($_POST['submit']) {
 
-
+	$texto = "USUARIO CAMBIA MENSAJE DE BIENVENIDA -EN-";
+	$codigo = "009";
+	$miemail = get_email($_SESSION['userSession']);
+	add_log($texto,$miemail,$codigo);
 
     $mensaje = $_POST['mensaje'];
    

@@ -4,7 +4,7 @@ $server = 'localhost';
 $user =  'herasosj_novamex';
 $pass =  'Papa020432';
 $db = 'herasosj_novamex';
-
+include_once 'funciones.php';
 // connect to the database
 $mysqli = new mysqli($server, $user, $pass, $db);
 
@@ -13,7 +13,10 @@ mysqli_report(MYSQLI_REPORT_ERROR);
 
 if ($_POST['title_news']) {
 
-
+	$texto = "USUARIO MODIFICA NOTICIA";
+	$codigo = "011";
+	$miemail = get_email($_SESSION['userSession']);
+	add_log($texto,$miemail,$codigo);
 
     $title_news = $_POST['title_news'];
 

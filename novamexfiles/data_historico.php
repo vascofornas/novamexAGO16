@@ -71,6 +71,7 @@ if ($job != ''){
         $mysql_data[] = array(
          
           "texto"  => $company['texto'],
+        		"codigo"  => $company['codigo'],
         		"fecha"  => $company['fecha'],
         		"usuario"  => $company['usuario'],
         		"ip"  => $company['ip'],
