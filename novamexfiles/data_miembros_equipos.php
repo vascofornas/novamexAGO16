@@ -115,10 +115,35 @@ if ($job != ''){
   } elseif ($job == 'add_company'){
     
     // Add company
+  	//add log
   	$texto = "USUARIO CREA NUEVO MIEMBRO DE EQUIPO";
   	$codigo = "022";
   	$miemail = get_email($_SESSION['userSession']);
   	add_log($texto,$miemail,$codigo);
+  
+  	$usuario_miembro = $_GET['usuario'];
+      $email_usuario = get_email($usuario_miembro);
+      $idioma_miembro =  get_idioma($usuario_miembro);
+      $nombre_usuario = get_nombre($usuario_miembro);
+      $equipo = get_team($_GET['equipo']);
+      if ($idioma_miembro == "en"){
+      	$message = "Hi, ".$nombre_usuario."!<br><br>";
+      	$message .= "You have been assigned to Team: ".$equipo.".";
+      	$message .= "<br>from ".$_GET['fecha_alta']." to ".$_GET['fecha_baja'];
+      	$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+      	$subject = "You have been assigned to Team ".$equipo;
+      	send_mail($email_usuario,$message,$subject);
+      }
+      else {
+      	$message = "Hola, ".$nombre_usuario."!<br><br>";
+      	$message .= "Te han asignado al equipo: ".$equipo.".";
+      	$message .= "<br>desde el ".$_GET['fecha_alta']." al ".$_GET['fecha_baja'];
+      	$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+      	$subject = "Te han asignado al equipo ".$equipo;
+      	send_mail($email_usuario,$message,$subject);
+      	
+      }
+  	
     $query = "INSERT INTO tb_miembros_equipos SET ";
     if (isset($_GET['usuario'])) { $query .= "usuario = '" . mysqli_real_escape_string($db_connection, $_GET['usuario']) . "', "; }
     if (isset($_GET['equipo'])) { $query .= "equipo = '" . mysqli_real_escape_string($db_connection, $_GET['equipo']) . "', "; }
@@ -134,6 +159,7 @@ if ($job != ''){
     } else {
       $result  = 'success';
       $message = 'query success';
+      
     }
   
   } elseif ($job == 'edit_company'){
@@ -147,6 +173,33 @@ if ($job != ''){
     	$codigo = "023";
     	$miemail = get_email($_SESSION['userSession']);
     	add_log($texto,$miemail,$codigo);
+    	
+    	$usuario_miembro = $_GET['usuario'];
+    	$email_usuario = get_email($usuario_miembro);
+    	$idioma_miembro =  get_idioma($usuario_miembro);
+    	$nombre_usuario = get_nombre($usuario_miembro);
+    	$equipo = get_team($_GET['equipo']);
+    	if ($idioma_miembro == "en"){
+    		$message = "Hi, ".$nombre_usuario."!<br><br>";
+    		$message .= "Your assignment to Team: ".$equipo." has been updated.";
+    		$message .= "<br>from ".$_GET['fecha_alta']." to ".$_GET['fecha_baja'];
+    		$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+    		$subject = "Updated assignment to Team ".$equipo;
+    		send_mail($email_usuario,$message,$subject);
+    	}
+    	else {
+    		$message = "Hola, ".$nombre_usuario."!<br><br>";
+    		$message .= "Tu asignacion al equipo: ".$equipo." ha sido modificada.";
+    		$message .= "<br>desde el ".$_GET['fecha_alta']." al ".$_GET['fecha_baja'];
+    		$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+    		$subject = "Modificada tu asignacion al equipo ".$equipo;
+    		send_mail($email_usuario,$message,$subject);
+    		 
+    	}
+    	
+    	
+    	
+    	
       $query = "UPDATE tb_miembros_equipos SET ";
       if (isset($_GET['usuario'])) { $query .= "usuario = '" . mysqli_real_escape_string($db_connection, $_GET['usuario']) . "', "; }
       if (isset($_GET['equipo'])) { $query .= "equipo = '" . mysqli_real_escape_string($db_connection, $_GET['equipo']) . "', "; }
@@ -174,6 +227,41 @@ if ($job != ''){
     	$codigo = "024";
     	$miemail = get_email($_SESSION['userSession']);
     	add_log($texto,$miemail,$codigo);
+    	
+    	
+    	
+    	
+    	$usuario_miembro = get_team_member_user($id);
+    	
+    	$email_usuario = get_email($usuario_miembro);
+    	$idioma_miembro =  get_idioma($usuario_miembro);
+    	$nombre_usuario = get_nombre($usuario_miembro);
+    	$id_equipo = get_team_member($id);
+    	$equipo = get_team($id_equipo);
+    	
+    	if ($idioma_miembro == "en"){
+    		$message = "Hi, ".$nombre_usuario."!<br><br>";
+    		$message .= "Your assignment to Team: ".$equipo." has been canceled.";
+    		$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+    		$subject = "Assignment cancelation to Team ".$equipo;
+    		send_mail($email_usuario,$message,$subject);
+    	}
+    	else {
+    		$message = "Hola, ".$nombre_usuario."!<br><br>";
+    		$message .= "Tu asignacion al equipo: ".$equipo." ha sido cancelada.";
+    		$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+    		$subject = "Cancelada tu asignacion al equipo ".$equipo;
+    		send_mail($email_usuario,$message,$subject);
+    		 
+    	}
+    	 
+    	
+    	
+    	
+    	
+    	
+    	
+    	
       $query = "DELETE FROM tb_miembros_equipos WHERE id_miembro = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){

@@ -117,7 +117,57 @@ function get_proyecto($proyecto){
 	return $proyecto;
 
 }
+function get_team($team){
 
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_equipos WHERE id_equipo = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['nombre_equipo'];
+	}
+	return $equipo;
+
+}
+function get_team_member($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_miembros_equipos WHERE id_miembro = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['equipo'];
+	}
+	return $equipo;
+
+}
+function get_team_member_user($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_miembros_equipos WHERE id_miembro = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['usuario'];
+	}
+	return $equipo;
+
+}
 function send_mail($email,$message,$subject)
 {
 	require_once('mailer/class.phpmailer.php');
