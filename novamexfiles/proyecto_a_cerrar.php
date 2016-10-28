@@ -243,6 +243,7 @@ function subirimagen()
   </div>
   <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
   <HR>
+
  <?php 
 $id = $_GET['id'];
 //run the query
@@ -252,17 +253,24 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_puntos_temporales WHERE proyec
 
 
 //display the results
-$num = 0;
+$num_puntos = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	echo $row_proyectos['usuario_puntos_temporales'].":".$row_proyectos['puntos_temporales']."<br>";
+	$num_puntos = $num_puntos+
 	$sql = "UPDATE
     tb_puntos_temporales pd INNER JOIN tb_puntos_temporales pd2 ON
     (pd.id_puntos_temporales=pd2.id_puntos_temporales )
 SET pd2.consolidados_puntos_temporales = pd.puntos_temporales";
 	
+	
+	echo "<br>EL USUARIO ".$row_proyectos['usuario_puntos_temporales']." TIENE ".$row_proyectos['puntos_temporales']."<BR>";
+	
+	echo "<br>SE HAN CONVERTIDO ".$row_proyectos['puntos_temporales']." A PUNTOS CONSOLIDADOS DEL USUARIO ".$row_proyectos['usuario_puntos_temporales']."<BR>";
+	
+	
+	
 	if ($conexion->query($sql) === TRUE) {
-		echo "Record updated successfully";
+		//echo "Record updated successfully";
 	} else {
 		echo "Error updating record: " . $conexion->error;
 	}
@@ -279,32 +287,48 @@ or die (mysqli_error($dbh));
 $num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	echo $row_proyectos['usuario_puntos_temporales'].":".$row_proyectos['puntos_temporales']."<br>";
-	$sql = "UPDATE
-    tb_puntos_temporales 
-SET puntos_temporales = 0 WHERE proyecto_puntos_temporales = $id";
+	$existen = 0;
 
+	
+	$existen =comprobar_existe_puntos_disponibles($row_proyectos['usuario_puntos_temporales']);
+	
+	if ($existen == 0){
+		//creamos registro en puntos disponibles
+		echo "<br>";
+		echo "NO TIENE REGISTRO EN PUNTOS DISPONIBLES del usuario ".$row_proyectos[$usuario_puntos_temporales];
+		
+		//ponemos los puntos consolidados en puntos disponibles
+		
+		$sql1 = "INSERT INTO tb_puntos_disponibles (puntos_conseguidos,usuario_puntos_disponibles) VALUES
+		('".$row_proyectos['consolidado_puntos_temporales']."','".$row_proyectos['usuario_puntos_temporales']."')";
+		
+		if ($conexion->query($sql1) === TRUE) {
+			echo "Record updated successfully";
+		} else {
+			echo "Error updating record: " . $conexion->error;
+		}
+		
+	}
+	if ($existen == 1){
+		//creamos registro en puntos disponibles
+		echo " TIENE REGISTRO EN PUNTOS DISPONIBLES del usuario ".$row_proyectos[$usuario_puntos_temporales];
+	}
+	if ($existen > 1){
+		//creamos registro en puntos disponibles
+		echo " TIENE VARIOS REGISTROS EN PUNTOS DISPONIBLES";
+	}
+	$sql = "UPDATE
+	tb_puntos_temporales
+	SET puntos_temporales = 0 WHERE proyecto_puntos_temporales = $id";
+	
+	
+	echo "<br>SE HAN QUITADO LOS PUNTOS TEMPORALES DE ".$row_proyectos['usuario_puntos_temporales'];
+	
 	if ($conexion->query($sql) === TRUE) {
 		echo "Record updated successfully";
 	} else {
 		echo "Error updating record: " . $conexion->error;
 	}
-	
-	$existen =comprobar_existe_puntos_disponibles($_SESSION['userSession']);
-	echo $existen ;
-	if ($existen == 0){
-		//creamos registro en puntos disponibles
-		echo "NO TIENE REGISTRO EN PUNTOS DISPONIBLES";
-	}
-	if ($existen == 1){
-		//creamos registro en puntos disponibles
-		echo " TIENE REGISTRO EN PUNTOS DISPONIBLES";
-	}
-	if ($existen . 1){
-		//creamos registro en puntos disponibles
-		echo " TIENE VARIOS REGISTROS EN PUNTOS DISPONIBLES";
-	}
-
 }
 ?>
   
