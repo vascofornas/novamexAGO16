@@ -343,6 +343,7 @@ body {
              
               <th><?php echo $lang['START_DATE']?></th>
                <th><?php echo $lang['END_DATE']?></th>
+               <th><?php echo $lang['CLOSED_PROJECT']?></th>
          
          
             

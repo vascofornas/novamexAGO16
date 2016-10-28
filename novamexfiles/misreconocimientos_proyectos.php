@@ -67,7 +67,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 
   
 
@@ -168,14 +168,6 @@ div.logo {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
-<!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  
- <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-    folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
 <script type="text/javascript">
 $(document).ready(function() {	
 	
@@ -222,75 +214,201 @@ function subirimagen()
 
 <div class = "container">
   
-         
+   <div class = "row" >
+   
+   
+  <div class="col-sm-12 col-md-12 col-lg-12"><H2><center><?php echo $lang['MIS_RECONOCIMIENTOS']?></center></H2>
+  <HR>
+  <h3><center><?php echo $lang['MY_PROJECTS']?></center></h3>
+  <h4>
+<?php
 
-  <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3><?php echo '<font color="red">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font> - <font color="green">'.get_puntos_consolidados_proyectos($_SESSION['userSession']).'</font>'?></h3>
-                  
-                  <H4><?php echo $lang['PROJECTS']?></h4>
-                </div>
-                <div class="icon">
-                 <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="misreconocimientos_proyectos.php" class="small-box-footer">
-                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Asignacion Libre</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3>65</h3>
-                  <p>Unique Visitors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-          </div><!-- /.row -->
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+    or die (mysqli_error($dbh));
 
-  
+
+
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	//run the query
+	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
+	or die (mysqli_error($dbh));
+	while ($row_miembros = mysqli_fetch_array($loop_miembros))
+	{
+	
+	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
+	{
+echo "<BR><strong>". $lang['PROJECT_NAME'].': '.$row_proyectos['nombre_proyecto'] ."</strong></a><br> "."<hr>";
+		
+		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM 
+				tb_puntos_temporales
+				LEFT JOIN tb_revisiones_proyectos ON
+				tb_puntos_temporales.revision_puntos_temporales = tb_revisiones_proyectos.id_revisiones_proyectos
+				WHERE proyecto_puntos_temporales = '".$row_proyectos['id_proyecto']."'
+						AND usuario_puntos_temporales = '".$row['userID']."' 
+		")
+		or die (mysqli_error($dbh));
+		?>
+		
+		<table class="table"  >
+			<thead style="background-color:Green;color:white;" >
+			<tr>
+			<th><?php echo $lang['DATE']?></th>
+			<th><?php echo $lang['REVISION_NAME']?></th>
+			<th><?php echo $lang['COMMENTS']?></th>
+			<th><?php echo $lang['CONSOLIDATED_POINTS']?></th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<?php
+			$puntos_temporales=0;
+		while ($row_puntos_temporales = mysqli_fetch_array($loop_puntos_temporales))
+
+		{
+			
+			if ( $row_puntos_temporales['consolidados_puntos_temporales'] >0 ){
+			$puntos_temporales =  $puntos_temporales + $row_puntos_temporales['consolidados_puntos_temporales'];
+			?>
+					<tr>
+			<td style="background-color:GreenYellow ;" ><?php echo $row_puntos_temporales['fecha_puntos_temporales']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_puntos_temporales['nombre_revision']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_puntos_temporales['comentarios_puntos_temporales']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_puntos_temporales['consolidados_puntos_temporales']?></td>
+			
+			</tr>
+			
+			<?php 
+			
+			}
+			else{
+				$puntos_temporales = $puntos_temporales;
+				
+				
+				?>
+		
+			<?php 
+			}
+	?>
+			
+			
+			
+			
+			<?php 
+			}
+
+			echo $lang['CONSOLIDATED_POINTS'].": ".$puntos_temporales;
+?></tbody>
+			</table>
+			<?php 
+	}
+	else{}
+	}
+	}
+?>
+
+<?php
+
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	//run the query
+	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
+	or die (mysqli_error($dbh));
+	while ($row_miembros = mysqli_fetch_array($loop_miembros))
+	{
+	
+	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
+	{
+echo "<BR><strong>". $lang['PROJECT_NAME'].': '.$row_proyectos['nombre_proyecto'] ."</strong></a><br> "."<hr>";
+		
+		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM 
+				tb_puntos_temporales
+				LEFT JOIN tb_revisiones_proyectos ON
+				tb_puntos_temporales.revision_puntos_temporales = tb_revisiones_proyectos.id_revisiones_proyectos
+				WHERE proyecto_puntos_temporales = '".$row_proyectos['id_proyecto']."'
+						AND usuario_puntos_temporales = '".$row['userID']."' 
+		")
+		or die (mysqli_error($dbh));
+		?>
+		
+		<table class="table"  >
+			<thead style="background-color:Red;color:white;" >
+			<tr>
+			<th><?php echo $lang['DATE']?></th>
+			<th><?php echo $lang['REVISION_NAME']?></th>
+			<th><?php echo $lang['COMMENTS']?></th>
+			<th><?php echo $lang['NON_CONSOLIDATED_POINTS']?></th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<?php
+			$puntos_temporales=0;
+		while ($row_puntos_temporales = mysqli_fetch_array($loop_puntos_temporales))
+
+		{
+			
+			if ( $row_puntos_temporales['puntos_temporales'] > 0){
+			$puntos_temporales =  $puntos_temporales + $row_puntos_temporales['puntos_temporales'];
+			?>
+					<tr>
+			<td style="background-color:AntiqueWhite  ;" ><?php echo $row_puntos_temporales['fecha_puntos_temporales']?></td>
+			<td style="background-color:AntiqueWhite  ;"><?php echo $row_puntos_temporales['nombre_revision']?></td>
+			<td style="background-color:AntiqueWhite  ;"><?php echo $row_puntos_temporales['comentarios_puntos_temporales']?></td>
+			<td style="background-color:AntiqueWhite  ;"><?php echo $row_puntos_temporales['puntos_temporales']?></td>
+			
+			</tr>
+			
+			<?php 
+			
+			}
+			else{
+				$puntos_temporales = $puntos_temporales;
+				
+				
+				?>
+		
+			<?php 
+			}
+	?>
+			
+			
+			
+			
+			<?php 
+			}
+
+			echo $lang['NON_CONSOLIDATED_POINTS'].": ".$puntos_temporales;
+?></tbody>
+			</table>
+			<?php 
+	}
+	else{}
+	}
+	}
+?>
+
+
+
+
+
+
+
+  </h4>
+   
    </div>
+   </div></div>
 
 </body>
 </html>

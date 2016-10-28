@@ -73,6 +73,12 @@ if ($job != ''){
         $functions .= '<li class="function_delete"><a data-id="' . $company['id_proyecto'] . '" data-name="' . $company['nombre_proyecto'] . '"><span>Delete</span></a></li>';
 		
         $functions .= '</ul></div>';
+        if ($company['proyecto_cerrado'] == 0){
+        	$pro = "NO";
+        }
+        if ($company['proyecto_cerrado'] == 1){
+        	$pro = "SI";
+        }
         $mysql_data[] = array(
          
           "nombre_proyecto"  => $company['nombre_proyecto'],
@@ -83,6 +89,7 @@ if ($job != ''){
         		
         		"fecha_inicio_proyecto"    => $company['fecha_inicio_proyecto'],
         		"fecha_final_proyecto"    => $company['fecha_final_proyecto'],
+        		"proyecto_cerrado"    => $pro,
         
 		 
           "functions"     => $functions

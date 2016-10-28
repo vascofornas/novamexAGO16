@@ -178,34 +178,9 @@ div.logo {
 }
 </style>
 <script type="text/javascript">
-
-   
-</script>
-<script type="text/javascript">
 $(document).ready(function() {	
-
-	 var elems = document.getElementsByClassName('confirmation');
-	    var confirmIt = function (e) {
-	        if (!confirm('<?php echo $lang['CONFIRMATION']?>')) e.preventDefault();
-	    };
-	    for (var i = 0, l = elems.length; i < l; i++) {
-	        elems[i].addEventListener('click', confirmIt, false);
-	    }
-	// submit form using $.ajax() method
 	
-     function getConfirmation(){
-         alert("KK");
-        var retVal = confirm("Do you want to continue ?");
-        if( retVal == true ){
-           document.write ("User wants to continue!");
-           return true;
-        }
-        else{
-           document.write ("User does not want to continue!");
-           return false;
-        }
-     }
- 
+	// submit form using $.ajax() method
 	
 	$('#reg-form').submit(function(e){
 		
@@ -263,31 +238,15 @@ function subirimagen()
   <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
   		   <br>
  
-    <?php
-    
-    if (comprobar_proyecto($_GET['id']) == 0){
-    echo '<a href="proyecto_a_cerrar.php?id='.$_GET['id'].'&rev='.$rev.' "     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CLOSE_PROJECT'].'</a><br><br>';
-    }
-    if (comprobar_proyecto($_GET['id']) == 1){
-    	echo '<a href="# "     class="btn btn-danger btn-lg active " role="button" >'.$lang['PROJECT_CLOSED'].'</a><br><br>';
-    }
-    
-    ?>
-    
+    <?php echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';?>
     
   </div>
   <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
   <HR>
- 
-
-  
-<?php
-
-if (comprobar_proyecto($_GET['id']) == 0){
-
+ <?php 
 $id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE proyecto_revisado = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_puntos_temporales WHERE proyecto_puntos_temporales = $id")
     or die (mysqli_error($dbh));
 
 
@@ -296,43 +255,55 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE pro
 $num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	$cero = 0;
-	//MySqli Select Query
-	$rev = $row_proyectos['id_revisiones_proyectos'];
-$results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev");
-
-
-while($rowx= $results->fetch_assoc()) {
- 
- if ($rowx['estado_evaluacion'] == 0){
- 	$cero++;
- }
-}  
-
+	echo $row_proyectos['usuario_puntos_temporales'].":".$row_proyectos['puntos_temporales']."<br>";
+	$sql = "UPDATE
+    tb_puntos_temporales pd INNER JOIN tb_puntos_temporales pd2 ON
+    (pd.id_puntos_temporales=pd2.id_puntos_temporales )
+SET pd2.consolidados_puntos_temporales = pd.puntos_temporales";
 	
-	$num++;
-	if ($cero > 0){
-	
-echo "<h3>".'<img class="blink-image" src="rojo.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
-echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
-		;
-	}
-	else{
-		echo "<h3>".'<img class="blink-image" src="verde.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
-		echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
-		
+	if ($conexion->query($sql) === TRUE) {
+		echo "Record updated successfully";
+	} else {
+		echo "Error updating record: " . $conexion->error;
 	}
 
-}
 	
-if ($num == 0){
 	
-	echo '<a href="proyecto_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['NO_REVISIONS'].'</a>';
 }
-if ($num > 0){
+$loop = mysqli_query($conexion, "SELECT * FROM tb_puntos_temporales WHERE proyecto_puntos_temporales = $id")
+or die (mysqli_error($dbh));
 
-echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a><br><br>';
-}
+
+
+//display the results
+$num = 0;
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	echo $row_proyectos['usuario_puntos_temporales'].":".$row_proyectos['puntos_temporales']."<br>";
+	$sql = "UPDATE
+    tb_puntos_temporales 
+SET puntos_temporales = 0 WHERE proyecto_puntos_temporales = $id";
+
+	if ($conexion->query($sql) === TRUE) {
+		echo "Record updated successfully";
+	} else {
+		echo "Error updating record: " . $conexion->error;
+	}
+	
+	$existen =comprobar_existe_puntos_disponibles($_SESSION['userSession']);
+	echo $existen ;
+	if ($existen == 0){
+		//creamos registro en puntos disponibles
+		echo "NO TIENE REGISTRO EN PUNTOS DISPONIBLES";
+	}
+	if ($existen == 1){
+		//creamos registro en puntos disponibles
+		echo " TIENE REGISTRO EN PUNTOS DISPONIBLES";
+	}
+	if ($existen . 1){
+		//creamos registro en puntos disponibles
+		echo " TIENE VARIOS REGISTROS EN PUNTOS DISPONIBLES";
+	}
 
 }
 ?>

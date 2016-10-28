@@ -275,4 +275,10 @@ $lang['ASSIGNED_POINTS'] = 'Total de Puntos Asignados';
 $lang['MAX_ASSIGNED_POINTS'] = 'Max # Puntos a usuarios';
 
 $lang['GIVEN_POINTS'] = 'Puntos ya distribuidos';
+$lang['MORE_INFO'] = 'Ver detalles';
+$lang['CLOSED_PROJECT'] = 'Proyecto cerrado?';
+$lang['CLOSE_PROJECT'] = 'CERRAR PROYECTO';
+$lang['PROJECT_CLOSED'] = 'PROYECTO CERRADO';
+
+$lang['CONFIRMATION'] = 'ESTAS SEGURO?. ACCION NO REVERSIBLE';
 ?>

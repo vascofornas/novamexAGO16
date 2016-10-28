@@ -187,4 +187,104 @@ function send_mail($email,$message,$subject)
 	$mail->MsgHTML($message);
 	$mail->Send();
 }
+function get_puntos_temporales_proyectos($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT SUM(puntos_temporales) as ptos 
+			FROM tb_puntos_temporales WHERE (usuario_puntos_temporales = '".$team."'
+			)")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['ptos'];
+	}
+	return $equipo;
+
+}
+function get_puntos_consolidados_proyectos($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT SUM(consolidados_puntos_temporales) as ptos
+			FROM tb_puntos_temporales WHERE (usuario_puntos_temporales = '".$team."'
+			)")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['ptos'];
+			}
+			return $equipo;
+
+}
+function comprobar_proyecto($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT proyecto_cerrado 		
+			FROM tb_proyectos WHERE (id_proyecto = '".$team."'
+			)")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['proyecto_cerrado'];
+			}
+			return $equipo;
+
+}
+function comprobar_existe_puntos_disponibles($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_disponibles WHERE (usuario_puntos_disponibles = '".$team."'
+			)")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['id_puntos_disponibles'];
+				$nim=$nim+1;
+			}
+			return $nim;
+
+}
+function recuperar_id_puntos_disponibles($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_disponibles WHERE (usuario_puntos_disponibles = '".$team."'
+			)")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['id_puntos_disponibles'];
+				$nim=$nim+1;
+			}
+			return $equipo;
+
+}
+
 ?>

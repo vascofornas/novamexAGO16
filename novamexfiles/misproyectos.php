@@ -217,9 +217,9 @@ function subirimagen()
    <div class = "row" >
    
    
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+  <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:Azure   ;"><H3><?php echo $lang['MY_PROJECTS']?></H3>
   <HR>
-  <h3><?php echo $lang['AS_TEAM_MEMBER']?></h3>
+  <h2><?php echo $lang['AS_TEAM_MEMBER']?></h2>
   <h4>
 <?php
 
@@ -249,9 +249,9 @@ echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto'].
   </h4>
    
    </div>
-   <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+   <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['MY_PROJECTS']?></H3>
   <HR>
-  <h3><?php echo $lang['AS_EVALUATOR']?></h3>
+  <h2><?php echo $lang['AS_EVALUATOR']?></h2>
   <h4>
 <?php
 
@@ -264,9 +264,15 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
 //display the results
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	//run the query
-	if ($row_proyectos['evaluador_proyecto'] == $row['userID']){
-echo "<strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+	?>
+	
+	
+	<?php 
+	if ($row_proyectos['evaluador_proyecto'] == $row['userID'] AND $row_proyectos['proyecto_cerrado'] == 0){
+echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+	}
+	if ($row_proyectos['evaluador_proyecto'] == $row['userID'] AND $row_proyectos['proyecto_cerrado'] == 1){
+		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
 	}
 }
 	

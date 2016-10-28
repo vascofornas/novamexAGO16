@@ -15,6 +15,7 @@ $(document).ready(function(){
       
       { "data": "fecha_inicio_proyecto", },
       { "data": "fecha_final_proyecto", },
+      { "data": "proyecto_cerrado", },
 
 
       
