@@ -291,4 +291,6 @@ $lang['POINTS_DISTRIBUTION'] = 'PROCESSING POINTS';
 $lang['HAS'] = ' has ';
 $lang['HAS2'] = ' non consolidated Points';
 $lang['HAS3'] = ' The Points have been converted to permanent Points to user ';
+$lang['TOTAL'] = 'My Points';
+
 ?>
