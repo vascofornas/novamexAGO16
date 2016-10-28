@@ -287,4 +287,8 @@ $lang['CLOSED_PROJECT'] = 'Project closed?';
 $lang['PROJECT_CLOSED'] = 'PROJECT CLOSED';
 $lang['CLOSE_PROJECT'] = 'CLOSE PROJECT';
 $lang['CONFIRMATION'] = 'ARE YOU SURE?. NOT REVERSIBLE ACTION';
+$lang['POINTS_DISTRIBUTION'] = 'PROCESSING POINTS';
+$lang['HAS'] = ' has ';
+$lang['HAS2'] = ' non consolidated Points';
+$lang['HAS3'] = ' The Points have been converted to permanent Points to user ';
 ?>

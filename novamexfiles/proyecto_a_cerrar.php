@@ -238,15 +238,15 @@ function subirimagen()
   <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
   		   <br>
  
-    <?php echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';?>
+   
     
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['POINTS_DISTRIBUTION']?></H3>
   <HR>
 
  <?php 
 $id = $_GET['id'];
-//run the query
+//SELECCIONA LOS PUNTOS TEMPORALES DEL PROYECTO ID
 $loop = mysqli_query($conexion, "SELECT * FROM tb_puntos_temporales WHERE proyecto_puntos_temporales = $id")
     or die (mysqli_error($dbh));
 
@@ -263,16 +263,20 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 SET pd2.consolidados_puntos_temporales = pd.puntos_temporales";
 	
 	
-	echo "<br>EL USUARIO ".$row_proyectos['usuario_puntos_temporales']." TIENE ".$row_proyectos['puntos_temporales']."<BR>";
+	echo "<br>".get_nombre($row_proyectos['usuario_puntos_temporales']).$lang['HAS'].$row_proyectos['puntos_temporales'].$lang['HAS2']." <BR>";
 	
-	echo "<br>SE HAN CONVERTIDO ".$row_proyectos['puntos_temporales']." A PUNTOS CONSOLIDADOS DEL USUARIO ".$row_proyectos['usuario_puntos_temporales']."<BR>";
+	echo "<br>".$lang['HAS3'].get_nombre($row_proyectos['usuario_puntos_temporales'])."<BR>";
 	
 	
 	
 	if ($conexion->query($sql) === TRUE) {
-		//echo "Record updated successfully";
+		
+		// SE PASAN LOS PUNTOS TEMPORALES A CONSOLIDADOS
+		
+		
+		
 	} else {
-		echo "Error updating record: " . $conexion->error;
+		//echo "Error updating record: " . $conexion->error;
 	}
 
 	
@@ -294,13 +298,11 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	
 	if ($existen == 0){
 		//creamos registro en puntos disponibles
-		echo "<br>";
-		echo "NO TIENE REGISTRO EN PUNTOS DISPONIBLES del usuario ".$row_proyectos[$usuario_puntos_temporales];
 		
 		//ponemos los puntos consolidados en puntos disponibles
 		
 		$sql1 = "INSERT INTO tb_puntos_disponibles (puntos_conseguidos,usuario_puntos_disponibles) VALUES
-		('".$row_proyectos['consolidado_puntos_temporales']."','".$row_proyectos['usuario_puntos_temporales']."')";
+		('".$row_proyectos['consolidados_puntos_temporales']."','".$row_proyectos['usuario_puntos_temporales']."')";
 		
 		if ($conexion->query($sql1) === TRUE) {
 			echo "Record updated successfully";
@@ -311,7 +313,18 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	}
 	if ($existen == 1){
 		//creamos registro en puntos disponibles
-		echo " TIENE REGISTRO EN PUNTOS DISPONIBLES del usuario ".$row_proyectos[$usuario_puntos_temporales];
+		
+		$suma = get_puntos_disponibles($row_proyectos['usuario_puntos_temporales'])+ $row_proyectos['consolidados_puntos_temporales'];
+		
+		$sql1 = "UPDATE tb_puntos_disponibles SET puntos_conseguidos = '".$suma."' WHERE usuario_puntos_disponibles = '".$row_proyectos['usuario_puntos_temporales']."'";
+		
+		if ($conexion->query($sql1) === TRUE) {
+			;
+		} else {
+			echo "Error updating record: " . $conexion->error;
+		}
+		
+		
 	}
 	if ($existen > 1){
 		//creamos registro en puntos disponibles
@@ -322,10 +335,22 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	SET puntos_temporales = 0 WHERE proyecto_puntos_temporales = $id";
 	
 	
-	echo "<br>SE HAN QUITADO LOS PUNTOS TEMPORALES DE ".$row_proyectos['usuario_puntos_temporales'];
+;
 	
 	if ($conexion->query($sql) === TRUE) {
-		echo "Record updated successfully";
+		
+	} else {
+		echo "Error updating record: " . $conexion->error;
+	}
+	$sql = "UPDATE
+	tb_proyectos
+	SET proyecto_cerrado = 1 WHERE id_proyecto = $id";
+	
+	
+	;
+	
+	if ($conexion->query($sql) === TRUE) {
+	
 	} else {
 		echo "Error updating record: " . $conexion->error;
 	}

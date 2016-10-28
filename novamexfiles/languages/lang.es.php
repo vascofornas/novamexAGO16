@@ -281,4 +281,8 @@ $lang['CLOSE_PROJECT'] = 'CERRAR PROYECTO';
 $lang['PROJECT_CLOSED'] = 'PROYECTO CERRADO';
 
 $lang['CONFIRMATION'] = 'ESTAS SEGURO?. ACCION NO REVERSIBLE';
+$lang['POINTS_DISTRIBUTION'] = 'PROCESANDO PUNTOS';
+$lang['HAS'] = ' tiene ';
+$lang['HAS2'] = ' puntos no consolidados';
+$lang['HAS3'] = ' Los puntos se han convertido en puntos permanentes del usuario  ';
 ?>
