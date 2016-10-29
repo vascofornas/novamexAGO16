@@ -328,5 +328,68 @@ function get_max_puntos_libres($team){
 			return $equipo;
 
 }
+function get_user_repite_puntos_libres($id_limit,$otorga_limit,$recibe_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres_otorgados
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				if ($id_limit ==  $row_equipos['id_puntos'] &&
+						$otorga_limit == $row_equipos['otorga_usuario'] &&
+						$recibe_limit == $row_equipos['recibe_usuario'])
+			
+					$nim=$nim+1;
+				else {
+					$nim = $nim;
+				}
+			}
+			return $nim;
+
+}
+function incluir_en_puntos_libres_otorgados($id_puntos,$puntos){
+
+	$puntos_ya_otorgados = get_puntos_ya_otorgados($id_puntos);
+	$puntos_finales = $puntos_ya_otorgados +$puntos;
+	$conn = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+$sql = "UPDATE tb_puntos_libres SET total_puntos_consumidos='".$puntos_finales."' WHERE id= '".$id_puntos."'";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Record updated successfully";
+} else {
+    echo "Error updating record: " . $conn->error;
+}
+}
+function get_puntos_ya_otorgados($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres WHERE id_puntos_libres = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				
+						$nim = $row_equipos['total_puntos_consumidos'];
+					
+			}
+			return $nim;
+
+}
+
 
 ?>

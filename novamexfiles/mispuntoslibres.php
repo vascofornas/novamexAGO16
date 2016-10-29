@@ -359,8 +359,21 @@ body {
   // Fetch one and one row
   while ($row=mysqli_fetch_row($result))
     {
+    	
+    	$recibe_limit = $row[0];
+    	$id_limit = base64_decode( urldecode( $_GET['pu'] ) );
+    	$otorga_limit = $_SESSION['userSession'];
+    	$resultado = get_user_repite_puntos_libres($id_limit, $otorga_limit, $recibe_limit);
+    	
+    	 if ($resultado>0 ){
     printf ("%s (%s)\n",$row[0],$row[1]);
-    echo '<option value='.$row[0].' selected>'.$row[7].' '.$row[8].'</option>';
+    echo '<option value='.$row[0].' disabled style="color:RED;">'.$lang['NOT-AVAILABLE']." ".$row[7].' '.$row[8].'</option>';
+    	 }
+    	 else {
+    	 	printf ("%s (%s)\n",$row[0],$row[1]);
+    	 	echo '<option value='.$row[0].' selected>'.$row[7].' '.$row[8].'</option>';
+    	 	
+    	 }
     }
   // Free result set
   mysqli_free_result($result);
@@ -398,7 +411,7 @@ body {
           <?php 
          
           ?>
-            <input type="hidden" class="text" name="id_puntos" id="id_puntos" value="<?php echo $decoded?>" >
+            <input type="hidden" class="text" name="id_puntos" id="id_puntos" value="<?php echo $decoded ?>" >
             
           <div class="button_container">
           

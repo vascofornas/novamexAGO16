@@ -132,7 +132,8 @@ if ($job != ''){
 
     if (isset($_GET['recibe_usuario'])) { $query .= "recibe_usuario = '" . mysqli_real_escape_string($db_connection, $_GET['recibe_usuario']) . "', "; }
     if (isset($_GET['puntos_otorgados'])) { $query .= "puntos_otorgados = '" . mysqli_real_escape_string($db_connection, $_GET['puntos_otorgados']) . "', "; }
-    if (isset($_GET['id_puntos'])) { $query .= "id_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['id_puntos']) . "', "; }
+    if (isset($_GET['puntos_libres_id'])) { $query .= "puntos_libres_id = '" . mysqli_real_escape_string($db_connection, $_GET['puntos_libres_id']) . "', "; }
+    
     if (isset($_GET['comentarios_otorgados'])) { $query .= "comentarios_otorgados = '" . mysqli_real_escape_string($db_connection, $_GET['comentarios_otorgados']) . "'";   }
     
     

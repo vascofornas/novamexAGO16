@@ -158,6 +158,7 @@ $(document).ready(function(){
             hide_loading_message();
             var company_name = $('#recibe_usuario').val();
             show_message("Free points from '" + company_name + "' added sucessfully.", 'success');
+            window.location.reload();
           }, true);
         } else {
           hide_loading_message();
