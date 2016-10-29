@@ -380,7 +380,11 @@ body {
      <div class="input_container">
             <label for="puntos_otorgados"><?php echo $lang['ASSIGNED_POINTS']?> <span class="required">*</span></label>
             <div class="field_container">
-            <?php $max_puntos = get_max_puntos_libres($_GET['pu']);
+            <?php 
+            
+            $decoded = base64_decode( urldecode( $_GET['pu'] ) );
+            $max_puntos = get_max_puntos_libres($decoded);
+            
             ?>
               <input type="number" max="<?php echo $max_puntos?>" class="text" name="puntos_otorgados" id="puntos_otorgados" value="" >
             </div>
@@ -391,7 +395,10 @@ body {
               <input type="text" class="text" name="comentarios_otorgados" id="comentarios_otorgados" value="" required>
             </div>
           </div>
-            <input type="hidden" class="text" name="id_puntos" id="id_puntos" value="<?php echo $_GET['pu']?>" >
+          <?php 
+         
+          ?>
+            <input type="hidden" class="text" name="id_puntos" id="id_puntos" value="<?php echo $decoded?>" >
             
           <div class="button_container">
           

@@ -356,11 +356,13 @@ body {
 			$ano_puntos = $row_puntos_temporales['year'];
 			$ano_actual = date('Y');
 			 
+			$encoded = urlencode( base64_encode( $row_puntos_temporales['id_puntos_libres'] ) );
+			
 			
 			if ($mes_actual == $mes_puntos && $ano_actual == $ano_puntos){
 		
 		?>
-		<td><a href="mispuntoslibres.php?pu=<?php echo $row_puntos_temporales['id_puntos_libres']?>" class="btn btn-info" role="button"><?php echo $lang['ADD_FREE_POINTS']?></a></td>
+		<td><a href="mispuntoslibres.php?pu=<?php echo $encoded?>" class="btn btn-info" role="button"><?php echo $lang['ADD_FREE_POINTS']?></a></td>
 			
 		<?php 
 		
