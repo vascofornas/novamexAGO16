@@ -13,6 +13,8 @@ $(document).ready(function(){
       
 
       { "data": "total_puntos_consumidos", },
+      { "data": "mes_puntos_libres", },
+      { "data": "ano_puntos_libres", },
     
       { "data": "functions",      "sClass": "functions" }
     ],
@@ -128,6 +130,8 @@ $(document).ready(function(){
     $('#form_company #level3_user').val('');
     $('#form_company #total_puntos_libres').val('');
     $('#form_company #max_puntos_libres').val('');
+    $('#form_company #mes_puntos_libres').val('');
+    $('#form_company #ano_puntos_libres').val('');
     $('#form_company #total_puntos_consumidos').val('');
     
     show_lightbox();
@@ -200,6 +204,8 @@ $(document).ready(function(){
 
         $('#form_company #total_puntos_libres').val(output.data[0].total_puntos_libres);
         $('#form_company #max_puntos_libres').val(output.data[0].max_puntos_libres);
+        $('#form_company #mes_puntos_libres').val(output.data[0].mes_puntos_libres);
+        $('#form_company #ano_puntos_libres').val(output.data[0].ano_puntos_libres);
 
         $('#form_company #total_puntos_consumidos').val(output.data[0].total_puntos_consumidos);
         hide_loading_message();

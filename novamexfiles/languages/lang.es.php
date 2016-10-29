@@ -286,4 +286,6 @@ $lang['HAS'] = ' tiene ';
 $lang['HAS2'] = ' puntos no consolidados';
 $lang['HAS3'] = ' Los puntos se han convertido en puntos permanentes del usuario  ';
 $lang['TOTAL'] = 'Mis Puntos';
+$lang['MONTH'] = 'Mes';
+$lang['YEAR'] = 'Año';
 ?>

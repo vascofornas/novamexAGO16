@@ -58,7 +58,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_puntos_libres";
+    $query = "SELECT * FROM tb_puntos_libres LEFT JOIN tb_anos ON tb_puntos_libres.ano_puntos_libres = tb_anos.id_ano";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -75,6 +75,7 @@ if ($job != ''){
         
         $usuario_da = get_nombre($company['level5_user']);
         $usuario_recibe = get_nombre($company['level3_user']);
+       
         $mysql_data[] = array(
          
           "level5_user"  => $usuario_da,
@@ -85,6 +86,8 @@ if ($job != ''){
         		"max_puntos_libres"    => $company['max_puntos_libres'],
         		
         		"total_puntos_consumidos"    => $company['total_puntos_consumidos'],
+        		"mes_puntos_libres"    => $company['mes_puntos_libres'],
+        		"ano_puntos_libres"    => $company['year'],
         		
           "functions"     => $functions
         );
@@ -98,7 +101,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "SELECT * FROM tb_puntos_libres WHERE id_puntos_libres = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "SELECT * FROM tb_puntos_libres  WHERE id_puntos_libres = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
@@ -113,7 +116,8 @@ if ($job != ''){
 
         		"total_puntos_libres"    => $company['total_puntos_libres'],
           		"max_puntos_libres"    => $company['max_puntos_libres'],
-
+          		"mes_puntos_libres"    => $company['mes_puntos_libres'],
+          		"ano_puntos_libres"    => $company['ano_puntos_libres'],
         		"total_puntos_consumidos"    => $company['total_puntos_consumidos']
           );
         }
@@ -129,7 +133,9 @@ if ($job != ''){
     if (isset($_GET['level3_user'])) { $query .= "level3_user = '" . mysqli_real_escape_string($db_connection, $_GET['level3_user']) . "', "; }
     if (isset($_GET['total_puntos_libres'])) { $query .= "total_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['total_puntos_libres']) . "', "; }
     if (isset($_GET['max_puntos_libres'])) { $query .= "max_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['max_puntos_libres']) . "', "; }
-    
+    if (isset($_GET['mes_puntos_libres'])) { $query .= "mes_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['mes_puntos_libres']) . "', "; }
+    if (isset($_GET['ano_puntos_libres'])) { $query .= "ano_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['ano_puntos_libres']) . "', "; }
+     
     if (isset($_GET['total_puntos_consumidos'])) { $query .= "total_puntos_consumidos = '" . mysqli_real_escape_string($db_connection, $_GET['total_puntos_consumidos']) . "'";   }
     
     
@@ -155,7 +161,9 @@ if ($job != ''){
 
     if (isset($_GET['level3_user'])) { $query .= "level3_user = '" . mysqli_real_escape_string($db_connection, $_GET['level3_user']) . "', "; }
     if (isset($_GET['max_puntos_libres'])) { $query .= "max_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['max_puntos_libres']) . "', "; }
-     
+     if (isset($_GET['mes_puntos_libres'])) { $query .= "mes_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['mes_puntos_libres']) . "', "; }
+    if (isset($_GET['ano_puntos_libres'])) { $query .= "ano_puntos_libres = '" . mysqli_real_escape_string($db_connection, $_GET['ano_puntos_libres']) . "', "; }
+    
     if (isset($_GET['total_puntos_consumidos'])) { $query .= "total_puntos_consumidos = '" . mysqli_real_escape_string($db_connection, $_GET['total_puntos_consumidos']) . "'";   }
     
     

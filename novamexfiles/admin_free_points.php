@@ -323,6 +323,8 @@ body {
             <th><?php echo $lang['ASSIGNED_POINTS']?></th>
             <th><?php echo $lang['MAX_ASSIGNED_POINTS']?></th>
          <th><?php echo $lang['GIVEN_POINTS']?></th>
+           <th><?php echo $lang['MONTH']?></th>
+             <th><?php echo $lang['YEAR']?></th>
          
             
             <th><?php echo $lang['ACTIONS']?></th>
@@ -403,7 +405,72 @@ body {
                 
                 
               </select>
-            </div>   </div>      
+            </div>   </div>   
+            
+            
+             <?php   $sqlBU="SELECT * FROM tb_months";?>
+           
+<div class="input_container">
+        <label for="mes_puntos_libres"><?php echo $lang['MONTH']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="mes_puntos_libres" name="mes_puntos_libres" class="selectpicker"  required>
+           
+           
+        <?php   if ($result=mysqli_query($conexion,$sqlBU))
+  {
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+    printf ("%s (%s)\n",$row[0],$row[1]);
+    echo '<option value='.$row[0].' selected>'.$row[1].'</option>';
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+     ?>           
+                
+                
+                
+               
+                
+                
+                
+              </select>
+            </div>   </div>   
+            
+            
+            
+            
+             <?php   $sqlBU="SELECT * FROM tb_anos";?>
+           
+<div class="input_container">
+        <label for="ano_puntos_libres"><?php echo $lang['YEAR']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="ano_puntos_libres" name="ano_puntos_libres" class="selectpicker"  required>
+           
+           
+        <?php   if ($result=mysqli_query($conexion,$sqlBU))
+  {
+  // Fetch one and one row
+  while ($row=mysqli_fetch_row($result))
+    {
+    printf ("%s (%s)\n",$row[0],$row[1]);
+    echo '<option value='.$row[0].' selected>'.$row[1].'</option>';
+    }
+  // Free result set
+  mysqli_free_result($result);
+}
+     ?>           
+                
+                
+                
+               
+                
+                
+                
+              </select>
+            </div>   </div> 
+               
      <div class="input_container">
             <label for="total_puntos_libres"><?php echo $lang['ASSIGNED_POINTS']?> <span class="required">*</span></label>
             <div class="field_container">
