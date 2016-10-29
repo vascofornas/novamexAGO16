@@ -313,21 +313,22 @@ body {
 
 //run the query
 	
-		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM 
-				tb_puntos_libres
-		WHERE level3_user = '".$row['userID']."' 
-		")
+		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM tb_puntos_libres LEFT JOIN tb_anos ON tb_puntos_libres.ano_puntos_libres = tb_anos.id_ano WHERE tb_puntos_libres.level3_user = '".$_SESSION['userSession']."' ORDER BY ano_puntos_libres, mes_puntos_libres ")
 		or die (mysqli_error($dbh));
 		?>
 		
-		<table class="table" style="background-color:powderblue;" >
-			<thead>
+		<table class="table"  >
+			<thead style="background-color:GREEN;">
 			<tr>
-			<th><?php echo $lang['ASSIGNED_BY']?></th>
-			<th><?php echo $lang['ASSIGNED_TO']?></th>
-			<th><?php echo $lang['ASSIGNED_POINTS']?></th>
-			<th><?php echo $lang['GIVEN_POINTS']?></th>
-			<th><?php echo $lang['ADD_FREE_POINTS']?></th>
+			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_BY']?></th>
+			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_TO']?></th>
+			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_POINTS']?></th>
+			<th style="color:WHITE;"><?php echo $lang['GIVEN_POINTS']?></th>
+			<th style="color:WHITE;"><?php echo $lang['MONTH']?></th>
+			<th style="color:WHITE;"><?php echo $lang['YEAR']?></th>
+			<th style="color:WHITE;"><?php echo $lang['ADD_FREE_POINTS']?></th>
+			
+			
 			
 			</tr>
 			</thead>
@@ -346,7 +347,29 @@ body {
 			<td><?php echo get_nombre($row_puntos_temporales['level3_user'])?></td>
 			<td><?php echo $row_puntos_temporales['total_puntos_libres']?></td>
 			<td><?php echo $row_puntos_temporales['total_puntos_consumidos']?></td>
-			<td><a href="mispuntoslibres.php?pu=<?php echo $row_puntos_temporales['id_puntos_libres']?>" class="btn btn-info" role="button"><?php echo $lang['ADD_FREE_POINTS']?></a></td>
+			<td><?php echo $row_puntos_temporales['mes_puntos_libres']?></td>
+			<td><?php echo $row_puntos_temporales['year']?></td>
+			
+			<?php 
+			$mes_actual = date('n');
+			$mes_puntos = $row_puntos_temporales['mes_puntos_libres'];
+			$ano_puntos = $row_puntos_temporales['year'];
+			$ano_actual = date('Y');
+			 
+			
+			if ($mes_actual == $mes_puntos && $ano_actual == $ano_puntos){
+		
+		?>
+		<td><a href="mispuntoslibres.php?pu=<?php echo $row_puntos_temporales['id_puntos_libres']?>" class="btn btn-info" role="button"><?php echo $lang['ADD_FREE_POINTS']?></a></td>
+			
+		<?php 
+		
+		}
+		else {
+		?>
+		<td><a href="#" class="btn btn-danger" role="button"><?php echo $lang['NOT_AVAILABLE']?></a></td>
+		<?php 		
+		}?>
 			
 			</tr>
 			

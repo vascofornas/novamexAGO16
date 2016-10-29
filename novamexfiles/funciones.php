@@ -307,5 +307,26 @@ function get_puntos_disponibles($team){
 			return $equipo;
 
 }
+function get_max_puntos_libres($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres WHERE id_puntos_libres = '".$team."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['max_puntos_libres'];
+				$nim=$nim+1;
+			}
+			return $equipo;
+
+}
 
 ?>

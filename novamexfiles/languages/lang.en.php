@@ -294,5 +294,6 @@ $lang['HAS3'] = ' The Points have been converted to permanent Points to user ';
 $lang['TOTAL'] = 'My Points';
 $lang['MONTH'] = 'Month';
 $lang['YEAR'] = 'Year';
+$lang['NOT_AVAILABLE'] = 'Not Available';
 
 ?>

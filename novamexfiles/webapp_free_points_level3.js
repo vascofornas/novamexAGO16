@@ -127,7 +127,7 @@ $(document).ready(function(){
    
     $('#form_company #puntos_otorgados').val('');
     $('#form_company #comentarios_otorgados').val('');
-    $('#form_company #puntos_libres_id').val('');
+    $('#form_company #id_puntos').val('');
 
     
     show_lightbox();

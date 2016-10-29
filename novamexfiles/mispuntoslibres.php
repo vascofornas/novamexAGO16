@@ -380,7 +380,9 @@ body {
      <div class="input_container">
             <label for="puntos_otorgados"><?php echo $lang['ASSIGNED_POINTS']?> <span class="required">*</span></label>
             <div class="field_container">
-              <input type="number" class="text" name="puntos_otorgados" id="puntos_otorgados" value="" >
+            <?php $max_puntos = get_max_puntos_libres($_GET['pu']);
+            ?>
+              <input type="number" max="<?php echo $max_puntos?>" class="text" name="puntos_otorgados" id="puntos_otorgados" value="" >
             </div>
           </div>  
      <div class="input_container">
@@ -389,14 +391,12 @@ body {
               <input type="text" class="text" name="comentarios_otorgados" id="comentarios_otorgados" value="" required>
             </div>
           </div>
-     <div class="input_container">
-           <div class="field_container">
-           <?php   $clave = isset($_GET['pu']) ?  $_GET['pu'] : ""; /*TRY DUMPING: $clave*/ ?>
-<?php   var_dump($clave); // JUST TO SEE ITS CONTENTS B4 IT GETS TO THE INPUT. ?>
-              <input type="text" class="text" name="puntos_libres_id" id="puntos_libres_id" value="44444000" >
-            </div>
-          </div>         
+            <input type="hidden" class="text" name="id_puntos" id="id_puntos" value="<?php echo $_GET['pu']?>" >
+            
           <div class="button_container">
+          
+          
+         
             <button type="submit"><?php echo $lang['ADD_FREE_POINTS']?></button>
           </div>
         </form>
