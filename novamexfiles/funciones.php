@@ -333,7 +333,7 @@ function get_user_repite_puntos_libres($id_limit,$otorga_limit,$recibe_limit){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_puntos_libres_otorgados
+			FROM tb_puntos_libres_otorgados WHERE id_puntos = '".$_SESSION['puntos_libres']."'
 			")
 			or die (mysqli_error($dbh));
 
@@ -391,5 +391,184 @@ function get_puntos_ya_otorgados($id_limit){
 
 }
 
+
+
+function get_puntos_consumidos_puntos_libres(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres  WHERE id_puntos_libres = '".$_SESSION['puntos_libres']."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				
+						$puntos_ya = $row_equipos['total_puntos_consumidos'] ;
+						
+						
+					
+			}
+			return $puntos_ya;
+
+}
+function update_puntos_consumidos_puntos_libres($puntos){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+$sql = "UPDATE tb_puntos_libres SET total_puntos_consumidos = '".$puntos."' WHERE id_puntos_libres = '".$_SESSION['puntos_libres']."'";
+
+if ($mysqli->query($sql) === TRUE) {
+   
+} else {
+    
+};
+
+}
+
+function comprobar_si_existe_puntos_libres_usuario($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres_usuario WHERE usuario_puntos_libres = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+					$nim=$nim+1;
+				
+			}
+			return $nim;
+
+}
+function get_puntos_libres_usuario($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres_usuario WHERE usuario_puntos_libres = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_libres_usuario'];
+
+			}
+			return $nim;
+
+}
+function update_puntos_libres($usuario,$puntos){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$sql = "UPDATE tb_puntos_libres_usuario SET puntos_libres_usuario = '".$puntos."' WHERE usuario_puntos_libres = '".$usuario."'";
+
+	if ($mysqli->query($sql) === TRUE) {
+		 
+	} else {
+
+	};
+
+}
+function crear_puntos_libres($usuario,$puntos){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$sql = "INSERT INTO tb_puntos_libres_usuario (usuario_puntos_libres,puntos_libres_usuario)  VALUES ('".$usuario."','".$puntos."')";
+
+	if ($mysqli->query($sql) === TRUE) {
+			
+	} else {
+
+	};
+
+}
+function update_puntos_disponibles($usuario,$puntos){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$sql = "UPDATE tb_puntos_disponibles SET puntos_conseguidos = '".$puntos."' WHERE usuario_puntos_disponibles = '".$usuario."'";
+
+	if ($mysqli->query($sql) === TRUE) {
+			
+	} else {
+
+	};
+
+}
+function crear_puntos_disponibles($usuario,$puntos){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$sql = "INSERT INTO tb_puntos_disponibles (usuario_puntos_disponibles,puntos_conseguidos)  VALUES ('".$usuario."','".$puntos."')";
+
+	if ($mysqli->query($sql) === TRUE) {
+			
+	} else {
+
+	};
+
+}
+function get_id_usuario_puntos_otorgados($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres_otorgados WHERE $id_puntos_libres_otorgados = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+				
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['recibe_usuario'];
+
+			}
+			return $nim;
+
+}
+function get_puntos_otorgados($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres_otorgados WHERE $id_puntos_libres_otorgados = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_otorgados'];
+
+			}
+			return $nim;
+
+}
 
 ?>

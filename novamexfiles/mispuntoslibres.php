@@ -56,6 +56,9 @@ if (!$user_home->is_logged_in())
 $stmt = $user_home->runQuery("SELECT * FROM tbl_users WHERE userID=:uid");
 $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+$_SESSION['puntos_libres'] = base64_decode( urldecode( $_GET['pu'] ) );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -303,14 +306,14 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['FREE_POINTS']?></h1>
+    <h1 align="center"><?php echo $lang['FREE_POINTS']." ".get_puntos_consumidos_puntos_libres()?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_FREE_POINTS']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_FREE_POINTS']." ".$_SESSION['puntos_libres']?></button>
         
       </div>
       <table class="datatable" id="table_companies">

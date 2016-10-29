@@ -62,7 +62,7 @@ if ($job != ''){
   	
   	
   	
-    $query = "SELECT * FROM tb_puntos_libres_otorgados";
+    $query = "SELECT * FROM tb_puntos_libres_otorgados WHERE id_puntos = '".$_SESSION['puntos_libres']."'";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -72,7 +72,7 @@ if ($job != ''){
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
         $functions  = '<div class="function_buttons"><ul>';
-        $functions .= '<li class="function_edit"><a data-id="'   . $company['id_puntos_libres_otorgados'] . '" data-name="' . $company['otorga_usuario'] . '"><span>Edit</span></a></li>';
+      //  $functions .= '<li class="function_edit"><a data-id="'   . $company['id_puntos_libres_otorgados'] . '" data-name="' . $company['otorga_usuario'] . '"><span>Edit</span></a></li>';
         $functions .= '<li class="function_delete"><a data-id="' . $company['id_puntos_libres_otorgados'] . '" data-name="' . $company['otorga_usuario'] . '"><span>Delete</span></a></li>';
 		
         $functions .= '</ul></div>';
@@ -89,7 +89,7 @@ if ($job != ''){
         		"puntos_otorgados"    => $company['puntos_otorgados'],
         		
         		"comentarios_otorgados"    => $company['comentarios_otorgados'],
-        		"puntos_libres_id"    => $company['puntos_libres_id'],
+        		
         		 
           "functions"     => $functions
         );
@@ -125,16 +125,73 @@ if ($job != ''){
   
   } elseif ($job == 'add_company'){
     
+  	
+  	//ACTUALIZAR PUNTOS CONSUMIDOS DE PUNTOS LIBRES
+  	$con = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+  		//GET TOTAL PUNTOS OTORGADOS ACTUALES
+  		
+  	$puntos_ya_consumidos = get_puntos_consumidos_puntos_libres();
+  	$total_puntos_consumidos = $puntos_ya_consumidos + $_GET['puntos_otorgados'];
+  	update_puntos_consumidos_puntos_libres($total_puntos_consumidos);
+  	
+  	
+  	//FIN ACTUALIZAR PUNTOS CONSUMIDOS
+  	//ACTUALIZAR PUNTOS LIBRES USUARIO
+  	$existe = comprobar_si_existe_puntos_libres_usuario($_GET['recibe_usuario']);
+  		//si existe ACTUALIZAR
+  		if ($existe == 1){
+  			$puntos_actuales = get_puntos_libres_usuario($_GET['recibe_usuario']);
+  			$puntos_actualizados = $puntos_actuales+$_GET['puntos_otorgados'];
+  			update_puntos_libres($_GET['recibe_usuario'],$puntos_actualizados);
+  		}
+  		//si no  existe CREAR
+  		if ($existe == 0){
+  			$puntos_actualizados = $_GET['puntos_otorgados'];
+  			crear_puntos_libres($_GET['recibe_usuario'],$puntos_actualizados);
+  		}
+  	
+  	
+  	
+  	
+  	
+  	
+  	//FIN ACTUALIZAR PUNTOS LIBRES USUARIO
+  	//ACTUALIZAR PUNTOS DISPONIBLES
+  	
+  		
+  		$existe = comprobar_existe_puntos_disponibles($_GET['recibe_usuario']);
+  		//si existe ACTUALIZAR
+  		if ($existe == 1){
+  			$puntos_actuales = get_puntos_disponibles($_GET['recibe_usuario']);
+  			$puntos_actualizados = $puntos_actuales+$_GET['puntos_otorgados'];
+  			update_puntos_disponibles($_GET['recibe_usuario'],$puntos_actualizados);
+  		}
+  		//si no  existe CREAR
+  		if ($existe == 0){
+  			$puntos_actualizados = $_GET['puntos_otorgados'];
+  			crear_puntos_disponibles($_GET['recibe_usuario'],$puntos_actualizados);
+  		}
+  		 
+  		
+  		
+  	//FIN ACTUALIZAR PUNTOS DISPONIBLES
+  	  
+  	
     // Add company
     $yo = $row['userID'];
+    
+ 
+    
+    
     $query = "INSERT INTO tb_puntos_libres_otorgados SET ";
     if (isset($_SESSION['userSession'])) { $query .= "otorga_usuario = '" . mysqli_real_escape_string($db_connection, $_SESSION['userSession']) . "', "; }
 
     if (isset($_GET['recibe_usuario'])) { $query .= "recibe_usuario = '" . mysqli_real_escape_string($db_connection, $_GET['recibe_usuario']) . "', "; }
     if (isset($_GET['puntos_otorgados'])) { $query .= "puntos_otorgados = '" . mysqli_real_escape_string($db_connection, $_GET['puntos_otorgados']) . "', "; }
-    if (isset($_GET['puntos_libres_id'])) { $query .= "puntos_libres_id = '" . mysqli_real_escape_string($db_connection, $_GET['puntos_libres_id']) . "', "; }
+    if (isset($_GET['puntos_otorgados'])) { $query .= "id_puntos = '" . mysqli_real_escape_string($db_connection, $_SESSION['puntos_libres']) . "', "; }
     
-    if (isset($_GET['comentarios_otorgados'])) { $query .= "comentarios_otorgados = '" . mysqli_real_escape_string($db_connection, $_GET['comentarios_otorgados']) . "'";   }
+    if (isset($_GET['comentarios_otorgados'])) { $query .= "comentarios_otorgados = '" . mysqli_real_escape_string($db_connection, $_GET['comentarios_otorgados']). "'";   }
+    
     
     
 	 
@@ -181,6 +238,23 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	
+    	//ACTUALIZAR PUNTOS CONSUMIDOS
+    	
+    		//GET ID PUNTOS OTORGADOS
+    	
+    			$id_puntos_otorgados = $id;
+    		//GET USER PUNTOS OTORGADOS
+    		
+    			get_id_usuario_puntos_otorgados($id_puntos_otorgados);
+    			
+    			//GET PUNTOS OTORGADOS
+    			get_puntos_otorgados($id_puntos_otorgados);
+    	//ACTUALIZAR PUNTOS LIBRES USUARIO
+    	//ACTUALIZAR PUNTOS DISPONIBLES USUARIO
+    	
+    	
+    	
       $query = "DELETE FROM tb_puntos_libres_otorgados WHERE id_puntos_libres_otorgados = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
