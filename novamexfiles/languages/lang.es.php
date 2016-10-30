@@ -289,4 +289,5 @@ $lang['TOTAL'] = 'Mis Puntos';
 $lang['MONTH'] = 'Mes';
 $lang['YEAR'] = 'Año';
 $lang['NOT_AVAILABLE'] = 'No disponible';
+$lang['LEFT_POINTS'] = 'Puntos restantes';
 ?>

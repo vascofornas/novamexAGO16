@@ -293,6 +293,12 @@ body {
 	
 }
 </style>
+<script>
+
+function check_puntos_restantes (){
+	alert "hola";
+}
+</script>
 </head> 
 <body>
 
@@ -306,14 +312,14 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['FREE_POINTS']." ".get_puntos_consumidos_puntos_libres()?></h1>
+    <h1 align="center"><?php echo $lang['FREE_POINTS']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_FREE_POINTS']." ".$_SESSION['puntos_libres']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_FREE_POINTS']?></button>
         
       </div>
       <table class="datatable" id="table_companies">
@@ -402,7 +408,23 @@ body {
             $max_puntos = get_max_puntos_libres($decoded);
             
             ?>
-              <input type="number" max="<?php echo $max_puntos?>" class="text" name="puntos_otorgados" id="puntos_otorgados" value="" >
+              <input type="number" max="<?php 
+              
+              $puntos_consumidos = get_puntos_consumidos_puntos_libres();
+              $puntos_totales = get_puntos_totales_puntos_libres();
+              $diferencia = $puntos_totales - $puntos_consumidos;
+              if ($diferencia > $max_puntos){
+              	echo $max_puntos;
+              }
+              if ($diferencia == $max_puntos){
+              	echo $max_puntos;
+              }
+              if ($diferencia <$max_puntos){
+              	echo $puntos_totales - $puntos_consumidos;
+              }
+              
+              
+              ?>"  class="text" name="puntos_otorgados" id="puntos_otorgados" value="" >
             </div>
           </div>  
      <div class="input_container">

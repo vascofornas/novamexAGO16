@@ -324,6 +324,7 @@ body {
 			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_TO']?></th>
 			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_POINTS']?></th>
 			<th style="color:WHITE;"><?php echo $lang['GIVEN_POINTS']?></th>
+			<th style="color:WHITE;"><?php echo $lang['LEFT_POINTS']?></th>
 			<th style="color:WHITE;"><?php echo $lang['MONTH']?></th>
 			<th style="color:WHITE;"><?php echo $lang['YEAR']?></th>
 			<th style="color:WHITE;"><?php echo $lang['ADD_FREE_POINTS']?></th>
@@ -347,6 +348,7 @@ body {
 			<td><?php echo get_nombre($row_puntos_temporales['level3_user'])?></td>
 			<td><?php echo $row_puntos_temporales['total_puntos_libres']?></td>
 			<td><?php echo $row_puntos_temporales['total_puntos_consumidos']?></td>
+			<td><?php echo $row_puntos_temporales['total_puntos_libres']-$row_puntos_temporales['total_puntos_consumidos']?></td>
 			<td><?php echo $row_puntos_temporales['mes_puntos_libres']?></td>
 			<td><?php echo $row_puntos_temporales['year']?></td>
 			

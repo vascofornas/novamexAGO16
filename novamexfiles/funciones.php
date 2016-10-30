@@ -416,6 +416,30 @@ function get_puntos_consumidos_puntos_libres(){
 			return $puntos_ya;
 
 }
+function get_puntos_totales_puntos_libres(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres  WHERE id_puntos_libres = '".$_SESSION['puntos_libres']."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+				
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+
+				$puntos_ya = $row_equipos['total_puntos_libres'] ;
+
+
+					
+			}
+			return $puntos_ya;
+
+}
+
 
 
 function update_puntos_consumidos_puntos_libres($puntos){
