@@ -64,9 +64,10 @@ else
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
                          <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
+                         <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
+                    
                          <li><a href="eval_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
-                          <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
-                      <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
+                           <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
                     
                       <li class="divider"></li>
                        <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
