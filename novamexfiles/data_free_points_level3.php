@@ -246,13 +246,34 @@ if ($job != ''){
     			$id_puntos_otorgados = $id;
     		//GET USER PUNTOS OTORGADOS
     		
-    			get_id_usuario_puntos_otorgados($id_puntos_otorgados);
+    			$usuario_recibe = get_id_usuario_puntos_otorgados( $id);//OK
     			
     			//GET PUNTOS OTORGADOS
-    			get_puntos_otorgados($id_puntos_otorgados);
+    			$puntos_a_restar = get_puntos_otorgados($id);//OK
+    			 
+    			//ACTUALIZAR PUNTOS OTORGADOS
+    			//get puntos libres actuales del usuario
+    			
+    			$puntos_libres_actuales = get_puntos_libres_usuario($usuario_recibe);//OK
     	//ACTUALIZAR PUNTOS LIBRES USUARIO
+    		$puntos_restantes = $puntos_libres_actuales - $puntos_a_restar;//OK
+    update_puntos_libres_borrados($usuario_recibe,$puntos_restantes); //OK
+    
+    
+    
     	//ACTUALIZAR PUNTOS DISPONIBLES USUARIO
     	
+    
+    	$puntos_disponibles_actuales = get_puntos_disponibles($usuario_recibe);//ok
+   	$puntos_disponibles_resultantes = $puntos_disponibles_actuales - $puntos_a_restar;//ok
+    	update_puntos_disponibles_borrar($usuario_recibe,$puntos_disponibles_resultantes);//PD
+    	
+    	
+    	//ACTualizar puntos consumidos
+    	
+    	$puntos_ya_otorgados = get_puntos_consumidos_puntos_libres();
+    	$puntos_consumidos_actuales = $puntos_ya_otorgados - $puntos_a_restar;
+    	update_puntos_consumidos_puntos_libres($puntos_consumidos_actuales);
     	
     	
       $query = "DELETE FROM tb_puntos_libres_otorgados WHERE id_puntos_libres_otorgados = '" . mysqli_real_escape_string($db_connection, $id) . "'";
