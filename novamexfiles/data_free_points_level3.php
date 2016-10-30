@@ -158,8 +158,7 @@ if ($job != ''){
   	//FIN ACTUALIZAR PUNTOS LIBRES USUARIO
   	//ACTUALIZAR PUNTOS DISPONIBLES
   	
-  		
-  		$existe = comprobar_existe_puntos_disponibles($_GET['recibe_usuario']);
+  $existe = comprobar_existe_puntos_disponibles($_GET['recibe_usuario']);
   		//si existe ACTUALIZAR
   		if ($existe == 1){
   			$puntos_actuales = get_puntos_disponibles($_GET['recibe_usuario']);
@@ -172,6 +171,7 @@ if ($job != ''){
   			crear_puntos_disponibles($_GET['recibe_usuario'],$puntos_actualizados);
   		}
   		 
+  		
   		
   		
   	//FIN ACTUALIZAR PUNTOS DISPONIBLES
