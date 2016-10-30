@@ -169,16 +169,249 @@ body {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
+<!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  
+ <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+    folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+
 
 </head> 
 <body>
 <?php include 'menu_admin.php';?>
+
 <div class="container">
-	<div class="row">
-<img class="blink-image" src="admin.jpg" width="920" height="368" />
-    </div>
-    </div>
-</div>
+<!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  
+                  <H4><?php echo $lang['NEWS']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-speakerphone"></i>
+                </div>
+                <a href="admin_news.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <H4><?php echo $lang['BUSINESS_UNITS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ios-briefcase"></i>
+                </div>
+                <a href="admin_bu.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>44</h3>
+                  <H4><?php echo $lang['DEPARTMENTS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ios-pie"></i>
+                </div>
+                <a href="admin_departamentos" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+          </div><!-- /.row -->
+          <!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-orange">
+                <div class="inner">
+                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  
+                  <H4><?php echo $lang['TEAMS']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-person-stalker"></i>
+                </div>
+                <a href="admin_news.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <H4><?php echo $lang['PROJECTS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-purple">
+                <div class="inner">
+                  <h3>44</h3>
+                  <H4><?php echo $lang['TAREAS_PROACTIVIDAD']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-nuclear"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+          </div><!-- /.row -->
+  <!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  
+                  <H4><?php echo $lang['FREE_POINTS']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-ribbon-a"></i>
+                </div>
+                <a href="admin_news.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <H4><?php echo $lang['USERS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-maroon">
+                <div class="inner">
+                  <h3>44</h3>
+                 <H4><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-happy-outline"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+          </div><!-- /.row -->
+  <!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  
+                  <H4><?php echo $lang['POINTS']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-ribbon-a"></i>
+                </div>
+                <a href="admin_news.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <H4><?php echo $lang['OTHER_PROJECTS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-filing"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>44</h3>
+                 <H4><?php echo $lang['EXCHANGE_POINTS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ios-cart"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+          </div><!-- /.row -->
+          <!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-teal">
+                <div class="inner">
+                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  
+                  <H4><?php echo $lang['MESSAGES']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-email"></i>
+                </div>
+                <a href="admin_news.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+          
+           
+            
+          </div><!-- /.row -->
+
+  </div>
 </body>
 </html>
 <?php

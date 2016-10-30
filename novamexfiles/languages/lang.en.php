@@ -296,6 +296,8 @@ $lang['MONTH'] = 'Month';
 $lang['YEAR'] = 'Year';
 $lang['NOT_AVAILABLE'] = 'Not Available';
 $lang['LEFT_POINTS'] = 'Points left';
+$lang['OTHER_PROJECTS'] = 'Other Categories';
+$lang['EXCHANGE_POINTS'] = 'Exchanged Points';
 
 
 ?>
