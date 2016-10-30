@@ -67,7 +67,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 
   
 
@@ -168,14 +168,6 @@ div.logo {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
-<!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  
- <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-    folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
 <script type="text/javascript">
 $(document).ready(function() {	
 	
@@ -222,80 +214,74 @@ function subirimagen()
 
 <div class = "container">
   
-         
+   <div class = "row" >
+   
+   
+  <div class="col-sm-12 col-md-12 col-lg-12"><H2><center><?php echo $lang['MIS_RECONOCIMIENTOS']?></center></H2>
+  <HR>
+  <h3><center><?php echo $lang['FREE_POINTS']?></center></h3>
+  <h4>
+<?php
 
-  <!-- Small boxes (Stat box) -->
-          <div class="row">
-             <div class="col-lg-12 col-xs-12">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                 
-                 <h3><?php echo get_puntos_disponibles($_SESSION['userSession']) ?></h3>
-                  <p><?php echo $lang['TOTAL']?></p>
-                
-                </div>
-                <div class="icon">
-                  <i class="ion ion-flag"></i>
-                </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            </div>
-             <div class="row">
-            <div class="col-lg-4 col-xs-4">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3><?php echo '<font color="red">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font> - <font color="green">'.get_puntos_consolidados_proyectos($_SESSION['userSession']).'</font>'?></h3>
-                  
-                  <H4><?php echo $lang['PROJECTS']?></h4>
-                </div>
-                <div class="icon">
-                 <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="misreconocimientos_proyectos.php" class="small-box-footer">
-                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-4">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3><?php echo get_puntos_libres_usuario($_SESSION['userSession'])?></h3>
-                  <H4><?php echo $lang['FREE_POINTS']?></h4>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-ribbon-a"></i>
-                </div>
-                <a href="misreconocimientos_puntos_libres.php" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-4">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-            
-          </div><!-- /.row -->
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_puntos_libres_otorgados WHERE recibe_usuario = '".$_SESSION['userSession']."'")
+    or die (mysqli_error($dbh));
 
-  
+
+?>
+<table class="table"  >
+			<thead style="background-color:Green;color:white;" >
+			<tr>
+			<th><?php echo $lang['DATE']?></th>
+			<th><?php echo $lang['ASSIGNED_BY']?></th>
+			<th><?php echo $lang['COMMENTS']?></th>
+			<th><?php echo $lang['POINTS']?></th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<?php 
+//display the results
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	
+
+		
+		
+			
+			?>
+					<tr>
+			<td style="background-color:GreenYellow ;" ><?php echo $row_proyectos['fecha_otorgacion']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo get_nombre($row_proyectos['otorga_usuario'])?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_proyectos['comentarios_otorgados']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_proyectos['puntos_otorgados']?></td>
+			
+			</tr>
+			
+			
+			
+			
+			
+			
+
+		<?php }?>	
+</tbody>
+			</table>
+	
+
+
+
+
+
+
+
+
+
+  </h4>
+   
    </div>
+   </div></div>
 
 </body>
 </html>
