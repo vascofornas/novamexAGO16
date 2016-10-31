@@ -219,7 +219,7 @@ function subirimagen()
    
   <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:Azure   ;"><H3><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></H3>
   <HR>
-  <h2><?php echo $lang['AS_SUPPLIER']?></h2>
+  <h2><?php echo $lang['AS_INTERNAL_SUPPLIER']?></h2>
   <h4>
 <?php
 
@@ -251,34 +251,13 @@ echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto'].
    </div>
    <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></H3>
   <HR>
-  <h2><?php echo $lang['AS_CUSTOMER']?></h2>
+  <h2><?php echo $lang['AS_INTERNAL_CUSTOMER']?></h2>
   <h4>
   
     
 <?php
 echo '<a href="nuevo_req_int.php"     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CREATE_NEW_REQ'].'</a><br><br>';
 
-//run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
-    or die (mysqli_error($dbh));
-
-
-
-//display the results
-while ($row_proyectos = mysqli_fetch_array($loop))
-{
-	?>
-	
-	
-	<?php 
-	if ($row_proyectos['evaluador_proyecto'] == $row['userID'] AND $row_proyectos['proyecto_cerrado'] == 0){
-echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
-	}
-	if ($row_proyectos['evaluador_proyecto'] == $row['userID'] AND $row_proyectos['proyecto_cerrado'] == 1){
-		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
-	}
-}
-	
 ?>
   </h4>
   </div></div></div>

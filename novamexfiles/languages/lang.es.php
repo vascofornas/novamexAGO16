@@ -295,4 +295,27 @@ $lang['EXCHANGE_POINTS'] = 'Puntos Canjeados';
 $lang['AS_SUPPLIER'] = 'Como Proveedor';
 $lang['AS_CUSTOMER'] = 'Como Cliente';
 $lang['CREATE_NEW_REQ'] = 'CREAR NUEVO REQUERIMIENTO DE CLIENTE INTERNO';
+$lang['CUSTOMER'] = 'Cliente';
+$lang['INTERNAL_SUPPLIER'] = 'Proveeor Interno';
+
+$lang['TITLE_REQ'] = 'Titulo Requerimiento Cliente Interno';
+$lang['DESC_REQ'] = 'Descripcion Requerimiento Cliente Interno';
+$lang['PERIODICITY'] = 'Periodicidad';
+$lang['ONLY_ONCE'] = 'Solo una vez';
+$lang['EVERYDAY'] = 'Cada dia';
+$lang['EVERY_WEEK'] = 'Cada semana';
+$lang['EVERY_TWO_WEEKS'] = 'Cada dos semanas';
+$lang['EVERY_MONTH'] = 'Cada mes';
+$lang['EVERY_TWO_MONTHS'] = 'Cada dos meses';
+$lang['EVERY_THREE_MONTHS'] = 'Cada tres meses';
+$lang['EVERY_FOUR_MONTHS'] = 'Cada cuatro meses';
+$lang['EVERY_SIX_MONTHS'] = 'Cada seis meses';
+$lang['EVERY_TWELVE_MONTHS'] = 'Cada doce meses';
+$lang['REPEATS'] = '# de repeticiones';
+$lang['START_DATE_REQ'] = 'Fecha Inicio Evaluacion';
+$lang['CONCEPT'] = 'Concepto';
+
+$lang['REQ_SENT'] = 'Requirimiento enviado para su aprobacion';
+$lang['AS_INTERNAL_SUPPLIER'] = 'Como proveedor interno';
+$lang['AS_INTERNAL_CUSTOMER'] = 'Como cliente interno';
 ?>

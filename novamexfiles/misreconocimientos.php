@@ -278,13 +278,13 @@ function subirimagen()
             </div><!-- ./col -->
             <div class="col-lg-4 col-xs-4">
               <!-- small box -->
-              <div class="small-box bg-yellow">
+              <div class="small-box bg-maroon">
                 <div class="inner">
-                  <h3>44</h3>
-                  <p>User Registrations</p>
+                  <h3>0</h3>
+                  <H4><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></h4>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-happy-outline"></i>
                 </div>
                 <a href="#" class="small-box-footer">
                   More info <i class="fa fa-arrow-circle-right"></i>
@@ -294,7 +294,79 @@ function subirimagen()
             
           </div><!-- /.row -->
 
-  
+    <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+           
+              <div class="small-box bg-purple">
+                <div class="inner">
+                  <h3>0</h3>
+                  <H4><?php echo $lang['TAREAS_PROACTIVIDAD']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-nuclear"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+           </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>0</h3>
+                  <H4><?php echo $lang['OTHER_PROJECTS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-filing"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>0</h3>
+                 <H4><?php echo $lang['EXCHANGE_POINTS']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ios-cart"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+          </div><!-- /.row -->
+          <!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-teal">
+                <div class="inner">
+                  <h3>0</h3>
+                  
+                  <H4><?php echo $lang['MESSAGES']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-email"></i>
+                </div>
+                <a href="admin_news.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+          
+           
+            
+          </div><!-- /.row -->
+
    </div>
 
 </body>

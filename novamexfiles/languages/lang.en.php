@@ -301,6 +301,27 @@ $lang['EXCHANGE_POINTS'] = 'Exchanged Points';
 $lang['AS_SUPPLIER'] = 'As Supplier';
 $lang['AS_CUSTOMER'] = 'As Customer';
 $lang['CREATE_NEW_REQ'] = 'NEW INTERNAL CUSTOMER REQUIREMENT';
+$lang['CUSTOMER'] = 'Customer';
+
+$lang['INTERNAL_SUPPLIER'] = 'Internal Supplier';
+$lang['TITLE_REQ'] = 'Internal Customer Requirement Title';
+$lang['DESC_REQ'] = 'Internal Customer Requirement Description';
+$lang['PERIODICITY'] = 'Periodicity';
+$lang['ONLY_ONCE'] = 'Only once';
+$lang['EVERYDAY'] = 'Everyday';
+$lang['EVERY_WEEK'] = 'Every week';
+$lang['EVERY_TWO_WEEKS'] = 'Every two weeks';
+$lang['EVERY_MONTH'] = 'Every month';
+$lang['EVERY_TWO_MONTHS'] = 'Every two months';
+$lang['EVERY_THREE_MONTHS'] = 'Every three months';
+$lang['EVERY_FOUR_MONTHS'] = 'Every four months';
+$lang['EVERY_SIX_MONTHS'] = 'Every six months';
+$lang['EVERY_TWELVE_MONTHS'] = 'Every twelve months';
+$lang['REPEATS'] = '# of repeats';
+$lang['START_DATE_REQ'] = 'Evaluation Start Date';
+$lang['CONCEPT'] = 'Concept';
+$lang['REQ_SENT'] = 'Requirement sent for approval';
+
 
 
 ?>

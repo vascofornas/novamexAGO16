@@ -1,5 +1,6 @@
 <?php
 include 'funciones.php';
+include_once 'common.php';
 if($_POST)
 {
     $to_email       = "modestovasco@gmail.com"; //Recipient email, Replace with own email here
@@ -89,7 +90,7 @@ if($_POST)
         die($output);
     }else{
     	$mi_nombre = get_nombre($cliente);
-        $output = json_encode(array('type'=>'message', 'text' => 'Hi '.$mi_nombre .' Requirement Sent for aproval'));
+        $output = json_encode(array('type'=>'message', 'text' => '-> '. $lang['REQ_SENT']));
         die($output);
     }
 }

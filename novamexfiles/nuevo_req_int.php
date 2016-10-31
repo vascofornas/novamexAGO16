@@ -84,10 +84,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
   
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
  
 <!-- Ionicons -->
@@ -252,10 +248,20 @@ function subirimagen()
 <!-- Start jQuery code -->
 <script type="text/javascript">
 $(document).ready(function() {
+
+	   var date = new Date();
+	    var currentMonth = date.getMonth();
+	    var currentDate = date.getDate();
+	    var currentYear = date.getFullYear();
+
+	    $('#fecha').datepicker({
+	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        dateFormat: 'yy-mm-dd'
+	    });;
+	  
     $("#submit_btn").click(function() { 
 
-  
-       
+    	
         var proceed = true;
         //simple validation at client's end
         //loop through each field and we simply change border color to red for invalid fields       
@@ -304,7 +310,7 @@ $(document).ready(function() {
             };
             
             //Ajax post data to server
-            $.post('contact_me.php', post_data, function(response){  
+            $.post('enviar_re_cliente_interno.php', post_data, function(response){  
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
@@ -340,14 +346,15 @@ $(document).ready(function() {
 <h2><?php echo $lang['CREATE_NEW_REQ']?></h2>
 <div class="form-style" id="contact_form">
     
-    <div id="contact_results"></div>
+    <div id="contact_results" style="background-color:#f44242;font-family: Arial Black; font-size: 24px; 
+color: white"></div>
     <div id="contact_body">
 <div class="row">
 
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Supervisor</label>
+                      <label><?php echo $lang['SUPERVISOR']?></label>
                       <h4><?php echo get_nombre( get_supervisor($_SESSION['userSession']));?></h4>
                       <input type="hidden" class="form-control" id="supervisor" name="supervisor" placeholder="Enter ..." disabled value="<?php echo get_supervisor($_SESSION['userSession']);?>">
         </div>
@@ -355,7 +362,7 @@ $(document).ready(function() {
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Cliente</label>
+                      <label><?php echo $lang['CUSTOMER']?></label>
                       <h4><?php echo get_nombre( ($_SESSION['userSession']));?></h4>
                       
                       <input type="hidden" class="form-control" id="cliente" name="cliente" placeholder="Enter ..." disabled value="<?php echo $_SESSION['userSession'];?>">
@@ -366,7 +373,7 @@ $(document).ready(function() {
  
    <div class="col-md-6">
          <div class="form-group">
-                    <label>Proveedor Interno</label>
+                    <label><?php echo $lang['INTERNAL_SUPPLIER']?></label>
                     <select class="form-control select2" id="proveedor" name="proveedor" style="width: 100%;">
                                 
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
@@ -396,16 +403,16 @@ $(document).ready(function() {
 <div class="col-md-6">
          
          <div class="form-group">
-                      <label>Titulo del Requerimiento Interno</label>
-                      <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo del requerimiento ...">
+                      <label><?php echo $lang['TITLE_REQ']?></label>
+                      <input type="text" name="titulo" id="titulo" class="form-control" placeholder="<?php echo $lang['TITLE_REQ']?> ...">
                     </div>
                     
 
  </div>
  <div class="col-md-12">
  <div class="form-group">
-                      <label>Descripcion del Requerimiento Interno</label>
-                      <textarea class="form-control" id="texto" name="texto" rows="3" placeholder="Texto del requerimiento..."></textarea>
+                      <label><?php echo $lang['DESC_REQ']?></label>
+                      <textarea class="form-control" id="texto" name="texto" rows="3" placeholder="<?php echo $lang['DESC_REQ']?>..."></textarea>
  </div>
  
 
@@ -413,25 +420,26 @@ $(document).ready(function() {
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Periodicidad</label>
-                   <select id="periodicidad" name="periodicidad class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Una sola vez</option>
-                      <option>Cada dia</option>
-                      <option>Cada semana</option>
-                      <option>Cada mes</option>
-                      <option>Cada 2 meses</option>
-                      <option>Cada 3 meses</option>
-                      <option>Cada 4 meses</option>
+                      <label><?php echo $lang['PERIODICITY']?></label>
+                   <select id="periodicidad" name="periodicidad" class="form-control select2" style="width: 100%;">
+                        <option selected="selected" value="1"><?php echo $lang['ONLY_ONCE']?></option>
+                      <option value="2"><?php echo $lang['EVERYDAY']?></option>
+                      <option value="3"><?php echo $lang['EVERY_WEEK']?></option>
+                      <option value="4"><?php echo $lang['EVERY_TWO_WEEKS']?></option>
+                      <option value="5"><?php echo $lang['EVERY_MONTH']?></option>
+                      <option value="6"><?php echo $lang['EVERY_TWO_MONTHS']?></option>
+                      <option value="7"><?php echo $lang['EVERY_THREE_MONTHS']?></option>
+                      <option value="8"><?php echo $lang['EVERY_FOUR_MONTHS']?></option>
                       
-                      <option>Cada 6 meses</option>
+                      <option value="9"><?php echo $lang['EVERY_SIX_MONTHS']?></option>
                       
-                      <option>Cada año</option>
+                      <option value="10"><?php echo $lang['EVERY_TWELVE_MONTHS']?></option>
                     </select>  </div>
 	</div>
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label># de repeticiones</label>
+                      <label><?php echo $lang['REPEATS']?></label>
                       <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
                       <option selected="selected">1</option>
                       <option>2</option>
@@ -450,8 +458,8 @@ $(document).ready(function() {
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Fecha Inicio</label>
-                  <input type="text" id="fecha" name="fecha" class="form-control" name="fecha_inicio_proyecto" id="fecha_inicio_proyecto" placeholder="Enter ...">  </div>
+                      <label><?php echo $lang['START_DATE_REQ']?></label>
+                  <input type="text" id="fecha" name="fecha" class="form-control" name="fecha_inicio_proyecto" id="fecha_inicio_proyecto" placeholder="<?php echo $lang['START_DATE_REQ']?> ...">  </div>
 	</div>
 
 	<div class="col-md-6">
@@ -462,28 +470,28 @@ $(document).ready(function() {
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Concepto 1</label>
-                     <input type="text" class="form-control" name="concepto1" id="concepto1" placeholder="Texto del Concepto 1 ...">    </div>
+                      <label><?php echo $lang['CONCEPT']?> 1</label>
+                     <input type="text" class="form-control" name="concepto1" id="concepto1" placeholder="<?php echo $lang['CONCEPT']?> 1 ...">    </div>
 	</div>
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Concepto 2</label>
-       <input type="text" class="form-control" name="concepto2" id="concepto2" placeholder="Texto del Concepto 2...">  </div>
+                      <label><?php echo $lang['CONCEPT']?> 2</label>
+       <input type="text" class="form-control" name="concepto2" id="concepto2" placeholder="<?php echo $lang['CONCEPT']?> 2...">  </div>
 	</div>
 </div>
 <div class="row">
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Concepto 3</label>
-                     <input type="text" class="form-control" name="concepto3" id="concepto3"  placeholder="Texto del Concepto 3 ...">    </div>
+                      <label><?php echo $lang['CONCEPT']?> 3</label>
+                     <input type="text" class="form-control" name="concepto3" id="concepto3"  placeholder="<?php echo $lang['CONCEPT']?> 3 ...">    </div>
 	</div>
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label>Concepto 4</label>
-       <input type="text" class="form-control"name="concepto4" id="concepto4"  placeholder="Texto del Concepto  ...">  </div>
+                      <label><?php echo $lang['CONCEPT']?> 4</label>
+       <input type="text" class="form-control"name="concepto4" id="concepto4"  placeholder="<?php echo $lang['CONCEPT']?> 4 ...">  </div>
 	</div>
 </div>
 <div class="row">
@@ -510,9 +518,12 @@ $(document).ready(function() {
                       <label>Puntos ESFUERZO EXCEPCIONAL</label>
        <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="Puntos por esfuerzo excepcional ...">  </div>
 	</div>
-	
-	<input type="submit" id="submit_btn" value="Enviar" />
-	</div></div></div></div></div>
+	</div>
+	<div class="row">
+	<div class="col-md-6">
+	<input type="submit" id="submit_btn" class="btn btn-primary btn-lg" value="Enviar" />
+	</div></div>
+	</div></div></div></div>
 </div>
 </body>
 </html>
