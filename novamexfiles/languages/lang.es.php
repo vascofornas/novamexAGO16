@@ -292,4 +292,7 @@ $lang['NOT_AVAILABLE'] = 'No disponible';
 $lang['LEFT_POINTS'] = 'Puntos restantes';
 $lang['OTHER_PROJECTS'] = 'Otros Rubros';
 $lang['EXCHANGE_POINTS'] = 'Puntos Canjeados';
+$lang['AS_SUPPLIER'] = 'Como Proveedor';
+$lang['AS_CUSTOMER'] = 'Como Cliente';
+$lang['CREATE_NEW_REQ'] = 'CREAR NUEVO REQUERIMIENTO DE CLIENTE INTERNO';
 ?>

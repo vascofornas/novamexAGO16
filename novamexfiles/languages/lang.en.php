@@ -298,6 +298,9 @@ $lang['NOT_AVAILABLE'] = 'Not Available';
 $lang['LEFT_POINTS'] = 'Points left';
 $lang['OTHER_PROJECTS'] = 'Other Categories';
 $lang['EXCHANGE_POINTS'] = 'Exchanged Points';
+$lang['AS_SUPPLIER'] = 'As Supplier';
+$lang['AS_CUSTOMER'] = 'As Customer';
+$lang['CREATE_NEW_REQ'] = 'NEW INTERNAL CUSTOMER REQUIREMENT';
 
 
 ?>

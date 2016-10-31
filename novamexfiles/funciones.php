@@ -83,6 +83,23 @@ function get_nombre_revision($usuario){
 	return $nombre_del_usuario;
 
 }
+function get_supervisor($usuario){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tbl_users WHERE userID = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$supervisor_del_usuario = $row_usua['supervisor_usuario'];
+	}
+	return $supervisor_del_usuario;
+
+}
 function get_nombre($usuario){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
