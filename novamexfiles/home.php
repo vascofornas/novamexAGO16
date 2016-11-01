@@ -185,7 +185,6 @@ div.logo {
    
      <div class = "col-xs-6 col-sm-6" >
          
-         <h2 align="center"><strong><img src="welcome.gif" width="243" height="185" /></strong></h2>
         
          
          
@@ -201,7 +200,6 @@ div.logo {
       </div>
       
      <div class = "col-xs-6 col-sm-6" >
-       <h2 align="center"><img class="blink-image" src="news.png" width="180" height="180" /></strong></h2>
        <br>
         
         
