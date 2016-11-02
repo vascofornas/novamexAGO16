@@ -548,7 +548,22 @@ body {
        <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="Puntos por esfuerzo excepcional ...">  </div>
 	</div>
 	
+	   <div class="input_container">
+             
+                      <label><?php echo $lang['STATUS']?></label>
+                       <div class="styled-select slate">
+                      <select id="estado_req_interno" name="estado_req_interno" class="form-control select2" style="width: 100%;">
+                      <option selected="selected" value="0"><?php echo $lang['PENDING_APPROVEMENT']?></option>
+                      <option value="1"><?php echo $lang['APPROVED']?></option>
+                      <option value="2"><?php echo $lang['REJECTED']?></option>
+                     
+                      </select>  
+                       </div> 
 	
+       
+       
+       </div>
+       
 	
           <div class="button_container">
             <button type="submit"><?php echo $lang['ADD_PROJECT']?></button>

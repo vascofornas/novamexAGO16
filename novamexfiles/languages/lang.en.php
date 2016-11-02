@@ -324,7 +324,7 @@ $lang['REQ_SENT'] = 'Requirement sent for approval';
 $lang['STATUS'] = 'Status';
 $lang['PENDING_APPROVEMENT'] = 'Pending Request';
 $lang['APPROVED'] = 'Request Approved';
-$lang['DENIED'] = 'Request Rejected';
+$lang['REJECTED'] = 'Request Rejected';
 
 
 ?>

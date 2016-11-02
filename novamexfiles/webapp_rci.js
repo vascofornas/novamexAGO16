@@ -144,6 +144,7 @@ $(document).ready(function(){
     $('#form_company #leve').val('');
     $('#form_company #aceptable').val('');
     $('#form_company #excepcional').val('');
+    $('#form_company #estado_req_interno').val('');
        
     
     show_lightbox();

@@ -154,7 +154,8 @@ if ($job != ''){
    if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
 
    if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
-
+   if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
+    
    if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; } 
   
    if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
