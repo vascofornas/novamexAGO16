@@ -195,7 +195,7 @@ $(document).ready(function(){
     show_loading_message();
     var id      = $(this).data('id');
     var request = $.ajax({
-      url:          'data_proyectos.php?job=get_company',
+      url:          'data_rci.php?job=get_company',
       cache:        false,
       data:         'id=' + id,
       dataType:     'json',
@@ -204,20 +204,39 @@ $(document).ready(function(){
     });
     request.done(function(output){
       if (output.result == 'success'){
-        $('.lightbox_content h2').text('Edit Project');
-        $('#form_company button').text('Edit Project');
+        $('.lightbox_content h2').text('Edit Internal Customer Requirement');
+        $('#form_company button').text('Edit Internal Customer Requirement');
         $('#form_company').attr('class', 'form edit');
         $('#form_company').attr('data-id', id);
         $('#form_company .field_container label.error').hide();
         $('#form_company .field_container').removeClass('valid').removeClass('error');
        
-        $('#form_company #nombre_proyecto').val(output.data[0].nombre_proyecto);
-        $('#form_company #descripcion_proyecto').val(output.data[0].descripcion_proyecto);
-        $('#form_company #tipo_proyecto').val(output.data[0].tipo_proyecto);
-        $('#form_company #equipo_proyecto').val(output.data[0].equipo_proyecto);
+        $('#form_company #cliente_req_interno').val(output.data[0].cliente_req_interno);
+        $('#form_company #proveedor_req_interno').val(output.data[0].proveedor_req_interno);
+        $('#form_company #titulo_req_interno').val(output.data[0].titulo_req_interno);
+        $('#form_company #descripcion_req_interno').val(output.data[0].descripcion_req_interno);
         $('#form_company #evaluador_proyecto').val(output.data[0].evaluador_proyecto);
-        $('#form_company #fecha_inicio_proyecto').val(output.data[0].fecha_inicio_proyecto);
-        $('#form_company #fecha_final_proyecto').val(output.data[0].fecha_final_proyecto);
+        $('#form_company #fecha_inicio_req_interno').val(output.data[0].fecha_inicio_req_interno);
+        $('#form_company #estado_req_interno').val(output.data[0].estado_req_interno);
+        
+        $('#form_company #concepto1').val(output.data[0].concepto1);
+
+        $('#form_company #concepto3').val(output.data[0].concepto3);
+        $('#form_company #concepto2').val(output.data[0].concepto2);
+
+        $('#form_company #concepto4').val(output.data[0].concepto4);
+
+        $('#form_company #sin_puntuar').val(output.data[0].sin_puntuar);
+
+        $('#form_company #leve').val(output.data[0].leve);
+
+        $('#form_company #aceptable').val(output.data[0].aceptable);
+
+        $('#form_company #excepcional').val(output.data[0].excepcional);
+
+        $('#form_company #periodicidad').val(output.data[0].periodicidad);
+
+        $('#form_company #repeticiones').val(output.data[0].repeticiones);
         
         hide_loading_message();
         show_lightbox();
@@ -244,7 +263,7 @@ $(document).ready(function(){
       var id        = $('#form_company').attr('data-id');
       var form_data = $('#form_company').serialize();
       var request   = $.ajax({
-        url:          'data_proyectos.php?job=edit_company&id=' + id,
+        url:          'data_rci.php?job=edit_company&id=' + id,
         cache:        false,
         data:         form_data,
         dataType:     'json',
@@ -256,8 +275,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            var company_name = $('#nombre_proyecto').val();
-            show_message("Project with name '" + company_name + "' edited succesfully.", 'success');
+            var company_name = $('#titulo_req_interno').val();
+            show_message("Requirement with name '" + company_name + "' edited succesfully.", 'success');
           }, true);
         } else {
           hide_loading_message();

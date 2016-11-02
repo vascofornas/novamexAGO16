@@ -114,7 +114,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "SELECT * FROM tb_proyectos WHERE id_proyecto = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "SELECT * FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
@@ -124,14 +124,24 @@ if ($job != ''){
         $message = 'query success';
         while ($company = mysqli_fetch_array($query)){
           $mysql_data[] = array(
-             "nombre_proyecto"  => $company['nombre_proyecto'],
-          "descripcion_proyecto"    => $company['descripcion_proyecto'],
-        		"tipo_proyecto"    => $company['tipo_proyecto'],
-        		"equipo_proyecto"    => $company['equipo_proyecto'],
-        		"evaluador_proyecto"    => $company['evaluador_proyecto'],
+            "cliente_req_interno"  => $company['cliente_req_interno'],
+          
+        		"proveedor_req_interno"    => $company['proveedor_req_interno'],
+        		"titulo_req_interno"    => $company['titulo_req_interno'],
         		
-        		"fecha_inicio_proyecto"    => $company['fecha_inicio_proyecto'],
-        		"fecha_final_proyecto"    => $company['fecha_final_proyecto']
+        		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
+        		"estado_req_interno"    =>  $company['estado_req_interno'],
+          		"descripcion_req_interno"    =>  $company['descripcion_req_interno'],
+          		"concepto1"    =>  $company['concepto1'],
+          		"concepto2"    =>  $company['concepto2'],
+          		"concepto3"    =>  $company['concepto3'],
+          		"concepto4"    =>  $company['concepto4'],
+          		"sin_puntuar"    =>  $company['sin_puntuar'],
+          		"leve"    =>  $company['leve'],
+          		"aceptable"    =>  $company['aceptable'],
+          		"excepcional"    =>  $company['excepcional'],
+          		"periodicidad"    =>  $company['periodicidad'],
+        		"repeticiones"    => $company['repeticiones']
           );
         }
       }
@@ -193,17 +203,38 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "UPDATE tb_proyectos SET ";
-        if (isset($_GET['nombre_proyecto'])) { $query .= "nombre_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_proyecto']) . "', "; }
-   if (isset($_GET['descripcion_proyecto'])) { $query .= "descripcion_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_proyecto']) . "', "; }
-   if (isset($_GET['tipo_proyecto'])) { $query .= "tipo_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['tipo_proyecto']) . "', "; }
-   if (isset($_GET['equipo_proyecto'])) { $query .= "equipo_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['equipo_proyecto']) . "', "; }
-   if (isset($_GET['evaluador_proyecto'])) { $query .= "evaluador_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['evaluador_proyecto']) . "', "; }
-   if (isset($_GET['fecha_inicio_proyecto'])) { $query .= "fecha_inicio_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_proyecto']) . "', "; }
+      $query = "UPDATE tb_requerimientos_cliente_interno SET ";
+        if (isset($_GET['cliente_req_interno'])) { $query .= "cliente_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['cliente_req_interno']) . "', "; }
+    if (isset($_GET['cliente_req_interno'])) { $query .= "supervisor_req_interno = '" .$supervisor. "', "; }
+     
+    if (isset($_GET['proveedor_req_interno'])) { $query .= "proveedor_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_req_interno']) . "', "; }
+   if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
+
+   if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
+   if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
+    
+   if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; } 
   
-    if (isset($_GET['fecha_final_proyecto'])) { $query .= "fecha_final_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_final_proyecto']) . "'";   }
-	 
-      $query .= "WHERE id_proyecto = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+   if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
+
+   if (isset($_GET['concepto2'])) { $query .= "concepto_2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
+
+   if (isset($_GET['concepto3'])) { $query .= "concepto_3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
+
+   if (isset($_GET['concepto4'])) { $query .= "concepto_4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
+   
+   if (isset($_GET['sin_puntuar'])) { $query .= "sin_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['sin_puntuar']) . "', "; }
+   if (isset($_GET['leve'])) { $query .= "puntos_esfuerzo_leve = '" . mysqli_real_escape_string($db_connection, $_GET['leve']) . "', "; }
+    
+   if (isset($_GET['aceptable'])) { $query .= "puntos_esfuerzo_aceptable = '" . mysqli_real_escape_string($db_connection, $_GET['aceptable']) . "', "; }
+     
+   if (isset($_GET['excepcional'])) { $query .= "puntos_esfuerzo_excepcional = '" . mysqli_real_escape_string($db_connection, $_GET['excepcional']) . "', "; }
+      
+   if (isset($_GET['periodicidad'])) { $query .= "periodicidad = '" . mysqli_real_escape_string($db_connection, $_GET['periodicidad']) . "', "; }
+   
+   if (isset($_GET['repeticiones'])) { $query .= "repeticiones = '" . mysqli_real_escape_string($db_connection, $_GET['repeticiones']) . "'";   }
+	
+      $query .= "WHERE id_req_interno  = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query  = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
