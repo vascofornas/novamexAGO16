@@ -300,7 +300,7 @@ $(document).ready(function() {
 
                 'concepto4'  : $('input[name=concepto4]').val(),
 
-                'sin_puntos'  : $('input[name=sin_puntos]').val(),
+                'sin_puntuar'  : $('input[name=sin_puntuar]').val(),
 
                 'leve'  : $('input[name=leve]').val(),
 

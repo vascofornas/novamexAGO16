@@ -318,4 +318,8 @@ $lang['CONCEPT'] = 'Concepto';
 $lang['REQ_SENT'] = 'Requirimiento enviado para su aprobacion';
 $lang['AS_INTERNAL_SUPPLIER'] = 'Como proveedor interno';
 $lang['AS_INTERNAL_CUSTOMER'] = 'Como cliente interno';
+$lang['STATUS'] = 'Estado';
+$lang['PENDING_APPROVEMENT'] = 'Solicitud pendiente';
+$lang['APPROVED'] = 'Solicitud aprobada';
+$lang['DENIED'] = 'Solicitud denegada';
 ?>

@@ -321,7 +321,10 @@ $lang['REPEATS'] = '# of repeats';
 $lang['START_DATE_REQ'] = 'Evaluation Start Date';
 $lang['CONCEPT'] = 'Concept';
 $lang['REQ_SENT'] = 'Requirement sent for approval';
-
+$lang['STATUS'] = 'Status';
+$lang['PENDING_APPROVEMENT'] = 'Pending Request';
+$lang['APPROVED'] = 'Request Approved';
+$lang['DENIED'] = 'Request Rejected';
 
 
 ?>

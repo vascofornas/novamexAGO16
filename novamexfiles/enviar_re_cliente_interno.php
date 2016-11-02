@@ -28,7 +28,7 @@ if($_POST)
     $concepto2      = filter_var($_POST["concepto2"], FILTER_SANITIZE_STRING);
     $concepto3      = filter_var($_POST["concepto3"], FILTER_SANITIZE_STRING);
     $concepto4      = filter_var($_POST["concepto4"], FILTER_SANITIZE_STRING);
-    $sin_puntos      = filter_var($_POST["sin_puntos"], FILTER_SANITIZE_STRING);
+    $sin_puntuar      = filter_var($_POST["sin_puntuar"], FILTER_SANITIZE_STRING);
     $leve      = filter_var($_POST["leve"], FILTER_SANITIZE_STRING);
     $aceptable      = filter_var($_POST["aceptable"], FILTER_SANITIZE_STRING);
     $excepcional      = filter_var($_POST["excepcional"], FILTER_SANITIZE_STRING);
@@ -61,11 +61,12 @@ if($_POST)
     		concepto_3,
     		concepto_4,
     		periodicidad,
+    		sin_puntos,
     		repeticiones
     		)  VALUES ('".$cliente."','".$supervisor."','".$proveedor."','".$titulo."',
     				'".$texto."','".$fecha."','".$leve."','".$aceptable."',
     						'".$excepcional."','".$concepto1."','".$concepto2."','".$concepto3."',
-    								'".$concepto4."','".$periodicidad."','".$repeticiones."')";
+    								'".$concepto4."','".$periodicidad."','".$sin_puntuar."','".$repeticiones."')";
     
     if ($mysqli->query($sql) === TRUE) {
     		
