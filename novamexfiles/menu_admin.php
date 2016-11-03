@@ -89,6 +89,7 @@ else
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['LEVEL_3_OPTIONS']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="mispuntoslibres_select.php"><?php echo $lang['FREE_POINTS']?></a></li>
+                         <li><a href="autorizar_rci.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
                         
                     </ul>
                 </li>

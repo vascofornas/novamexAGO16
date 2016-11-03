@@ -325,6 +325,8 @@ $lang['STATUS'] = 'Status';
 $lang['PENDING_APPROVEMENT'] = 'Pending Request';
 $lang['APPROVED'] = 'Request Approved';
 $lang['REJECTED'] = 'Request Rejected';
+$lang['RCI_INFO'] = 'Internal Customer Requirement Data';
+$lang['APPROVED_SUPERVISOR'] = 'Approved by Supervisor?';
 
 
 ?>

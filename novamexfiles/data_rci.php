@@ -74,7 +74,20 @@ if ($job != ''){
 		
         $functions .= '</ul></div>';
         $stat = $company['estado_req_interno'];
+        $autorizado = $company['approved_by_supervisor'];
         
+        $aut="";
+         if ($autorizado == 0){
+         	$aut =  $lang['PENDING_APPROVEMENT'];
+        
+         }
+         if ($autorizado == 1){
+         	$aut =  $lang['APPROVED'];
+         }
+         if ($autorizado == 2){
+         	$aut =  $lang['REJECTED'];
+         }
+         
         
       if($stat == 0){
         	$estado = $lang['PENDING_APPROVEMENT'];
@@ -98,6 +111,7 @@ if ($job != ''){
         		"titulo_req_interno"    => $company['titulo_req_interno'],
         		
         		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
+        		"approved_by_supervisor"    => $aut,
         		"estado_req_interno"    => $estado,
         		
         

@@ -340,6 +340,7 @@ body {
               <th><?php echo $lang['INTERNAL_SUPPLIER']?></th>
               <th><?php echo $lang['TITLE_REQ']?></th>
               <th><?php echo $lang['START_DATE_REQ']?></th>
+              <th><?php echo $lang['APPROVED_SUPERVISOR']?></th>
              
               <th><?php echo $lang['STATUS']?></th>
               

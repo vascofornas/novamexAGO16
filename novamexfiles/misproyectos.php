@@ -269,10 +269,10 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	
 	<?php 
 	if ($row_proyectos['evaluador_proyecto'] == $row['userID'] AND $row_proyectos['proyecto_cerrado'] == 0){
-echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>  ".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
 	}
 	if ($row_proyectos['evaluador_proyecto'] == $row['userID'] AND $row_proyectos['proyecto_cerrado'] == 1){
-		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
+		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='proyecto_a_evaluar.php?id=".$row_proyectos['id_proyecto']."'>  ".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
 	}
 }
 	

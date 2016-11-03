@@ -302,7 +302,7 @@ function check_puntos_restantes (){
 </head> 
 <body>
 
-<?php include 'menu.php';?>
+<?php include 'menu_admin.php';?>
 <div class="container">
 	<div class="row">
 

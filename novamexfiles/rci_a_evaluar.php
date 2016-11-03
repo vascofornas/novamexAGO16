@@ -48,6 +48,15 @@ $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
+
+
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_requerimientos_cliente_interno  WHERE id_req_interno = $id";
+$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
+
+$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -169,16 +178,41 @@ div.logo {
 }
 </style>
 <script type="text/javascript">
+
+   
+</script>
+<script type="text/javascript">
 $(document).ready(function() {	
-	
+
+	 var elems = document.getElementsByClassName('confirmation');
+	    var confirmIt = function (e) {
+	        if (!confirm('<?php echo $lang['CONFIRMATION']?>')) e.preventDefault();
+	    };
+	    for (var i = 0, l = elems.length; i < l; i++) {
+	        elems[i].addEventListener('click', confirmIt, false);
+	    }
 	// submit form using $.ajax() method
+	
+     function getConfirmation(){
+         alert("KK");
+        var retVal = confirm("Do you want to continue ?");
+        if( retVal == true ){
+           document.write ("User wants to continue!");
+           return true;
+        }
+        else{
+           document.write ("User does not want to continue!");
+           return false;
+        }
+     }
+ 
 	
 	$('#reg-form').submit(function(e){
 		
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'edituser.php',
+			url: 'editprojectdeliverable.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -194,14 +228,15 @@ $(document).ready(function() {
 	
 });
 </script>
-<script type="text/javascript">
+    <script> 
+
 function subirimagen()
 
 {
 
 	self.name = 'opener';
 
-	remote = open('subirfoto.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+	remote = open('subirentregable.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
 
 	remote.focus();
 	}
@@ -210,83 +245,105 @@ function subirimagen()
 </script>
 </head> 
 <body>
-<?php include 'menu.php';?>
 
+<?php include 'menu.php';?>
 <div class = "container">
-  
    <div class = "row" >
    
-   
-  <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:Azure   ;"><H3><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></H3>
-  <HR>
-  <h2><?php echo $lang['AS_INTERNAL_SUPPLIER']?></h2>
+     
+    <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['RCI_INFO']?></H3>
+  <hr>
   <h4>
-<?php
-
-//run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos")
-    or die (mysqli_error($dbh));
-
-
-
-//display the results
-while ($row_proyectos = mysqli_fetch_array($loop))
-{
-	//run the query
-	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos")
-	or die (mysqli_error($dbh));
-	while ($row_miembros = mysqli_fetch_array($loop_miembros))
-	{
-	
-	if ($row_miembros['usuario'] == $row['userID'] && $row_miembros['equipo'] == $row_proyectos['equipo_proyecto'])
-	{
-echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto']."'>".$row_proyectos['nombre_proyecto'] ."</strong></a><br> " . $row_proyectos['descripcion_proyecto']."<hr>";
-	}
-	else{}
-	}
-	}
-?>
-  </h4>
-   
-   </div>
-   <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></H3>
-  <HR>
-  <h2><?php echo $lang['AS_INTERNAL_CUSTOMER']?></h2>
-  <h4>
-  
-    
-<?php
-echo '<a href="nuevo_req_int.php"     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CREATE_NEW_REQ'].'</a><br><br>';
-
-?>
+  <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_req_interno']?></p>
+  <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo $row_Recordset3['descripcion_req_interno']?></p>
+  	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_req_interno']?></p>
+  <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_req_interno'])?></p>
+  <p><strong><?php echo $lang['SUPERVISOR']?>: </strong><?php echo get_nombre($row_Recordset3['supevisor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  			   <br>
  
+    <?php
+    
+    if (comprobar_proyecto($_GET['id']) == 0){
+    echo '<a href="proyecto_a_cerrar.php?id='.$_GET['id'].'&rev='.$rev.' "     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CLOSE_PROJECT'].'</a><br><br>';
+    }
+    if (comprobar_proyecto($_GET['id']) == 1){
+    	echo '<a href="# "     class="btn btn-danger btn-lg active " role="button" >'.$lang['PROJECT_CLOSED'].'</a><br><br>';
+    }
+    
+    ?>
+    
+    
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
+  <HR>
+ 
+
+  
 <?php
 
+if (comprobar_proyecto($_GET['id']) == 0){
+
+$id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_requerimientos_cliente_interno")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE proyecto_revisado = $id")
     or die (mysqli_error($dbh));
 
 
 
 //display the results
+$num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	?>
+	$cero = 0;
+	//MySqli Select Query
+	$rev = $row_proyectos['id_revisiones_proyectos'];
+$results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev");
+
+
+while($rowx= $results->fetch_assoc()) {
+ 
+ if ($rowx['estado_evaluacion'] == 0){
+ 	$cero++;
+ }
+}  
+
 	
+	$num++;
+	if ($cero > 0){
 	
-	<?php 
-	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 0){
-echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='#'>  ".$row_proyectos['titulo_req_interno'] ."</strong></a><br> " . $row_proyectos['descripcion_req_interno']."<hr>";
+echo "<h3>".'<img class="blink-image" src="rojo.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
+echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
+		;
 	}
-	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 1){
-		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='rci_a_evaluar.php?id=".$row_proyectos['id_req_interno']."'>  ".$row_proyectos['titulo_req_interno'] ."</strong></a><br> " . $row_proyectos['descripcion_req_interno']."<hr>";
+	else{
+		echo "<h3>".'<img class="blink-image" src="verde.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
+		echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
+		
 	}
+
 }
 	
-?>
-  </h4>
-  </div></div></div>
+if ($num == 0){
+	
+	echo '<a href="proyecto_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['NO_REVISIONS'].'</a>';
+}
+if ($num > 0){
 
+echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a><br><br>';
+}
+
+}
+?>
+  
+</h4>
+  
+  </div>
+</div>
+      
+
+</div>
 </body>
 </html>
 

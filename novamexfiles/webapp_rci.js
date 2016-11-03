@@ -14,6 +14,7 @@ $(document).ready(function(){
     
       
       { "data": "fecha_inicio_req_interno", },
+      { "data": "approved_by_supervisor", },
       { "data": "estado_req_interno", },
      
 

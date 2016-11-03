@@ -304,7 +304,7 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['FREE_POINTS']?></h1>
+    <h1 align="center"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
@@ -313,20 +313,18 @@ body {
 
 //run the query
 	
-		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM tb_puntos_libres LEFT JOIN tb_anos ON tb_puntos_libres.ano_puntos_libres = tb_anos.id_ano WHERE tb_puntos_libres.level3_user = '".$_SESSION['userSession']."' ORDER BY ano_puntos_libres, mes_puntos_libres ")
+		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM tb_requerimientos_cliente_interno  WHERE supervisor_req_interno = '".$_SESSION['userSession']."' ORDER BY fecha_inicio_req_interno ")
 		or die (mysqli_error($dbh));
 		?>
 		
 		<table class="table"  >
 			<thead style="background-color:GREEN;">
 			<tr>
-			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_BY']?></th>
-			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_TO']?></th>
-			<th style="color:WHITE;"><?php echo $lang['ASSIGNED_POINTS']?></th>
-			<th style="color:WHITE;"><?php echo $lang['GIVEN_POINTS']?></th>
-			<th style="color:WHITE;"><?php echo $lang['LEFT_POINTS']?></th>
-			<th style="color:WHITE;"><?php echo $lang['MONTH']?></th>
-			<th style="color:WHITE;"><?php echo $lang['YEAR']?></th>
+			<th style="color:WHITE;"><?php echo $lang['CUSTOMER']?></th>
+			<th style="color:WHITE;"><?php echo $lang['INTERNAL_SUPPLIER']?></th>
+			<th style="color:WHITE;"><?php echo $lang['TITLE_REQ']?></th>
+			<th style="color:WHITE;"><?php echo $lang['DESC_REQ']?></th>
+
 			<th style="color:WHITE;"><?php echo $lang['ADD_FREE_POINTS']?></th>
 			
 			
@@ -344,13 +342,11 @@ body {
 			?>
 			
 			<tr>
-			<td><?php echo get_nombre($row_puntos_temporales['level5_user'])?></td>
-			<td><?php echo get_nombre($row_puntos_temporales['level3_user'])?></td>
-			<td><?php echo $row_puntos_temporales['total_puntos_libres']?></td>
-			<td><?php echo $row_puntos_temporales['total_puntos_consumidos']?></td>
-			<td><?php echo $row_puntos_temporales['total_puntos_libres']-$row_puntos_temporales['total_puntos_consumidos']?></td>
-			<td><?php echo $row_puntos_temporales['mes_puntos_libres']?></td>
-			<td><?php echo $row_puntos_temporales['year']?></td>
+			<td><?php echo get_nombre($row_puntos_temporales['cliente_req_interno'])?></td>
+			<td><?php echo get_nombre($row_puntos_temporales['proveedor_req_interno'])?></td>
+			<td><?php echo $row_puntos_temporales['titulo_req_interno']?></td>
+			<td><?php echo $row_puntos_temporales['descripcion_req_interno']?></td>
+			
 			
 			<?php 
 			$mes_actual = date('n');

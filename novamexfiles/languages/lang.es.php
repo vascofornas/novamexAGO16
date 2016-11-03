@@ -296,7 +296,7 @@ $lang['AS_SUPPLIER'] = 'Como Proveedor';
 $lang['AS_CUSTOMER'] = 'Como Cliente';
 $lang['CREATE_NEW_REQ'] = 'CREAR NUEVO REQUERIMIENTO DE CLIENTE INTERNO';
 $lang['CUSTOMER'] = 'Cliente';
-$lang['INTERNAL_SUPPLIER'] = 'Proveeor Interno';
+$lang['INTERNAL_SUPPLIER'] = 'Proveedor Interno';
 
 $lang['TITLE_REQ'] = 'Titulo Requerimiento Cliente Interno';
 $lang['DESC_REQ'] = 'Descripcion Requerimiento Cliente Interno';
@@ -322,4 +322,6 @@ $lang['STATUS'] = 'Estado';
 $lang['PENDING_APPROVEMENT'] = 'Solicitud pendiente';
 $lang['APPROVED'] = 'Solicitud aprobada';
 $lang['REJECTED'] = 'Solicitud denegada';
+$lang['RCI_INFO'] = 'Datos del Requerimiento de Cliente Interno';
+$lang['APPROVED_SUPERVISOR'] = 'Autorizado por Supervisor?';
 ?>
