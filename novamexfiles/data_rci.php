@@ -85,7 +85,7 @@ if ($job != ''){
         
         }
         if($stat == 2){
-        	$estado = $lang['DENIED'];
+        	$estado = $lang['REJECTED'];
 
         }
        
