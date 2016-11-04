@@ -303,16 +303,6 @@ $periodo = $row_Recordset3['periodicidad'];
   	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
   			   <br>
  
-    <?php
-    
-    if (comprobar_rci($_GET['id']) == 0){
-    echo '<a href="rci_a_cerrar.php?id='.$_GET['id'].'&rev='.$rev.' "     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CLOSE_PROJECT'].'</a><br><br>';
-    }
-    if (comprobar_rci($_GET['id']) == 1){
-    	echo '<a href="# "     class="btn btn-danger btn-lg active " role="button" >'.$lang['PROJECT_CLOSED'].'</a><br><br>';
-    }
-    
-    ?>
     
     
   </div>
@@ -323,7 +313,7 @@ $periodo = $row_Recordset3['periodicidad'];
   
 <?php
 
-if (comprobar_proyecto($_GET['id']) == 0){
+if (comprobar_rci($_GET['id']) == 0){
 
 $id = $_GET['id'];
 //run the query

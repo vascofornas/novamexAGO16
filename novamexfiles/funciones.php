@@ -262,13 +262,14 @@ function comprobar_proyecto($team){
 			return $equipo;
 
 }
+
 function comprobar_rci($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
-	$loop_equipos = mysqli_query($mysqli, "SELECT rci_cerrado
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
 			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$team."'
-			)")
+			")
 			or die (mysqli_error($dbh));
 
 
@@ -276,11 +277,12 @@ function comprobar_rci($team){
 			//display the results
 			while ($row_equipos = mysqli_fetch_array($loop_equipos))
 			{
-				$equipo = $row_equipos['rci_cerrado'];
+				$respuesta = $row_equipos['rci_cerrado'];
 			}
-			return $equipo;
+			return $respuesta;
 
 }
+
 function comprobar_existe_puntos_disponibles($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
