@@ -324,8 +324,10 @@ body {
 			<th style="color:WHITE;"><?php echo $lang['INTERNAL_SUPPLIER']?></th>
 			<th style="color:WHITE;"><?php echo $lang['TITLE_REQ']?></th>
 			<th style="color:WHITE;"><?php echo $lang['DESC_REQ']?></th>
+				<th style="color:WHITE;"><?php echo $lang['START_DATE_REQ']?></th>
+			<th style="color:WHITE;"><?php echo $lang['APPROVED_SUPERADMIN']?></th>
 
-			<th style="color:WHITE;"><?php echo $lang['ADD_FREE_POINTS']?></th>
+			<th style="color:WHITE;"><?php echo $lang['APPROVED_SUPERVISOR']?></th>
 			
 			
 			
@@ -346,39 +348,52 @@ body {
 			<td><?php echo get_nombre($row_puntos_temporales['proveedor_req_interno'])?></td>
 			<td><?php echo $row_puntos_temporales['titulo_req_interno']?></td>
 			<td><?php echo $row_puntos_temporales['descripcion_req_interno']?></td>
+			<td><?php echo $row_puntos_temporales['fecha_inicio_req_interno']?></td>
 			
 			
 			<?php 
-			$mes_actual = date('n');
-			$mes_puntos = $row_puntos_temporales['mes_puntos_libres'];
-			$ano_puntos = $row_puntos_temporales['year'];
-			$ano_actual = date('Y');
-			 
-			$encoded = urlencode( base64_encode( $row_puntos_temporales['id_puntos_libres'] ) );
-			
-			
-			if ($mes_actual == $mes_puntos && $ano_actual == $ano_puntos){
 		
-		?>
-		<td><a href="mispuntoslibres.php?pu=<?php echo $encoded?>" class="btn btn-info" role="button"><?php echo $lang['ADD_FREE_POINTS']?></a></td>
+			$aprobado = $row_puntos_temporales['approved_by_supervisor'];
+			$estado = $row_puntos_temporales['estado_req_interno'];
 			
-		<?php 
+			if ($estado == 0){
+				
+				?>
+				<td><?php echo $lang['PENDING_APPROVEMENT'];?></td>
+				<td><?php echo $lang['NOT_AVAILABLE'];?></td>
+				<?php 
+			}	
 		
-		}
-		else {
-		?>
-		<td><a href="#" class="btn btn-danger" role="button"><?php echo $lang['NOT_AVAILABLE']?></a></td>
-		<?php 		
-		}?>
+			if ($estado == 1){
 			
+				?>
+							<td><?php echo $lang['APPROVED'];?></td>
+							<?php 
+							if ($aprobado == 0) {?>
+							<td><?php echo $lang['PENDING_APPROVEMENT'];?><a href="autorizar_rci_supervisor.php?id=<?php echo $row_puntos_temporales['id_req_interno']?>" class="btn btn-info" role="button"><?php echo $lang['AUTHORIZE_REQUEST']?></a><a href="rechazar_rci_supervisor.php?id=<?php echo $row_puntos_temporales['id_req_interno']?>" class="btn btn-danger role="button"><?php echo $lang['REJECT_REQUEST']?></a> <td>
+							<?php }
+							if ($aprobado == 1) {?>
+														<td><?php echo $lang['APPROVED'];?></td><?php }
+														if ($aprobado == 2) {?>
+																												<td><?php echo $lang['REJECTED'];?></td><?php }
+														
+						}	
+						
+						
+						if ($estado == 2){
+						
+							?>
+										<td><?php echo $lang['REJECTED'];?></td>
+										<td><?php echo $lang['NOT_AVAILABLE'];?></td>
+										<?php 
+									}	
+								
+		
+			?>
 			</tr>
+			<?php }?>
 			
-			
-			<?php 
-			}
-
-			
-?></tbody>
+			</tbody>
 			</table>
 	
   </h4>
@@ -386,6 +401,3 @@ body {
     
 </body>
 </html>
-<?php
-
-?>

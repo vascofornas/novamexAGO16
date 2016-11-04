@@ -219,7 +219,7 @@ if ($job != ''){
     } else {
       $query = "UPDATE tb_requerimientos_cliente_interno SET ";
         if (isset($_GET['cliente_req_interno'])) { $query .= "cliente_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['cliente_req_interno']) . "', "; }
-    if (isset($_GET['cliente_req_interno'])) { $query .= "supervisor_req_interno = '" .$supervisor. "', "; }
+   
      
     if (isset($_GET['proveedor_req_interno'])) { $query .= "proveedor_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_req_interno']) . "', "; }
    if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }

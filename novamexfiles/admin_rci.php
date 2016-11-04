@@ -327,7 +327,7 @@ body {
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_PROJECT']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['CREATE_NEW_REQ']?></button>
         
       </div>
       <table class="datatable" id="table_companies">

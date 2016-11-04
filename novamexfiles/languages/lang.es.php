@@ -324,4 +324,7 @@ $lang['APPROVED'] = 'Solicitud aprobada';
 $lang['REJECTED'] = 'Solicitud denegada';
 $lang['RCI_INFO'] = 'Datos del Requerimiento de Cliente Interno';
 $lang['APPROVED_SUPERVISOR'] = 'Autorizado por Supervisor?';
+$lang['APPROVED_SUPERADMIN'] = 'Autorizado por Super Administrador?';
+$lang['AUTHORIZE_REQUEST'] = 'AUTORIZAR REQUERIMIENTO';
+$lang['REJECT_REQUEST'] = 'RECHAZAR REQUERIMIENTO';
 ?>

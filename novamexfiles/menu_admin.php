@@ -13,7 +13,7 @@
 <img   src="logonovamex100.png" width="207" height="55" style="PADDING-TOP: 5px"></a>
         
  
-            <a href="#" class="navbar-brand"><?php echo $lang['ADMIN_ZONE']?></a>
+           <BR>
         </div>
         <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse">

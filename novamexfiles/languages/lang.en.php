@@ -327,6 +327,9 @@ $lang['APPROVED'] = 'Request Approved';
 $lang['REJECTED'] = 'Request Rejected';
 $lang['RCI_INFO'] = 'Internal Customer Requirement Data';
 $lang['APPROVED_SUPERVISOR'] = 'Approved by Supervisor?';
+$lang['APPROVED_SUPERADMIN'] = 'Approved by SuperAdmin?';
+$lang['AUTHORIZE_REQUEST'] = 'AUTHORIZE REQUEST';
+$lang['REJECT_REQUEST'] = 'REJECT REQUEST';
 
 
 ?>

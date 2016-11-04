@@ -275,10 +275,16 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 	
 	
 	<?php 
-	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 0){
+	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 0  OR $row_proyectos['estado_req_interno'] == 2){
 echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='#'>  ".$row_proyectos['titulo_req_interno'] ."</strong></a><br> " . $row_proyectos['descripcion_req_interno']."<hr>";
 	}
-	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 1){
+	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 1  AND $row_proyectos['approved_by_supervisor'] == 0){
+		echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='#'>  ".$row_proyectos['titulo_req_interno'] ."</strong></a><br> " . $row_proyectos['descripcion_req_interno']."<hr>";
+	}
+	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 1  AND $row_proyectos['approved_by_supervisor'] == 2){
+		echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='#'>  ".$row_proyectos['titulo_req_interno'] ."</strong></a><br> " . $row_proyectos['descripcion_req_interno']."<hr>";
+	}
+	if ($row_proyectos['cliente_req_interno'] == $row['userID'] AND $row_proyectos['estado_req_interno'] == 1 AND $row_proyectos['approved_by_supervisor'] == 1){
 		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='rci_a_evaluar.php?id=".$row_proyectos['id_req_interno']."'>  ".$row_proyectos['titulo_req_interno'] ."</strong></a><br> " . $row_proyectos['descripcion_req_interno']."<hr>";
 	}
 }
