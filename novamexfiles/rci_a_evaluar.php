@@ -258,8 +258,48 @@ function subirimagen()
   <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_req_interno']?></p>
   <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo $row_Recordset3['descripcion_req_interno']?></p>
   	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_req_interno']?></p>
+  	
+  	<?php 
+  	
+  //get periodicidad
+  
+$periodo = $row_Recordset3['periodicidad'];
+	if ($periodo == 1){
+		$result = $lang['ONLY_ONCE'];
+	}
+	if ($periodo == 2){
+		$result = $lang['EVERYDAY'];
+	}
+	if ($periodo == 3){
+		$result = $lang['EVERY_WEEK'];
+	}
+	if ($periodo == 4){
+		$result = $lang['EVERY_TWO_WEEKS'];
+	}
+	if ($periodo == 5){
+		$result = $lang['EVERY_MONTH'];
+	}
+	if ($periodo == 6){
+		$result = $lang['EVERY_TWO_MONTHS'];
+	}
+	if ($periodo == 7){
+		$result = $lang['EVERY_THREE_MONTHS'];
+	}
+	if ($periodo == 8){
+		$result = $lang['EVERY_FOUR_MONTHS'];
+	}
+	if ($periodo == 9){
+		$result = $lang['EVERY_SIX_MONTHS'];
+	}
+	if ($periodo == 10){
+		$result = $lang['EVERY_TWELVE_MONTHS'];
+	}
+  	?>
+  	
+  	<p><strong><?php echo $lang['PERIODICITY']?>: </strong><?php echo $result?></p>
+  	<p><strong><?php echo $lang['REPEATS']?>: </strong><?php echo $row_Recordset3['repeticiones']?></p>
   <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_req_interno'])?></p>
-  <p><strong><?php echo $lang['SUPERVISOR']?>: </strong><?php echo get_nombre($row_Recordset3['supevisor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  <p><strong><?php echo $lang['SUPERVISOR']?>: </strong><?php echo get_nombre($row_Recordset3['supervisor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
   	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
   			   <br>
  

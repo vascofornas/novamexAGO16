@@ -1,6 +1,7 @@
 <?php 
 require_once 'dbconfig.php';
 require_once('Connections/conexion.php');
+include_once 'common.php';
   
 // Function to get the client IP address
 function get_client_ip() {
@@ -640,4 +641,5 @@ function update_puntos_disponibles_borrar($usuario,$puntos){
 	};
 
 }
+
 ?>
