@@ -305,10 +305,10 @@ $periodo = $row_Recordset3['periodicidad'];
  
     <?php
     
-    if (comprobar_proyecto($_GET['id']) == 0){
-    echo '<a href="proyecto_a_cerrar.php?id='.$_GET['id'].'&rev='.$rev.' "     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CLOSE_PROJECT'].'</a><br><br>';
+    if (comprobar_rci($_GET['id']) == 0){
+    echo '<a href="rci_a_cerrar.php?id='.$_GET['id'].'&rev='.$rev.' "     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CLOSE_PROJECT'].'</a><br><br>';
     }
-    if (comprobar_proyecto($_GET['id']) == 1){
+    if (comprobar_rci($_GET['id']) == 1){
     	echo '<a href="# "     class="btn btn-danger btn-lg active " role="button" >'.$lang['PROJECT_CLOSED'].'</a><br><br>';
     }
     
@@ -316,7 +316,7 @@ $periodo = $row_Recordset3['periodicidad'];
     
     
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['RCI_REVISIONS']?></H3>
   <HR>
  
 
@@ -327,7 +327,7 @@ if (comprobar_proyecto($_GET['id']) == 0){
 
 $id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos WHERE proyecto_revisado = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_rci WHERE rci_revisado = $id")
     or die (mysqli_error($dbh));
 
 
