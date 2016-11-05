@@ -357,7 +357,7 @@ echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "cl
 	
 if ($num == 0){
 	
-	echo '<a href="proyecto_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['NO_REVISIONS'].'</a>';
+	echo '<a href="rci_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['RCI_REVISIONS'].'</a>';
 }
 if ($num > 0){
 

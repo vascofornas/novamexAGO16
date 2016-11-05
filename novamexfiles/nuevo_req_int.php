@@ -422,8 +422,7 @@ color: white"></div>
 		<div class="form-group">
                       <label><?php echo $lang['PERIODICITY']?></label>
                    <select id="periodicidad" name="periodicidad" class="form-control select2" style="width: 100%;">
-                        <option selected="selected" value="1"><?php echo $lang['ONLY_ONCE']?></option>
-                      <option value="2"><?php echo $lang['EVERYDAY']?></option>
+                      <option selected="selected" value="2"><?php echo $lang['EVERYDAY']?></option>
                       <option value="3"><?php echo $lang['EVERY_WEEK']?></option>
                       <option value="4"><?php echo $lang['EVERY_TWO_WEEKS']?></option>
                       <option value="5"><?php echo $lang['EVERY_MONTH']?></option>
