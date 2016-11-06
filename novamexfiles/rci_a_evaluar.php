@@ -332,27 +332,10 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 $results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev");
 
 
-while($rowx= $results->fetch_assoc()) {
- 
- if ($rowx['estado_evaluacion'] == 0){
- 	$cero++;
- }
-}  
+  
 
 	
 	$num++;
-	if ($cero > 0){
-	
-echo "<h3>".'<img class="blink-image" src="rojo.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
-echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
-		;
-	}
-	else{
-		echo "<h3>".'<img class="blink-image" src="verde.png" width="20" height="20" /> '.$row_proyectos['opcion_revision']." - ".$row_proyectos['nombre_revision']."</H3>    <span>".$row_proyectos['fecha_revision']."</span><BR>";
-		echo '<a href="evaluar_revision_proyecto.php?id='.$_GET['id'].'&rev='.$rev.' "class="btn btn-info btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a><br><br>';
-		
-	}
-
 }
 	
 if ($num == 0){

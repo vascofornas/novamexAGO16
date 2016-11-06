@@ -60,7 +60,9 @@ $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
 
 mysqli_select_db($conexion, $database_conexion);
 $id = $_GET['id'];
-$query_Recordset3 = "SELECT * FROM tb_proyectos LEFT JOIN tb_equipos ON tb_proyectos.equipo_proyecto = tb_equipos.id_equipo LEFT JOIN tbl_users ON tb_proyectos.evaluador_proyecto = tbl_users.userID WHERE id_proyecto = $id";
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_requerimientos_cliente_interno  WHERE id_req_interno = $id";
 $Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
 
 $row_Recordset3 = mysqli_fetch_assoc($Recordset3);
@@ -232,26 +234,64 @@ function subirimagen()
 <?php include 'menu.php'?>
 <div class = "container">
    <div class = "row" >
-   
-     
-    <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PROJECT_INFO']?></H3>
+     <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['RCI_INFO']?></H3>
   <hr>
   <h4>
-  <p><strong><?php echo $lang['PROJECT_NAME']?>: </strong><?php echo $row_Recordset3['nombre_proyecto']?></p>
-  <p><strong><?php echo $lang['PROJECT_DESCRIPTION']?>: </strong><?php echo $row_Recordset3['descripcion_proyecto']?></p>
-  	<p><strong><?php echo $lang['START_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_inicio_proyecto']?></p>
-  <p><strong><?php echo $lang['END_DATE_PROJECT']?>: </strong><?php echo $row_Recordset3['fecha_final_proyecto']?></p>
-  <p><strong><?php echo $lang['PROJECT_TEAM']?>: </strong><?php echo $row_Recordset3['nombre_equipo']?></p>
-  <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
-  		   <br>
+  <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_req_interno']?></p>
+  <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo $row_Recordset3['descripcion_req_interno']?></p>
+  	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_req_interno']?></p>
+  	
+     <?php 
+     $periodo = $row_Recordset3['periodicidad'];
+$periodo = $row_Recordset3['periodicidad'];
+	if ($periodo == 1){
+		$result = $lang['ONLY_ONCE'];
+	}
+	if ($periodo == 2){
+		$result = $lang['EVERYDAY'];
+	}
+	if ($periodo == 3){
+		$result = $lang['EVERY_WEEK'];
+	}
+	if ($periodo == 4){
+		$result = $lang['EVERY_TWO_WEEKS'];
+	}
+	if ($periodo == 5){
+		$result = $lang['EVERY_MONTH'];
+	}
+	if ($periodo == 6){
+		$result = $lang['EVERY_TWO_MONTHS'];
+	}
+	if ($periodo == 7){
+		$result = $lang['EVERY_THREE_MONTHS'];
+	}
+	if ($periodo == 8){
+		$result = $lang['EVERY_FOUR_MONTHS'];
+	}
+	if ($periodo == 9){
+		$result = $lang['EVERY_SIX_MONTHS'];
+	}
+	if ($periodo == 10){
+		$result = $lang['EVERY_TWELVE_MONTHS'];
+	}
+  	?>
+  	
+  	<p><strong><?php echo $lang['PERIODICITY']?>: </strong><?php echo $result?></p>
+  	<p><strong><?php echo $lang['REPEATS']?>: </strong><?php echo $row_Recordset3['repeticiones']?></p>
+  <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_req_interno'])?></p>
+  <p><strong><?php echo $lang['SUPERVISOR']?>: </strong><?php echo get_nombre($row_Recordset3['supervisor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  			   <br>
  
+    
     
     </h4>
   </div>
-  <div class="col-sm-6 col-md-6 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS_CREATING']?></H3>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['RCI_REVISIONS']?></H3>
   <HR>
  
+
   
  
 
@@ -291,20 +331,28 @@ $fecha_inicio = $row_proyectos['fecha_inicio_req_interno'];
 
 
 
-if ($periodicidad == 2){//if porcentaje1
+if ($periodicidad == 2){//if periodicidad EVERY DAY
 	
-	
+	$num = 0;
 	$codigo1 = generateRandomString();
-	
+	$newdate = $fecha_inicio;
 	$num_revision = 1;
 	for ($x = 0; $x < $repeticiones; $x++) {//for
+		
+		if ($num == 0){
+			$newdate = $fecha_inicio;
+		}
+		else {
+		$newdate = strtotime ( '1 day' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+		}
 		$num = $x+1;
-		echo 'ESTOY AQUI';
+		
 		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
-		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$fecha_inicio')";
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
 	
 		if ($conexion->query($sql) === TRUE) {
-			echo $row_proyectos['opcion1']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
 		$last_id = mysqli_insert_id($conexion);
 		}//if 
 		else {
@@ -312,21 +360,256 @@ if ($periodicidad == 2){//if porcentaje1
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 		
-		$sql1 = "INSERT INTO tb_evaluaciones_proyectos (revision_evaluada,porcentaje_evaluado,opcion_evaluada,proyecto_evaluado,puntos_evaluados,estado_evaluacion,num_revisiones_item,codigo_opcion_evaluacion)
-		VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0,'$num_revisiones1','$codigo1')";
 		
-		if ($conexion->query($sql1) === TRUE) {
+		}//for
+
+}//FIN PERIODICIDAD EVERY DAY
+if ($periodicidad == 3){//if periodicidad EVERY WEEK
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
 		
-		}//if 
+			$newdate = strtotime ( '+7 days' , strtotime ( $newdate ) ) ;
+			$newdate = date ( 'Y-m-j' , $newdate );
+		
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
 		else {
-			echo "Error: " . $sql1 . "<br>" . $conexion->error;
+			echo "Error: " . $sql . "<br>" . $conexion->error;
 		}//else
-	
-}//for
-
-}//if opcion1
+		$last_id = mysqli_insert_id($conexion);
 
 
+	}//for
+
+}//FIN PERIODICIDAD EVERY WEEK
+if ($periodicidad == 4){//if periodicidad EVERY TWO WEEKS
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+14 days' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD EVERY TWO WEEKS
+
+if ($periodicidad == 5){//if periodicidad EVERY MONTH
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+1 month' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD EVERY MONTH
+
+if ($periodicidad == 6){//if periodicidad two MONTHs
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+2 months' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD two MONTHs
+
+
+if ($periodicidad == 7){//if periodicidad three MONTHs
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+3 months' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD three MONTHs
+
+
+if ($periodicidad == 8){//if periodicidad four MONTHs
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+4 months' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD  six MONTHs
+if ($periodicidad == 9){//if periodicidad four MONTHs
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+6 months' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD  one year
+if ($periodicidad == 10){//if periodicidad four MONTHs
+
+	$num = 0;
+	$codigo1 = generateRandomString();
+	$newdate = $fecha_inicio;
+	$num_revision = 1;
+	for ($x = 0; $x < $repeticiones; $x++) {//for
+
+
+		$newdate = strtotime ( '+12 months' , strtotime ( $newdate ) ) ;
+		$newdate = date ( 'Y-m-j' , $newdate );
+
+		$num = $x+1;
+
+		$sql = "INSERT INTO tb_revisiones_rci (rci_revisado,nombre_revision,titulo_rci,cliente_rci,proveedor_rci,fecha_inicio_rci)
+		VALUES ('$id','Revision # .$num','$titulo_rci','$cliente_rci','$proveedor_rci','$newdate')";
+
+		if ($conexion->query($sql) === TRUE) {
+			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+			$last_id = mysqli_insert_id($conexion);
+		}//if
+		else {
+			echo "Error: " . $sql . "<br>" . $conexion->error;
+		}//else
+		$last_id = mysqli_insert_id($conexion);
+
+
+	}//for
+
+}//FIN PERIODICIDAD one year
 
 
 
