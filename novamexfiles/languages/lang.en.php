@@ -333,6 +333,16 @@ $lang['REJECT_REQUEST'] = 'REJECT REQUEST';
 
 $lang['RCI_REVISIONS'] = 'CREATE INTERNAL SUPPLIER ASSESTMENT PHASES';
 $lang['NO_REVISIONS'] = 'CREATE PHASES FOR THIS INTERNAL CUSTOMER REQUIREMENT';
+$lang['EVALUATION_DATE'] = 'Evaluation Date';
+
+$lang['EVALUATION_STATE'] = 'Evaluation State';
+$lang['NOT_EVALUATED'] = 'Not evaluated';
+$lang['EVALUATED'] = 'Evaluated';
+$lang['EVALUATE'] = 'Evaluate Internal Supplier';
+$lang['NO_ANSWER_POINTS'] = 'No Answer';
+$lang['ESFUERZO_LEVE'] = 'Mild Activity';
+$lang['ESFUERZO_ACEPTABLE'] = 'Reasonable Effort';
+$lang['ESFUERZO_EXCEPCIONAL'] = 'Exceptional Effort';
 
 
 ?>

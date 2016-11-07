@@ -497,25 +497,25 @@ color: white"></div>
 
 	<div class="col-md-3">
 		<div class="form-group">
-                      <label>Sin PUNTUAR</label>
-       <input type="text" class="form-control" name="sin_puntuar" id="sin_puntuar"  placeholder="Puntos por sin puntuar ...">  </div>
+                      <label><?php echo $lang['NO_ANSWER_POINTS']." # PTS"?></label>
+       <input type="text" class="form-control" name="sin_puntuar" id="sin_puntuar"  placeholder="<?php echo $lang['NO_ANSWER_POINTS']." # PTS"?>...">  </div>
 	</div>
 	<div class="col-md-3">
 		<div class="form-group">
-                      <label>Puntos ESFUERZO LEVE</label>
-                     <input type="text" class="form-control" name="leve" id="leve" placeholder="Puntos por esfuerzo leve ...">    </div>
+                      <label><?php echo $lang['ESFUERZO_LEVE']." # PTS"?></label>
+                     <input type="text" class="form-control" name="leve" id="leve" placeholder="<?php echo $lang['ESFUERZO_LEVE']." # PTS"?> ...">    </div>
 	</div>
 
 	<div class="col-md-3">
 		<div class="form-group">
-                      <label>Puntos ESFUERZO ACEPTABLE</label>
-       <input type="text" class="form-control" name="aceptable" id="aceptable"  placeholder="Puntos por esfuerzo aceptable ...">  </div>
+                      <label><?php echo $lang['ESFUERZO_ACEPTABLE']." # PTS"?></label>
+       <input type="text" class="form-control" name="aceptable" id="aceptable"  placeholder="<?php echo $lang['ESFUERZO_ACEPTABLE']." # PTS"?> ...">  </div>
 	</div>
 	
 	<div class="col-md-3">
 		<div class="form-group">
-                      <label>Puntos ESFUERZO EXCEPCIONAL</label>
-       <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="Puntos por esfuerzo excepcional ...">  </div>
+                      <label><?php echo $lang['ESFUERZO_EXCEPCIONAL']." # PTS"?></label>
+       <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="<?php echo $lang['ESFUERZO_EXCEPCIONAL']." # PTS"?> ...">  </div>
 	</div>
 	</div>
 	<div class="row">

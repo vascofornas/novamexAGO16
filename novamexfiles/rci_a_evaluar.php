@@ -344,7 +344,7 @@ if ($num == 0){
 }
 if ($num > 0){
 
-echo '<a href="proyecto_a_evaluar_editar_revsiones.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a><br><br>';
+echo '<a href="evaluaciones_rci.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['EVALUACION_PROVEEDOR_INTERNO'].'</a><br><br>';
 }
 
 }

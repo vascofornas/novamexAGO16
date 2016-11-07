@@ -613,6 +613,204 @@ function get_id_usuario_puntos_otorgados($id_limit){
 			return $nim;
 
 }
+function get_descripcion_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['descripcion_req_interno'];
+
+			}
+			return $nim;
+
+}
+function get_concepto1_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_1'];
+
+			}
+			return $nim;
+
+}
+function get_concepto2_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_2'];
+
+			}
+			return $nim;
+
+}
+function get_concepto3_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_3'];
+
+			}
+			return $nim;
+
+}
+function get_concepto4_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_4'];
+
+			}
+			return $nim;
+
+}
+function get_na_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['sin_puntos'];
+
+			}
+			return $nim;
+
+}
+function get_el_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_esfuerzo_leve'];
+
+			}
+			return $nim;
+
+}
+function get_ea_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_esfuerzo_aceptable'];
+
+			}
+			return $nim;
+
+}
+function get_ee_rci($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_esfuerzo_excepcional'];
+
+			}
+			return $nim;
+
+}
 function get_puntos_otorgados($id_limit){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');

@@ -525,27 +525,27 @@ body {
 	
 	
 		<div class="input_container">
-                      <label>Sin PUNTUAR</label>
+                      <label><?php echo $lang['NO_ANSWER_POINTS']." # PTS"?></label>
                       <div class="field_container">
-       <input type="text" class="form-control" name="sin_puntuar" id="sin_puntuar"  placeholder="Puntos por sin puntuar ...">  </div>
+       <input type="text" class="form-control" name="sin_puntuar" id="sin_puntuar"  placeholder="<?php echo $lang['NO_ANSWER_POINTS']." # PTS"?> ...">  </div>
 	</div>
 
 	<div class="input_container">
-                      <label>Puntos ESFUERZO LEVE</label>
+                      <label><?php echo $lang['ESFUERZO_LEVE']." # PTS"?></label>
                       <div class="field_container">
-                     <input type="text" class="form-control" name="leve" id="leve" placeholder="Puntos por esfuerzo leve ...">    </div>
+                     <input type="text" class="form-control" name="leve" id="leve" placeholder="<?php echo $lang['ESFUERZO_LEVE']." # PTS"?> ...">    </div>
 	</div>
 	
 <div class="input_container">
                       <label>Puntos ESFUERZO ACEPTABLE</label>
                       <div class="field_container">
-       <input type="text" class="form-control" name="aceptable" id="aceptable"  placeholder="Puntos por esfuerzo aceptable ...">  </div>
+       <input type="text" class="form-control" name="aceptable" id="aceptable"  placeholder="<?php echo $lang['ESFUERZO_ACEPTABLE']." # PTS"?> ...">  </div>
 	</div>
 	
 	<div class="input_container">
-                      <label>Puntos ESFUERZO EXCEPCIONAL</label>
+                      <label><?php echo $lang['ESFUERZO_EXCEPCIONAL']." # PTS"?></label>
                       <div class="field_container">
-       <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="Puntos por esfuerzo excepcional ...">  </div>
+       <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="<?php echo $lang['ESFUERZO_EXCEPCIONAL']." # PTS"?> ...">  </div>
 	</div>
 	
 	   <div class="input_container">

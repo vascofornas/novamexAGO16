@@ -329,4 +329,14 @@ $lang['AUTHORIZE_REQUEST'] = 'AUTORIZAR REQUERIMIENTO';
 $lang['REJECT_REQUEST'] = 'RECHAZAR REQUERIMIENTO';
 $lang['RCI_REVISIONS'] = 'CREAR FASES DE LA EVALUACION A PROVEEDOR INTERNO';
 $lang['NO_REVISIONS'] = 'CREATE PHASES FOR THIS INTERNAL CUSTOMER REQUIREMENT';
+$lang['EVALUATION_DATE'] = 'Fecha de la evaluación';
+
+$lang['EVALUATION_STATE'] = 'Estado de la evaluación ';
+$lang['NOT_EVALUATED'] = 'Sin evaluar';
+$lang['EVALUATED'] = 'Evaluado';
+$lang['EVALUATE'] = 'Evaluar Proveedor Interno';
+$lang['NO_ANSWER_POINTS'] = 'No hay respuesta';
+$lang['ESFUERZO_LEVE'] = 'Esfuerzo leve';
+$lang['ESFUERZO_ACEPTABLE'] = 'Esfuerzo aceptable';
+$lang['ESFUERZO_EXCEPCIONAL'] = 'Esfuerzo excepcional';
 ?>
