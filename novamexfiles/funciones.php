@@ -860,5 +860,94 @@ function update_puntos_disponibles_borrar($usuario,$puntos){
 	};
 
 }
+function get_c1($rci){
 
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE id_revisiones_rci = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$c1_del_usuario = $row_usua['evaluacion_c1'];
+	}
+	return $c1_del_usuario;
+
+}
+function get_c2($rci){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE id_revisiones_rci = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$c2_del_usuario = $row_usua['evaluacion_c2'];
+	}
+	return $c2_del_usuario;
+
+}
+function get_c3($rci){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE id_revisiones_rci = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$c3_del_usuario = $row_usua['evaluacion_c3'];
+	}
+	return $c3_del_usuario;
+
+}
+function get_c4($rci){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE id_revisiones_rci = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$c4_del_usuario = $row_usua['evaluacion_c4'];
+	}
+	return $c4_del_usuario;
+
+}
+function comprobar_si_existe_puntos_epi($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_epi WHERE usuario_puntos_epi = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
 ?>

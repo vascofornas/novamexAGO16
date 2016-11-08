@@ -294,34 +294,20 @@ $(document).ready(function() {
         {
             //get input field values data to be sent to server
             post_data = {
-                'supervisor'     : $('input[name=supervisor]').val(), 
-                'cliente'    : $('input[name=cliente]').val(), 
-                'proveedor'  : $('select[name=proveedor]').val(), 
-                'titulo'  : $('input[name=titulo]').val(), 
-                'texto'       : $('textarea[name=texto]').val(), 
-                'periodicidad'           : $('select[name=periodicidad]').val(),
+                
+                'eval_c1'           : $('select[name=eval_c1]').val(),
 
-                'repeticiones'           : $('select[name=repeticiones]').val(),
-                'fecha'  : $('input[name=fecha]').val(),
-                'concepto1'  : $('input[name=concepto1]').val(),
-
-                'concepto2'  : $('input[name=concepto2]').val(),
-
-                'concepto3'  : $('input[name=concepto3]').val(),
-
-                'concepto4'  : $('input[name=concepto4]').val(),
-
-                'sin_puntuar'  : $('input[name=sin_puntuar]').val(),
-
-                'leve'  : $('input[name=leve]').val(),
-
-                'aceptable'  : $('input[name=aceptable]').val(),
-
-                'excepcional'  : $('input[name=excepcional]').val(),
+                'eval_c2'           : $('select[name=eval_c2]').val(),
+                'eval_c3'           : $('select[name=eval_c3]').val(),
+                'eval_c4'           : $('select[name=eval_c4]').val(),
+                'eval_id'           : $('input[name=eval_id]').val(),
+                'proveedor'           : $('input[name=proveedor]').val(),
+                
+                
             };
             
             //Ajax post data to server
-            $.post('enviar_re_cliente_interno.php', post_data, function(response){  
+            $.post('evaluar_proveedor_interno.php', post_data, function(response){  
                 if(response.type == 'error'){ //load json data from server and output message     
                     output = '<div class="error">'+response.text+'</div>';
                 }else{
@@ -369,8 +355,9 @@ color: white"></div>
 		<div class="form-group">
                       <label><?php echo $lang['CUSTOMER']?></label>
                       <h4><?php echo  get_nombre($row_Recordset3['cliente_rci']);?></h4>
-                      
-                      <input type="hidden" class="form-control" id="cliente" name="cliente" placeholder="Enter ..." disabled value="<?php echo $_SESSION['userSession'];?>">
+                      <input type="hidden" class="form-control" id="eval_id" name="eval_id" placeholder="Enter ..." disabled value="<?php echo $_GET['id'];?>">
+      
+                      <input type="hidden" class="form-control" id="proveedor" name="proveedor" placeholder="Enter ..." disabled value="<?php echo $row_Recordset3['proveedor_rci'];?>">
         </div>
 	</div>
 
@@ -391,7 +378,7 @@ color: white"></div>
                       <label><?php echo $lang['TITLE_REQ']?></label>
                       <h4><?php echo $row_Recordset3['titulo_rci'];?></h4>
                       <input type="hidden" name="titulo" id="titulo" class="form-control" placeholder="<?php echo $lang['TITLE_REQ']?> ...">
-                    </div>
+                    </div>I
                     
 
  </div>
@@ -430,13 +417,14 @@ color: white"></div>
          <div class="form-group">
                       <label><?php echo $lang['EVALUATE']?></label>
                     
-                    <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
-                      <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
+                    <select id="eval_c1" name="eval_c1" class="form-control select2" style="width: 100%;">
+                      <option  value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_el_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_LEVE']." (". get_el_rci($row_Recordset3['rci_revisado']).")"?></option>
                      <option  value="<?php echo get_ea_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_ACEPTABLE']." (". get_ea_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_ee_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_EXCEPCIONAL']." (". get_ee_rci($row_Recordset3['rci_revisado']).")"?></option>
                     
-                      </select> </div>
+                      </select> 
+                      </div>
                     
 
  </div>
@@ -455,13 +443,13 @@ color: white"></div>
          <div class="form-group">
                       <label><?php echo $lang['EVALUATE']?></label>
                     
-                    <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
+                    <select id="eval_c2" name="eval_c2" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_el_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_LEVE']." (". get_el_rci($row_Recordset3['rci_revisado']).")"?></option>
                      <option  value="<?php echo get_ea_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_ACEPTABLE']." (". get_ea_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_ee_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_EXCEPCIONAL']." (". get_ee_rci($row_Recordset3['rci_revisado']).")"?></option>
                     
-                      </select> </div> </div>
+                      </select> </div> 
                     
 
  </div>
@@ -480,13 +468,13 @@ color: white"></div>
          <div class="form-group">
                       <label><?php echo $lang['EVALUATE']?></label>
                     
-                   <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
+                   <select id="eval_c3" name="eval_c3" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_el_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_LEVE']." (". get_el_rci($row_Recordset3['rci_revisado']).")"?></option>
                      <option  value="<?php echo get_ea_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_ACEPTABLE']." (". get_ea_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_ee_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_EXCEPCIONAL']." (". get_ee_rci($row_Recordset3['rci_revisado']).")"?></option>
                     
-                      </select> </div> </div>
+                      </select> </div> 
                     
 
  </div>
@@ -505,7 +493,7 @@ color: white"></div>
          <div class="form-group">
                       <label><?php echo $lang['EVALUATE']?></label>
                     
-                   <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
+                   <select id="eval_c4" name="eval_c4" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
                       <option value="<?php echo get_el_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_LEVE']." (". get_el_rci($row_Recordset3['rci_revisado']).")"?></option>
                      <option  value="<?php echo get_ea_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_ACEPTABLE']." (". get_ea_rci($row_Recordset3['rci_revisado']).")"?></option>
