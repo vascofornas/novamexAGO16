@@ -325,6 +325,26 @@ function recuperar_id_puntos_disponibles($team){
 			return $equipo;
 
 }
+function get_puntos_disponibles_totales(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_disponibles ")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['puntos_conseguidos'];
+				$nim=$nim+1;
+			}
+			return $equipo;
+
+}
 function get_puntos_disponibles($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -951,4 +971,309 @@ function comprobar_si_existe_puntos_epi($id_limit){
 			return $nim;
 
 }
+function get_puntos_epi($rci){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE proveedor_rci = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+$suma = 0;
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$suma = $suma + $row_usua['evaluacion_c1'];
+		$suma = $suma + $row_usua['evaluacion_c2'];
+		$suma = $suma + $row_usua['evaluacion_c3'];
+		$suma = $suma + $row_usua['evaluacion_c4'];
+	}
+	return $suma;
+
+}
+function get_puntos_epi_total(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci ")
+	or die (mysqli_error($dbh));
+
+	$suma = 0;
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$suma = $suma + $row_usua['evaluacion_c1'];
+		$suma = $suma + $row_usua['evaluacion_c2'];
+		$suma = $suma + $row_usua['evaluacion_c3'];
+		$suma = $suma + $row_usua['evaluacion_c4'];
+	}
+	return $suma;
+
+}
+function get_rci_created_total($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno 
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_rci_created($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_requerimientos_cliente_interno WHERE cliente_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_noticias(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_news 
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_un(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_unidades_negocio
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_equipos(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_equipos
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_num_proyectos(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_proyectos
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_departamentos(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_departamentos
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_messages_totales(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_mensajes 
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_historico(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_historico
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_messages($user){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_mensajes WHERE emisor = '".$user."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_num_usuarios(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tbl_users
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_puntos_libres_totales(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_libres_usuario
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+				
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_libres_usuario'];
+
+			}
+			return $nim;
+
+}
+
 ?>

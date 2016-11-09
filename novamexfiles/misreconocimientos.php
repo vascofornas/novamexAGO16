@@ -231,7 +231,7 @@ function subirimagen()
               <div class="small-box bg-red">
                 <div class="inner">
                  
-                 <h3><?php echo get_puntos_disponibles($_SESSION['userSession']) ?></h3>
+                 <h3><?php echo get_puntos_disponibles($_SESSION['userSession'])." PTS" ?></h3>
                   <p><?php echo $lang['TOTAL']?></p>
                 
                 </div>
@@ -239,7 +239,7 @@ function subirimagen()
                   <i class="ion ion-flag"></i>
                 </div>
                 <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                  <?php echo get_nombre($_SESSION['userSession'])?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -249,7 +249,7 @@ function subirimagen()
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3><?php echo '<font color="red">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font> - <font color="green">'.get_puntos_consolidados_proyectos($_SESSION['userSession']).'</font>'?></h3>
+                  <h3><?php echo '<font color="red">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font> - <font color="green">'.get_puntos_consolidados_proyectos($_SESSION['userSession'])." PTS".'</font>'?></h3>
                   
                   <H4><?php echo $lang['PROJECTS']?></h4>
                 </div>
@@ -265,14 +265,14 @@ function subirimagen()
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3><?php echo get_puntos_libres_usuario($_SESSION['userSession'])?></h3>
+                  <h3><?php echo get_puntos_libres_usuario($_SESSION['userSession'])." PTS"?></h3>
                   <H4><?php echo $lang['FREE_POINTS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-ribbon-a"></i>
                 </div>
                 <a href="misreconocimientos_puntos_libres.php" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -280,14 +280,14 @@ function subirimagen()
               <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
-                  <h3>0</h3>
+                   <h3><?php echo get_puntos_epi($_SESSION['userSession'])." PTS"?></h3>
                   <H4><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-happy-outline"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                <a href="misreconocimientos_epi.php" class="small-box-footer">
+                   <?php echo $lang['MORE_INFO']?>  <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -326,6 +326,48 @@ function subirimagen()
                 </a>
               </div>
             </div><!-- ./col -->
+           
+           <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                   <h3><?php echo get_rci_created($_SESSION['userSession'])?></h3>
+                  <H4><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-happy-outline"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+      
+           
+           
+            
+          </div><!-- /.row -->
+          <!-- Small boxes (Stat box) -->
+         
+             <div class="row">
+            <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-teal">
+                <div class="inner">
+                  <h3><?php echo get_messages($_SESSION['userSession'])?></h3>
+                  
+                  <H4><?php echo $lang['MESSAGES']?></h4>
+                </div>
+                <div class="icon">
+                 <i class="ion ion-email"></i>
+                </div>
+                <a href="mensajes.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+          
             <div class="col-lg-4 col-xs-4">
               <!-- small box -->
               <div class="small-box bg-yellow">
@@ -341,29 +383,6 @@ function subirimagen()
                 </a>
               </div>
             </div><!-- ./col -->
-            
-          </div><!-- /.row -->
-          <!-- Small boxes (Stat box) -->
-         
-             <div class="row">
-            <div class="col-lg-4 col-xs-4">
-              <!-- small box -->
-              <div class="small-box bg-teal">
-                <div class="inner">
-                  <h3>0</h3>
-                  
-                  <H4><?php echo $lang['MESSAGES']?></h4>
-                </div>
-                <div class="icon">
-                 <i class="ion ion-email"></i>
-                </div>
-                <a href="admin_news.php" class="small-box-footer">
-                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
-                </a>
-              </div>
-            </div><!-- ./col -->
-          
-           
             
           </div><!-- /.row -->
 

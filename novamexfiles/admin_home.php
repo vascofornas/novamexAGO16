@@ -190,7 +190,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-blue">
                 <div class="inner">
-                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  <h3><?php echo '<font color="WHITE">'.get_noticias().'</font>' ?></h3>
                   
                   <H4><?php echo $lang['NEWS']?></h4>
                 </div>
@@ -206,7 +206,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3><?php echo '<font color="WHITE">'.get_un().'</font>' ?></h3>
                   <H4><?php echo $lang['BUSINESS_UNITS']?></h4>
                 </div>
                 <div class="icon">
@@ -221,13 +221,13 @@ body {
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3><?php echo '<font color="WHITE">'.get_departamentos().'</font>' ?></h3>
                   <H4><?php echo $lang['DEPARTMENTS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-ios-pie"></i>
                 </div>
-                <a href="admin_departamentos" class="small-box-footer">
+                <a href="admin_departamentos.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -241,14 +241,13 @@ body {
               <!-- small box -->
               <div class="small-box bg-orange">
                 <div class="inner">
-                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
-                  
+                 <h3><?php echo '<font color="WHITE">'.get_equipos().'</font>' ?></h3> 
                   <H4><?php echo $lang['TEAMS']?></h4>
                 </div>
                 <div class="icon">
                  <i class="ion ion-person-stalker"></i>
                 </div>
-                <a href="admin_news.php" class="small-box-footer">
+                <a href="admin_equipos.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -257,13 +256,13 @@ body {
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3><?php echo '<font color="WHITE">'.get_num_proyectos().'</font>' ?></h3> 
                   <H4><?php echo $lang['PROJECTS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="admin_proyectos.php" class="small-box-footer">
                   More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -272,7 +271,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>0</h3>
                   <H4><?php echo $lang['TAREAS_PROACTIVIDAD']?></h4>
                 </div>
                 <div class="icon">
@@ -292,14 +291,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                    <h3><?php echo '<font color="WHITE">'.get_puntos_libres_totales()." PTS".'</font>' ?></h3>
                   
                   <H4><?php echo $lang['FREE_POINTS']?></h4>
                 </div>
                 <div class="icon">
                  <i class="ion ion-ribbon-a"></i>
                 </div>
-                <a href="admin_news.php" class="small-box-footer">
+                <a href="admin_free_points.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -308,14 +307,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                   <h3><?php echo '<font color="WHITE">'.get_num_usuarios().'</font>' ?></h3>
                   <H4><?php echo $lang['USERS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                <a href="admin_usuarios.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -323,7 +322,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-maroon">
                 <div class="inner">
-                  <h3>44</h3>
+                 <h3><?php echo get_puntos_epi_total()." PTS"?></h3>
                  <H4><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></h4>
                 </div>
                 <div class="icon">
@@ -343,14 +342,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
+                  <h3><?php echo get_puntos_disponibles_totales()." PTS"?></h3>
                   
                   <H4><?php echo $lang['POINTS']?></h4>
                 </div>
                 <div class="icon">
                  <i class="ion ion-ribbon-a"></i>
                 </div>
-                <a href="admin_news.php" class="small-box-footer">
+                <a href="#" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -359,7 +358,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3>0</h3>
                   <H4><?php echo $lang['OTHER_PROJECTS']?></h4>
                 </div>
                 <div class="icon">
@@ -374,7 +373,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>0</h3>
                  <H4><?php echo $lang['EXCHANGE_POINTS']?></h4>
                 </div>
                 <div class="icon">
@@ -394,20 +393,51 @@ body {
               <!-- small box -->
               <div class="small-box bg-teal">
                 <div class="inner">
-                  <h3><?php echo '<font color="WHITE">'.get_puntos_temporales_proyectos($_SESSION['userSession']).'</font>' ?></h3>
-                  
+                 <h3><?php echo get_messages_totales()?></h3>
+                   
                   <H4><?php echo $lang['MESSAGES']?></h4>
                 </div>
                 <div class="icon">
                  <i class="ion ion-email"></i>
                 </div>
-                <a href="admin_news.php" class="small-box-footer">
+                <a href="mensajes.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
           
-           
+           <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                   <h3><?php echo get_rci_created_total($_SESSION['userSession'])?></h3>
+                  <H4><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-happy-outline"></i>
+                </div>
+                <a href="admin_rci.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?><i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
+            
+         
+          <div class="col-lg-4 col-xs-4">
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                   <h3><?php echo get_historico()?></h3>
+                  <H4><?php echo $lang['HISTORICO']?></h4>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ios-recording"></i>
+                </div>
+                <a href="admin_historico.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?><i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div><!-- ./col -->
             
           </div><!-- /.row -->
 
