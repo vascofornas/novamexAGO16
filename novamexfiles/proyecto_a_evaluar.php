@@ -271,10 +271,26 @@ function subirimagen()
     if (comprobar_proyecto($_GET['id']) == 1){
     	echo '<a href="# "     class="btn btn-danger btn-lg active " role="button" >'.$lang['PROJECT_CLOSED'].'</a><br><br>';
     }
-    
     ?>
-    
-    
+    <img src="entregables.png" width="60" height="60" /></a>
+    <bR><bR>
+    <?php 
+   
+    $id = $_GET['id'];
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE proyecto_entregable = $id")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+$num = 0;
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	$num = $num+1;
+	echo $num." - ".$row_proyectos['fecha_entregable']." - ".$row_proyectos['titulo_entregable'].'  <a href="entregables_proyectos/'.$row_proyectos['nombre_entregable'].' "  target="_blank"  class="btn btn-info btn-lg active " role="button" > <span class="glyphicon glyphicon-download-alt"></span></a><br><br>';;
+}
+    ?>
   </div>
   <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PROJECT_REVISIONS']?></H3>
   <HR>

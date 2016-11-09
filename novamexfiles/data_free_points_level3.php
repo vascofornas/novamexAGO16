@@ -147,7 +147,7 @@ if ($job != ''){
   		//si no  existe CREAR
   		if ($existe == 0){
   			$puntos_actualizados = $_GET['puntos_otorgados'];
-  			crear_puntos_libres($_GET['recibe_usuario'],$puntos_actualizados);
+  			crear_puntos_libres_usuario($_GET['recibe_usuario'],$puntos_actualizados);
   		}
   	
   	

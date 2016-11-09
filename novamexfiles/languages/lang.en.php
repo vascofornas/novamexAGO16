@@ -343,6 +343,7 @@ $lang['NO_ANSWER_POINTS'] = 'No Answer';
 $lang['ESFUERZO_LEVE'] = 'Mild Activity';
 $lang['ESFUERZO_ACEPTABLE'] = 'Reasonable Effort';
 $lang['ESFUERZO_EXCEPCIONAL'] = 'Exceptional Effort';
+$lang['ABRIR_ENTREGABLE'] = 'Open Deliverable';
 
 
 ?>

@@ -22,7 +22,7 @@ if($_POST)
     $eval_c4      = filter_var($_POST["eval_c4"], FILTER_SANITIZE_STRING);
     $eval_id      = filter_var($_POST["eval_id"], FILTER_SANITIZE_STRING);
     $proveedor      = filter_var($_POST["proveedor"], FILTER_SANITIZE_STRING);
-     
+    
     
     $suma_nueva = $eval_c1 + $eval_c2 + $eval_c3+ $eval_c4;
     
@@ -40,30 +40,31 @@ if($_POST)
     		WHERE id_revisiones_rci = '".$eval_id."'";
     
     if ($mysqli->query($sql) === TRUE) {
+    	
+    	
+    	//comprobar si tiene saldo en puntos dispoibles
+    	
+    	$ya_tiene_puntos = comprobar_existe_puntos_disponibles($proveedor);
+    	if ($ya_tiene_puntos == 0){
+    		crear_puntos_disponibles($proveedor,$suma_nueva);
+    	}
+    	
+    	if ($ya_tiene_puntos >0){
+    		$puntos_actuales = get_puntos_disponibles($proveedor);
+    		$puntos = $puntos_actuales + $suma_nueva;
+    		update_puntos_disponibles($proveedor, $puntos);
+    	}
+    	 
+    	
+
+    	$output = json_encode(array('type'=>'message', 'text' => ' '. $lang['EVALUATED']."  <a class='btn btn-primary' href='evaluaciones_rci.php' role='button'>".$lang['GO']."</a>"));
+    	die($output);
     		
     } else {
     
-    };
-    
-    //email body
-  //  $message_body = $message."\r\n\r\n-".$supervisor."\r\nEmail : ".$supervisor."\r\nPhone Number : (".$supervisor.") ". $supervisor ;
-    
-    //proceed with PHP email.
-    $headers = 'From: '.$supervisor.'' . "\r\n" .
-    'Reply-To: '.$supervisor.'' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-    
-    $send_mail = mail($to_email, $subject, $message_body, $headers);
-    
-    if(!$send_mail)
-    {
-        //If mail couldn't be sent output error. Check your PHP email configuration (if it ever happens)
-        $output = json_encode(array('type'=>'error', 'text' => 'Could not send mail! Please check your PHP mail configuration.'));
-        die($output);
-    }else{
-    	$mi_nombre = get_nombre($cliente);
-        $output = json_encode(array('type'=>'message', 'text' => '-> '. $lang['REQ_SENT'].$res));
-        die($output);
     }
+    
+
+   
 }
 ?>

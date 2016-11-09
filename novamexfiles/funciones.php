@@ -552,19 +552,7 @@ function update_puntos_libres($usuario,$puntos){
 	};
 
 }
-function crear_puntos_libres($usuario,$puntos){
 
-	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
-
-	$sql = "INSERT INTO tb_puntos_libres_usuario (usuario_puntos_libres,puntos_libres_usuario)  VALUES ('".$usuario."','".$puntos."')";
-
-	if ($mysqli->query($sql) === TRUE) {
-			
-	} else {
-
-	};
-
-}
 function update_puntos_disponibles($usuario,$puntos){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -583,6 +571,19 @@ function crear_puntos_disponibles($usuario,$puntos){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$sql = "INSERT INTO tb_puntos_disponibles (usuario_puntos_disponibles,puntos_conseguidos)  VALUES ('".$usuario."','".$puntos."')";
+
+	if ($mysqli->query($sql) === TRUE) {
+			
+	} else {
+
+	};
+
+}
+function crear_puntos_libres_usuario($usuario,$puntos){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$sql = "INSERT INTO tb_puntos_libres_usuario (usuario_puntos_libres,puntos_libres_usuario)  VALUES ('".$usuario."','".$puntos."')";
 
 	if ($mysqli->query($sql) === TRUE) {
 			

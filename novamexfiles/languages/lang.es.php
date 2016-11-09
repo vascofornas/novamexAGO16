@@ -339,4 +339,6 @@ $lang['NO_ANSWER_POINTS'] = 'No hay respuesta';
 $lang['ESFUERZO_LEVE'] = 'Esfuerzo leve';
 $lang['ESFUERZO_ACEPTABLE'] = 'Esfuerzo aceptable';
 $lang['ESFUERZO_EXCEPCIONAL'] = 'Esfuerzo excepcional';
+$lang['ABRIR_ENTREGABLE'] = 'Abrir Entregable';
+
 ?>

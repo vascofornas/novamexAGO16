@@ -327,7 +327,7 @@ body {
 				<th style="color:WHITE;"><?php echo $lang['EVALUATION_DATE']?></th>
 			
 <th style="color:WHITE;"><?php echo $lang['EVALUATION_STATE']?></th>
-			<th style="color:WHITE;"><?php echo $lang['APPROVED_SUPERVISOR']?></th>
+			<th style="color:WHITE;"></th>
 			
 			
 			

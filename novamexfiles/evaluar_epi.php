@@ -341,6 +341,7 @@ $(document).ready(function() {
 
 <div class = "container">
 <h2><?php echo $lang['EVALUATE']?></h2>
+
 <div class="form-style" id="contact_form">
     
     <div id="contact_results" style="background-color:#f44242;font-family: Arial Black; font-size: 24px; 
@@ -350,6 +351,26 @@ color: white"></div>
 <h2 align="center"><?php echo  $row_Recordset3['nombre_revision']." -> ".$row_Recordset3['fecha_inicio_rci'];?></h2>
 <br>
 <div class="row">
+
+  <img src="entregables.png" width="60" height="60" /></a>
+    <bR><bR>
+    <?php 
+   
+    $id = $_GET['id'];
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_rci WHERE rci_entregable = $id")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+$num = 0;
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	$num = $num+1;
+	echo $num." - ".$row_proyectos['fecha_entregable']." - ".$row_proyectos['titulo_entregable'].'  <a href="entregables_rci/'.$row_proyectos['nombre_entregable'].' "  target="_blank"  class="btn btn-info btn-lg active " role="button" > <span class="glyphicon glyphicon-download-alt"></span></a><br><br>';;
+}
+    ?>
 	
 	<div class="col-md-6">
 		<div class="form-group">
@@ -415,7 +436,7 @@ color: white"></div>
  <div class="col-md-6">
          
          <div class="form-group">
-                      <label><?php echo $lang['EVALUATE']?></label>
+                      <label><?php echo $lang['EVALUATE']." (".$row_Recordset3['evaluacion_c1']." pts)"?></label>
                     
                     <select id="eval_c1" name="eval_c1" class="form-control select2" style="width: 100%;">
                       <option  value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
@@ -441,7 +462,7 @@ color: white"></div>
  <div class="col-md-6">
          
          <div class="form-group">
-                      <label><?php echo $lang['EVALUATE']?></label>
+                      <label><?php echo $lang['EVALUATE']." (".$row_Recordset3['evaluacion_c2']." pts)"?></label>
                     
                     <select id="eval_c2" name="eval_c2" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
@@ -466,7 +487,7 @@ color: white"></div>
  <div class="col-md-6">
          
          <div class="form-group">
-                      <label><?php echo $lang['EVALUATE']?></label>
+                      <label><?php echo $lang['EVALUATE']." (".$row_Recordset3['evaluacion_c3']." pts)"?></label>
                     
                    <select id="eval_c3" name="eval_c3" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
@@ -491,7 +512,7 @@ color: white"></div>
  <div class="col-md-6">
          
          <div class="form-group">
-                      <label><?php echo $lang['EVALUATE']?></label>
+                      <label><?php echo $lang['EVALUATE']." (".$row_Recordset3['evaluacion_c4']." pts)"?></label>
                     
                    <select id="eval_c4" name="eval_c4" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="<?php echo get_na_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['NO_ANSWER_POINTS']." (". get_na_rci($row_Recordset3['rci_revisado']).")"?></option>
