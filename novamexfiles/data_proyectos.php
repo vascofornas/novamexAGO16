@@ -129,6 +129,52 @@ if ($job != ''){
   
   } elseif ($job == 'add_company'){
     
+  	//add log
+  	$texto = "USUARIO CREA NUEVO PROYECTO";
+  	$codigo = "025";
+  	$miemail = get_email($_SESSION['userSession']);
+  	add_log($texto,$miemail,$codigo);
+  	
+  	$usuario_miembro = $_GET['usuario'];
+  	$email_usuario = get_email($usuario_miembro);
+  	$idioma_miembro =  get_idioma($usuario_miembro);
+  	$nombre_usuario = get_nombre($usuario_miembro);
+  	$equipo = $_GET['equipo_proyecto'];
+  	$evaluador = $_GET['evaluador_proyecto'];
+  	$idioma_evaluador = get_idioma($evaluador);
+  	$proyecto = $_GET['nombre_proyecto'];
+  	$email_evaluador = get_email($evaluador);
+  	$nombre_evaluador = get_nombre($evaluador);
+  	$fecha_inicio = $_GET['fecha_inicio_proyecto'];
+  	$fecha_final = $_GET['fecha_final_proyecto'];
+  	
+  	
+  	//email a los miembros
+  	send_mail_miembros_equipos_proyecto($equipo,$proyecto,$fecha_inicio,$fecha_final);
+  	
+  	
+  	//email al evaluador
+  	if ($idioma_evaluador == "en"){
+  		$message = "Hi, ".$nombre_evaluador."!<br><br>";
+  		$message .= "You have been assigned as EVALUATOR to project: ".$proyecto.".";
+  		$message .= "<br>from ".$_GET['fecha_inicio_proyecto']." to ".$_GET['fecha_final_proyecto'];
+  		$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+  		$subject = "You have been assigned as EVALUATOR to project ".$proyecto;
+  		send_mail($email_evaluador,$message,$subject);
+  	}
+  	else {
+  		$message = "Hola, ".$nombre_evaluador."!<br><br>";
+  		$message .= "Te han asignado como EVALUADOR del proyecto: ".$proyecto.".";
+  		$message .= "<br>desde el ".$_GET['fecha_inicio_proyecto']." al ".$_GET['fecha_final_proyecto'];
+  		$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+  		$subject = "Te han asignado como EVALUADOR del proyecto: ".$proyecto.".";
+  		send_mail($email_evaluador,$message,$subject);
+  		 
+  	}
+  	
+  	
+  	
+  	
     // Add company
     $query = "INSERT INTO tb_proyectos SET ";
     if (isset($_GET['nombre_proyecto'])) { $query .= "nombre_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_proyecto']) . "', "; }
@@ -156,6 +202,55 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	
+    	
+    	$texto = "USUARIO EDITA PROYECTO";
+    	$codigo = "026";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
+    	 
+    	$usuario_miembro = $_GET['usuario'];
+    	$email_usuario = get_email($usuario_miembro);
+    	$idioma_miembro =  get_idioma($usuario_miembro);
+    	$nombre_usuario = get_nombre($usuario_miembro);
+    	$equipo = $_GET['equipo_proyecto'];
+    	$evaluador = $_GET['evaluador_proyecto'];
+    	$idioma_evaluador = get_idioma($evaluador);
+    	$proyecto = $_GET['nombre_proyecto'];
+    	$email_evaluador = get_email($evaluador);
+    	$nombre_evaluador = get_nombre($evaluador);
+    	$fecha_inicio = $_GET['fecha_inicio_proyecto'];
+    	$fecha_final = $_GET['fecha_final_proyecto'];
+    	 
+    	 
+    	//email a los miembros
+    	send_mail_miembros_equipos_proyecto_editado($equipo,$proyecto,$fecha_inicio,$fecha_final);
+    	 
+    	 
+    	//email al evaluador
+    	if ($idioma_evaluador == "en"){
+    		$message = "Hi, ".$nombre_evaluador."!<br><br>";
+    		$message .= "The project  ".$proyecto." has been updated.";
+    		$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+    		$subject = "The project  ".$proyecto." has been updated.";
+    		send_mail($email_evaluador,$message,$subject);
+    	}
+    	else {
+    		$message = "Hola, ".$nombre_evaluador."!<br><br>";
+    		$message .= "El proyecto  ".$proyecto." ha sido modificado.";
+    		
+    		$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+    		$subject = "El proyecto  ".$proyecto." ha sido modificado.";
+    		send_mail($email_evaluador,$message,$subject);
+    			
+    	}
+    	 
+    	 
+    	
+    	
+    	
+    	
+    	
       $query = "UPDATE tb_proyectos SET ";
         if (isset($_GET['nombre_proyecto'])) { $query .= "nombre_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['nombre_proyecto']) . "', "; }
    if (isset($_GET['descripcion_proyecto'])) { $query .= "descripcion_proyecto = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_proyecto']) . "', "; }
@@ -178,12 +273,69 @@ if ($job != ''){
     }
     
   } elseif ($job == 'delete_company'){
+  	
+  	
+  	
+
   
     // Delete company
     if ($id == ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	
+    	
+
+    	$texto = "USUARIO CANCELA PROYECTO";
+    	$codigo = "027";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
+    	 
+    	 
+    	$proyecto = $id;
+    	
+    	$evaluador = get_evaluador_proyecto($id);
+    	$nombre_evaluador = get_nombre($evaluador);
+    	$email_evaluador = get_email($evaluador);
+    	$idioma_evaluador = get_idioma($evaluador);
+    	$equipo = get_equipo_proyecto($id);
+    	$proyecto_nombre = get_nombre_proyecto($id);
+    	 
+    	 
+    	
+    	 
+    	 
+    	//email a los miembros
+    	send_mail_miembros_equipos_proyecto_cancelado($equipo,$proyecto);
+    	 
+    	 
+    	//email al evaluador
+    	if ($idioma_evaluador == "en"){
+    		$message = "Hi, ".$nombre_evaluador."!<br><br>";
+    		$message .= "The project  ".$proyecto_nombre." has been canceled.";
+    		$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+    		$subject = "The project  ".$proyecto_nombre." has been canceled.";
+    		send_mail($email_evaluador,$message,$subject);
+    	}
+    	else {
+    		$message = "Hola, ".$nombre_evaluador."!<br><br>";
+    		$message .= "El proyecto  ".$proyecto_nombre." ha sido cancelado.";
+    		
+    		$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+    		$subject = "El proyecto  ".$proyecto_nombre." ha sido cancelado.";
+    		send_mail($email_evaluador,$message,$subject);
+    			
+    	}
+    	 
+    	 
+    	 
+    	 
+    	
+    	
+    	
+    	
+    	
+    	
       $query = "DELETE FROM tb_proyectos WHERE id_proyecto = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){

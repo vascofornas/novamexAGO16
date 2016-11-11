@@ -196,6 +196,14 @@ if ($job != ''){
       $result  = 'error';
       $message = 'query error';
     } else {
+    	
+    	//add log
+    	$texto = "USUARIO CREA NUEVO TIPO DE PROYECTO";
+    	$codigo = "028";
+    	$miemail = get_email($_SESSION['userSession']);
+    	add_log($texto,$miemail,$codigo);
+    	
+    	
       $result  = 'success';
       $message = 'query success';
     }
@@ -248,6 +256,13 @@ if ($job != ''){
         $result  = 'error';
         $message = 'query error';
       } else {
+      	
+      	//add log
+      	$texto = "USUARIO EDITA TIPO DE PROYECTO";
+      	$codigo = "029";
+      	$miemail = get_email($_SESSION['userSession']);
+      	add_log($texto,$miemail,$codigo);
+      	 
         $result  = 'success';
         $message = 'query success';
       }
@@ -266,6 +281,13 @@ if ($job != ''){
         $result  = 'error';
         $message = 'query error';
       } else {
+      	
+      	//add log
+      	$texto = "USUARIO BORRA TIPO DE PROYECTO";
+      	$codigo = "030";
+      	$miemail = get_email($_SESSION['userSession']);
+      	add_log($texto,$miemail,$codigo);
+      	 
         $result  = 'success';
         $message = 'query success';
       }
