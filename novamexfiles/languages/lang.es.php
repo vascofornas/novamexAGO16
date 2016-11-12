@@ -340,5 +340,13 @@ $lang['ESFUERZO_LEVE'] = 'Esfuerzo leve';
 $lang['ESFUERZO_ACEPTABLE'] = 'Esfuerzo aceptable';
 $lang['ESFUERZO_EXCEPCIONAL'] = 'Esfuerzo excepcional';
 $lang['ABRIR_ENTREGABLE'] = 'Abrir Entregable';
+$lang['AS_EMPLOYEE'] = 'Como empleado';
+$lang['AS_SUPERVISOR'] = 'Como supervisor';
+
+$lang['CREATE_NEW_TA'] = 'CREAR NUEVAS TAREAS DE PROACTIVIDAD';
+$lang['EVALUATED'] = 'Usuario Evaluado';
+$lang['TITLE_PT'] = 'Titulo de las Tareas de Proactividad';
+$lang['DESC_PT'] = 'Descripcion de las Tareas de Proactividad';
+
 
 ?>

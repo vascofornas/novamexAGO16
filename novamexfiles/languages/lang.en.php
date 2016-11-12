@@ -298,9 +298,11 @@ $lang['NOT_AVAILABLE'] = 'Not Available';
 $lang['LEFT_POINTS'] = 'Points left';
 $lang['OTHER_PROJECTS'] = 'Other Categories';
 $lang['EXCHANGE_POINTS'] = 'Exchanged Points';
-$lang['AS_SUPPLIER'] = 'As Supplier';
-$lang['AS_CUSTOMER'] = 'As Customer';
+$lang['AS_INTERNAL_SUPPLIER'] = 'As Supplier';
+$lang['AS_INTERNAL_CUSTOMER'] = 'As Customer';
 $lang['CREATE_NEW_REQ'] = 'NEW INTERNAL CUSTOMER REQUIREMENT';
+$lang['AS_EMPLOYEE'] = 'As Employee';
+$lang['AS_SUPERVISOR'] = 'As Supervisor';
 $lang['CUSTOMER'] = 'Customer';
 
 $lang['INTERNAL_SUPPLIER'] = 'Internal Supplier';
@@ -337,6 +339,7 @@ $lang['EVALUATION_DATE'] = 'Evaluation Date';
 
 $lang['EVALUATION_STATE'] = 'Evaluation State';
 $lang['NOT_EVALUATED'] = 'Not evaluated';
+$lang['CREATE_NEW_TA'] = 'CREATE NEW PROACTIVITY TASKS';
 $lang['EVALUATED'] = 'Evaluated';
 $lang['EVALUATE'] = 'Evaluate Internal Supplier';
 $lang['NO_ANSWER_POINTS'] = 'No Answer';
@@ -344,6 +347,8 @@ $lang['ESFUERZO_LEVE'] = 'Mild Activity';
 $lang['ESFUERZO_ACEPTABLE'] = 'Reasonable Effort';
 $lang['ESFUERZO_EXCEPCIONAL'] = 'Exceptional Effort';
 $lang['ABRIR_ENTREGABLE'] = 'Open Deliverable';
-
+$lang['EVALUATED'] = 'Evaluated User';
+$lang['TITLE_PT'] = 'Proactivity Tasks Title';
+$lang['DESC_PT'] = 'Proactivity Tasks Description';
 
 ?>
