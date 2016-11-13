@@ -295,22 +295,22 @@ $(document).ready(function(){
   $(document).on('click', '.function_delete a', function(e){
     e.preventDefault();
     var company_name = $(this).data('name');
-    if (confirm("Do yo want to delete News with title '" + company_name + "'?")){
-      show_loading_message();
-      var id      = $(this).data('id');
-      var request = $.ajax({
-        url:          'data_proyectos.php?job=delete_company&id=' + id,
-        cache:        false,
-        dataType:     'json',
-        contentType:  'application/json; charset=utf-8',
-        type:         'get'
-      });
+    if (confirm("Do yo want to delete Requeriment with title '" + company_name + "'?")){
+        show_loading_message();
+        var id      = $(this).data('id');
+        var request = $.ajax({
+          url:          'data_rci.php?job=delete_company&id=' + id,
+          cache:        false,
+          dataType:     'json',
+          contentType:  'application/json; charset=utf-8',
+          type:         'get'
+        });
       request.done(function(output){
         if (output.result == 'success'){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            show_message("Project with name '" + company_name + "' deleted successfully.", 'success');
+            show_message("Requirement with name '" + company_name + "' deleted successfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
