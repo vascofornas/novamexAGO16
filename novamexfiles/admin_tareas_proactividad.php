@@ -95,7 +95,7 @@ textarea {
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_rci.js"></script>
+    <script charset="utf-8" src="webapp_pt.js"></script>
 
  <script>
   $(document).ready(function() {
@@ -105,7 +105,7 @@ textarea {
     var currentDate = date.getDate();
     var currentYear = date.getFullYear();
 
-    $('#fecha_inicio_req_interno').datepicker({
+    $('#fecha_inicio_tareas_proactividad').datepicker({
         minDate: new Date(currentYear, currentMonth, currentDate),
         dateFormat: 'yy-mm-dd'
     });;
@@ -320,27 +320,27 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></h1>
+    <h1 align="center"><?php echo $lang['TAREAS_PROACTIVIDAD']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['CREATE_NEW_REQ']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['CREATE_NEW_TA']?></button>
         
       </div>
       <table class="datatable" id="table_companies">
         <thead>
           <tr>
            
-             <th><?php echo $lang['CUSTOMER']?></th>
-            <th><?php echo $lang['SUPERVISOR']?></th>
+             <th><?php echo $lang['EVALUATOR']?></th>
+          
            
-              <th><?php echo $lang['INTERNAL_SUPPLIER']?></th>
-              <th><?php echo $lang['TITLE_REQ']?></th>
+              <th><?php echo $lang['EVALUATED']?></th>
+              <th><?php echo $lang['TITLE_PT']?></th>
+                <th><?php echo $lang['DESC_PT']?></th>
               <th><?php echo $lang['START_DATE_REQ']?></th>
-              <th><?php echo $lang['APPROVED_SUPERVISOR']?></th>
              
               <th><?php echo $lang['STATUS']?></th>
               
@@ -363,43 +363,15 @@ body {
         
         <h2><?php echo $lang['ADD_PROJECT']?></h2>
         <form class="form add" id="form_company" data-id="" novalidate>
-           <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY nombre_usuario";?>
-        <div class="input_container">
-        <label for="cliente_req_interno"><?php echo $lang['CUSTOMER']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="cliente_req_interno" name="cliente_req_interno" class="selectpicker"  required>
-           
-           
-        <?php   if ($resultevaluador=mysqli_query($conexion,$sqlevaluador))
-  {
-  // Fetch one and one row
-  while ($rowevaluador=mysqli_fetch_row($resultevaluador))
-    {
-    printf ("%s (%s)\n",$rowevaluador[0],$rowevaluador[1]);
-    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[7].' '.$rowevaluador[8].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($resultevaluador);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
-            </div>
-          </div>
+       
           
           
           
                  <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY nombre_usuario";?>
         <div class="input_container">
-        <label for="proveedor_req_interno"><?php echo $lang['INTERNAL_SUPPLIER']?>: <span class="required">*</span></label>
+        <label for="proveedor_tareas_proactividad"><?php echo $lang['EVALUATED']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
-              <select  id="proveedor_req_interno" name="proveedor_req_interno" class="selectpicker"  required>
+              <select  id="proveedor_tareas_proactividad" name="proveedor_tareas_proactividad" class="selectpicker"  required>
            
            
         <?php   if ($resultevaluador=mysqli_query($conexion,$sqlevaluador))
@@ -425,23 +397,23 @@ body {
             </div>
           </div>
           <div class="input_container">
-            <label for="titulo_req_interno"><?php echo $lang['TITLE_REQ']?>: <span class="required">*</span></label>
+            <label for="titulo_tareas_proactividad"><?php echo $lang['TITLE_PT']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="titulo_req_interno" id="titulo_req_interno" value="" required>
+              <input type="text" class="text" name="titulo_tareas_proactividad" id="titulo_tareas_proactividad" value="" required>
             </div>
           </div>
           <div class="input_container">
-            <label for="descripcion_req_interno"><?php echo $lang['DESC_REQ']?>: <span class="required">*</span></label>
+            <label for="descripcion_tareas_proactividad"><?php echo $lang['DESC_PT']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="descripcion_req_interno" id="descripcion_req_interno" value="" required>
+              <input type="text" class="text" name="descripcion_tareas_proactividad" id="descripcion_tareas_proactividad" value="" required>
             </div>
           </div>
        
        
            <div class="input_container">
-            <label for="fecha_inicio_req_interno"><?php echo $lang['START_DATE']?>: <span class="required">*</span></label>
+            <label for="fecha_inicio_tareas_proactividad"><?php echo $lang['START_DATE']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="fecha_inicio_req_interno" id="fecha_inicio_req_interno" value="" required>
+              <input type="text" class="text" name="fecha_inicio_tareas_proactividad" id="fecha_inicio_tareas_proactividad" value="" required>
             </div>
           </div>
        
@@ -500,7 +472,7 @@ body {
 	<div class="input_container">
                       <label><?php echo $lang['CONCEPT']?> 1</label>
                       <div class="field_container">
-                     <input type="text" class="form-control" name="concepto1" id="concepto1" placeholder="<?php echo $lang['CONCEPT']?> 1 ...">    </div>
+                     <input type="text" class="form-control" name="concepto1" id="concepto2" placeholder="<?php echo $lang['CONCEPT']?> 1 ...">    </div>
 	</div>
 	
 	<div class="input_container">
@@ -552,7 +524,7 @@ body {
              
                       <label><?php echo $lang['STATUS']?></label>
                        <div class="styled-select slate">
-                      <select id="estado_req_interno" name="estado_req_interno" class="form-control select2" style="width: 100%;">
+                      <select id="estado_tareas_proactividad" name="estado_tareas_proactividad" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="0"><?php echo $lang['PENDING_APPROVEMENT']?></option>
                       <option value="1"><?php echo $lang['APPROVED']?></option>
                       <option value="2"><?php echo $lang['REJECTED']?></option>

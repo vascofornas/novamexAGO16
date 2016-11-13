@@ -265,7 +265,7 @@ $(document).ready(function(){
   $(document).on('click', '.function_delete a', function(e){
     e.preventDefault();
     var company_name = $(this).data('name');
-    if (confirm("Do yo want to delete News with title '" + company_name + "'?")){
+    if (confirm("Do yo want to delete Project with title '" + company_name + "'?")){
       show_loading_message();
       var id      = $(this).data('id');
       var request = $.ajax({

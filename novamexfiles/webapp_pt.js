@@ -2,15 +2,22 @@ $(document).ready(function(){
   
   // On page load: datatable
   var table_companies = $('#table_companies').dataTable({
-    "ajax": "data_equipos.php?job=get_companies",
+    "ajax": "data_pt.php?job=get_companies",
     "columns": [
       
-      { "data": "nombre_equipo",   "sClass": "company_name" },
+      { "data": "cliente_tareas_proactividad",    },
      
-      { "data": "unidad_negocio", },
-
-      { "data": "fecha_alta_equipo", },
+      { "data": "proveedor_tareas_proactividad", },
+      { "data": "titulo_tareas_proactividad", },
+      { "data": "descripcion_tareas_proactividad", },
     
+      
+      { "data": "fecha_inicio_tareas_proactividad", },
+    
+      { "data": "estado_tareas_proactividad", },
+     
+
+      
       { "data": "functions",      "sClass": "functions" }
     ],
     "aoColumnDefs": [
@@ -25,8 +32,8 @@ $(document).ready(function(){
         "sLast":        " ",
       },
       "sLengthMenu":    "Show / Mostrar: _MENU_",
-      "sInfo":          "Total of _TOTAL_ teams (showing from _START_ to _END_)",
-      "sInfoFiltered":  "(filtered _MAX_ teams)"
+      "sInfo":          "Total of _TOTAL_ r (showing from _START_ to _END_)",
+      "sInfoFiltered":  "(filtered _MAX_ projects)"
     }
   });
   
@@ -113,17 +120,33 @@ $(document).ready(function(){
   // Add company button
   $(document).on('click', '#add_company', function(e){
     e.preventDefault();
-    $('.lightbox_content h2').text('Add Team');
-    $('#form_company button').text('Add Team');
+    $('.lightbox_content h2').text('Add Proactivity Tasks');
+    $('#form_company button').text('Add Proactivity Tasks');
     $('#form_company').attr('class', 'form add');
     $('#form_company').attr('data-id', '');
     $('#form_company .field_container label.error').hide();
     $('#form_company .field_container').removeClass('valid').removeClass('error');
    
-    $('#form_company #nombre_equipo').val('');
    
-    $('#form_company #unidad_negocio_equipo').val('');
-    $('#form_company #fecha_alta_equipo').val('');
+    $('#form_company #proveedor_tareas_proactividad').val('');
+    $('#form_company #titulo_tareas_proactividad').val('');
+    $('#form_company #descripcion_tareas_proactividad').val('');
+   
+    $('#form_company #fecha_inicio_tareas_proactividad').val('');
+    
+    $('#form_company #periodicidad').val('');
+    $('#form_company #repeticiones').val(''); 
+    $('#form_company #concepto1').val('');
+    $('#form_company #concepto2').val('');
+    $('#form_company #concepto3').val('');
+    $('#form_company #concepto4').val('');
+    $('#form_company #sin_puntuar').val('');
+    $('#form_company #leve').val('');
+    $('#form_company #aceptable').val('');
+    $('#form_company #excepcional').val('');
+    $('#form_company #estado_tareas_proactividad').val('');
+       
+    
     show_lightbox();
   });
 
@@ -138,7 +161,7 @@ $(document).ready(function(){
       show_loading_message();
       var form_data = $('#form_company').serialize();
       var request   = $.ajax({
-        url:          'data_equipos.php?job=add_company',
+        url:          'data_pt.php?job=add_company',
         cache:        false,
         data:         form_data,
         dataType:     'json',
@@ -150,8 +173,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            var company_name = $('#nombre_equipo').val();
-            show_message("Team with Title '" + company_name + "' added sucessfully.", 'success');
+            var company_name = $('#titulo_tareas_proactividad').val();
+            show_message("Proactivy Tasks with Title '" + company_name + "' added sucessfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -172,7 +195,7 @@ $(document).ready(function(){
     show_loading_message();
     var id      = $(this).data('id');
     var request = $.ajax({
-      url:          'data_equipos.php?job=get_company',
+      url:          'data_pt.php?job=get_company',
       cache:        false,
       data:         'id=' + id,
       dataType:     'json',
@@ -181,17 +204,40 @@ $(document).ready(function(){
     });
     request.done(function(output){
       if (output.result == 'success'){
-        $('.lightbox_content h2').text('Edit Team');
-        $('#form_company button').text('Edit Team');
+        $('.lightbox_content h2').text('Edit Proactivity Tasks');
+        $('#form_company button').text('Edit Proactivity Tasks');
         $('#form_company').attr('class', 'form edit');
         $('#form_company').attr('data-id', id);
         $('#form_company .field_container label.error').hide();
         $('#form_company .field_container').removeClass('valid').removeClass('error');
        
-        $('#form_company #nombre_equipo').val(output.data[0].nombre_equipo);
+      
+        $('#form_company #proveedor_tareas_proactividad').val(output.data[0].proveedor_tareas_proactividad);
+        $('#form_company #titulo_tareas_proactividad').val(output.data[0].titulo_tareas_proactividad);
+        $('#form_company #descripcion_tareas_proactividad').val(output.data[0].descripcion_tareas_proactividad);
+       
+        $('#form_company #fecha_inicio_tareas_proactividad').val(output.data[0].fecha_inicio_tareas_proactividad);
+        $('#form_company #estado_tareas_proactividad').val(output.data[0].estado_tareas_proactividad);
         
-        $('#form_company #unidad_negocio_equipo').val(output.data[0].unidad_negocio_equipo);
-        $('#form_company #fecha_alta_equipo').val(output.data[0].fecha_alta_equipo);
+        $('#form_company #concepto1').val(output.data[0].concepto1);
+
+        $('#form_company #concepto3').val(output.data[0].concepto3);
+        $('#form_company #concepto2').val(output.data[0].concepto2);
+
+        $('#form_company #concepto4').val(output.data[0].concepto4);
+
+        $('#form_company #sin_puntuar').val(output.data[0].sin_puntuar);
+
+        $('#form_company #leve').val(output.data[0].leve);
+
+        $('#form_company #aceptable').val(output.data[0].aceptable);
+
+        $('#form_company #excepcional').val(output.data[0].excepcional);
+
+        $('#form_company #periodicidad').val(output.data[0].periodicidad);
+
+        $('#form_company #repeticiones').val(output.data[0].repeticiones);
+        
         hide_loading_message();
         show_lightbox();
       } else {
@@ -217,7 +263,7 @@ $(document).ready(function(){
       var id        = $('#form_company').attr('data-id');
       var form_data = $('#form_company').serialize();
       var request   = $.ajax({
-        url:          'data_equipos.php?job=edit_company&id=' + id,
+        url:          'data_pt.php?job=edit_company&id=' + id,
         cache:        false,
         data:         form_data,
         dataType:     'json',
@@ -229,8 +275,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            var company_name = $('#nombre_equipo').val();
-            show_message("Team with name '" + company_name + "' edited succesfully.", 'success');
+            var company_name = $('#titulo_tareas_proactividad').val();
+            show_message("Proactivity Tasks with title '" + company_name + "' edited succesfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -238,7 +284,7 @@ $(document).ready(function(){
         }
       });
       request.fail(function(jqXHR, textStatus){
-        hide_loading_message();
+        hide_loading_message(); 
         show_message('Edit request failed: ' + textStatus, 'error');
       });
     }
@@ -248,11 +294,11 @@ $(document).ready(function(){
   $(document).on('click', '.function_delete a', function(e){
     e.preventDefault();
     var company_name = $(this).data('name');
-    if (confirm("Do yo want to delete Team with title '" + company_name + "'?")){
+    if (confirm("Do yo want to delete Proactivity Tasks with title '" + company_name + "'?")){
       show_loading_message();
       var id      = $(this).data('id');
       var request = $.ajax({
-        url:          'data_equipos.php?job=delete_company&id=' + id,
+        url:          'data_pt.php?job=delete_company&id=' + id,
         cache:        false,
         dataType:     'json',
         contentType:  'application/json; charset=utf-8',
@@ -263,7 +309,7 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            show_message("Team with name '" + company_name + "' deleted successfully.", 'success');
+            show_message("Project with name '" + company_name + "' deleted successfully.", 'success');
           }, true);
         } else {
           hide_loading_message();

@@ -59,7 +59,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_requerimientos_cliente_interno";
+    $query = "SELECT * FROM tb_tareas_proactividad";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -69,25 +69,12 @@ if ($job != ''){
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
         $functions  = '<div class="function_buttons"><ul>';
-        $functions .= '<li class="function_edit"><a data-id="'   . $company['id_req_interno'] . '" data-name="' . $company['titulo_req_interno'] . '"><span>Edit</span></a></li>';
-        $functions .= '<li class="function_delete"><a data-id="' . $company['id_req_interno'] . '" data-name="' . $company['titulo_req_interno'] . '"><span>Delete</span></a></li>';
+        $functions .= '<li class="function_edit"><a data-id="'   . $company['id_tareas_proactividad'] . '" data-name="' . $company['titulo_tareas_proactividad'] . '"><span>Edit</span></a></li>';
+        $functions .= '<li class="function_delete"><a data-id="' . $company['id_tareas_proactividad'] . '" data-name="' . $company['titulo_tareas_proactividad'] . '"><span>Delete</span></a></li>';
 		
         $functions .= '</ul></div>';
-        $stat = $company['estado_req_interno'];
-        $autorizado = $company['approved_by_supervisor'];
+        $stat = $company['estado_tareas_proactividad'];
         
-        $aut="";
-         if ($autorizado == 0){
-         	$aut =  $lang['PENDING_APPROVEMENT'];
-        
-         }
-         if ($autorizado == 1){
-         	$aut =  $lang['APPROVED'];
-         }
-         if ($autorizado == 2){
-         	$aut =  $lang['REJECTED'];
-         }
-         
         
       if($stat == 0){
         	$estado = $lang['PENDING_APPROVEMENT'];
@@ -105,14 +92,15 @@ if ($job != ''){
         
         $mysql_data[] = array(
          
-          "cliente_req_interno"  => get_nombre($company['cliente_req_interno']),
-          "supervisor_req_interno"    => get_nombre($company['supervisor_req_interno']),
-        		"proveedor_req_interno"    => get_nombre($company['proveedor_req_interno']),
-        		"titulo_req_interno"    => $company['titulo_req_interno'],
+          "cliente_tareas_proactividad"  => get_nombre($company['cliente_tareas_proactividad']),
+          
+        		"proveedor_tareas_proactividad"    => get_nombre($company['proveedor_tareas_proactividad']),
+        		"titulo_tareas_proactividad"    => $company['titulo_tareas_proactividad'],
+        		"descripcion_tareas_proactividad"    => $company['descripcion_tareas_proactividad'],
         		
-        		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
-        		"approved_by_supervisor"    => $aut,
-        		"estado_req_interno"    => $estado,
+        		"fecha_inicio_tareas_proactividad"    => $company['fecha_inicio_tareas_proactividad'],
+        
+        		"estado_tareas_proactividad"    => $estado,
         		
         
 		 
@@ -128,7 +116,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "SELECT * FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "SELECT * FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
@@ -138,14 +126,13 @@ if ($job != ''){
         $message = 'query success';
         while ($company = mysqli_fetch_array($query)){
           $mysql_data[] = array(
-            "cliente_req_interno"  => $company['cliente_req_interno'],
           
-        		"proveedor_req_interno"    => $company['proveedor_req_interno'],
-        		"titulo_req_interno"    => $company['titulo_req_interno'],
+        		"proveedor_tareas_proactividad"    => $company['proveedor_tareas_proactividad'],
+        		"titulo_tareas_proactividad"    => $company['titulo_tareas_proactividad'],
         		
-        		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
-        		"estado_req_interno"    =>  $company['estado_req_interno'],
-          		"descripcion_req_interno"    =>  $company['descripcion_req_interno'],
+        		"fecha_inicio_tareas_proactividad"    => $company['fecha_inicio_tareas_proactividad'],
+        		"estado_tareas_proactividad"    =>  $company['estado_tareas_proactividad'],
+          		"descripcion_tareas_proactividad"    =>  $company['descripcion_tareas_proactividad'],
           		"concepto1"    =>  $company['concepto_1'],
           		"concepto2"    =>  $company['concepto_2'],
           		"concepto3"    =>  $company['concepto_3'],
@@ -169,18 +156,17 @@ if ($job != ''){
   	
   	//nombre del supervisor
   	
-  	$supervisor = get_supervisor($_GET['cliente_req_interno']);
-    $query = "INSERT INTO tb_requerimientos_cliente_interno SET ";
-    if (isset($_GET['cliente_req_interno'])) { $query .= "cliente_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['cliente_req_interno']) . "', "; }
-    if (isset($_GET['cliente_req_interno'])) { $query .= "supervisor_req_interno = '" .$supervisor. "', "; }
+  	$supervisor = get_supervisor($_GET['proveedor_tareas_proactividad']);
+    $query = "INSERT INTO tb_tareas_proactividad SET ";
+    if (isset($_GET['proveedor_tareas_proactividad'])) { $query .= "cliente_tareas_proactividad = '" .$supervisor. "', "; }
      
-    if (isset($_GET['proveedor_req_interno'])) { $query .= "proveedor_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_req_interno']) . "', "; }
-   if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
+    if (isset($_GET['proveedor_tareas_proactividad'])) { $query .= "proveedor_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_tareas_proactividad']) . "', "; }
+   if (isset($_GET['fecha_inicio_tareas_proactividad'])) { $query .= "fecha_inicio_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_tareas_proactividad']) . "', "; }
 
-   if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
-   if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
+   if (isset($_GET['titulo_tareas_proactividad'])) { $query .= "titulo_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_tareas_proactividad']) . "', "; }
+   if (isset($_GET['estado_tareas_proactividad'])) { $query .= "estado_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['estado_tareas_proactividad']) . "', "; }
     
-   if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; } 
+   if (isset($_GET['descripcion_tareas_proactividad'])) { $query .= "descripcion_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_tareas_proactividad']) . "', "; } 
   
    if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
 
@@ -217,17 +203,20 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "UPDATE tb_requerimientos_cliente_interno SET ";
-        if (isset($_GET['cliente_req_interno'])) { $query .= "cliente_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['cliente_req_interno']) . "', "; }
-   
+    	
+    	
+    	
+    	$supervisor = get_supervisor($_GET['proveedor_tareas_proactividad']);
+      $query = "UPDATE tb_tareas_proactividad SET ";
+        if (isset($_GET['proveedor_tareas_proactividad'])) { $query .= "cliente_tareas_proactividad = '" .$supervisor. "', "; }
      
-    if (isset($_GET['proveedor_req_interno'])) { $query .= "proveedor_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_req_interno']) . "', "; }
-   if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
+    if (isset($_GET['proveedor_tareas_proactividad'])) { $query .= "proveedor_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_tareas_proactividad']) . "', "; }
+   if (isset($_GET['fecha_inicio_tareas_proactividad'])) { $query .= "fecha_inicio_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_tareas_proactividad']) . "', "; }
 
-   if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
-   if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
+   if (isset($_GET['titulo_tareas_proactividad'])) { $query .= "titulo_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_tareas_proactividad']) . "', "; }
+   if (isset($_GET['estado_tareas_proactividad'])) { $query .= "estado_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['estado_tareas_proactividad']) . "', "; }
     
-   if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; } 
+   if (isset($_GET['descripcion_tareas_proactividad'])) { $query .= "descripcion_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_tareas_proactividad']) . "', "; } 
   
    if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
 
@@ -248,7 +237,7 @@ if ($job != ''){
    
    if (isset($_GET['repeticiones'])) { $query .= "repeticiones = '" . mysqli_real_escape_string($db_connection, $_GET['repeticiones']) . "'";   }
 	
-      $query .= "WHERE id_req_interno  = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query .= "WHERE id_tareas_proactividad  = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query  = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
@@ -266,7 +255,7 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
-      $query = "DELETE FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+      $query = "DELETE FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
