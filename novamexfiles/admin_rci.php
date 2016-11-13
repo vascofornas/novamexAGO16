@@ -340,7 +340,7 @@ body {
               <th><?php echo $lang['INTERNAL_SUPPLIER']?></th>
               <th><?php echo $lang['TITLE_REQ']?></th>
               <th><?php echo $lang['START_DATE_REQ']?></th>
-              <th><?php echo $lang['APPROVED_SUPERVISOR']?></th>
+              
              
               <th><?php echo $lang['STATUS']?></th>
               
@@ -553,7 +553,7 @@ body {
                       <label><?php echo $lang['STATUS']?></label>
                        <div class="styled-select slate">
                       <select id="estado_req_interno" name="estado_req_interno" class="form-control select2" style="width: 100%;">
-                      <option selected="selected" value="0"><?php echo $lang['PENDING_APPROVEMENT']?></option>
+                      <option value="0"><?php echo $lang['PENDING_APPROVEMENT']?></option>
                       <option value="1"><?php echo $lang['APPROVED']?></option>
                       <option value="2"><?php echo $lang['REJECTED']?></option>
                      

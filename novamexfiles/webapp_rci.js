@@ -5,20 +5,15 @@ $(document).ready(function(){
     "ajax": "data_rci.php?job=get_companies",
     "columns": [
       
-      { "data": "cliente_req_interno",    },
+      { "data": "cliente",    },
      
-      { "data": "supervisor_req_interno", },
-      { "data": "proveedor_req_interno", },
-      { "data": "titulo_req_interno", },
-    
-    
-      
-      { "data": "fecha_inicio_req_interno", },
-      { "data": "approved_by_supervisor", },
-      { "data": "estado_req_interno", },
-     
+      { "data": "supervisor", },
+      { "data": "proveedor", },
 
-      
+      { "data": "titulo", },
+      { "data": "fecha", },
+     
+      { "data": "estado", },
       { "data": "functions",      "sClass": "functions" }
     ],
     "aoColumnDefs": [
@@ -33,8 +28,8 @@ $(document).ready(function(){
         "sLast":        " ",
       },
       "sLengthMenu":    "Show / Mostrar: _MENU_",
-      "sInfo":          "Total of _TOTAL_ r (showing from _START_ to _END_)",
-      "sInfoFiltered":  "(filtered _MAX_ projects)"
+      "sInfo":          "Total of _TOTAL_ team members (showing from _START_ to _END_)",
+      "sInfoFiltered":  "(filtered _MAX_ team members)"
     }
   });
   
@@ -129,24 +124,27 @@ $(document).ready(function(){
     $('#form_company .field_container').removeClass('valid').removeClass('error');
    
     $('#form_company #cliente_req_interno').val('');
+    
     $('#form_company #proveedor_req_interno').val('');
     $('#form_company #titulo_req_interno').val('');
     $('#form_company #descripcion_req_interno').val('');
-   
     $('#form_company #fecha_inicio_req_interno').val('');
-    
     $('#form_company #periodicidad').val('');
-    $('#form_company #repeticiones').val(''); 
+    $('#form_company #repeticiones').val('');
     $('#form_company #concepto1').val('');
     $('#form_company #concepto2').val('');
+    
     $('#form_company #concepto3').val('');
+    
     $('#form_company #concepto4').val('');
     $('#form_company #sin_puntuar').val('');
+    
     $('#form_company #leve').val('');
     $('#form_company #aceptable').val('');
     $('#form_company #excepcional').val('');
     $('#form_company #estado_req_interno').val('');
-       
+    
+    
     
     show_lightbox();
   });
@@ -175,7 +173,7 @@ $(document).ready(function(){
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
             var company_name = $('#titulo_req_interno').val();
-            show_message("Requirement with Title '" + company_name + "' added sucessfully.", 'success');
+            show_message("Internal Customer Requirement with title '" + company_name + "' added sucessfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -205,8 +203,8 @@ $(document).ready(function(){
     });
     request.done(function(output){
       if (output.result == 'success'){
-        $('.lightbox_content h2').text('Edit Internal Customer Requirement');
-        $('#form_company button').text('Edit Internal Customer Requirement');
+        $('.lightbox_content h2').text('Edit Internal Customer Requirement ');
+        $('#form_company button').text('Edit Internal Customer Requirement ');
         $('#form_company').attr('class', 'form edit');
         $('#form_company').attr('data-id', id);
         $('#form_company .field_container label.error').hide();
@@ -216,14 +214,14 @@ $(document).ready(function(){
         $('#form_company #proveedor_req_interno').val(output.data[0].proveedor_req_interno);
         $('#form_company #titulo_req_interno').val(output.data[0].titulo_req_interno);
         $('#form_company #descripcion_req_interno').val(output.data[0].descripcion_req_interno);
-        $('#form_company #evaluador_proyecto').val(output.data[0].evaluador_proyecto);
         $('#form_company #fecha_inicio_req_interno').val(output.data[0].fecha_inicio_req_interno);
         $('#form_company #estado_req_interno').val(output.data[0].estado_req_interno);
-        
+        $('#form_company #periodicidad').val(output.data[0].periodicidad);
         $('#form_company #concepto1').val(output.data[0].concepto1);
 
-        $('#form_company #concepto3').val(output.data[0].concepto3);
         $('#form_company #concepto2').val(output.data[0].concepto2);
+
+        $('#form_company #concepto3').val(output.data[0].concepto3);
 
         $('#form_company #concepto4').val(output.data[0].concepto4);
 
@@ -234,10 +232,7 @@ $(document).ready(function(){
         $('#form_company #aceptable').val(output.data[0].aceptable);
 
         $('#form_company #excepcional').val(output.data[0].excepcional);
-
-        $('#form_company #periodicidad').val(output.data[0].periodicidad);
-
-        $('#form_company #repeticiones').val(output.data[0].repeticiones);
+        
         
         hide_loading_message();
         show_lightbox();
@@ -277,7 +272,7 @@ $(document).ready(function(){
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
             var company_name = $('#titulo_req_interno').val();
-            show_message("Requirement with name '" + company_name + "' edited succesfully.", 'success');
+            show_message("Internal Customer Requirement with title '" + company_name + "' edited succesfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -285,7 +280,7 @@ $(document).ready(function(){
         }
       });
       request.fail(function(jqXHR, textStatus){
-        hide_loading_message(); 
+        hide_loading_message();
         show_message('Edit request failed: ' + textStatus, 'error');
       });
     }
@@ -295,22 +290,22 @@ $(document).ready(function(){
   $(document).on('click', '.function_delete a', function(e){
     e.preventDefault();
     var company_name = $(this).data('name');
-    if (confirm("Do yo want to delete Requeriment with title '" + company_name + "'?")){
-        show_loading_message();
-        var id      = $(this).data('id');
-        var request = $.ajax({
-          url:          'data_rci.php?job=delete_company&id=' + id,
-          cache:        false,
-          dataType:     'json',
-          contentType:  'application/json; charset=utf-8',
-          type:         'get'
-        });
+    if (confirm("Do yo want to delete Internal Customer Requirement with title  '" + company_name + "'?")){
+      show_loading_message();
+      var id      = $(this).data('id');
+      var request = $.ajax({
+        url:          'data_rci.php?job=delete_company&id=' + id,
+        cache:        false,
+        dataType:     'json',
+        contentType:  'application/json; charset=utf-8',
+        type:         'get'
+      });
       request.done(function(output){
         if (output.result == 'success'){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            show_message("Requirement with name '" + company_name + "' deleted successfully.", 'success');
+            show_message("Internal Customer Requirement with title  '" + company_name + "' deleted successfully.", 'success');
           }, true);
         } else {
           hide_loading_message();

@@ -48,6 +48,15 @@ $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
+
+
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_requerimientos_cliente_interno  WHERE id_req_interno = $id";
+$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
+
+$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -169,16 +178,41 @@ div.logo {
 }
 </style>
 <script type="text/javascript">
+
+   
+</script>
+<script type="text/javascript">
 $(document).ready(function() {	
-	
+
+	 var elems = document.getElementsByClassName('confirmation');
+	    var confirmIt = function (e) {
+	        if (!confirm('<?php echo $lang['CONFIRMATION']?>')) e.preventDefault();
+	    };
+	    for (var i = 0, l = elems.length; i < l; i++) {
+	        elems[i].addEventListener('click', confirmIt, false);
+	    }
 	// submit form using $.ajax() method
+	
+     function getConfirmation(){
+         alert("KK");
+        var retVal = confirm("Do you want to continue ?");
+        if( retVal == true ){
+           document.write ("User wants to continue!");
+           return true;
+        }
+        else{
+           document.write ("User does not want to continue!");
+           return false;
+        }
+     }
+ 
 	
 	$('#reg-form').submit(function(e){
 		
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'edituser.php',
+			url: 'editprojectdeliverable.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -194,14 +228,15 @@ $(document).ready(function() {
 	
 });
 </script>
-<script type="text/javascript">
+    <script> 
+
 function subirimagen()
 
 {
 
 	self.name = 'opener';
 
-	remote = open('subirfoto.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+	remote = open('subirentregable.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
 
 	remote.focus();
 	}
@@ -210,78 +245,118 @@ function subirimagen()
 </script>
 </head> 
 <body>
-<?php include 'menu.php';?>
 
+<?php include 'menu.php';?>
 <div class = "container">
-  
    <div class = "row" >
    
-   
-  <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:Azure   ;"><H3><?php echo $lang['TAREAS_PROACTIVIDAD']?></H3>
-  <HR>
-  <h2><?php echo $lang['AS_EMPLOYEE']?></h2>
+     
+    <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['RCI_INFO']?></H3>
+  <hr>
   <h4>
-<?php
-
-//run the query
-
-	//run the query
-	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_revisiones_tareas_proactividad")
-	or die (mysqli_error($dbh));
-	while ($row_miembros = mysqli_fetch_array($loop_miembros))
-	{
-	
-	if ($row_miembros['proveedor_tareas_proactividad'] == $row['userID'])
-	{
-echo "<strong><a href='rci_evaluado.php?id=".$row_miembros['id_revisiones_tareas_proactividad']."'>".$row_miembros['nombre_revision'] ."</strong></a><br> " . $row_miembros['titulo_tareas_proactividad']."<bR>".$row_miembros['fecha_inicio_tareas_proactividad']."<hr>";
-	}
-	else{}
-	}
-
-?>
-  </h4>
-   
-   </div>
-   <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['TAREAS_PROACTIVIDAD']?></H3>
-  <HR>
-  <h2><?php echo $lang['AS_SUPERVISOR']?></h2>
-  <h4>
+  <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_req_interno']?></p>
+  <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo $row_Recordset3['descripcion_req_interno']?></p>
+  	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_req_interno']?></p>
+  	
+  	<?php 
+  	
+  //get periodicidad
   
-    
-<?php
-echo '<a href="nueva_tareas_proactividad.php"     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CREATE_NEW_TA'].'</a><br><br>';
-
-?>
+$periodo = $row_Recordset3['periodicidad'];
+	if ($periodo == 1){
+		$result = $lang['ONLY_ONCE'];
+	}
+	if ($periodo == 2){
+		$result = $lang['EVERYDAY'];
+	}
+	if ($periodo == 3){
+		$result = $lang['EVERY_WEEK'];
+	}
+	if ($periodo == 4){
+		$result = $lang['EVERY_TWO_WEEKS'];
+	}
+	if ($periodo == 5){
+		$result = $lang['EVERY_MONTH'];
+	}
+	if ($periodo == 6){
+		$result = $lang['EVERY_TWO_MONTHS'];
+	}
+	if ($periodo == 7){
+		$result = $lang['EVERY_THREE_MONTHS'];
+	}
+	if ($periodo == 8){
+		$result = $lang['EVERY_FOUR_MONTHS'];
+	}
+	if ($periodo == 9){
+		$result = $lang['EVERY_SIX_MONTHS'];
+	}
+	if ($periodo == 10){
+		$result = $lang['EVERY_TWELVE_MONTHS'];
+	}
+  	?>
+  	
+  	<p><strong><?php echo $lang['PERIODICITY']?>: </strong><?php echo $result?></p>
+  	<p><strong><?php echo $lang['REPEATS']?>: </strong><?php echo $row_Recordset3['repeticiones']?></p>
+  <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_req_interno'])?></p>
+  <p><strong><?php echo $lang['SUPERVISOR']?>: </strong><?php echo get_nombre($row_Recordset3['supervisor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  			   <br>
  
+    
+    
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['RCI_REVISIONS']?></H3>
+  <HR>
+ 
+
+  
 <?php
 
+if (comprobar_rci($_GET['id']) == 0){
+
+$id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_tareas_proactividad")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_rci WHERE rci_revisado = $id")
     or die (mysqli_error($dbh));
 
 
 
 //display the results
+$num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	?>
+	$cero = 0;
+	//MySqli Select Query
+	$rev = $row_proyectos['id_revisiones_proyectos'];
+$results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev");
+
+
+  
+
 	
-	
-	<?php 
-	if ($row_proyectos['cliente_tareas_proactividad'] == $row['userID'] AND $row_proyectos['estado_tareas_proactividad'] == 0  OR $row_proyectos['estado_tareas_proactividad'] == 2){
-echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='#'>  ".$row_proyectos['titulo_tareas_proactividad'] ."</strong></a><br> " . $row_proyectos['descripcion_tareas_proactividad']."<hr>";
-	}
-	
-	
-	if ($row_proyectos['cliente_tareas_proactividad'] == $row['userID'] AND $row_proyectos['estado_tareas_proactividad'] == 1 ){
-		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='tp_a_evaluar.php?id=".$row_proyectos['id_tareas_proactividad']."'>  ".$row_proyectos['titulo_tareas_proactividad'] ."</strong></a><br> " . $row_proyectos['descripcion_tareas_proactividad']."<hr>";
-	}
+	$num++;
 }
 	
-?>
-  </h4>
-  </div></div></div>
+if ($num == 0){
+	
+	echo '<a href="rci_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['RCI_REVISIONS'].'</a>';
+}
+if ($num > 0){
 
+echo '<a href="evaluaciones_rci.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['EVALUACION_PROVEEDOR_INTERNO'].'</a><br><br>';
+}
+
+}
+?>
+  
+</h4>
+  
+  </div>
+</div>
+      
+
+</div>
 </body>
 </html>
 

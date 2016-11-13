@@ -2,9 +2,7 @@
 
 session_start();
 require_once 'class.user.php';
-require_once 'funciones.php';
-include_once 'common.php';
-
+include_once 'funciones.php';
 $user_home = new USER();
 if (!$user_home->is_logged_in())
 {
@@ -72,22 +70,8 @@ if ($job != ''){
         $functions .= '<li class="function_edit"><a data-id="'   . $company['id_req_interno'] . '" data-name="' . $company['titulo_req_interno'] . '"><span>Edit</span></a></li>';
         $functions .= '<li class="function_delete"><a data-id="' . $company['id_req_interno'] . '" data-name="' . $company['titulo_req_interno'] . '"><span>Delete</span></a></li>';
 		
-        $functions .= '</ul></div>';
-        $stat = $company['estado_req_interno'];
-        $autorizado = $company['approved_by_supervisor'];
+         $stat = $company['estado_req_interno'];
         
-        $aut="";
-         if ($autorizado == 0){
-         	$aut =  $lang['PENDING_APPROVEMENT'];
-        
-         }
-         if ($autorizado == 1){
-         	$aut =  $lang['APPROVED'];
-         }
-         if ($autorizado == 2){
-         	$aut =  $lang['REJECTED'];
-         }
-         
         
       if($stat == 0){
         	$estado = $lang['PENDING_APPROVEMENT'];
@@ -102,19 +86,17 @@ if ($job != ''){
 
         }
        
-        
+        $functions .= '</ul></div>';
         $mysql_data[] = array(
          
-          "cliente_req_interno"  => get_nombre($company['cliente_req_interno']),
-          "supervisor_req_interno"    => get_nombre($company['supervisor_req_interno']),
-        		"proveedor_req_interno"    => get_nombre($company['proveedor_req_interno']),
-        		"titulo_req_interno"    => $company['titulo_req_interno'],
+          "cliente"  => get_nombre($company['cliente_req_interno']),
+           "supervisor"  => get_nombre($company['supervisor_req_interno']),
+        	"proveedor"  => get_nombre($company['proveedor_req_interno']),
+        		"titulo"    => $company['titulo_req_interno'],
+         	 "fecha"    => $company['fecha_inicio_req_interno'],
+        	
+       		 "estado"    => $estado,
         		
-        		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
-        		"approved_by_supervisor"    => $aut,
-        		"estado_req_interno"    => $estado,
-        		
-        
 		 
           "functions"     => $functions
         );
@@ -122,6 +104,8 @@ if ($job != ''){
     }
     
   } elseif ($job == 'get_company'){
+  	
+  	
     
     // Get company
     if ($id == ''){
@@ -137,25 +121,29 @@ if ($job != ''){
         $result  = 'success';
         $message = 'query success';
         while ($company = mysqli_fetch_array($query)){
+        	
+        
+        	
+        	
+        	
           $mysql_data[] = array(
             "cliente_req_interno"  => $company['cliente_req_interno'],
-          
-        		"proveedor_req_interno"    => $company['proveedor_req_interno'],
+        	"proveedor_req_interno"  => $company['proveedor_req_interno'],
         		"titulo_req_interno"    => $company['titulo_req_interno'],
-        		
-        		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
-        		"estado_req_interno"    =>  $company['estado_req_interno'],
-          		"descripcion_req_interno"    =>  $company['descripcion_req_interno'],
-          		"concepto1"    =>  $company['concepto_1'],
-          		"concepto2"    =>  $company['concepto_2'],
-          		"concepto3"    =>  $company['concepto_3'],
-          		"concepto4"    =>  $company['concepto_4'],
-          		"sin_puntuar"    =>  $company['sin_puntos'],
-          		"leve"    =>  $company['puntos_esfuerzo_leve'],
-          		"aceptable"    =>  $company['puntos_esfuerzo_aceptable'],
-          		"excepcional"    =>  $company['puntos_esfuerzo_excepcional'],
-          		"periodicidad"    =>  $company['periodicidad'],
-        		"repeticiones"    => $company['repeticiones']
+          		"descripcion_req_interno"    => $company['descripcion_req_interno'],
+          		
+          		"fecha_inicio_req_interno"    => $company['fecha_inicio_req_interno'],
+          		"estado_req_interno"    => $company['estado_req_interno'],
+          		"concepto1"    => $company['concepto_1'],
+          		"concepto2"    => $company['concepto_2'],
+          		"concepto3"    => $company['concepto_3'],
+          		"concepto4"    => $company['concepto_4'],
+          		"sin_puntuar"    => $company['sin_puntos'],
+          		"leve"    => $company['puntos_esfuerzo_leve'],
+          		"aceptable"    => $company['puntos_esfuerzo_aceptable'],
+          		"excepcional"    => $company['puntos_esfuerzo_excepcional'],
+          		"periodicidad"    => $company['periodicidad'],
+          		"repeticiones"    => $company['repeticiones']
           );
         }
       }
@@ -163,43 +151,38 @@ if ($job != ''){
   
   } elseif ($job == 'add_company'){
     
-    // Add company
-    
-  	
-  	
-  	//nombre del supervisor
-  	
+  
   	$supervisor = get_supervisor($_GET['cliente_req_interno']);
+  	
+  	
     $query = "INSERT INTO tb_requerimientos_cliente_interno SET ";
     if (isset($_GET['cliente_req_interno'])) { $query .= "cliente_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['cliente_req_interno']) . "', "; }
-    if (isset($_GET['cliente_req_interno'])) { $query .= "supervisor_req_interno = '" .$supervisor. "', "; }
-     
     if (isset($_GET['proveedor_req_interno'])) { $query .= "proveedor_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_req_interno']) . "', "; }
-   if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
-
-   if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
-   if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
-    
-   if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; } 
+  if (isset($_GET['cliente_req_interno'])) { $query .= "supervisor_req_interno = '" .$supervisor. "', "; }
+  if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
   
-   if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
-
-   if (isset($_GET['concepto2'])) { $query .= "concepto_2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
-
-   if (isset($_GET['concepto3'])) { $query .= "concepto_3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
-
-   if (isset($_GET['concepto4'])) { $query .= "concepto_4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
+  if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
+  
+  if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; }
+  if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
+  
+  if (isset($_GET['concepto2'])) { $query .= "concepto_2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
+  
+  if (isset($_GET['concepto3'])) { $query .= "concepto_3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
+  
+  if (isset($_GET['concepto4'])) { $query .= "concepto_4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
    
-   if (isset($_GET['sin_puntuar'])) { $query .= "sin_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['sin_puntuar']) . "', "; }
-   if (isset($_GET['leve'])) { $query .= "puntos_esfuerzo_leve = '" . mysqli_real_escape_string($db_connection, $_GET['leve']) . "', "; }
-    
-   if (isset($_GET['aceptable'])) { $query .= "puntos_esfuerzo_aceptable = '" . mysqli_real_escape_string($db_connection, $_GET['aceptable']) . "', "; }
-     
-   if (isset($_GET['excepcional'])) { $query .= "puntos_esfuerzo_excepcional = '" . mysqli_real_escape_string($db_connection, $_GET['excepcional']) . "', "; }
-      
-   if (isset($_GET['periodicidad'])) { $query .= "periodicidad = '" . mysqli_real_escape_string($db_connection, $_GET['periodicidad']) . "', "; }
+  if (isset($_GET['sin_puntuar'])) { $query .= "sin_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['sin_puntuar']) . "', "; }
+  if (isset($_GET['leve'])) { $query .= "puntos_esfuerzo_leve = '" . mysqli_real_escape_string($db_connection, $_GET['leve']) . "', "; }
+  
+  if (isset($_GET['aceptable'])) { $query .= "puntos_esfuerzo_aceptable = '" . mysqli_real_escape_string($db_connection, $_GET['aceptable']) . "', "; }
    
-   if (isset($_GET['repeticiones'])) { $query .= "repeticiones = '" . mysqli_real_escape_string($db_connection, $_GET['repeticiones']) . "'";   }
+  if (isset($_GET['excepcional'])) { $query .= "puntos_esfuerzo_excepcional = '" . mysqli_real_escape_string($db_connection, $_GET['excepcional']) . "', "; }
+  
+  if (isset($_GET['periodicidad'])) { $query .= "periodicidad = '" . mysqli_real_escape_string($db_connection, $_GET['periodicidad']) . "', "; }
+   
+  if (isset($_GET['repeticiones'])) { $query .= "repeticiones = '" . mysqli_real_escape_string($db_connection, $_GET['repeticiones']) . "'";   }
+  
 	 
     $query = mysqli_query($db_connection, $query);
     if (!$query){
@@ -208,6 +191,7 @@ if ($job != ''){
     } else {
       $result  = 'success';
       $message = 'query success';
+      
     }
   
   } elseif ($job == 'edit_company'){
@@ -217,38 +201,42 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    
+    	
+    	$supervisor = get_supervisor($_GET['cliente_req_interno']);
+    	
+    	
+    	
       $query = "UPDATE tb_requerimientos_cliente_interno SET ";
         if (isset($_GET['cliente_req_interno'])) { $query .= "cliente_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['cliente_req_interno']) . "', "; }
-   
-     
     if (isset($_GET['proveedor_req_interno'])) { $query .= "proveedor_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['proveedor_req_interno']) . "', "; }
-   if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
-
-   if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
-   if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
-    
-   if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; } 
+  if (isset($_GET['cliente_req_interno'])) { $query .= "supervisor_req_interno = '" .$supervisor. "', "; }
+  if (isset($_GET['fecha_inicio_req_interno'])) { $query .= "fecha_inicio_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_inicio_req_interno']) . "', "; }
   
-   if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
-
-   if (isset($_GET['concepto2'])) { $query .= "concepto_2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
-
-   if (isset($_GET['concepto3'])) { $query .= "concepto_3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
-
-   if (isset($_GET['concepto4'])) { $query .= "concepto_4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
+  if (isset($_GET['titulo_req_interno'])) { $query .= "titulo_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['titulo_req_interno']) . "', "; }
+  if (isset($_GET['estado_req_interno'])) { $query .= "estado_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['estado_req_interno']) . "', "; }
+  
+  if (isset($_GET['descripcion_req_interno'])) { $query .= "descripcion_req_interno = '" . mysqli_real_escape_string($db_connection, $_GET['descripcion_req_interno']) . "', "; }
+  if (isset($_GET['concepto1'])) { $query .= "concepto_1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
+  
+  if (isset($_GET['concepto2'])) { $query .= "concepto_2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
+  
+  if (isset($_GET['concepto3'])) { $query .= "concepto_3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
+  
+  if (isset($_GET['concepto4'])) { $query .= "concepto_4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
    
-   if (isset($_GET['sin_puntuar'])) { $query .= "sin_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['sin_puntuar']) . "', "; }
-   if (isset($_GET['leve'])) { $query .= "puntos_esfuerzo_leve = '" . mysqli_real_escape_string($db_connection, $_GET['leve']) . "', "; }
-    
-   if (isset($_GET['aceptable'])) { $query .= "puntos_esfuerzo_aceptable = '" . mysqli_real_escape_string($db_connection, $_GET['aceptable']) . "', "; }
-     
-   if (isset($_GET['excepcional'])) { $query .= "puntos_esfuerzo_excepcional = '" . mysqli_real_escape_string($db_connection, $_GET['excepcional']) . "', "; }
-      
-   if (isset($_GET['periodicidad'])) { $query .= "periodicidad = '" . mysqli_real_escape_string($db_connection, $_GET['periodicidad']) . "', "; }
+  if (isset($_GET['sin_puntuar'])) { $query .= "sin_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['sin_puntuar']) . "', "; }
+  if (isset($_GET['leve'])) { $query .= "puntos_esfuerzo_leve = '" . mysqli_real_escape_string($db_connection, $_GET['leve']) . "', "; }
+  
+  if (isset($_GET['aceptable'])) { $query .= "puntos_esfuerzo_aceptable = '" . mysqli_real_escape_string($db_connection, $_GET['aceptable']) . "', "; }
    
-   if (isset($_GET['repeticiones'])) { $query .= "repeticiones = '" . mysqli_real_escape_string($db_connection, $_GET['repeticiones']) . "'";   }
-	
-      $query .= "WHERE id_req_interno  = '" . mysqli_real_escape_string($db_connection, $id) . "'";
+  if (isset($_GET['excepcional'])) { $query .= "puntos_esfuerzo_excepcional = '" . mysqli_real_escape_string($db_connection, $_GET['excepcional']) . "', "; }
+  
+  if (isset($_GET['periodicidad'])) { $query .= "periodicidad = '" . mysqli_real_escape_string($db_connection, $_GET['periodicidad']) . "', "; }
+   
+  if (isset($_GET['repeticiones'])) { $query .= "repeticiones = '" . mysqli_real_escape_string($db_connection, $_GET['repeticiones']) . "'";   }
+  
+      $query .= "WHERE id_req_interno = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query  = mysqli_query($db_connection, $query);
       if (!$query){
         $result  = 'error';
@@ -266,6 +254,15 @@ if ($job != ''){
       $result  = 'error';
       $message = 'id missing';
     } else {
+    	
+    	 
+    	
+    	
+    	
+    	
+    	
+    	
+    	
       $query = "DELETE FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '" . mysqli_real_escape_string($db_connection, $id) . "'";
       $query = mysqli_query($db_connection, $query);
       if (!$query){
