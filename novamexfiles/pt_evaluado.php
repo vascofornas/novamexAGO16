@@ -48,6 +48,14 @@ $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
+
+mysqli_select_db($conexion, $database_conexion);
+$id = $_GET['id'];
+$query_Recordset3 = "SELECT * FROM tb_revisiones_rci  WHERE id_revisiones_rci = $id";
+$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
+
+$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
+$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -178,7 +186,7 @@ $(document).ready(function() {
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'edituser.php',
+			url: 'editrcideliverable.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -194,14 +202,15 @@ $(document).ready(function() {
 	
 });
 </script>
-<script type="text/javascript">
+    <script> 
+
 function subirimagen()
 
 {
 
 	self.name = 'opener';
 
-	remote = open('subirfoto.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+	remote = open('subirentregablerci.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
 
 	remote.focus();
 	}
@@ -213,50 +222,115 @@ function subirimagen()
 <?php include 'menu.php';?>
 
 <div class = "container">
-  
    <div class = "row" >
    
-   
-  <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:Azure   ;"><H3><?php echo $lang['TAREAS_PROACTIVIDAD']?></H3>
-  <HR>
-  <h2><?php echo $lang['AS_EMPLOYEE']?></h2>
+     
+    <div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['RCI_INFO']?></H3>
+  <hr>
   <h4>
-<?php
-
-//run the query
-
-	//run the query
-	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_revisiones_tareas_proactividad")
-	or die (mysqli_error($dbh));
-	while ($row_miembros = mysqli_fetch_array($loop_miembros))
-	{
-	
-	if ($row_miembros['proveedor_tareas_proactividad'] == $row['userID'])
-	{
-echo "<strong><a href='pt_evaluado.php?id=".$row_miembros['id_revisiones_tareas_proactividad']."'>".$row_miembros['nombre_revision'] ."</strong></a><br> " . $row_miembros['titulo_tareas_proactividad']."<bR>".$row_miembros['fecha_inicio_tareas_proactividad']."<hr>";
-	}
-	else{}
-	}
-
-?>
-  </h4>
-   
-   </div>
-   <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['TAREAS_PROACTIVIDAD']?></H3>
-  <HR>
-  <h2><?php echo $lang['AS_SUPERVISOR']?></h2>
-  <h4>
+  <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_rci']?></p>
+  <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo get_descripcion_rci($row_Recordset3['rci_revisado'])?></p>
+  	<p><strong><?php echo $lang['EVALUATION_DATE']?>: </strong><?php echo $row_Recordset3['fecha_inicio_rci']?></p>
+  	
+  	<?php 
+  	
+  //get periodicidad
   
+$periodo = $row_Recordset3['periodicidad'];
+	if ($periodo == 1){
+		$result = $lang['ONLY_ONCE'];
+	}
+	if ($periodo == 2){
+		$result = $lang['EVERYDAY'];
+	}
+	if ($periodo == 3){
+		$result = $lang['EVERY_WEEK'];
+	}
+	if ($periodo == 4){
+		$result = $lang['EVERY_TWO_WEEKS'];
+	}
+	if ($periodo == 5){
+		$result = $lang['EVERY_MONTH'];
+	}
+	if ($periodo == 6){
+		$result = $lang['EVERY_TWO_MONTHS'];
+	}
+	if ($periodo == 7){
+		$result = $lang['EVERY_THREE_MONTHS'];
+	}
+	if ($periodo == 8){
+		$result = $lang['EVERY_FOUR_MONTHS'];
+	}
+	if ($periodo == 9){
+		$result = $lang['EVERY_SIX_MONTHS'];
+	}
+	if ($periodo == 10){
+		$result = $lang['EVERY_TWELVE_MONTHS'];
+	}
+  	?>
+  	
+
+  <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_rci'])?></p>
+  	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_rci'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  			   <br>
     
-<?php
-echo '<a href="nueva_tareas_proactividad.php"     class="btn btn-danger btn-lg active confirmation" role="button" >'.$lang['CREATE_NEW_TA'].'</a><br><br>';
+    
+  </div>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $row_Recordset3['nombre_revision']." / ".$lang['DELIVERABLES']?></H3>
+  <HR>
+  <h4><?php echo $lang['NEW_DELIVERABLE']?></h4>
+  
+    <div id="form-content">
+     <form method="post" id="reg-form" name="form1" autocomplete="off">
+			
+	<div class="form-group">
+	<label><?php echo $lang['TITLE_DELIVERABLE']?></label>
+	<input type="text" class="form-control" name="titulo_entregable" id="titulo_entregable" placeholder="<?php echo $lang['TITLE_DELIVERABLE']?>" required />
+	</div>
+				
+	<div class="form-group">
+	<label><?php echo $lang['DESCRIPTION_DELIVERABLE']?></label>
+	<input type="text" class="form-control" name="descripcion_entregable" id="descripcion_entregable" placeholder="<?php echo $lang['DESCRIPTION_DELIVERABLE']?>" "required />
+	<input type="hidden" class="form-control" name="rci_entregable" id="rci_entregable" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $_GET['id']?>"required />
+	
+	</div>
+			
+				
+ <div class="form-group" id="imagenTicket">
+        <label><?php echo $lang['FILE_DELIVERABLE']?></label>
+      <input name="nombre_entregable" type="text" id="nombre_entregable" class="form-control"  placeholder="<?php echo $lang['FILE_NAME']?>" value="" readonly>
+             
+              <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
+      
+      
+    </div>
 
-?>
+				
+		
+	<hr />
+				
+	<div class="form-group">
+	<button class="btn btn-primary"><?php echo $lang['UPLOAD_DELIVERABLE']?></button>
+	</div>
+				
+    </form>     
+
+  
  
-<?php
+  
 
+  
+  </div>
+  
+  
+    <HR>
+  <h4><?php echo $lang['DELIVERABLES']?></h4>
+  
+<?php
+$id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_tareas_proactividad")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_rci WHERE rci_entregable = $id")
     or die (mysqli_error($dbh));
 
 
@@ -264,24 +338,22 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_tareas_proactividad")
 //display the results
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	?>
 	
-	
-	<?php 
-	if ($row_proyectos['cliente_tareas_proactividad'] == $row['userID'] AND $row_proyectos['estado_tareas_proactividad'] == 0  OR $row_proyectos['estado_tareas_proactividad'] == 2){
-echo "<img class='blink-image' src='rojo.png' width='20' height='20' /><strong><a href='#'>  ".$row_proyectos['titulo_tareas_proactividad'] ."</strong></a><br> " . $row_proyectos['descripcion_tareas_proactividad']."<hr>";
+echo "<strong><a href='entregables_rci/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
 	}
 	
-	
-	if ($row_proyectos['cliente_tareas_proactividad'] == $row['userID'] AND $row_proyectos['estado_tareas_proactividad'] == 1 ){
-		echo "<img class='blink-image' src='verde.png' width='20' height='20' /><strong><a href='tp_a_evaluar.php?id=".$row_proyectos['id_tareas_proactividad']."'>  ".$row_proyectos['titulo_tareas_proactividad'] ."</strong></a><br> " . $row_proyectos['descripcion_tareas_proactividad']."<hr>";
-	}
-}
 	
 ?>
-  </h4>
-  </div></div></div>
+  
+ 
+  
+</h4>
+  
+  </div>
+</div>
+      
 
+</div>
 </body>
 </html>
 

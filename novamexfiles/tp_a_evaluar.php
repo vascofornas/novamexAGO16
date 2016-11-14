@@ -52,7 +52,7 @@ $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
 
 mysqli_select_db($conexion, $database_conexion);
 $id = $_GET['id'];
-$query_Recordset3 = "SELECT * FROM tb_requerimientos_cliente_interno  WHERE id_req_interno = $id";
+$query_Recordset3 = "SELECT * FROM tb_tareas_proactividad  WHERE id_tareas_proactividad = $id";
 $Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
 
 $row_Recordset3 = mysqli_fetch_assoc($Recordset3);
@@ -252,12 +252,12 @@ function subirimagen()
    
      
     <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['RCI_INFO']?></H3>
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PT_INFO']?></H3>
   <hr>
   <h4>
-  <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_req_interno']?></p>
-  <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo $row_Recordset3['descripcion_req_interno']?></p>
-  	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_req_interno']?></p>
+  <p><strong><?php echo $lang['TITLE_PT']?>: </strong><?php echo $row_Recordset3['titulo_tareas_proactividad']?></p>
+  <p><strong><?php echo $lang['DESC_PT']?>: </strong><?php echo $row_Recordset3['descripcion_tareas_proactividad']?></p>
+  	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_tareas_proactividad']?></p>
   	
   	<?php 
   	
@@ -298,15 +298,14 @@ $periodo = $row_Recordset3['periodicidad'];
   	
   	<p><strong><?php echo $lang['PERIODICITY']?>: </strong><?php echo $result?></p>
   	<p><strong><?php echo $lang['REPEATS']?>: </strong><?php echo $row_Recordset3['repeticiones']?></p>
-  <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_req_interno'])?></p>
-  <p><strong><?php echo $lang['SUPERVISOR']?>: </strong><?php echo get_nombre($row_Recordset3['supervisor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
-  	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_req_interno'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  <p><strong><?php echo $lang['EVALUATOR']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_tareas_proactividad'])?></p>
+	<p><strong><?php echo $lang['EVALUATED']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_tareas_proactividad'])?></p>
   			   <br>
  
     
     
   </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['RCI_REVISIONS']?></H3>
+  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PT_REVISIONS']?></H3>
   <HR>
  
 
@@ -317,7 +316,7 @@ if (comprobar_rci($_GET['id']) == 0){
 
 $id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_rci WHERE rci_revisado = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_tareas_proactividad WHERE tareas_proactividad_revisado = $id")
     or die (mysqli_error($dbh));
 
 
@@ -340,11 +339,11 @@ $results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revis
 	
 if ($num == 0){
 	
-	echo '<a href="rci_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['RCI_REVISIONS'].'</a>';
+	echo '<a href="pt_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['PT_REVISIONS'].'</a>';
 }
 if ($num > 0){
 
-echo '<a href="evaluaciones_rci.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['EVALUACION_PROVEEDOR_INTERNO'].'</a><br><br>';
+echo '<a href="evaluaciones_pt.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['EVALUACION_PROVEEDOR_INTERNO'].'</a><br><br>';
 }
 
 }

@@ -350,5 +350,8 @@ $lang['ABRIR_ENTREGABLE'] = 'Open Deliverable';
 $lang['EVALUATED'] = 'Evaluated User';
 $lang['TITLE_PT'] = 'Proactivity Tasks Title';
 $lang['DESC_PT'] = 'Proactivity Tasks Description';
+$lang['PT_INFO'] = 'Proactivity Tasks Data';
+$lang['PT_REVISIONS'] = 'CREATE PROACTIVITY TASKS ASSESMENT PHASES';
+
 
 ?>
