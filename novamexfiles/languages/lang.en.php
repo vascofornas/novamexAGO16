@@ -352,6 +352,7 @@ $lang['TITLE_PT'] = 'Proactivity Tasks Title';
 $lang['DESC_PT'] = 'Proactivity Tasks Description';
 $lang['PT_INFO'] = 'Proactivity Tasks Data';
 $lang['PT_REVISIONS'] = 'CREATE PROACTIVITY TASKS ASSESMENT PHASES';
+$lang['EVALUACION_TAREAS'] = 'Proactivity Tasks Assesment';
 
 
 ?>

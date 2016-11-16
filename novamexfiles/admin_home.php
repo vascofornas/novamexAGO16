@@ -271,7 +271,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
-                  <h3>0</h3>
+                    <h3><?php echo get_puntos_tp_total()." PTS"?></h3>
                   <H4><?php echo $lang['TAREAS_PROACTIVIDAD']?></h4>
                 </div>
                 <div class="icon">

@@ -300,13 +300,13 @@ function subirimagen()
            
               <div class="small-box bg-purple">
                 <div class="inner">
-                  <h3>0</h3>
+                  <h3><?php echo get_puntos_tp($_SESSION['userSession'])." PTS"?></h3>
                   <H4><?php echo $lang['TAREAS_PROACTIVIDAD']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-nuclear"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="misreconocimientos_tp.php" class="small-box-footer">
                   More info <i class="fa fa-arrow-circle-right"></i>
                 </a>
            </div>

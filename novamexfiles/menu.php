@@ -68,6 +68,7 @@ else
                     
                          <li><a href="evaluaciones_rci.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
                            <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
+                            <li><a href="evaluaciones_tp.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
                     
                       <li class="divider"></li>
                        <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>

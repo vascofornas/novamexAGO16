@@ -304,7 +304,7 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></h1>
+    <h1 align="center"><?php echo $lang['EVALUACION_TAREAS']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
@@ -313,7 +313,7 @@ body {
 
 //run the query
 	
-		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM tb_revisiones_rci  WHERE cliente_rci = '".$_SESSION['userSession']."' ORDER BY fecha_inicio_rci ")
+		$loop_puntos_temporales = mysqli_query($conexion, "SELECT * FROM tb_revisiones_tareas_proactividad  WHERE cliente_tareas_proactividad = '".$_SESSION['userSession']."' ORDER BY fecha_inicio_tareas_proactividad ")
 		or die (mysqli_error($dbh));
 		?>
 		
@@ -321,8 +321,8 @@ body {
 			<thead style="background-color:GREEN;">
 			<tr>
 
-			<th style="color:WHITE;"><?php echo $lang['INTERNAL_SUPPLIER']?></th>
-			<th style="color:WHITE;"><?php echo $lang['TITLE_REQ']?></th>
+			<th style="color:WHITE;"><?php echo $lang['EVALUATED']?></th>
+			<th style="color:WHITE;"><?php echo $lang['TITLE_PT']?></th>
 			<th style="color:WHITE;"><?php echo $lang['REVISION_NAME']?></th>
 				<th style="color:WHITE;"><?php echo $lang['EVALUATION_DATE']?></th>
 			
@@ -344,10 +344,10 @@ body {
 			?>
 			
 			<tr>
-			 <td><?php echo get_nombre($row_puntos_temporales['proveedor_rci'])?></td>
-			<td><?php echo $row_puntos_temporales['titulo_rci']?></td>
+			 <td><?php echo get_nombre($row_puntos_temporales['proveedor_tareas_proactividad'])?></td>
+			<td><?php echo $row_puntos_temporales['titulo_tareas_proactividad']?></td>
 			<td><?php echo $row_puntos_temporales['nombre_revision']?></td>
-			<td><?php echo $row_puntos_temporales['fecha_inicio_rci']?></td>
+			<td><?php echo $row_puntos_temporales['fecha_inicio_tareas_proactividad']?></td>
 			
 			
 			<?php 
@@ -359,7 +359,7 @@ body {
 				
 				?>
 				<td><?php echo $lang['NOT_EVALUATED'];?></td>
-				<td><a href="evaluar_epi.php?id=<?php echo $row_puntos_temporales['id_revisiones_rci'] ?>" class="btn btn-danger" role="button"><?php echo $lang['EVALUATE']?></a></td>
+				<td><a href="evaluar_tp.php?id=<?php echo $row_puntos_temporales['id_revisiones_tareas_proactividad'] ?>" class="btn btn-danger" role="button"><?php echo $lang['EVALUACION_TAREAS']?></a></td>
 				
 				<?php 
 			}	
@@ -369,7 +369,7 @@ body {
 				?>
 						
 						<td><?php echo $lang['EVALUATED'];?></td>			
-						<td><a href="evaluar_epi.php?id=<?php echo $row_puntos_temporales['id_revisiones_rci'] ?>" class="btn btn-danger" role="button"><?php echo $lang['EVALUATE']?></a></td>
+						<td><a href="evaluar_tp.php?id=<?php echo $row_puntos_temporales['id_revisiones_tareas_proactividad'] ?>" class="btn btn-danger" role="button"><?php echo $lang['EVALUACION_TAREAS']?></a></td>
 		
 		
 			

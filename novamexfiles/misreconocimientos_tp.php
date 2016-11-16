@@ -48,15 +48,6 @@ $Recordset2 = mysqli_query($conexion,$query_Recordset2) or die(mysql_error());
 
 $row_Recordset2 = mysqli_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
-
-
-mysqli_select_db($conexion, $database_conexion);
-$id = $_GET['id'];
-$query_Recordset3 = "SELECT * FROM tb_tareas_proactividad  WHERE id_tareas_proactividad = $id";
-$Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
-
-$row_Recordset3 = mysqli_fetch_assoc($Recordset3);
-$totalRows_Recordset3 = mysqli_num_rows($Recordset3);
  
 session_start();
 require_once 'class.user.php';
@@ -178,41 +169,16 @@ div.logo {
 }
 </style>
 <script type="text/javascript">
-
-   
-</script>
-<script type="text/javascript">
 $(document).ready(function() {	
-
-	 var elems = document.getElementsByClassName('confirmation');
-	    var confirmIt = function (e) {
-	        if (!confirm('<?php echo $lang['CONFIRMATION']?>')) e.preventDefault();
-	    };
-	    for (var i = 0, l = elems.length; i < l; i++) {
-	        elems[i].addEventListener('click', confirmIt, false);
-	    }
-	// submit form using $.ajax() method
 	
-     function getConfirmation(){
-         alert("KK");
-        var retVal = confirm("Do you want to continue ?");
-        if( retVal == true ){
-           document.write ("User wants to continue!");
-           return true;
-        }
-        else{
-           document.write ("User does not want to continue!");
-           return false;
-        }
-     }
- 
+	// submit form using $.ajax() method
 	
 	$('#reg-form').submit(function(e){
 		
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'editprojectdeliverable.php',
+			url: 'edituser.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -228,15 +194,14 @@ $(document).ready(function() {
 	
 });
 </script>
-    <script> 
-
+<script type="text/javascript">
 function subirimagen()
 
 {
 
 	self.name = 'opener';
 
-	remote = open('subirentregable.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+	remote = open('subirfoto.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
 
 	remote.focus();
 	}
@@ -245,117 +210,81 @@ function subirimagen()
 </script>
 </head> 
 <body>
-
 <?php include 'menu.php';?>
+
 <div class = "container">
+  
    <div class = "row" >
    
-     
-    <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PT_INFO']?></H3>
-  <hr>
-  <h4>
-  <p><strong><?php echo $lang['TITLE_PT']?>: </strong><?php echo $row_Recordset3['titulo_tareas_proactividad']?></p>
-  <p><strong><?php echo $lang['DESC_PT']?>: </strong><?php echo $row_Recordset3['descripcion_tareas_proactividad']?></p>
-  	<p><strong><?php echo $lang['START_DATE_REQ']?>: </strong><?php echo $row_Recordset3['fecha_inicio_tareas_proactividad']?></p>
-  	
-  	<?php 
-  	
-  //get periodicidad
-  
-$periodo = $row_Recordset3['periodicidad'];
-	if ($periodo == 1){
-		$result = $lang['ONLY_ONCE'];
-	}
-	if ($periodo == 2){
-		$result = $lang['EVERYDAY'];
-	}
-	if ($periodo == 3){
-		$result = $lang['EVERY_WEEK'];
-	}
-	if ($periodo == 4){
-		$result = $lang['EVERY_TWO_WEEKS'];
-	}
-	if ($periodo == 5){
-		$result = $lang['EVERY_MONTH'];
-	}
-	if ($periodo == 6){
-		$result = $lang['EVERY_TWO_MONTHS'];
-	}
-	if ($periodo == 7){
-		$result = $lang['EVERY_THREE_MONTHS'];
-	}
-	if ($periodo == 8){
-		$result = $lang['EVERY_FOUR_MONTHS'];
-	}
-	if ($periodo == 9){
-		$result = $lang['EVERY_SIX_MONTHS'];
-	}
-	if ($periodo == 10){
-		$result = $lang['EVERY_TWELVE_MONTHS'];
-	}
-  	?>
-  	
-  	<p><strong><?php echo $lang['PERIODICITY']?>: </strong><?php echo $result?></p>
-  	<p><strong><?php echo $lang['REPEATS']?>: </strong><?php echo $row_Recordset3['repeticiones']?></p>
-  <p><strong><?php echo $lang['EVALUATOR']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_tareas_proactividad'])?></p>
-	<p><strong><?php echo $lang['EVALUATED']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_tareas_proactividad'])?></p>
-  			   <br>
- 
-    
-    
-  </div>
-  <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0"><H3><?php echo $lang['PT_REVISIONS']?></H3>
+   
+  <div class="col-sm-12 col-md-12 col-lg-12"><H2><center><?php echo $lang['MIS_RECONOCIMIENTOS']?></center></H2>
   <HR>
- 
-
-  
+  <h3><center><?php echo $lang['EVALUACION_TAREAS']?></center></h3>
+  <h4>
 <?php
 
-if (comprobar_rci($_GET['id']) == 0){
-
-$id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_tareas_proactividad WHERE tareas_proactividad_revisado = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_tareas_proactividad WHERE proveedor_tareas_proactividad = '".$_SESSION['userSession']."'")
     or die (mysqli_error($dbh));
 
 
-
+?>
+<table class="table"  >
+			<thead style="background-color:Green;color:white;" >
+			<tr>
+			<th><?php echo $lang['DATE']?></th>
+			<th><?php echo $lang['ASSIGNED_BY']?></th>
+			<th><?php echo $lang['REVISION_NAME']?></th>
+			<th><?php echo $lang['TITLE_TP']?></th>
+			<th><?php echo $lang['POINTS']?></th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<?php 
 //display the results
-$num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	$cero = 0;
-	//MySqli Select Query
-	$rev = $row_proyectos['id_revisiones_proyectos'];
-$results = $conexion->query("SELECT * FROM tb_evaluaciones_proyectos WHERE revision_evaluada = $rev");
-
-
-  
-
 	
-	$num++;
-}
+
+		$suma = $row_proyectos['evaluacion_c1'] + $row_proyectos['evaluacion_c2']+ $row_proyectos['evaluacion_c3']+ $row_proyectos['evaluacion_c4'];
+		
+			
+			?>
+					<tr>
+			<td style="background-color:GreenYellow ;" ><?php echo $row_proyectos['fecha_inicio_tareas_proactividad']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo get_nombre($row_proyectos['cliente_tareas_proactividad'])?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_proyectos['nombre_revision']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $row_proyectos['titulo_tareas_proactividad']?></td>
+			<td style="background-color:GreenYellow ;"><?php echo $suma?></td>
+			
+			</tr>
+			
+			
+			
+			
+			
+			
+
+		<?php }?>	
+</tbody>
+			</table>
 	
-if ($num == 0){
-	
-	echo '<a href="pt_a_evaluar_crear_revsiones.php?id='.$_GET['id'].'" class="btn btn-danger btn-lg active" role="button">'.$lang['PT_REVISIONS'].'</a>';
-}
-if ($num > 0){
 
-echo '<a href="evaluaciones_tp.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['EVALUACION_TAREAS'].'</a><br><br>';
-}
 
-}
-?>
-  
-</h4>
-  
-  </div>
-</div>
-      
 
-</div>
+
+
+
+
+
+
+  </h4>
+   
+   </div>
+   </div></div>
+
 </body>
 </html>
 

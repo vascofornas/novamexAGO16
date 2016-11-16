@@ -834,12 +834,56 @@ function get_descripcion_rci($id_limit){
 			return $nim;
 
 }
+function get_descripcion_pt($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['descripcion_tareas_proactividad'];
+
+			}
+			return $nim;
+
+}
 function get_concepto1_rci($id_limit){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
 			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_1'];
+
+			}
+			return $nim;
+
+}
+function get_concepto1_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
 			")
 			or die (mysqli_error($dbh));
 
@@ -878,12 +922,56 @@ function get_concepto2_rci($id_limit){
 			return $nim;
 
 }
+function get_concepto2_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_2'];
+
+			}
+			return $nim;
+
+}
 function get_concepto3_rci($id_limit){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
 			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_3'];
+
+			}
+			return $nim;
+
+}
+function get_concepto3_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
 			")
 			or die (mysqli_error($dbh));
 
@@ -922,12 +1010,56 @@ function get_concepto4_rci($id_limit){
 			return $nim;
 
 }
+function get_concepto4_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['concepto_4'];
+
+			}
+			return $nim;
+
+}
 function get_na_rci($id_limit){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
 			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['sin_puntos'];
+
+			}
+			return $nim;
+
+}
+function get_na_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
 			")
 			or die (mysqli_error($dbh));
 
@@ -966,6 +1098,28 @@ function get_el_rci($id_limit){
 			return $nim;
 
 }
+function get_el_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_esfuerzo_leve'];
+
+			}
+			return $nim;
+
+}
 function get_ea_rci($id_limit){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -988,12 +1142,56 @@ function get_ea_rci($id_limit){
 			return $nim;
 
 }
+function get_ea_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_esfuerzo_aceptable'];
+
+			}
+			return $nim;
+
+}
 function get_ee_rci($id_limit){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
 			FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim = $row_equipos['puntos_esfuerzo_excepcional'];
+
+			}
+			return $nim;
+
+}
+function get_ee_tp($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE id_tareas_proactividad = '".$id_limit."'
 			")
 			or die (mysqli_error($dbh));
 
@@ -1157,6 +1355,46 @@ function get_puntos_epi($rci){
 	or die (mysqli_error($dbh));
 
 $suma = 0;
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$suma = $suma + $row_usua['evaluacion_c1'];
+		$suma = $suma + $row_usua['evaluacion_c2'];
+		$suma = $suma + $row_usua['evaluacion_c3'];
+		$suma = $suma + $row_usua['evaluacion_c4'];
+	}
+	return $suma;
+
+}
+function get_puntos_tp($rci){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_tareas_proactividad WHERE proveedor_tareas_proactividad = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+	$suma = 0;
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$suma = $suma + $row_usua['evaluacion_c1'];
+		$suma = $suma + $row_usua['evaluacion_c2'];
+		$suma = $suma + $row_usua['evaluacion_c3'];
+		$suma = $suma + $row_usua['evaluacion_c4'];
+	}
+	return $suma;
+
+}
+function get_puntos_tp_total(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_tareas_proactividad ")
+	or die (mysqli_error($dbh));
+
+	$suma = 0;
 
 	//display the results
 	while ($row_usua = mysqli_fetch_array($loop_idioma))

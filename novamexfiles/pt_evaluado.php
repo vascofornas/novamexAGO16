@@ -51,7 +51,7 @@ $totalRows_Recordset2 = mysqli_num_rows($Recordset2);
 
 mysqli_select_db($conexion, $database_conexion);
 $id = $_GET['id'];
-$query_Recordset3 = "SELECT * FROM tb_revisiones_rci  WHERE id_revisiones_rci = $id";
+$query_Recordset3 = "SELECT * FROM tb_revisiones_tareas_proactividad  WHERE id_revisiones_tareas_proactividad = $id";
 $Recordset3 = mysqli_query($conexion,$query_Recordset3) or die(mysql_error());
 
 $row_Recordset3 = mysqli_fetch_assoc($Recordset3);
@@ -186,7 +186,7 @@ $(document).ready(function() {
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'editrcideliverable.php',
+			url: 'editptdeliverable.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -210,7 +210,7 @@ function subirimagen()
 
 	self.name = 'opener';
 
-	remote = open('subirentregablerci.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
+	remote = open('subirentregabletp.php','remote','width=300,height=150,location=no,scrollbars=yes, menubar=no, toolbars=no,resizable=yes,fullscreen=yes, status=yes');
 
 	remote.focus();
 	}
@@ -226,12 +226,12 @@ function subirimagen()
    
      
     <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['RCI_INFO']?></H3>
+  <div class="col-sm-6 col-md-5 col-lg-6"><H3><?php echo $lang['PT_INFO']?></H3>
   <hr>
   <h4>
-  <p><strong><?php echo $lang['TITLE_REQ']?>: </strong><?php echo $row_Recordset3['titulo_rci']?></p>
-  <p><strong><?php echo $lang['DESC_REQ']?>: </strong><?php echo get_descripcion_rci($row_Recordset3['rci_revisado'])?></p>
-  	<p><strong><?php echo $lang['EVALUATION_DATE']?>: </strong><?php echo $row_Recordset3['fecha_inicio_rci']?></p>
+  <p><strong><?php echo $lang['TITLE_PT']?>: </strong><?php echo $row_Recordset3['titulo_tareas_proactividad']?></p>
+  
+  	<p><strong><?php echo $lang['EVALUATION_DATE']?>: </strong><?php echo $row_Recordset3['fecha_inicio_tareas_proactividad']?></p>
   	
   	<?php 
   	
@@ -271,8 +271,8 @@ $periodo = $row_Recordset3['periodicidad'];
   	?>
   	
 
-  <p><strong><?php echo $lang['CUSTOMER']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_rci'])?></p>
-  	<p><strong><?php echo $lang['INTERNAL_SUPPLIER']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_rci'])." ".$row_Recordset3['apellidos_usuario']?></p>
+  <p><strong><?php echo $lang['EVALUATOR']?>: </strong><?php echo get_nombre($row_Recordset3['cliente_tareas_proactividad'])?></p>
+  	<p><strong><?php echo $lang['EVALUATED']?>: </strong><?php echo get_nombre($row_Recordset3['proveedor_tareas_proactividad'])." ".$row_Recordset3['apellidos_usuario']?></p>
   			   <br>
     
     
@@ -292,7 +292,7 @@ $periodo = $row_Recordset3['periodicidad'];
 	<div class="form-group">
 	<label><?php echo $lang['DESCRIPTION_DELIVERABLE']?></label>
 	<input type="text" class="form-control" name="descripcion_entregable" id="descripcion_entregable" placeholder="<?php echo $lang['DESCRIPTION_DELIVERABLE']?>" "required />
-	<input type="hidden" class="form-control" name="rci_entregable" id="rci_entregable" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $_GET['id']?>"required />
+	<input type="hidden" class="form-control" name="tareas_proactividad_entregable" id="tareas_proactividad_entregable" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $_GET['id']?>"required />
 	
 	</div>
 			
@@ -330,7 +330,7 @@ $periodo = $row_Recordset3['periodicidad'];
 <?php
 $id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_rci WHERE rci_entregable = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_tareas_proactividad WHERE tareas_proactividad_entregable = $id")
     or die (mysqli_error($dbh));
 
 
@@ -339,7 +339,7 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_rci WHERE rci_entr
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
 	
-echo "<strong><a href='entregables_rci/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
+echo "<strong><a href='entregables_tareas_proactividad/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
 	}
 	
 	
