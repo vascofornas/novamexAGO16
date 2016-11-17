@@ -51,7 +51,7 @@ $lang['GENERATE_PASSWORD'] = 'Generar nueva contraseña';
 
 $lang['MEMBER_HOME'] = 'Zona de Miembros';
 $lang['HOME'] = 'Inicio';
-$lang['PROFILE'] = 'Mi Perfil';
+$lang['PROFILE'] = 'Mi NOVAMEX';
 $lang['ADMIN_ZONE'] = 'Zona de Administración';
 $lang['LOGOUT'] = 'Cerrar Sesion';
 $lang['USER'] = 'Usuario ';

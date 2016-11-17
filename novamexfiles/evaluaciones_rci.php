@@ -294,7 +294,7 @@ body {
 </head> 
 <body>
 
-<?php include 'menu_admin.php';?>
+<?php include 'menu.php';?>
 <div class="container">
 	<div class="row">
 

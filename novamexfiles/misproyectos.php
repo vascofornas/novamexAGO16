@@ -217,7 +217,7 @@ function subirimagen()
    <div class = "row" >
    
    
-  <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:Azure   ;"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+  <div class="col-sm-5 col-md-5 col-lg-5" style="background-color:Azure   ;"><H3><?php echo $lang['MY_PROJECTS']?></H3>
   <HR>
   <h2><?php echo $lang['AS_TEAM_MEMBER']?></h2>
   <h4>
@@ -249,7 +249,9 @@ echo "<strong><a href='proyecto_evaluado.php?id=".$row_proyectos['id_proyecto'].
   </h4>
    
    </div>
-   <div class="col-sm-6 col-md-5 col-lg-6" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['MY_PROJECTS']?></H3>
+   <div class="col-sm-1 col-md-1 col-lg-1" >
+   </div>
+   <div class="col-sm-5 col-md-5 col-lg-5" style="background-color:AntiqueWhite  ;"><H3><?php echo $lang['MY_PROJECTS']?></H3>
   <HR>
   <h2><?php echo $lang['AS_EVALUATOR']?></h2>
   <h4>

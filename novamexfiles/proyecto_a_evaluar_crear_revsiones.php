@@ -268,6 +268,8 @@ function subirimagen()
   
 <?php
 $id = $_GET['id'];
+
+
 //run the query
 $loop = mysqli_query($conexion, "SELECT * FROM tb_proyectos LEFT JOIN tb_tipos_proyectos ON 
 		tb_proyectos.tipo_proyecto = tb_tipos_proyectos.id_tipo_proyecto WHERE id_proyecto = $id")
@@ -298,7 +300,7 @@ if ($row_proyectos['porcentaje1'] >0){//if porcentaje1
 		
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
 		VALUES ('$id','Revision # .$num','$opcion1','$codigo1')";
-	
+		
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion1']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
 		$last_id = mysqli_insert_id($conexion);
