@@ -394,6 +394,11 @@ body {
   // Fetch one and one row
   while ($rowBU=mysqli_fetch_row($resultBU))
     {
+    	
+    	
+    	
+    	
+    	
     printf ("%s (%s)\n",$rowBU[0],$rowBU[1]);
     echo '<option value='.$rowBU[0].' selected>'.$rowBU[1].'</option>';
     }
