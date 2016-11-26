@@ -362,4 +362,5 @@ $lang['REGIONS'] = 'Regions';
 $lang['REGION'] = 'Region';
 $lang['ADD_REGION'] = 'Add New Region';
 $lang['SUPERA_PORCENTAJE'] = 'Percentage cannot be bigger than 100%. Percentage updated.';
+$lang['SETUP'] = 'Setup';
 ?>

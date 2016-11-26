@@ -130,6 +130,8 @@ else
                        
                         <li class="divider"></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
+                         <li class="divider"></li>
+                        <li><a href="admin_config.php"><?php echo $lang['SETUP']?></a></li>
                         
                           
                         

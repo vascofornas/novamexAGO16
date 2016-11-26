@@ -360,5 +360,6 @@ $lang['REGION'] = 'Region';
 
 $lang['ADD_REGION'] = 'Nueva Region';
 $lang['SUPERA_PORCENTAJE'] = 'El porcentaje acumulado no puede superar el 100%, porcentaje corregido. ';
+$lang['SETUP'] = 'Configuracion';
 
 ?>
