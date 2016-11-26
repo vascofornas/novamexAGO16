@@ -180,7 +180,8 @@ textarea {
 </style>
 
 <script>
-function myFunction() {
+function myFunction(ele) {
+	
 	  var a = parseInt(document.getElementById("porcentaje1").value, 10);
 	  var b = parseInt(document.getElementById("porcentaje2").value, 10);
 	  var c = parseInt(document.getElementById("porcentaje3").value, 10);
@@ -196,9 +197,19 @@ function myFunction() {
 
 
 	  var sum =  a + b + c + d + e + f + g + h + i + j ;
+	  
+
+	  if (sum >100){
+		 
+	alert ("<?php echo $lang['SUPERA_PORCENTAJE']?>" +  sum +   "%");
+	document.getElementById(ele.id).value = 0;
+	
+	  }
+	  else
+	  {
  
    alert ( "<?php echo $lang['PORCENTAJE_ACUMULADO']?>: " + sum + "%");
-
+	  }
 
   
 }
@@ -409,7 +420,7 @@ body {
           <div class="input_container">
             <label for="porcentaje1"><?php echo $lang['PROJECT_TYPE_PERCENTAGE1']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje1" id="porcentaje1" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje1" id="porcentaje1" value="" onchange="myFunction(this)">
             </div>
           </div>
           <div class="input_container">
@@ -429,7 +440,7 @@ body {
           <div class="input_container">
             <label for="porcentaje2"><?php echo $lang['PROJECT_TYPE_PERCENTAGE2']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje2" id="porcentaje2" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje2" id="porcentaje2" value="" onchange="myFunction(this)">
             </div>
           </div>
           <div class="input_container">
@@ -449,7 +460,7 @@ body {
           <div class="input_container">
             <label for="porcentaje3"><?php echo $lang['PROJECT_TYPE_PERCENTAGE3']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje3" id="porcentaje3" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje3" id="porcentaje3" value="" onchange="myFunction(this)">
             </div>
           </div> 
           <div class="input_container">
@@ -469,7 +480,7 @@ body {
           <div class="input_container">
             <label for="porcentaje4"><?php echo $lang['PROJECT_TYPE_PERCENTAGE4']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje4" id="porcentaje4" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje4" id="porcentaje4" value="" onchange="myFunction(this)">
             </div>
           </div>
        <div class="input_container">
@@ -489,7 +500,7 @@ body {
           <div class="input_container">
             <label for="porcentaje5"><?php echo $lang['PROJECT_TYPE_PERCENTAGE5']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje5" id="porcentaje5" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje5" id="porcentaje5" value="" onchange="myFunction(this)">
             </div>
           </div>
           <div class="input_container">
@@ -510,7 +521,7 @@ body {
           <div class="input_container">
             <label for="porcentaje6"><?php echo $lang['PROJECT_TYPE_PERCENTAGE6']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje6" id="porcentaje6" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje6" id="porcentaje6" value="" onchange="myFunction(this)">
             </div>
           </div>
           <div class="input_container">
@@ -530,7 +541,7 @@ body {
           <div class="input_container">
             <label for="porcentaje7"><?php echo $lang['PROJECT_TYPE_PERCENTAGE7']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje7" id="porcentaje7" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje7" id="porcentaje7" value="" onchange="myFunction(this)">
             </div>
           </div>
           <div class="input_container">
@@ -550,7 +561,7 @@ body {
           <div class="input_container">
             <label for="porcentaje8"><?php echo $lang['PROJECT_TYPE_PERCENTAGE8']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje8" id="porcentaje8" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje8" id="porcentaje8" value="" onchange="myFunction(this)">
             </div>
           </div>
           
@@ -572,7 +583,7 @@ body {
           <div class="input_container">
             <label for="porcentaje9"><?php echo $lang['PROJECT_TYPE_PERCENTAGE9']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje9" id="porcentaje9" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje9" id="porcentaje9" value="" onchange="myFunction(this)">
             </div>
           </div>
           <div class="input_container">
@@ -592,7 +603,7 @@ body {
           <div class="input_container">
             <label for="porcentaje10"><?php echo $lang['PROJECT_TYPE_PERCENTAGE10']?>: </label>
             <div class="field_container">
-              <input type="number" class="text" name="porcentaje10" id="porcentaje10" value="" onchange="myFunction()">
+              <input type="number" class="text" name="porcentaje10" id="porcentaje10" value="" onchange="myFunction(this)">
             </div>
           </div>
           
