@@ -67,6 +67,24 @@ function get_idioma($usuario){
 	return $idioma_del_usuario;
 
 }
+function get_unidad_negocio_usuario($usuario){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tbl_users LEFT JOIN tb_unidades_negocio ON tbl_users.unidad_negocio_usuario = tb_unidades_negocio.id_unidades_negocio 
+			WHERE userID = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$idioma_del_usuario = $row_usua['id_unidades_negocio'];
+	}
+	return $idioma_del_usuario;
+
+}
 function get_nombre_revision($usuario){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');

@@ -357,4 +357,5 @@ $lang['CHANGE_PASSWORD'] = 'Change Password';
 $lang['CONFIRM_NEW_PASSWORD'] = 'Confirm New Password';
 $lang['NEW_PASSWORD'] = 'New Password';
 $lang['PASSWORD_CHANGED'] = 'Password Changed';
+$lang['ONLINE_STORES'] = 'Online Stores';
 ?>

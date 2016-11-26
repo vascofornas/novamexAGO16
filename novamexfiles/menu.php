@@ -72,6 +72,8 @@ else
                     
                       <li class="divider"></li>
                        <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
+                       <li class="divider"></li>
+                       <li><a href="tiendas.php"><?php echo $lang['ONLINE_STORES']?></a></li>
                        
                      
                         
