@@ -151,6 +151,7 @@ else
                     </a>
                     <ul class="dropdown-menu">
                     <li>
+                    <a tabindex="-1" href="cambiar_pass.php"><?php echo $lang['CHANGE_PASSWORD']?></a>
                     <a tabindex="-1" href="logout.php"><?php echo $lang['LOGOUT']?></a>
                     </li>
                     

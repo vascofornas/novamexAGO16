@@ -350,6 +350,10 @@ $lang['DESC_PT'] = 'Descripcion de las Tareas de Proactividad';
 $lang['PT_INFO'] = 'Datos de las Tareas de Proactividad';
 $lang['PT_REVISIONS'] = 'CREAR FASES DE LA EVALUACION DE LAS TAREAS DE PROACTIVIDAD';
 $lang['EVALUACION_TAREAS'] = 'Evaluar Tareas de Proactividad';
+$lang['CHANGE_PASSWORD'] = 'Cambiar Contraseña';
+$lang['CONFIRM_NEW_PASSWORD'] = 'Confirmar Nueva Contraseña';
+$lang['NEW_PASSWORD'] = 'Nueva Contraseña';
+$lang['PASSWORD_CHANGED'] = 'Contraseña cambiada';
 
 
 

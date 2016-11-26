@@ -175,11 +175,16 @@ $(document).ready(function() {
 	// submit form using $.ajax() method
 	
 	$('#reg-form').submit(function(e){
-		
+		var bla = $('#nueva').val();
+		var blabla = $('#confirmar').val();
+		if (bla != blabla){
+alert ("no coinciden");
+return;
+			}
 		e.preventDefault(); // Prevent Default Submission
 		
 		$.ajax({
-			url: 'edituser.php',
+			url: 'edit_pass_user.php',
 			type: 'POST',
 			data: $(this).serialize() // it will serialize the form data
 		})
@@ -234,42 +239,37 @@ function subirimagen()
    		   </div>
    <div class="col-sm-6 col-md-5 col-lg-6">
   <br><br><br></h4>
-  <h3><?php echo $lang['EDITABLE_DATA']?></h3>
+  <h3><?php echo $lang['CHANGE_PASSWORD']?></h3>
   
    <h4> <div id="form-content">
      <form method="post" id="reg-form" name="form1" autocomplete="off">
 			
 
-          
-	<div class="form-group">
-	<label><?php echo $lang['LANGUAGE']?></label>
-    <select class="form-control" name="idioma_usuario" id="idioma_usuario">
-    <option value="en">English</option>
-    <option value="es">Spanish</option>
-    
-  	</select>
-  </div>		
-   <div class="form-group" id="imagenTicket">
-        <label><?php echo $lang['IMAGE']?></label>
-        <img src="usuarios/<?php echo $row['imagen_usuario']?>" alt="<?php echo $row['userName']?>" height="100" width="100">
-      <input name="imagen_usuario" type="text" id="imagen_usuario" class="form-control"  placeholder="<?php echo $row['imagen_usuario']?>" value="<?php echo $row['imagen_usuario']?>" readonly>
-      <input name="id_usuario" type="hidden" id="id_usuario" class="form-control"  placeholder="<?php echo $row['imagen_usuario']?>" value="<?php echo $row['userID']?>" readonly>
-             
-              <input type="button" name="button" id="button" value="<?php echo $lang['SELECT_FILE']?>" onclick="javascript:subirimagen();" />
-
-</div>
-	<button class="btn btn-primary"><?php echo $lang['UPDATE_DATA']?></button>
-	</div>
-      </h4>
       
-      				
-	
-    </div>
-	
+          <div class="input_container">
+            <label for="nombre_proyecto"><?php echo $lang['NEW_PASSWORD']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="password" class="text" name="nueva" id="nueva" placeholder="<?php echo $lang['NEW_PASSWORD']?>"  value="" required>
+            </div>
+          </div>
+          <BR>
+          <div class="input_container">
+            <label for="nombre_proyecto"><?php echo $lang['CONFIRM_NEW_PASSWORD']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="password" class="text" name="confirmar" id="confirmar" placeholder="<?php echo $lang['CONFIRM_NEW_PASSWORD']?>" value="" required>
+            </div>
+          </div>
+  </div>		
+  
+   
+
 				
 		
 	<hr />
-
+				
+	<div class="form-group">
+	<button class="btn btn-primary"><?php echo $lang['UPDATE_DATA']?></button>
+	</div>
 				
     </form>     
 </div>
