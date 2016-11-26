@@ -358,4 +358,7 @@ $lang['CONFIRM_NEW_PASSWORD'] = 'Confirm New Password';
 $lang['NEW_PASSWORD'] = 'New Password';
 $lang['PASSWORD_CHANGED'] = 'Password Changed';
 $lang['ONLINE_STORES'] = 'Online Stores';
+$lang['REGIONS'] = 'Regions';
+$lang['REGION'] = 'Region';
+$lang['ADD_REGION'] = 'Add New Region';
 ?>

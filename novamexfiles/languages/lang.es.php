@@ -355,7 +355,9 @@ $lang['CONFIRM_NEW_PASSWORD'] = 'Confirmar Nueva Contraseña';
 $lang['NEW_PASSWORD'] = 'Nueva Contraseña';
 $lang['PASSWORD_CHANGED'] = 'Contraseña cambiada';
 $lang['ONLINE_STORES'] = 'Tiendas Online';
+$lang['REGIONS'] = 'Regiones';
+$lang['REGION'] = 'Region';
 
-
+$lang['ADD_REGION'] = 'Nueva Region';
 
 ?>

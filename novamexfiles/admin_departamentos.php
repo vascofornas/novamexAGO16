@@ -303,14 +303,14 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['DEPARTMENTS']?></h1>
+    <h1 align="center"><?php echo $lang['REGIONS']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_DEPARTMENT']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['ADD_REGION']?></button>
         
       </div>
       <table class="datatable" id="table_companies">
@@ -318,7 +318,7 @@ body {
           <tr>
            
             
-            <th><?php echo $lang['DEPARTMENT']?></th>
+            <th><?php echo $lang['REGION']?></th>
             <th><?php echo $lang['BUSINESS_UNIT']?></th>
          
             
@@ -337,11 +337,11 @@ body {
       <div class="lightbox_close"></div>
       <div class="lightbox_content">
         
-        <h2><?php echo $lang['ADD_DEPARTMENT']?></h2>
+        <h2><?php echo $lang['ADD_REGION']?></h2>
         <form class="form add" id="form_company" data-id="" novalidate>
           
           <div class="input_container">
-            <label for="nombre_departamento"><?php echo $lang['DEPARTMENT']?>: <span class="required">*</span></label>
+            <label for="nombre_departamento"><?php echo $lang['REGION']?>: <span class="required">*</span></label>
             <div class="field_container">
               <input type="text" class="text" name="nombre_departamento" id="nombre_departamento" value="" required>
             </div>
@@ -380,7 +380,7 @@ body {
           
          
           <div class="button_container">
-            <button type="submit"><?php echo $lang['ADD_DEPARTMENT']?></button>
+            <button type="submit"><?php echo $lang['ADD_REGION']?></button>
           </div>
         </form>
         

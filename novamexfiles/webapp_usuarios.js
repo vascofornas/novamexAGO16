@@ -2,13 +2,19 @@ $(document).ready(function(){
   
   // On page load: datatable
   var table_companies = $('#table_companies').dataTable({
-    "ajax": "data_departamentos.php?job=get_companies",
+    "ajax": "data_users.php?job=get_companies",
     "columns": [
       
-      { "data": "nombre_departamento",   "sClass": "company_name" },
+      { "data": "nombre_usuario",    },
      
-      { "data": "unidad_negocio", },
-    
+	   { "data": "apellidos_usuario", },
+	   { "data": "unidad_negocio",    },
+	     
+	   { "data": "region_usuario", },
+	   { "data": "supervisor_usuario", },
+	   { "data": "userLevel", },
+     { "data": "userStatus", },
+	  
       { "data": "functions",      "sClass": "functions" }
     ],
     "aoColumnDefs": [
@@ -23,8 +29,8 @@ $(document).ready(function(){
         "sLast":        " ",
       },
       "sLengthMenu":    "Show / Mostrar: _MENU_",
-      "sInfo":          "Total of _TOTAL_ regions (showing from _START_ to _END_)",
-      "sInfoFiltered":  "(filtered _MAX_ news)"
+      "sInfo":          "Total of _TOTAL_ Users (showing from _START_ to _END_)",
+      "sInfoFiltered":  "(filtered _MAX_ Users)"
     }
   });
   
@@ -111,16 +117,23 @@ $(document).ready(function(){
   // Add company button
   $(document).on('click', '#add_company', function(e){
     e.preventDefault();
-    $('.lightbox_content h2').text('Add Region');
-    $('#form_company button').text('Add Region');
+    $('.lightbox_content h2').text('Add User');
+    $('#form_company button').text('Add User');
     $('#form_company').attr('class', 'form add');
     $('#form_company').attr('data-id', '');
     $('#form_company .field_container label.error').hide();
     $('#form_company .field_container').removeClass('valid').removeClass('error');
    
-    $('#form_company #nombre_departamento').val('');
-   
-    $('#form_company #unidad_negocio_departamento').val('');
+    $('#form_company #userName').val('');
+    $('#form_company #nombre_usuario').val('');
+	$('#form_company #apellidos_usuario').val('');
+    $('#form_company #userEmail').val('');
+	 $('#form_company #unidad_negocio_usuario').val('');
+	 $('#form_company #region_usuario').val('');
+	  $('#form_company #userLevel').val('');
+	  $('#form_company #supervisor_usuario').val('');
+	   $('#form_company #userStatus').val('');
+	   
     show_lightbox();
   });
 
@@ -135,7 +148,7 @@ $(document).ready(function(){
       show_loading_message();
       var form_data = $('#form_company').serialize();
       var request   = $.ajax({
-        url:          'data_departamentos.php?job=add_company',
+        url:          'data_users.php?job=add_company',
         cache:        false,
         data:         form_data,
         dataType:     'json',
@@ -147,8 +160,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            var company_name = $('#nombre_departamento').val();
-            show_message("Region with Title '" + company_name + "' added sucessfully.", 'success');
+            var company_name = $('#userName').val();
+            show_message("User '" + company_name + "' added sucessfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -169,7 +182,7 @@ $(document).ready(function(){
     show_loading_message();
     var id      = $(this).data('id');
     var request = $.ajax({
-      url:          'data_departamentos.php?job=get_company',
+      url:          'data_users.php?job=get_company',
       cache:        false,
       data:         'id=' + id,
       dataType:     'json',
@@ -178,16 +191,23 @@ $(document).ready(function(){
     });
     request.done(function(output){
       if (output.result == 'success'){
-        $('.lightbox_content h2').text('Edit Region');
-        $('#form_company button').text('Edit Region');
+        $('.lightbox_content h2').text('Edit User');
+        $('#form_company button').text('Edit User');
         $('#form_company').attr('class', 'form edit');
         $('#form_company').attr('data-id', id);
         $('#form_company .field_container label.error').hide();
         $('#form_company .field_container').removeClass('valid').removeClass('error');
        
-        $('#form_company #nombre_departamento').val(output.data[0].nombre_departamento);
+        $('#form_company #userName').val(output.data[0].userName);
         
-        $('#form_company #unidad_negocio_departamento').val(output.data[0].unidad_negocio_departamento);
+        $('#form_company #nombre_usuario').val(output.data[0].nombre_usuario);
+        $('#form_company #apellidos_usuario').val(output.data[0].apellidos_usuario);
+		 $('#form_company #userEmail').val(output.data[0].userEmail);
+		  $('#form_company #unidad_negocio_usuario').val(output.data[0].unidad_negocio_usuario);
+		  $('#form_company #region_usuario').val(output.data[0].region_usuario);
+		  $('#form_company #supervisor_usuario').val(output.data[0].supervisor_usuario);
+		  $('#form_company #userLevel').val(output.data[0].userLevel);
+		    $('#form_company #userStatus').val(output.data[0].userStatus);
         hide_loading_message();
         show_lightbox();
       } else {
@@ -213,7 +233,7 @@ $(document).ready(function(){
       var id        = $('#form_company').attr('data-id');
       var form_data = $('#form_company').serialize();
       var request   = $.ajax({
-        url:          'data_departamentos.php?job=edit_company&id=' + id,
+        url:          'data_users.php?job=edit_company&id=' + id,
         cache:        false,
         data:         form_data,
         dataType:     'json',
@@ -225,8 +245,8 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            var company_name = $('#nombre_departamento').val();
-            show_message("Department with name '" + company_name + "' edited succesfully.", 'success');
+            var company_name = $('#userName').val();
+            show_message("User '" + company_name + "' edited succesfully.", 'success');
           }, true);
         } else {
           hide_loading_message();
@@ -248,7 +268,7 @@ $(document).ready(function(){
       show_loading_message();
       var id      = $(this).data('id');
       var request = $.ajax({
-        url:          'data_departamentos.php?job=delete_company&id=' + id,
+        url:          'data_users.php?job=delete_company&id=' + id,
         cache:        false,
         dataType:     'json',
         contentType:  'application/json; charset=utf-8',
@@ -259,7 +279,7 @@ $(document).ready(function(){
           // Reload datable
           table_companies.api().ajax.reload(function(){
             hide_loading_message();
-            show_message("Region with name '" + company_name + "' deleted successfully.", 'success');
+            show_message("User with title '" + company_name + "' deleted successfully.", 'success');
           }, true);
         } else {
           hide_loading_message();

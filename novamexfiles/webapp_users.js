@@ -6,10 +6,8 @@ $(document).ready(function(){
     "columns": [
       
       { "data": "userName",    },
-      { "data": "nombre_usuario" },
-      { "data": "apellidos_usuario" },
-  
-	   { "data": "unidad_negocio", },
+     
+	   { "data": "userName", },
 	   { "data": "userLevel", },
      { "data": "userStatus", },
 	  

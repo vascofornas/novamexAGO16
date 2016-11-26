@@ -107,7 +107,7 @@ else
                         <li><a href="admin_news.php"><?php echo $lang['NEWS']?></a></li>
                         <li class="divider"></li>
                         <li><a href="admin_bu.php"><?php echo $lang['BUSINESS_UNITS']?></a></li>
-                        <li><a href="admin_departamentos.php"><?php echo $lang['DEPARTMENTS']?></a></li>
+                        <li><a href="admin_departamentos.php"><?php echo $lang['REGIONS']?></a></li>
                         <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
                         <li><a href="admin_miembros_equipos.php"><?php echo $lang['TEAM_MEMBERS']?></a></li>
                         <li class="divider"></li>

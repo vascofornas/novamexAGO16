@@ -73,7 +73,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_users.js"></script>
+    <script charset="utf-8" src="webapp_usuarios.js"></script>
 
 
 <style type="text/css">
@@ -322,12 +322,12 @@ body {
           <tr>
            
             
-            <th><?php echo $lang['USERNAME']?></th>
+            
             <th><?php echo $lang['FIRST_NAME']?></th>
             <th><?php echo $lang['LAST_NAME']?></th>
-         
-           
             <th><?php echo $lang['BUSINESS_UNIT']?></th>
+            <th><?php echo $lang['REGION']?></th>
+            <th><?php echo $lang['SUPERVISOR']?></th>
             <th><?php echo $lang['USER_LEVEL']?></th>
             <th><?php echo $lang['ACTIVATED']?></th>
             
@@ -382,6 +382,37 @@ body {
         <label for="unidad_negocio"><?php echo $lang['BUSINESS_UNIT']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
               <select  id="unidad_negocio_usuario" name="unidad_negocio_usuario" class="selectpicker"  required>
+           
+           
+        <?php   if ($result2=mysqli_query($conexion,$sqlBU))
+  {
+  // Fetch one and one row
+  while ($row2=mysqli_fetch_row($result2))
+    {
+    
+    echo '<option value='.$row2[0].' selected>'.$row2[1].'</option>';
+    }
+  // Free result set
+  mysqli_free_result($result2);
+}
+     ?>           
+                
+                
+                
+               
+                
+                
+                
+              </select>
+            </div>
+          </div>
+            
+           <?php   $sqlBU="SELECT * FROM tb_departamentos ORDER BY nombre_departamento";?>
+           
+<div class="input_container">
+        <label for="unidad_negocio"><?php echo $lang['REGION']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="region_usuario" name="region_usuario" class="selectpicker"  required>
            
            
         <?php   if ($result2=mysqli_query($conexion,$sqlBU))

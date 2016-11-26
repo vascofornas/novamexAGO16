@@ -55,7 +55,11 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tbl_users LEFT JOIN tb_unidades_negocio ON tbl_users.unidad_negocio_usuario =  tb_unidades_negocio.id_unidades_negocio ORDER BY userName";
+    $query = "SELECT * FROM tbl_users LEFT JOIN tb_unidades_negocio ON 
+    		tbl_users.unidad_negocio_usuario =  tb_unidades_negocio.id_unidades_negocio
+    		LEFT JOIN tb_departamentos ON 
+    		tbl_users.region_usuario =  tb_departamentos.id_departamento
+    		ORDER BY apellidos_usuario";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -74,9 +78,9 @@ if ($job != ''){
           "userName"  => $company['userName'],
           "nombre_usuario"    => $company['nombre_usuario'],
 		  "apellidos_usuario"    => $company['apellidos_usuario'],
-		
         		"unidad_negocio"  => $company['unidad_negocio'],
-        		"supervisor_usuario"  => $company['supervisor_usuario'],
+        		"region_usuario"  => $company['nombre_departamento'],
+        		"supervisor_usuario"  => get_nombre($company['supervisor_usuario']),
 		  "userLevel"  => $company['userLevel'],
 		  "userStatus"  => $company['userStatus'],
 		  
@@ -108,6 +112,7 @@ if ($job != ''){
 		  "apellidos_usuario"    => $company['apellidos_usuario'],
 		  "userEmail"    => $company['userEmail'],
           "unidad_negocio_usuario"    => $company['unidad_negocio_usuario'],
+          		"region_usuario"    => $company['region_usuario'],
           		"supervisor_usuario"    => $company['supervisor_usuario'],
           		
 		  "userLevel"  => $company['userLevel'],
@@ -127,6 +132,8 @@ if ($job != ''){
 	if (isset($_GET['userEmail']))   { $query .= "userEmail   = '" . mysqli_real_escape_string($db_connection, $_GET['userEmail'])   . "', "; }
 	
 	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
+	if (isset($_GET['region_usuario']))   { $query .= "region_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['region_usuario']))   . "', "; }
+	
 	if (isset($_GET['supervisor_usuario']))   { $query .= "supervisor_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['supervisor_usuario']))   . "', "; }
 	
 	if (isset($_GET['userLevel']))   { $query .= "userLevel   = '" . mysqli_real_escape_string($db_connection, $_GET['userLevel'])   . "', "; }
@@ -155,6 +162,8 @@ if ($job != ''){
 	if (isset($_GET['userEmail']))   { $query .= "userEmail   = '" . mysqli_real_escape_string($db_connection, $_GET['userEmail'])   . "', "; }
 	
 	if (isset($_GET['unidad_negocio_usuario']))   { $query .= "unidad_negocio_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['unidad_negocio_usuario']))   . "', "; }
+	if (isset($_GET['region_usuario']))   { $query .= "region_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['region_usuario']))   . "', "; }
+	
 	if (isset($_GET['supervisor_usuario']))   { $query .= "supervisor_usuario   = '" . (mysqli_real_escape_string($db_connection, $_GET['supervisor_usuario']))   . "', "; }
 	
 	if (isset($_GET['userLevel']))   { $query .= "userLevel   = '" . mysqli_real_escape_string($db_connection, $_GET['userLevel'])   . "', "; }
