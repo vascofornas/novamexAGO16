@@ -453,7 +453,7 @@ while ($row_evaluacion = mysqli_fetch_array($loop))
 
 	
 	<div class="input_container">
-	<h3><hr><?php echo $row_evaluacion ['opcion_evaluada'].'</h3><H4><br>';
+	<h3><hr><?php echo '</h3><H4>';
 	
 	$codigo = $row_evaluacion['codigo_opcion_evaluacion'];
 $loop_puntos = mysqli_query($conexion, "SELECT * FROM tb_evaluaciones_proyectos 

@@ -151,7 +151,7 @@ body {
 <div class = "container">
    <div class="row">
    <div class="col-xs-12 col-md-12">
-     <h2 align="center"><?php echo $lang['EDIT_WELCOME_MESSAGE']?><a href=""><img src="mexico.png" width="45" height="45" /></a>
+     <h2 align="center"><?php echo $lang['EDIT_NEWS']?><a href=""><img src="mexico.png" width="45" height="45" /></a>
      </h2>
    </div>
     <div class="col-xs-12 col-md-12">

@@ -344,7 +344,7 @@ $lang['AS_EMPLOYEE'] = 'Como empleado';
 $lang['AS_SUPERVISOR'] = 'Como supervisor';
 
 $lang['CREATE_NEW_TA'] = 'CREAR NUEVAS TAREAS DE PROACTIVIDAD';
-$lang['EVALUATED'] = 'Usuario Evaluado';
+
 $lang['TITLE_PT'] = 'Titulo de las Tareas de Proactividad';
 $lang['DESC_PT'] = 'Descripcion de las Tareas de Proactividad';
 $lang['PT_INFO'] = 'Datos de las Tareas de Proactividad';
@@ -361,5 +361,6 @@ $lang['REGION'] = 'Region';
 $lang['ADD_REGION'] = 'Nueva Region';
 $lang['SUPERA_PORCENTAJE'] = 'El porcentaje acumulado no puede superar el 100%, porcentaje corregido. ';
 $lang['SETUP'] = 'Configuracion';
+$lang['EDIT_NEWS'] = 'Editar Noticia';
 
 ?>

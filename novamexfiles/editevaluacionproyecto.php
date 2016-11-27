@@ -13,6 +13,11 @@ if( $_POST ){
    $revision_evaluada = $_POST['revision_evaluada'];
    $codigo_opcion_evaluacion = $_POST['codigo_opcion_evaluacion'];
    
+   // Change the line below to your timezone!
+   date_default_timezone_set('America/Chihuahua');
+   $date = date('Y-m-d H:i:s');
+   
+   
  $estado_evaluacion = 1;
     
  $db_host = "localhost";
@@ -30,10 +35,10 @@ if ($conn->connect_error) {
 } 
 
 if ($stmt = $conn->prepare("UPDATE tb_evaluaciones_proyectos SET puntos_obtenidos = ?, comentarios_evaluados = ?, 
-		estado_evaluacion = ?
+		estado_evaluacion = ? , fecha_evaluacion = ?
 WHERE id_evaluacion_proyectos=?"))
 {
-	$stmt->bind_param("dsii", $puntos_obtenidos, $comentarios_evaluados,$estado_evaluacion, $id_evaluacion_proyectos);
+	$stmt->bind_param("dsisi", $puntos_obtenidos, $comentarios_evaluados,$estado_evaluacion, $date, $id_evaluacion_proyectos);
 	$stmt->execute();
 	$stmt->close();
 }
