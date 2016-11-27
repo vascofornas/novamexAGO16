@@ -74,20 +74,77 @@ if($_POST)
     
     };
     
-    //email body
-    $message_body = $message."\r\n\r\n-".$supervisor."\r\nEmail : ".$supervisor."\r\nPhone Number : (".$supervisor.") ". $supervisor ;
+    $idioma_miembro =  get_idioma($supervisor);
+    $nombre_usuario = get_nombre($supervisor);
+    $email_usuario = get_email($supervisor);
     
-    //proceed with PHP email.
-    $headers = 'From: '.$supervisor.'' . "\r\n" .
-    'Reply-To: '.$supervisor.'' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
     
-    $send_mail = mail($to_email, $subject, $message_body, $headers);
     
-    if(!$send_mail)
+    $email_proveedor = get_email($proveedor);
+    
+    $nombre_proveedor = get_nombre($proveedor);
+   
+    $idioma_proveedor =  get_idioma($proveedor);
+    
+    
+    
+    if ($idioma_proveedor == "en"){
+    	$messagep = "Hi, ".$nombre_proveedor."!<br><br>";
+    	$messagep .= "A new Internal Customer Requirement has been created by ".$nombre_usuario." and you will be evaluated as Internal Provider. Pending Approval";
+    	 
+    	$messagep .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+    	$subjectp = "Internal Customer Requirement.";
+    	$subject2 = "Internal Customer Requirement Superadmin";
+    	send_mail($email_proveedor,$messagep,$subjectp);//proveedor
+    	 
+    	 
+    }
+    if ($idioma_proveedor == "es") {
+    	$messagep = "Hola, ".$nombre_proveedor."!<br><br>";
+    	$messagep .= "Se ha creado un nuevo requerimiento de cliente interno por ".$nombre_usuario." y tu seras evaluado como proveedor interno. Esta pendiente su aprobacion.";
+    	 
+    	$messagep .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+    	$subjectp = "nuevo requerimiento de cliente interno";
+    	$subject2 = "Internal Customer Requirement Superadmin";
+    	send_mail($email_proveedor,$messagep,$subjectp);//proveedor
+    
+    
+    }
+    
+    
+    
+    
+    
+    if ($idioma_miembro == "en"){
+    	$message = "Hi, ".$nombre_usuario."!<br><br>";
+    	$message .= "A new Internal Customer Requirement has been created and is waiting for your approval.";
+    	
+    	$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+    	$subject = "Internal Customer Requirement";
+    	$subject2 = "Internal Customer Requirement Superadmin";
+    	
+    	
+    }
+    if ($idioma_miembro == "es") {
+    	$message = "Hola, ".$nombre_usuario."!<br><br>";
+    	$message .= "Se ha creado un nuevo requerimiento de cliente interno, y esta pendiente tu aprobacion.";
+    	
+    	$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+    	$subject = "nuevo requerimiento de cliente interno";
+    	$subject2 = "Internal Customer Requirement Superadmin";
+    	 
+    	 
+    }
+    $sa = get_email_superadmin();
+   
+    
+    send_mail($sa,$message,$subject2);
+    $send_mail = send_mail($email_usuario,$message,$subject);
+    
+     if(!$send_mail)
     {
         //If mail couldn't be sent output error. Check your PHP email configuration (if it ever happens)
-        $output = json_encode(array('type'=>'error', 'text' => 'Could not send mail! Please check your PHP mail configuration.'));
+      $output = json_encode(array('type'=>'message', 'text' => '-> '. $lang['REQ_SENT']));
         die($output);
     }else{
     	$mi_nombre = get_nombre($cliente);

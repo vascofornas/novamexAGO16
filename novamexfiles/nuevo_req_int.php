@@ -362,7 +362,7 @@ color: white"></div>
 
 	<div class="col-md-6">
 		<div class="form-group">
-                      <label><?php echo $lang['CUSTOMER']?></label>
+                      <label><?php echo $lang['CUSTOMER'] ?></label>
                       <h4><?php echo get_nombre( ($_SESSION['userSession']));?></h4>
                       
                       <input type="hidden" class="form-control" id="cliente" name="cliente" placeholder="Enter ..." disabled value="<?php echo $_SESSION['userSession'];?>">

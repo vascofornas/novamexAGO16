@@ -32,6 +32,23 @@ function add_log ($texto, $usuario, $codigo){
 $stmt->execute();
 	  
 }
+function get_email_superadmin(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop = mysqli_query($mysqli, "SELECT * FROM tb_datos_configuracion")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop))
+	{
+		$email_del_usuario = $row_usua['superadmin_email'];
+	}
+	return $email_del_usuario;
+
+}
 function get_email($usuario){
 	
 	$email_del_usuario = "modestovasco@gmail.com";
