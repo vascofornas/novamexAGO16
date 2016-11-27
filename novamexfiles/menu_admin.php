@@ -116,7 +116,7 @@ else
                         <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
                         <li class="divider"></li>
                         <li><a href="admin_rci.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
-                                 <li><a href="admin_fre.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
+                                 <li><a href="admin_evaluacion_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
                         <li class="divider"></li>
                       <li><a href="admin_tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
                     

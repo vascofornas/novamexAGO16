@@ -424,6 +424,10 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 </div>
 
 <div class="col-md-6">
+         <?php if (get_concepto1_rci($row_Recordset3['rci_revisado']) ==""){
+         
+         }
+        else {?>
          
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #1"?></label>
@@ -447,9 +451,13 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                       </select> 
                       </div>
                     
-
+<?php }?>
  </div>
 <div class="col-md-6">
+         <?php if (get_concepto2_rci($row_Recordset3['rci_revisado']) ==""){
+         
+         }
+        else {?>
          
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #2"?></label>
@@ -472,10 +480,13 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                     
                       </select> </div> 
                     
-
+<?php }?>
  </div>
 <div class="col-md-6">
+         <?php if (get_concepto3_rci($row_Recordset3['rci_revisado']) ==""){
          
+         }
+        else {?>
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #3"?></label>
                        <h4><?php echo get_concepto3_rci($row_Recordset3['rci_revisado']);?></h4>
@@ -485,7 +496,7 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 
  </div>
  <div class="col-md-6">
-         
+       
          <div class="form-group">
                       <label><?php echo $lang['EVALUATE']." (".$row_Recordset3['evaluacion_c3']." pts)"?></label>
                     
@@ -497,10 +508,15 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                     
                       </select> </div> 
                     
-
+<?php }?>
  </div>
+ 
+ 
 <div class="col-md-6">
+         <?php if (get_concepto4_rci($row_Recordset3['rci_revisado']) ==""){
          
+         }
+        else {?>
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #4"?></label>
                        <h4><?php echo get_concepto4_rci($row_Recordset3['rci_revisado']);?></h4>
@@ -521,7 +537,7 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                       <option value="<?php echo get_ee_rci($row_Recordset3['rci_revisado'])?>"><?php echo $lang['ESFUERZO_EXCEPCIONAL']." (". get_ee_rci($row_Recordset3['rci_revisado']).")"?></option>
                     
                       </select> </div> </div>
-                    
+                    <?php }?>
 
  </div>
 

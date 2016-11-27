@@ -1402,6 +1402,26 @@ $suma = 0;
 	return $suma;
 
 }
+function get_puntos_epi_rev($rci){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE rci_revisado = '".$rci."'")
+	or die (mysqli_error($dbh));
+
+	$suma = 0;
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$suma = $suma + $row_usua['evaluacion_c1'];
+		$suma = $suma + $row_usua['evaluacion_c2'];
+		$suma = $suma + $row_usua['evaluacion_c3'];
+		$suma = $suma + $row_usua['evaluacion_c4'];
+	}
+	return $suma;
+
+}
 function get_puntos_tp($rci){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
