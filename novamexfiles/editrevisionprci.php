@@ -13,7 +13,9 @@ if( $_POST ){
  $db_user = "herasosj_novamex";
  $db_pass =  "Papa020432";
  
-
+ // Change the line below to your timezone!
+ date_default_timezone_set('America/Chihuahua');
+ $date = date('Y-m-d H:i:s');
 
 // Create connection
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
@@ -22,10 +24,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-if ($stmt = $conn->prepare("UPDATE tb_revisiones_proyectos SET nombre_revision = ?, fecha_revision = ?
+if ($stmt = $conn->prepare("UPDATE tb_revisiones_proyectos SET nombre_revision = ?, fecha_revision = ?, fecha_evaluacion = ?
 WHERE id_revisiones_proyectos=?"))
 {
-	$stmt->bind_param("ssi", $nombre_revision, $fecha_revision, $id_revisiones_proyectos);
+	$stmt->bind_param("sssi", $nombre_revision, $fecha_revision, $date, $id_revisiones_proyectos);
 	$stmt->execute();
 	$stmt->close();
 }

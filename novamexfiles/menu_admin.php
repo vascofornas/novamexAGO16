@@ -119,7 +119,8 @@ else
                                  <li><a href="admin_evaluacion_proveedor_interno.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
                         <li class="divider"></li>
                       <li><a href="admin_tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
-                    
+                     <li><a href="admin_evaluacion_tareas_proactividad.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
+                       
                       <li class="divider"></li>
                         <li><a href="admin_free_points.php"><?php echo $lang['FREE_POINTS']?></a></li>
                         <li><a href="admin_free_points_assigned.php"><?php echo $lang['GIVEN_POINTS']?></a></li>

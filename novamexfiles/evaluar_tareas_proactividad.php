@@ -32,11 +32,14 @@ if($_POST)
     $c4_anterior = get_c4($eval_id);
 	$suma_anterior = $c1_anterior+$c2_anterior+$c3_anterior+$c4_anterior;
 	
+	date_default_timezone_set('America/Chihuahua');
+	$date = date('Y-m-d H:i:s');
+	
 	$res = $suma_anterior + $suma_nueva;
 
     $mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
     
-    $sql = "UPDATE tb_revisiones_tareas_proactividad SET estado_evaluacion = 1, evaluacion_c1 = '".$eval_c1."', evaluacion_c2 = '".$eval_c2."', evaluacion_c3 = '".$eval_c3."', evaluacion_c4 = '".$eval_c4."'
+    $sql = "UPDATE tb_revisiones_tareas_proactividad SET estado_evaluacion = 1, fecha_evaluacion = '".$date."',evaluacion_c1 = '".$eval_c1."', evaluacion_c2 = '".$eval_c2."', evaluacion_c3 = '".$eval_c3."', evaluacion_c4 = '".$eval_c4."'
     		WHERE id_revisiones_tareas_proactividad = '".$eval_id."'";
     
     if ($mysqli->query($sql) === TRUE) {

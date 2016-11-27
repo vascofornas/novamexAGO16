@@ -424,7 +424,10 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 </div>
 
 <div class="col-md-6">
+         <?php if (get_concepto1_tp($row_Recordset3['tareas_proactividad_revisado']) ==""){
          
+         }
+        else {?>
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #1"?></label>
                        <h4><?php echo get_concepto1_tp($row_Recordset3['tareas_proactividad_revisado']);?></h4>
@@ -447,10 +450,13 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                       </select> 
                       </div>
                     
-
+<?php }?>
  </div>
 <div class="col-md-6">
+       <?php if (get_concepto2_tp($row_Recordset3['tareas_proactividad_revisado']) ==""){
          
+         }
+        else {?>  
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #2"?></label>
                        <h4><?php echo get_concepto2_tp($row_Recordset3['tareas_proactividad_revisado']);?></h4>
@@ -472,10 +478,13 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                     
                       </select> </div> 
                     
-
+<?php }?>
  </div>
 <div class="col-md-6">
+       <?php if (get_concepto3_tp($row_Recordset3['tareas_proactividad_revisado']) ==""){
          
+         }
+        else {?>  
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #3"?></label>
                        <h4><?php echo get_concepto3_tp($row_Recordset3['tareas_proactividad_revisado']);?></h4>
@@ -497,10 +506,13 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                     
                       </select> </div> 
                     
-
+<?php }?>
  </div>
 <div class="col-md-6">
+       <?php if (get_concepto4_tp($row_Recordset3['tareas_proactividad_revisado']) ==""){
          
+         }
+        else {?>  
          <div class="form-group">
                       <label><?php echo $lang['CONCEPT']." #4"?></label>
                        <h4><?php echo get_concepto4_tp($row_Recordset3['tareas_proactividad_revisado']);?></h4>
@@ -522,7 +534,7 @@ while ($row_proyectos = mysqli_fetch_array($loop))
                       
                       </select> </div> </div>
                     
-
+<?php }?>
  </div>
 
 
