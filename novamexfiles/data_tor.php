@@ -174,6 +174,7 @@ if ($job != ''){
           		"leve"    =>  $company['puntos_esfuerzo_leve'],
           		"aceptable"    =>  $company['puntos_esfuerzo_aceptable'],
           		"excepcional"    =>  $company['puntos_esfuerzo_excepcional'],
+          		"nivel_crear"    =>  $company['nivel_crear'],
           		"periodicidad_tor"    =>  $company['periodicidad_tor'],
         		"repeticiones_tor"    => $company['repeticiones_tor']
           );
@@ -198,7 +199,8 @@ if ($job != ''){
    if (isset($_GET['ambito_tor'])) { $query .= "ambito_tor = '" . mysqli_real_escape_string($db_connection, $_GET['ambito_tor']) . "', "; }
    if (isset($_GET['concepto1'])) { $query .= "concepto1 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto1']) . "', "; }
    if (isset($_GET['concepto2'])) { $query .= "concepto2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
-    
+   if (isset($_GET['nivel_crear'])) { $query .= "nivel_crear = '" . mysqli_real_escape_string($db_connection, $_GET['nivel_crear']) . "', "; }
+     
    if (isset($_GET['concepto3'])) { $query .= "concepto3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
     
    if (isset($_GET['concepto4'])) { $query .= "concepto4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
@@ -241,7 +243,8 @@ if ($job != ''){
       if (isset($_GET['concepto2'])) { $query .= "concepto2 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto2']) . "', "; }
       
       if (isset($_GET['concepto3'])) { $query .= "concepto3 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto3']) . "', "; }
-      
+      if (isset($_GET['nivel_crear'])) { $query .= "nivel_crear = '" . mysqli_real_escape_string($db_connection, $_GET['nivel_crear']) . "', "; }
+          
       if (isset($_GET['concepto4'])) { $query .= "concepto4 = '" . mysqli_real_escape_string($db_connection, $_GET['concepto4']) . "', "; }
       if (isset($_GET['sin_puntos'])) { $query .= "sin_puntos = '" . mysqli_real_escape_string($db_connection, $_GET['sin_puntos']) . "', "; }
       if (isset($_GET['leve'])) { $query .= "puntos_esfuerzo_leve = '" . mysqli_real_escape_string($db_connection, $_GET['leve']) . "', "; }

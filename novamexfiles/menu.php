@@ -63,13 +63,18 @@ else
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
+                        <li class="divider"></li>
                          <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
+                         <li class="divider"></li>
                          <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
                     
                          <li><a href="evaluaciones_rci.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
+                           <li class="divider"></li>
                            <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
                             <li><a href="evaluaciones_tp.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
-                    
+                    <li class="divider"></li>
+                      <li><a href="otros_rubros.php"><?php echo $lang['OTHER_PROJECTS']?></a></li>
+                           
                       <li class="divider"></li>
                        <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
                        <li class="divider"></li>

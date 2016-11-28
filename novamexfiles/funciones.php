@@ -255,6 +255,40 @@ function get_team_member($team){
 	return $equipo;
 
 }
+function get_nombre_rubro($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_tipos_otros_rubros WHERE id_tor = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['titulo_tor'];
+	}
+	return $equipo;
+
+}
+function get_ambito_rubro($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_tipos_otros_rubros WHERE id_tor = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['ambito_tor'];
+	}
+	return $equipo;
+
+}
 function send_mail_miembros_equipos_proyecto_editado($equipo,$proyecto,$fecha_inicio,$fecha_final){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');

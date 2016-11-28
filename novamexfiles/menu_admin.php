@@ -53,21 +53,25 @@ else
                 <li ><a href="home.php"><?php echo $lang['MEMBER_HOME']?></a></li>
                   <li class="dropdown">
                 
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
+                         <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $lang['PROFILE']?> <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="miperfil.php"><?php echo $lang['DATOS_PERSONALES']?></a></li>
+                        <li class="divider"></li>
                          <li><a href="misproyectos.php"><?php echo $lang['MY_PROJECTS']?></a></li>
-                             <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
-                        
-                         <li><a href="evaluaciones_rci.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
-                      <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
-                      <li><a href="evaluaciones_tp.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
+                         <li class="divider"></li>
+                         <li><a href="requerimientos_cliente_interno.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
                     
+                         <li><a href="evaluaciones_rci.php"><?php echo $lang['EVALUACION_PROVEEDOR_INTERNO']?></a></li>
+                           <li class="divider"></li>
+                           <li><a href="tareas_proactividad.php"><?php echo $lang['TAREAS_PROACTIVIDAD']?></a></li>
+                            <li><a href="evaluaciones_tp.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
+                    <li class="divider"></li>
+                      <li><a href="otros_rubros.php"><?php echo $lang['OTHER_PROJECTS']?></a></li>
+                           
                       <li class="divider"></li>
                        <li><a href="misreconocimientos.php"><?php echo $lang['MIS_RECONOCIMIENTOS']?></a></li>
-                            <li class="divider"></li>
+                       <li class="divider"></li>
                        <li><a href="tiendas.php"><?php echo $lang['ONLINE_STORES']?></a></li>
-                       
                      
                         
                         
@@ -111,8 +115,9 @@ else
                         <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
                         <li><a href="admin_miembros_equipos.php"><?php echo $lang['TEAM_MEMBERS']?></a></li>
                         <li class="divider"></li>
-                        <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
                         <li><a href="admin_tipo_proyectos.php"><?php echo $lang['PROJECT_TYPES']?></a></li>
+                        <li><a href="admin_proyectos.php"><?php echo $lang['PROJECTS']?></a></li>
+                        
                         <li><a href="admin_evaluacion_proyectos.php"><?php echo $lang['PROJECT_EVAL']?></a></li>
                         <li class="divider"></li>
                         <li><a href="admin_rci.php"><?php echo $lang['REQUERIMIENTOS_CLIENTE_INTERNO']?></a></li>
@@ -122,7 +127,7 @@ else
                      <li><a href="admin_evaluacion_tareas_proactividad.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
                         <li class="divider"></li>
                       <li><a href="admin_tipos_otros_rubros.php"><?php echo $lang['TIPOS_OTROS_RUBROS']?></a></li>
-                     <li><a href="admin_evaluacion_tareas_proactividad.php"><?php echo $lang['EVALUACION_TAREAS']?></a></li>
+                     <li><a href="admin_evaluacion_tareas_proactividad.php"><?php echo $lang['OTHER_PROJECTS']?></a></li>
                        
                       <li class="divider"></li>
                         <li><a href="admin_free_points.php"><?php echo $lang['FREE_POINTS']?></a></li>

@@ -379,6 +379,22 @@ body {
               <input type="text" class="text" name="descripcion_tor" id="descripcion_tor" value="" required>
             </div>
           </div>
+        <div class="input_container">
+             
+                      <label><?php echo $lang['USER_LEVEL']?></label>
+                        <div class="styled-select slate">
+                   <select id="nivel_crear" name="nivel_crear" class="form-control select2" style="width: 100%;">
+                      <option selected="selected" value="Level 1">Level 1</option>
+                      <option value="Level 2">Level 2</option>
+                      <option value="Level 3">Level 3</option>
+                      <option value="Level 4">Level 4</option>
+                      <option value="Level 5">Level 5</option>
+                      </select>  </div>
+	
+       
+       
+       </div>
+       
     
            <div class="input_container">
              

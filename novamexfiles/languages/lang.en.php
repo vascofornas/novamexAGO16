@@ -211,7 +211,7 @@ $lang['MY_PROJECTS'] = 'My Projects';
 $lang['AS_TEAM_MEMBER'] = 'As Team Member';
 $lang['AS_EVALUATOR'] = 'As Evaluator';
 $lang['LANGUAGE'] = 'Default Language';
-
+$lang['AS_EMPLOYEE'] = 'As Employee';
 $lang['PROJECT_TYPES'] = 'Project Types';
 $lang['PROJECT_INFO'] = 'Project Data';
 $lang['PROJECT_NAME'] = 'Project Name';
@@ -381,6 +381,12 @@ $lang['REGION'] = 'Regions';
 $lang['UN'] = 'Bussiness Units';
 
 $lang['TODOS'] = 'All Employees';
+$lang['CREAR_OR'] = 'Add New Assestment';
 
+$lang['SELECT_TOR'] = 'Please, select an Other Categories Type';
+$lang['SELECT_EMPLOYEE'] = 'Please, select an Employee';
+$lang['SELECT_TEAM'] = 'Please, select a Team';
+$lang['SELECT_REGION'] = 'Please, select a Region';
 
+$lang['SELECT_UN'] = 'Please, select a Business Unit';
 ?>

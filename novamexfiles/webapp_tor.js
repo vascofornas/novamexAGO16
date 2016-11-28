@@ -135,6 +135,7 @@ $(document).ready(function(){
     $('#form_company #leve').val('');
     $('#form_company #aceptable').val('');
     $('#form_company #excepcional').val('');
+    $('#form_company #nivel_crear').val('');
     
     $('#form_company #periodicidad_tor').val('');
     $('#form_company #repeticiones_tor').val(''); 
@@ -223,6 +224,7 @@ $(document).ready(function(){
         $('#form_company #aceptable').val(output.data[0].aceptable);
 
         $('#form_company #excepcional').val(output.data[0].excepcional);
+        $('#form_company #nivel_crear').val(output.data[0].nivel_crear);
 
         $('#form_company #periodicidad').val(output.data[0].periodicidad);
 
