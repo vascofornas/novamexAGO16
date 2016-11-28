@@ -9,6 +9,7 @@ $(document).ready(function(){
       { "data": "ambito", },
       { "data": "periodicidad", },
       { "data": "repeticiones", },
+      { "data": "nivel", },
     
 
       

@@ -343,6 +343,7 @@ body {
               <th><?php echo $lang['PERIODICITY']?></th>
              
               <th><?php echo $lang['REPEATS']?></th>
+              <th><?php echo $lang['USER_LEVEL']?></th>
               
          
             

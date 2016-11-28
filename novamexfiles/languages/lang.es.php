@@ -379,4 +379,5 @@ $lang['UN'] = 'Unidades de Negocio';
 $lang['TODOS'] = 'Todos los empleados';
 
 
+
 ?>

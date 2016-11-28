@@ -133,6 +133,7 @@ if ($job != ''){
         		"ambito"    => $scope,
         		"periodicidad"    => $periodo,
         		"repeticiones"    => $company['repeticiones_tor'],
+        		"nivel"    => $company['nivel_crear'],
         		
         		
         
