@@ -364,4 +364,23 @@ $lang['ADD_REGION'] = 'Add New Region';
 $lang['SUPERA_PORCENTAJE'] = 'Percentage cannot be bigger than 100%. Percentage updated.';
 $lang['SETUP'] = 'Setup';
 $lang['EDIT_NEWS'] = 'Edit News';
+$lang['TIPOS_OTROS_RUBROS'] = 'Other Categories Types';
+$lang['CREAR_TIPOS_OTROS_RUBROS'] = 'Add Other Categories Type';
+$lang['TITULO_TIPOS_OTROS_RUBROS'] = 'Title';
+$lang['DESCRIPCION_TIPOS_OTROS_RUBROS'] = 'Description';
+$lang['TITULO_TIPOS_OTROS_RUBROS'] = 'Title';
+$lang['DESCRIPCION_TIPOS_OTROS_RUBROS'] = 'Description';
+$lang['TITULO_TIPOS_OTROS_RUBROS'] = 'Title';
+$lang['SCOPE'] = 'Scope';
+$lang['INDIVIDUAL'] = 'Employees';
+
+$lang['EQUIPO'] = 'Teams';
+
+$lang['REGION'] = 'Regions';
+
+$lang['UN'] = 'Bussiness Units';
+
+$lang['TODOS'] = 'All Employees';
+
+
 ?>

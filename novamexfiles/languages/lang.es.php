@@ -362,5 +362,21 @@ $lang['ADD_REGION'] = 'Nueva Region';
 $lang['SUPERA_PORCENTAJE'] = 'El porcentaje acumulado no puede superar el 100%, porcentaje corregido. ';
 $lang['SETUP'] = 'Configuracion';
 $lang['EDIT_NEWS'] = 'Editar Noticia';
+$lang['TIPOS_OTROS_RUBROS'] = 'Tipos Otros Rubros';
+
+$lang['CREAR_TIPOS_OTROS_RUBROS'] = 'Nuevo Tipo de Otros Rubros';
+$lang['TITULO_TIPOS_OTROS_RUBROS'] = 'Titulo';
+$lang['DESCRIPCION_TIPOS_OTROS_RUBROS'] = 'Descripcion';
+$lang['SCOPE'] = 'Ambito';
+$lang['INDIVIDUAL'] = 'Empleados';
+
+$lang['EQUIPO'] = 'Equipos';
+
+$lang['REGION'] = 'Regiones';
+
+$lang['UN'] = 'Unidades de Negocio';
+
+$lang['TODOS'] = 'Todos los empleados';
+
 
 ?>

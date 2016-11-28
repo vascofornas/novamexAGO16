@@ -95,7 +95,7 @@ textarea {
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_pt.js"></script>
+    <script charset="utf-8" src="webapp_tor.js"></script>
 
  <script>
   $(document).ready(function() {
@@ -320,29 +320,29 @@ body {
 
 
     <p>&nbsp;</p>
-    <h1 align="center"><?php echo $lang['TAREAS_PROACTIVIDAD']?></h1>
+    <h1 align="center"><?php echo $lang['TIPOS_OTROS_RUBROS']?></h1>
     <p align="center">&nbsp;</p>
     <div id="page_container">
 
       
 
       <div align="center">
-        <button type="button" class="button" id="add_company"><?php echo $lang['CREATE_NEW_TA']?></button>
+        <button type="button" class="button" id="add_company"><?php echo $lang['CREAR_TIPOS_OTROS_RUBROS']?></button>
         
       </div>
       <table class="datatable" id="table_companies">
         <thead>
           <tr>
            
-             <th><?php echo $lang['EVALUATOR']?></th>
+             <th><?php echo $lang['TITULO_TIPOS_OTROS_RUBROS']?></th>
           
            
-              <th><?php echo $lang['EVALUATED']?></th>
-              <th><?php echo $lang['TITLE_PT']?></th>
-                <th><?php echo $lang['DESC_PT']?></th>
-              <th><?php echo $lang['START_DATE_REQ']?></th>
+              <th><?php echo $lang['DESCRIPCION_TIPOS_OTROS_RUBROS']?></th>
+              <th><?php echo $lang['SCOPE']?></th>
+               
+              <th><?php echo $lang['PERIODICITY']?></th>
              
-              <th><?php echo $lang['STATUS']?></th>
+              <th><?php echo $lang['REPEATS']?></th>
               
          
             
@@ -361,68 +361,46 @@ body {
       <div class="lightbox_close"></div>
       <div class="lightbox_content">
         
-        <h2><?php echo $lang['ADD_PROJECT']?></h2>
+        <h2><?php echo $lang['CREAR_TIPOS_OTROS_RUBROS']?></h2>
         <form class="form add" id="form_company" data-id="" novalidate>
        
           
-          
-          
-                 <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY nombre_usuario";?>
-        <div class="input_container">
-        <label for="proveedor_tareas_proactividad"><?php echo $lang['EVALUATED']?>: <span class="required">*</span></label>
-            <div class="styled-select slate">
-              <select  id="proveedor_tareas_proactividad" name="proveedor_tareas_proactividad" class="selectpicker"  required>
-           
-           
-        <?php   if ($resultevaluador=mysqli_query($conexion,$sqlevaluador))
-  {
-  // Fetch one and one row
-  while ($rowevaluador=mysqli_fetch_row($resultevaluador))
-    {
-    printf ("%s (%s)\n",$rowevaluador[0],$rowevaluador[1]);
-    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[7].' '.$rowevaluador[8].'</option>';
-    }
-  // Free result set
-  mysqli_free_result($resultevaluador);
-}
-     ?>           
-                
-                
-                
-               
-                
-                
-                
-              </select>
+     
+          <div class="input_container">
+            <label for="titulo_tareas_proactividad"><?php echo $lang['TITULO_TIPOS_OTROS_RUBROS']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="titulo_tor" id="titulo_tor" value="" required>
             </div>
           </div>
           <div class="input_container">
-            <label for="titulo_tareas_proactividad"><?php echo $lang['TITLE_PT']?>: <span class="required">*</span></label>
+            <label for="descripcion_tareas_proactividad"><?php echo $lang['DESCRIPCION_TIPOS_OTROS_RUBROS']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="titulo_tareas_proactividad" id="titulo_tareas_proactividad" value="" required>
+              <input type="text" class="text" name="descripcion_tor" id="descripcion_tor" value="" required>
             </div>
           </div>
-          <div class="input_container">
-            <label for="descripcion_tareas_proactividad"><?php echo $lang['DESC_PT']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="descripcion_tareas_proactividad" id="descripcion_tareas_proactividad" value="" required>
-            </div>
-          </div>
-       
-       
+    
            <div class="input_container">
-            <label for="fecha_inicio_tareas_proactividad"><?php echo $lang['START_DATE']?>: <span class="required">*</span></label>
-            <div class="field_container">
-              <input type="text" class="text" name="fecha_inicio_tareas_proactividad" id="fecha_inicio_tareas_proactividad" value="" required>
-            </div>
-          </div>
+             
+                      <label><?php echo $lang['SCOPE']?></label>
+                        <div class="styled-select slate">
+                   <select id="ambito_tor" name="ambito_tor" class="form-control select2" style="width: 100%;">
+                      <option selected="selected" value="1"><?php echo $lang['INDIVIDUAL']?></option>
+                      <option value="2"><?php echo $lang['EQUIPO']?></option>
+                      <option value="3"><?php echo $lang['REGION']?></option>
+                      <option value="4"><?php echo $lang['UN']?></option>
+                      <option value="5"><?php echo $lang['TODOS']?></option>
+                      </select>  </div>
+	
+       
+       
+       </div>
        
        
            <div class="input_container">
              
                       <label><?php echo $lang['PERIODICITY']?></label>
                         <div class="styled-select slate">
-                   <select id="periodicidad" name="periodicidad" class="form-control select2" style="width: 100%;">
+                   <select id="periodicidad_tor" name="periodicidad_tor" class="form-control select2" style="width: 100%;">
                       <option selected="selected" value="2"><?php echo $lang['EVERYDAY']?></option>
                       <option value="3"><?php echo $lang['EVERY_WEEK']?></option>
                       <option value="4"><?php echo $lang['EVERY_TWO_WEEKS']?></option>
@@ -444,7 +422,7 @@ body {
              
                       <label><?php echo $lang['REPEATS']?></label>
                        <div class="styled-select slate">
-                      <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
+                      <select id="repeticiones_tor" name="repeticiones_tor" class="form-control select2" style="width: 100%;">
                       <option selected="selected">1</option>
                       <option>2</option>
                       <option>3</option>
@@ -499,7 +477,7 @@ body {
 		<div class="input_container">
                       <label><?php echo $lang['NO_ANSWER_POINTS']." # PTS"?></label>
                       <div class="field_container">
-       <input type="text" class="form-control" name="sin_puntuar" id="sin_puntuar"  placeholder="<?php echo $lang['NO_ANSWER_POINTS']." # PTS"?> ...">  </div>
+       <input type="text" class="form-control" name="sin_puntos" id="sin_puntos"  placeholder="<?php echo $lang['NO_ANSWER_POINTS']." # PTS"?> ...">  </div>
 	</div>
 
 	<div class="input_container">
@@ -520,25 +498,11 @@ body {
        <input type="text" class="form-control" name="excepcional" id="excepcional"  placeholder="<?php echo $lang['ESFUERZO_EXCEPCIONAL']." # PTS"?> ...">  </div>
 	</div>
 	
-	   <div class="input_container">
-             
-                      <label><?php echo $lang['STATUS']?></label>
-                       <div class="styled-select slate">
-                      <select id="estado_tareas_proactividad" name="estado_tareas_proactividad" class="form-control select2" style="width: 100%;">
-                      <option selected="selected" value="0"><?php echo $lang['PENDING_APPROVEMENT']?></option>
-                      <option value="1"><?php echo $lang['APPROVED']?></option>
-                      <option value="2"><?php echo $lang['REJECTED']?></option>
-                     
-                      </select>  
-                       </div> 
 	
-       
-       
-       </div>
        
 	
           <div class="button_container">
-            <button type="submit"><?php echo $lang['ADD_PROJECT']?></button>
+            <button type="submit"><?php echo $lang['CREAR_TIPOS_OTROS_RUBROS']?></button>
           </div>
         </form>
         
