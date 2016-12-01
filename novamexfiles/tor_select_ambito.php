@@ -261,11 +261,14 @@ $(document).ready(function() {
 	  
     $("#submit_btn").click(function() { 
 
-    	alert($('select[name=tor]').val());
-
-	var tor  = $('select[name=tor]').val();
+    	var tor = []; 
+    	$('#tor :selected').each(function(i, selected){ 
+    	  tor[i] = $(selected).val(); 
+    	});
+		
+ 	var fecha = document.getElementById("fecha_inicio_proyecto").value;
 	
-	location.href = "tor_select_ambito.php?firstName=" + tor + "&surname=" + tor
+	location.href = "tor_create_revisions.php?rev=" + tor + "&id="+<?php echo $_GET['id']?> + "&pu=" + fecha;
 
 
 
@@ -348,6 +351,13 @@ color: white"></div>
 	
 	 <div class="col-md-6">
          <div class="form-group">
+            <input type="hidden" class="text" name="tipo" id="tipo" value="<?php echo $_GET['id']?>" required>
+            <div class="input_container">
+            <label for="fecha_inicio_proyecto"><?php echo $lang['START_DATE_REQ']?>: <span class="required">*</span></label>
+            <div class="field_container">
+              <input type="text" class="text" name="fecha_inicio_proyecto" id="fecha_inicio_proyecto" value="" required>
+            </div>
+          </div>
 		<?php   
 		
 		
@@ -360,7 +370,7 @@ color: white"></div>
          
          
                     <label><?php echo $lang['SELECT_EMPLOYEE']?></label>
-                    <select class="form-control select2" id="tor" name="tor" style="width: 100%;">
+                    <select class="form-control select2" id="tor" name="tor[]" style="width: 100%;"height: 150pt" multiple>
                                 
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
   {
@@ -384,10 +394,12 @@ color: white"></div>
                 
                     </select>
           </div><!-- /.form-group -->
-           </div>
+          
               
 
+          
 	<div class="row">
+	<br>
 	<div class="col-md-6">
 	<input type="submit" id="submit_btn" class="btn btn-primary btn-lg" value="Enviar" />
 	</div></div>
@@ -405,7 +417,7 @@ color: white"></div>
          
          
                     <label><?php echo $lang['SELECT_TEAM']?></label>
-                    <select class="form-control select2" id="tor" name="tor" style="width: 100%;">
+                    <select class="form-control select2" id="tor" name="tor[]" style="width: 100%;"height: 150pt" multiple>
                                 
         <?php   if ($result=mysqli_query($conexion,$sqlBU))
   {
@@ -449,7 +461,7 @@ color: white"></div>
               
               
                          <label><?php echo $lang['SELECT_REGION']?></label>
-                         <select class="form-control select2" id="tor" name="tor" style="width: 100%;">
+                         <select class="form-control select2" id="tor" name="tor[]" style="width: 100%;"height: 150pt" multiple>
                                      
              <?php   if ($result=mysqli_query($conexion,$sqlBU))
        {
@@ -492,7 +504,7 @@ color: white"></div>
                         
                         
                                    <label><?php echo $lang['SELECT_UN']?></label>
-                                   <select class="form-control select2" id="tor" name="tor" style="width: 100%;">
+                                   <select class="form-control select2" id="tor" name="tor[]" style="width: 100%;"height: 150pt" multiple>
                                                
                        <?php   if ($result=mysqli_query($conexion,$sqlBU))
                  {

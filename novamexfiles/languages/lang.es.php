@@ -380,11 +380,11 @@ $lang['TODOS'] = 'Todos los empleados';
 $lang['CREAR_OR'] = 'Nueva Evaluacion de Otros Rubros';
 $lang['AS_EMPLOYEE'] = 'Como Empleado';
 $lang['SELECT_TOR'] = 'Favor de seleccionar un tipo de Otros Rubros';
-$lang['SELECT_EMPLOYEE'] = 'Favor de seleccionar un Empleado';
-$lang['SELECT_TEAM'] = 'Favor de seleccionar un Equipo';
-$lang['SELECT_REGION'] = 'Favor de seleccionar una Region';
+$lang['SELECT_EMPLOYEE'] = 'Favor de seleccionar un Empleado o varios Empleados';
+$lang['SELECT_TEAM'] = 'Favor de seleccionar un Equipo o varios Equipos';
+$lang['SELECT_REGION'] = 'Favor de seleccionar una Region o varias Regiones';
 
-$lang['SELECT_UN'] = 'Favor de seleccionar una Unidad de Negocio';
+$lang['SELECT_UN'] = 'Favor de seleccionar una Unidad de Negocio o varias Unidades de Negocio';
 
 
 ?>

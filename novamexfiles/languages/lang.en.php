@@ -384,9 +384,9 @@ $lang['TODOS'] = 'All Employees';
 $lang['CREAR_OR'] = 'Add New Assestment';
 
 $lang['SELECT_TOR'] = 'Please, select an Other Categories Type';
-$lang['SELECT_EMPLOYEE'] = 'Please, select an Employee';
-$lang['SELECT_TEAM'] = 'Please, select a Team';
-$lang['SELECT_REGION'] = 'Please, select a Region';
+$lang['SELECT_EMPLOYEE'] = 'Please, select an Employee or multiple Employees';
+$lang['SELECT_TEAM'] = 'Please, select a Team or multiple Teams';
+$lang['SELECT_REGION'] = 'Please, select a Region or multiple Regions';
 
-$lang['SELECT_UN'] = 'Please, select a Business Unit';
+$lang['SELECT_UN'] = 'Please, select a Business Unit or multiple Business Units';
 ?>

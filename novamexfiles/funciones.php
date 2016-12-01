@@ -238,6 +238,40 @@ function get_team($team){
 	return $equipo;
 
 }
+function get_region($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_departamentos WHERE id_departamento = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['nombre_departamento'];
+	}
+	return $equipo;
+
+}
+function get_bu($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_unidades_negocio WHERE id_unidades_negocio = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['unidad_negocio'];
+	}
+	return $equipo;
+
+}
 function get_team_member($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -258,7 +292,7 @@ function get_team_member($team){
 function get_nombre_rubro($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
-
+	mysqli_set_charset($mysqli, 'utf8');
 	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_tipos_otros_rubros WHERE id_tor = '".$team."'")
 	or die (mysqli_error($dbh));
 
@@ -275,7 +309,7 @@ function get_nombre_rubro($team){
 function get_ambito_rubro($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
-
+	mysqli_set_charset($mysqli, 'utf8');
 	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_tipos_otros_rubros WHERE id_tor = '".$team."'")
 	or die (mysqli_error($dbh));
 
