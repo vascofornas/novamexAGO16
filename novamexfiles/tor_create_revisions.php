@@ -407,7 +407,15 @@ color: white"></div>
 		}
 		
 	
-                      ?>
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}   ?>
     
 	</div>
 		
@@ -419,7 +427,7 @@ color: white"></div>
 $id = $_GET['id'];
 
 
-echo "HOLA";
+
 //run the query
 $loop = mysqli_query($conexion, "SELECT * FROM tb_tipos_otros_rubros WHERE id_tor = $id")
     or die (mysqli_error($dbh));
@@ -431,27 +439,32 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_tipos_otros_rubros WHERE id_to
 while ($row_proyectos = mysqli_fetch_array($loop))
 {//while
 	
-echo $row_proyectos['id_tor'];
-
-//periodicidad 1 UNA SOLA VEZ
-$periodicidad = $row_proyectos['periodicidad'];
-$repeticiones = $row_proyectos['repeticiones'];
-$cliente_tareas_proactividad = $row_proyectos['cliente_tareas_proactividad'];
-$proveedor_tareas_proactividad = $row_proyectos['proveedor_tareas_proactividad'];
-$titulo_tareas_proactividad = $row_proyectos['titulo_tareas_proactividad'];
-$fecha_inicio = $row_proyectos['fecha_inicio_tareas_proactividad'];
+		echo "<BR>".$row_proyectos['id_tor'];
+		
+		//periodicidad 1 UNA SOLA VEZ
+		$periodicidad = $row_proyectos['periodicidad_tor'];
+		$repeticiones = $row_proyectos['repeticiones_tor'];
+		$cliente_tor = $_SESSION['userSession'];
+		$titulo_tor = $row_proyectos['titulo_tor'];
+		$fecha_inicio = $_GET['pu'];
+		$ambito = $row_proyectos['ambito_tor'];
+		
+		echo "<br>AMBITO".$ambito;
+		
+		echo "<br>REPETICIONES".$repeticiones;
 
 
 
 
 if ($periodicidad == 2){//if periodicidad EVERY DAY
-	
 	$num = 0;
+	echo "<br>ROTACION PERIODICIDAD=".$num."<br>";
+	echo "<br>NUMERO DE REPETCIONES=".$repeticiones."<br>";
 	$codigo1 = generateRandomString();
 	$newdate = $fecha_inicio;
 	$num_revision = 1;
-	for ($x = 0; $x < $repeticiones; $x++) {//for
-		
+	for ($y = 0; $y < $repeticiones; $y++) {//for
+		echo  "PERODICIDAD =".$periodicidad;
 		if ($num == 0){
 			$newdate = $fecha_inicio;
 		}
@@ -459,21 +472,209 @@ if ($periodicidad == 2){//if periodicidad EVERY DAY
 		$newdate = strtotime ( '1 day' , strtotime ( $newdate ) ) ;
 		$newdate = date ( 'Y-m-j' , $newdate );
 		}
-		$num = $x+1;
-		
-		$sql = "INSERT INTO tb_revisiones_tareas_proactividad (tareas_proactividad_revisado,nombre_revision,titulo_tareas_proactividad,cliente_tareas_proactividad,proveedor_tareas_proactividad,fecha_inicio_tareas_proactividad)
-		VALUES ('$id','Revision # .$num','$titulo_tareas_proactividad','$cliente_tareas_proactividad','$proveedor_tareas_proactividad','$newdate')";
-	
-		if ($conexion->query($sql) === TRUE) {
-			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
-		$last_id = mysqli_insert_id($conexion);
-		}//if 
-		else {
-			echo "Error: " . $sql . "<br>" . $conexion->error;
-		}//else
-		$last_id = mysqli_insert_id($conexion);
+		$num = $y+1;
+		echo "<BR>fuera de loop REPETICION NUM:".$num;
 		
 		
+				// AMBITO =  1
+				
+			if ($ambito == 1){
+						
+						$proveedores =  $_GET['rev'];
+						 
+						$myArray = explode(',', $proveedores);
+						
+						$resultado = count($myArray);
+						 echo "NUMERO DE USUARIOS=".$resultado;
+						 echo "<BR>dentro de loop REPETICION NUM:".$num;
+						for ($x = 0; $x < $resultado; $x++) {
+							echo get_nombre($myArray[$x])." <br>";
+							$proveedor_tor = $myArray[$x];
+						echo "ROTACION AMBITO=".$ambito."->".$x."<br>";
+				$sql = "INSERT INTO tb_revisiones_tor (tor_revisado,nombre_revision,titulo_tor,cliente_tor,proveedor_tor,fecha_inicio_tor)
+				VALUES ('$id','Revision # .$num','$titulo_tor','$cliente_tor','$proveedor_tor','$newdate')";
+			
+				if ($conexion->query($sql) === TRUE) {
+					echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+				$last_id = mysqli_insert_id($conexion);
+				}//if 
+				else {
+					echo "Error: " . $sql . "<br>" . $conexion->error;
+				}//else
+				$last_id = mysqli_insert_id($conexion);
+				
+						}
+						
+			}//fin ambito 1
+
+			if ($ambito == 2){
+			
+				$proveedores =  $_GET['rev'];
+					
+				$myArray = explode(',', $proveedores);
+			
+				$resultado = count($myArray);
+					
+				for ($x = 0; $x < $resultado; $x++) {
+					echo get_nombre($myArray[$x])." <br>";
+					$proveedor_tor = $myArray[$x];
+					echo "ROTACION AMBITO=".$x."<br>";
+					
+					
+					
+					//seleccionar miembros equipo
+					$loop2 = mysqli_query($conexion, "SELECT * FROM tb_miembros_equipos  WHERE equipo = $proveedor_tor")
+					or die (mysqli_error($dbh));
+					
+					echo "PROVEEDRORES=".$proveedores;
+					//display the results
+					
+					while ($row_equipos = mysqli_fetch_array($loop2))
+					{//while
+						echo "<br>Usuario=".$row_equipos['usuario']."<br>";
+						$proveedor = $row_equipos['usuario'];
+									$sql = "INSERT INTO tb_revisiones_tor (tor_revisado,nombre_revision,titulo_tor,cliente_tor,proveedor_tor,fecha_inicio_tor)
+								VALUES ('$id','Revision # .$num','$titulo_tor','$cliente_tor','$proveedor','$newdate')";
+									
+								if ($conexion->query($sql) === TRUE) {
+									echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+									$last_id = mysqli_insert_id($conexion);
+								}//if
+								else {
+									echo "Error: " . $sql . "<br>" . $conexion->error;
+								}//else
+								$last_id = mysqli_insert_id($conexion);
+						
+							}
+				}
+					
+			}//fin ambito 2
+			if ($ambito == 3){
+					
+				$proveedores =  $_GET['rev'];
+					
+				$myArray = explode(',', $proveedores);
+					
+				$resultado = count($myArray);
+					
+				for ($x = 0; $x < $resultado; $x++) {
+					echo get_nombre($myArray[$x])." <br>";
+					$proveedor_tor = $myArray[$x];
+					echo "ROTACION AMBITO=".$x."<br>";
+						
+						echo "ESTOY EN AMBITO 3";
+						
+					//seleccionar miembros equipo
+					$loop3 = mysqli_query($conexion, "SELECT * FROM tbl_users  WHERE region_usuario = $proveedor_tor")
+					or die (mysqli_error($dbh));
+						
+					echo "PROVEEDRORES=".$proveedores;
+					//display the results
+						
+					while ($row_regiones = mysqli_fetch_array($loop3))
+					{//while
+						echo "<br>Usuario=".$row_regiones['userID']."<br>";
+						$proveedor = $row_regiones['userID'];
+						$sql = "INSERT INTO tb_revisiones_tor (tor_revisado,nombre_revision,titulo_tor,cliente_tor,proveedor_tor,fecha_inicio_tor)
+						VALUES ('$id','Revision # .$num','$titulo_tor','$cliente_tor','$proveedor','$newdate')";
+							
+						if ($conexion->query($sql) === TRUE) {
+							echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+							$last_id = mysqli_insert_id($conexion);
+						}//if
+						else {
+							echo "Error: " . $sql . "<br>" . $conexion->error;
+						}//else
+						$last_id = mysqli_insert_id($conexion);
+			
+					}
+				}
+					
+			}//fin ambito 3
+			if ($ambito == 4){
+					
+				$proveedores =  $_GET['rev'];
+					
+				$myArray = explode(',', $proveedores);
+					
+				$resultado = count($myArray);
+					
+				for ($x = 0; $x < $resultado; $x++) {
+					echo get_nombre($myArray[$x])." <br>";
+					$proveedor_tor = $myArray[$x];
+					echo "ROTACION AMBITO=".$x."<br>";
+			
+					echo "ESTOY EN AMBITO 4";
+			
+					//seleccionar miembros equipo
+					$loop3 = mysqli_query($conexion, "SELECT * FROM tbl_users  WHERE unidad_negocio_usuario = $proveedor_tor")
+					or die (mysqli_error($dbh));
+			
+					echo "PROVEEDRORES=".$proveedores;
+					//display the results
+			
+					while ($row_regiones = mysqli_fetch_array($loop3))
+					{//while
+						echo "<br>Usuario=".$row_regiones['userID']."<br>";
+						$proveedor = $row_regiones['userID'];
+						$sql = "INSERT INTO tb_revisiones_tor (tor_revisado,nombre_revision,titulo_tor,cliente_tor,proveedor_tor,fecha_inicio_tor)
+						VALUES ('$id','Revision # .$num','$titulo_tor','$cliente_tor','$proveedor','$newdate')";
+							
+						if ($conexion->query($sql) === TRUE) {
+							echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+							$last_id = mysqli_insert_id($conexion);
+						}//if
+						else {
+							echo "Error: " . $sql . "<br>" . $conexion->error;
+						}//else
+						$last_id = mysqli_insert_id($conexion);
+							
+					}
+				}
+					
+			}//fin ambito 4
+			if ($ambito == 5){
+					
+				$proveedores =  $_GET['rev'];
+					
+				$myArray = explode(',', $proveedores);
+					
+				$resultado = count($myArray);
+					
+				for ($x = 0; $x < $resultado; $x++) {
+					echo get_nombre($myArray[$x])." <br>";
+					$proveedor_tor = $myArray[$x];
+					echo "ROTACION AMBITO=".$x."<br>";
+						
+					echo "ESTOY EN AMBITO 4";
+						
+					//seleccionar miembros equipo
+					$loop3 = mysqli_query($conexion, "SELECT * FROM tbl_users ")
+					or die (mysqli_error($dbh));
+						
+					echo "PROVEEDRORES=".$proveedores;
+					//display the results
+						
+					while ($row_regiones = mysqli_fetch_array($loop3))
+					{//while
+						echo "<br>Usuario=".$row_regiones['userID']."<br>";
+						$proveedor = $row_regiones['userID'];
+						$sql = "INSERT INTO tb_revisiones_tor (tor_revisado,nombre_revision,titulo_tor,cliente_tor,proveedor_tor,fecha_inicio_tor)
+						VALUES ('$id','Revision # .$num','$titulo_tor','$cliente_tor','$proveedor','$newdate')";
+							
+						if ($conexion->query($sql) === TRUE) {
+							echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
+							$last_id = mysqli_insert_id($conexion);
+						}//if
+						else {
+							echo "Error: " . $sql . "<br>" . $conexion->error;
+						}//else
+						$last_id = mysqli_insert_id($conexion);
+							
+					}
+				}
+					
+			}//fin ambito 5
 		}//for
 
 }//FIN PERIODICIDAD EVERY DAY
