@@ -67,13 +67,22 @@ class USER
 			{
 				if($userRow['userStatus']=="Y")
 				{
-					if($userRow['userPass']==md5($upass))
+					if($userRow['userPass']==md5($upass)  AND $userRow['autorizado']==1)
 					{
 						$_SESSION['userSession'] = $userRow['userID'];
 						$_SESSION['userLevel'] = $userRow['userLevel'];
 						$_SESSION['lang'] = $userRow['idioma_usuario'];
 						
 						return true;
+					}
+					if($userRow['autorizado']==0)
+					{
+						header("Location: index.php?error400");
+						$texto = "CUENTA ACTIVADA PERO PENDIENTE DE AUTORIZACION, CONSULTE AL ADMINISTRADOR";
+						$codigo = "400";
+						add_log($texto,$email,$codigo);
+						
+						exit;
 					}
 					else
 					{

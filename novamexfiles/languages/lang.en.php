@@ -33,7 +33,7 @@ $lang['CONFIRM_REGISTRATION']= "Confirm Registration";
 $lang['REGISTRATION_OK']= "
 					<div class='alert alert-success'>
 						<button class='close' data-dismiss='alert'>&times;</button>
-						<strong>Success!</strong>  We've sent an email to $email.
+						<strong>Success!</strong>  We've sent an email to you.
                     Please click on the confirmation link in the email to create your account. 
 			  		</div>
 					";

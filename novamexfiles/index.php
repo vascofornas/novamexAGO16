@@ -107,6 +107,15 @@ div.fixed {
 			</div>
             <?php
 		}
+		if(isset($_GET['error400']))
+		{
+			?>
+		            <div class='alert alert-success'>
+						<button class='close' data-dismiss='alert'>&times;</button>
+						<strong>Not authorized by Administrator. Please contact the Administrator for further details!</strong> 
+					</div>
+		            <?php
+				}
 		?>
         <h2 class="form-signin-heading"><?php echo $lang['SIGN_IN']?></h2><hr />
         <input type="email" class="input-block-level" placeholder="<?php echo $lang['EMAIL']?>" name="txtemail" required />

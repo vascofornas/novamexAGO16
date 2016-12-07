@@ -38,8 +38,8 @@ if(isset($_GET['id']) && isset($_GET['code']))
 			
 			$texto = "ACTIVACION DE USUARIO REALIZADA";
 			$usuario = $_GET['id'];
-				
-			add_log($texto,$id);
+			$codigo = "000";
+			add_log($texto,$id,$codigo);
 				
 		}
 		else
