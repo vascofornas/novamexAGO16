@@ -242,7 +242,7 @@ function subirimagen()
 
           
 	<div class="form-group">
-	<label><?php echo $lang['LANGUAGE']?></label>
+	<label><?php echo $lang['LANGUAGE']." (".$row['idioma_usuario'].")"?></label>
     <select class="form-control" name="idioma_usuario" id="idioma_usuario">
     <option value="en">English</option>
     <option value="es">Spanish</option>

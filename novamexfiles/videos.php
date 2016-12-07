@@ -225,6 +225,12 @@ function subirimagen()
   <div class="row">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/9YDkpjgX9dw" frameborder="0" allowfullscreen></iframe>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/ckfyIrPrZr4" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/_nhjl7rGYGs" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/irj-72yPi5Q" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/7lRJDjZWJQM" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/4kSDrcrza28" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/O8tt-Sc_D4g" frameborder="0" allowfullscreen></iframe>
+  
   </div>
          
 

@@ -1,5 +1,6 @@
 <?php
 include_once 'common.php';
+include_once 'funciones.php';
 
 if( $_POST ){
 	
@@ -46,7 +47,10 @@ if( $_POST ){
     
     	if($stmt->execute())
     	{
-
+    		$texto = "USUARIO MODIFICA SU CONTRASEÑA";
+    		$email = get_email($_SESSION['userSession']);
+    		$codigo = "401";
+    		add_log($texto,$email,$codigo);
     	}
     	else{
     		echo "Query Problem";
