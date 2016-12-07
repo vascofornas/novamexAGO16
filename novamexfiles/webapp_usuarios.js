@@ -14,6 +14,7 @@ $(document).ready(function(){
 	   { "data": "supervisor_usuario", },
 	   { "data": "userLevel", },
      { "data": "userStatus", },
+     { "data": "autorizado", },
 	  
       { "data": "functions",      "sClass": "functions" }
     ],
@@ -133,6 +134,7 @@ $(document).ready(function(){
 	  $('#form_company #userLevel').val('');
 	  $('#form_company #supervisor_usuario').val('');
 	   $('#form_company #userStatus').val('');
+	   $('#form_company #autorizado').val('');
 	   
     show_lightbox();
   });
@@ -208,6 +210,7 @@ $(document).ready(function(){
 		  $('#form_company #supervisor_usuario').val(output.data[0].supervisor_usuario);
 		  $('#form_company #userLevel').val(output.data[0].userLevel);
 		    $('#form_company #userStatus').val(output.data[0].userStatus);
+		    $('#form_company #autorizado').val(output.data[0].autorizado)
         hide_loading_message();
         show_lightbox();
       } else {

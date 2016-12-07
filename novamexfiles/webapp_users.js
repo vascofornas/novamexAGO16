@@ -10,6 +10,7 @@ $(document).ready(function(){
 	   { "data": "userName", },
 	   { "data": "userLevel", },
      { "data": "userStatus", },
+     { "data": "autorizado", },
 	  
       { "data": "functions",      "sClass": "functions" }
     ],

@@ -10,6 +10,7 @@ $lang = array();
 header('Content-Type: text/html; charset=utf-8');
 //SIGN_UP
 $lang['SIGN_UP'] = 'Sign up';
+$lang['AUTHORIZED'] = 'Authorized?';
 $lang['CODIGO'] = 'Code';
 $lang['UNAME'] = 'Username (alias)';
 $lang['FNAME'] = 'First Name';

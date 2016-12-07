@@ -9,6 +9,7 @@ $lang = array();
 
 //SIGN_UP
 $lang['SIGN_UP'] = 'Registrar';
+$lang['AUTHORIZED'] = 'Autorizado?';
 $lang['CODIGO'] = 'Codigo';
 $lang['UNAME'] = 'Nombre de Usuario (alias)';
 $lang['FNAME'] = 'Nombre';

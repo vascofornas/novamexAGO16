@@ -330,6 +330,7 @@ body {
             <th><?php echo $lang['SUPERVISOR']?></th>
             <th><?php echo $lang['USER_LEVEL']?></th>
             <th><?php echo $lang['ACTIVATED']?></th>
+            <th><?php echo $lang['AUTHORIZED']?></th>
             
             <th><?php echo $lang['ACTIONS']?></th>
           </tr>
@@ -476,13 +477,23 @@ body {
             <label for="userStatus"><?php echo $lang['ACTIVATED']?>: <span class="required">*</span></label>
            <div class="styled-select slate">
               <select  id="userStatus" name="userStatus" class="selectpicker" required >
-              <option selected="selected">Y</option>
-              <option>N</option>
+              <option selected="selected" >Y</option>
+              <option >N</option>
               
               </select>
             </div>
           </div>
        
+       <div class="input_container">
+            <label for="userStatus"><?php echo $lang['AUTHORIZED']?>: <span class="required">*</span></label>
+           <div class="styled-select slate">
+              <select  id="autorizado" name="autorizado" class="selectpicker" required >
+              <option selected="selected" value="1">Y</option>
+              <option value="0">N</option>
+              
+              </select>
+            </div>
+          </div>
           <div class="input_container">
             <label for="userLevel"><?php echo $lang['USER_LEVEL']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
