@@ -3,6 +3,7 @@ session_start();
 
 include_once 'common.php';
 require_once 'class.user.php';
+require_once 'funciones.php';
 
 $reg_user = new USER();
 
@@ -50,7 +51,12 @@ if(isset($_POST['btn-signup']))
 			$codigo = "004";
 			add_log($texto,$email,$codigo);
 			
-			
+			$email_superadmin = get_email_superadmin();
+			$subject_super ="USUARIO PENDIENTE DE AUTORIZACION";
+			$message_super = "USUARIO: ".$unombre." ".$uapellidos." SE HA REGISTRADO Y ESTA PENDIENTE DE AUTORIZACION";
+
+			$reg_user->send_mail($email_superadmin,$message_super,$subject_super);
+				
 			$reg_user->send_mail($email,$message,$subject);	
 			$msg = $lang['REGISTRATION_OK'];;
 		}
