@@ -87,7 +87,7 @@ else
                         
                     </ul>
                 </li>
-                
+                 <li ><a href="videos.php">Videos</a></li>
                 <?php  
 				$nivel = $row['userLevel'];
 				if ($nivel == "Level 3" || $nivel == "Level 4" || $nivel == "Level 5") {

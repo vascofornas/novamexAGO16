@@ -98,6 +98,7 @@ else
                     </ul>
                 </li>
               
+                 <li ><a href="videos.php">Videos</a></li>
                 
                 
                 
