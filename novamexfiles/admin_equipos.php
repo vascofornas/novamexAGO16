@@ -364,7 +364,7 @@ body {
             </div>
           </div>
        
-         <?php   $sqlBU="SELECT * FROM tb_unidades_negocio ORDER BY unidad_negocio";?>
+         <?php   $sqlBU="SELECT * FROM tb_unidades_negocio WHERE unidad_negocio_activa = 1 ORDER BY unidad_negocio";?>
            
 <div class="input_container">
         <label for="unidad_negocio_equipo"><?php echo $lang['BUSINESS_UNIT']?>: <span class="required">*</span></label>

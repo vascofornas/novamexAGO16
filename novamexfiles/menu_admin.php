@@ -109,9 +109,10 @@ else
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="admin_welcome_message.php"><?php echo $lang['WELCOME_MESSAGE']?></a></li>
                         <li><a href="admin_news.php"><?php echo $lang['NEWS']?></a></li>
-                        <li class="divider"></li>
+                        
                         <li><a href="admin_bu.php"><?php echo $lang['BUSINESS_UNITS']?></a></li>
                         <li><a href="admin_departamentos.php"><?php echo $lang['REGIONS']?></a></li>
+                        <li class="divider"></li>
                         <li><a href="admin_equipos.php"><?php echo $lang['TEAMS']?></a></li>
                         <li><a href="admin_miembros_equipos.php"><?php echo $lang['TEAM_MEMBERS']?></a></li>
                         <li class="divider"></li>
@@ -134,14 +135,15 @@ else
                         <li><a href="admin_free_points_assigned.php"><?php echo $lang['GIVEN_POINTS']?></a></li>
                         
                         
-                        <li class="divider"></li>
-                          <li><a href="admin_historico.php"><?php echo $lang['HISTORICO']?></a></li>
+                        
                        
                         <li class="divider"></li>
                         <li><a href="admin_usuarios.php"><?php echo $lang['USERS']?></a></li>
                         <li><a href="admin_points.php"><?php echo $lang['POINTS']?></a></li>
                          <li class="divider"></li>
                         <li><a href="admin_config.php"><?php echo $lang['SETUP']?></a></li>
+                        <li class="divider"></li>
+                          <li><a href="admin_historico.php"><?php echo $lang['HISTORICO']?></a></li>
                         
                           
                         
