@@ -626,6 +626,48 @@ function get_puntos_disponibles_totales(){
 			return $equipo;
 
 }
+function get_puntos_disponibles_totales_ahora(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_disponibles ")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			$suma =0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$suma =  $suma +$row_equipos['puntos_conseguidos']-$row_equipos['puntos_canjeados'];
+		
+			}
+			return $suma;
+
+}
+function get_puntos_canjeados_totales_ahora(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_puntos_disponibles ")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			$suma =0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$suma =  $suma +$row_equipos['puntos_canjeados'];
+
+			}
+			return $suma;
+
+}
 function get_puntos_disponibles($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -1450,6 +1492,24 @@ function comprobar_si_existe_puntos_epi($id_limit){
 			return $nim;
 
 }
+function get_puntos_libres_otorgados(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_puntos_libres_otorgados")
+	or die (mysqli_error($dbh));
+
+	$suma = 0;
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$suma = $suma + $row_usua['puntos_otorgados'];
+		
+	}
+	return $suma;
+
+}
 function get_puntos_epi($rci){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -1576,7 +1636,7 @@ function get_rci_created_total($id_limit){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_requerimientos_cliente_interno 
+			FROM tb_requerimientos_cliente_interno WHERE rci_activo = 1 
 			")
 			or die (mysqli_error($dbh));
 
@@ -1620,7 +1680,7 @@ function get_noticias(){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_news 
+			FROM tb_news WHERE active_news = 1
 			")
 			or die (mysqli_error($dbh));
 
@@ -1642,7 +1702,7 @@ function get_un(){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_unidades_negocio
+			FROM tb_unidades_negocio WHERE unidad_negocio_activa = 1
 			")
 			or die (mysqli_error($dbh));
 
@@ -1664,7 +1724,7 @@ function get_equipos(){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_equipos
+			FROM tb_equipos WHERE equipo_activo =1
 			")
 			or die (mysqli_error($dbh));
 
@@ -1686,7 +1746,51 @@ function get_num_proyectos(){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_proyectos
+			FROM tb_proyectos WHERE proyecto_activo = 1
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_num_tareas(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tareas_proactividad WHERE tp_activo = 1
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_num_tipos_otros(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_tipos_otros_rubros WHERE tor_activo = 1
 			")
 			or die (mysqli_error($dbh));
 
@@ -1708,7 +1812,7 @@ function get_departamentos(){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
-			FROM tb_departamentos
+			FROM tb_departamentos WHERE region_activa = 1
 			")
 			or die (mysqli_error($dbh));
 
@@ -1797,6 +1901,28 @@ function get_num_usuarios(){
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT *
 			FROM tbl_users
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$nim = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+					
+				$nim=$nim+1;
+
+			}
+			return $nim;
+
+}
+function get_num_usuarios_autorizados(){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tbl_users WHERE autorizado = 1
 			")
 			or die (mysqli_error($dbh));
 

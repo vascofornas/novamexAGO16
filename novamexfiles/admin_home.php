@@ -11,6 +11,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 
   $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
+  
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
@@ -222,7 +223,7 @@ body {
               <div class="small-box bg-yellow">
                 <div class="inner">
                   <h3><?php echo '<font color="WHITE">'.get_departamentos().'</font>' ?></h3>
-                  <H4><?php echo $lang['DEPARTMENTS']?></h4>
+                  <H4><?php echo $lang['REGIONS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-ios-pie"></i>
@@ -263,7 +264,7 @@ body {
                   <i class="ion ion-stats-bars"></i>
                 </div>
                 <a href="admin_proyectos.php" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -271,14 +272,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-purple">
                 <div class="inner">
-                    <h3><?php echo get_puntos_tp_total()." PTS"?></h3>
+                    <h3><?php echo get_num_tareas()?></h3>
                   <H4><?php echo $lang['TAREAS_PROACTIVIDAD']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-nuclear"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                <a href="admin_tareas_proactividad.php" class="small-box-footer">
+                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -291,14 +292,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                    <h3><?php echo '<font color="WHITE">'.get_puntos_libres_totales()." PTS".'</font>' ?></h3>
+                    <h3><?php echo '<font color="WHITE">'.get_puntos_libres_otorgados()." PTS".'</font>' ?></h3>
                   
                   <H4><?php echo $lang['FREE_POINTS']?></h4>
                 </div>
                 <div class="icon">
                  <i class="ion ion-ribbon-a"></i>
                 </div>
-                <a href="admin_free_points.php" class="small-box-footer">
+                <a href="admin_free_points_assigned.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -307,7 +308,7 @@ body {
               <!-- small box -->
               <div class="small-box bg-red">
                 <div class="inner">
-                   <h3><?php echo '<font color="WHITE">'.get_num_usuarios().'</font>' ?></h3>
+                   <h3><?php echo '<font color="WHITE">'.get_num_usuarios_autorizados().'</font>' ?></h3>
                   <H4><?php echo $lang['USERS']?></h4>
                 </div>
                 <div class="icon">
@@ -328,8 +329,8 @@ body {
                 <div class="icon">
                   <i class="ion ion-happy-outline"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                <a href="admin_evaluacion_proveedor_interno.php" class="small-box-footer">
+                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -342,14 +343,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3><?php echo get_puntos_disponibles_totales()." PTS"?></h3>
+                  <h3><?php echo get_puntos_disponibles_totales_ahora()." PTS"?></h3>
                   
                   <H4><?php echo $lang['POINTS']?></h4>
                 </div>
                 <div class="icon">
                  <i class="ion ion-ribbon-a"></i>
                 </div>
-                <a href="#" class="small-box-footer">
+                <a href="admin_points.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -358,14 +359,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>0</h3>
-                  <H4><?php echo $lang['OTHER_PROJECTS']?></h4>
+                   <h3><?php echo get_num_tipos_otros()?></h3>
+                  <H4><?php echo $lang['TIPOS_OTROS_RUBROS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-filing"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                  <a href="admin_tipos_otros_rubros.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
@@ -373,14 +374,14 @@ body {
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>0</h3>
+                   <h3><?php echo get_puntos_canjeados_totales_ahora()." PTS"?></h3>
                  <H4><?php echo $lang['EXCHANGE_POINTS']?></h4>
                 </div>
                 <div class="icon">
                   <i class="ion ion-ios-cart"></i>
                 </div>
-                <a href="#" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                 <a href="admin_points.php" class="small-box-footer">
+                  <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>
             </div><!-- ./col -->
