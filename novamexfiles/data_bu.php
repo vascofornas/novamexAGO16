@@ -56,7 +56,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_unidades_negocio ORDER BY unidad_negocio";
+    $query = "SELECT * FROM tb_unidades_negocio WHERE unidad_negocio_activa = 1 ORDER BY unidad_negocio";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';

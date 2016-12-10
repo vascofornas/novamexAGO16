@@ -311,8 +311,7 @@ body {
       
 
       <div align="center">
-        <button type="button" class="button" ><a href="admin_nueva_noticia.php"><?php echo $lang['ADD_NEWS']?></a></button>
-        
+        <input type="button" class="btn btn-info" value="<?php echo $lang['ADD_NEWS']?>" onclick="location.href = 'admin_nueva_noticia.php';">
       </div>
       <table class="datatable" id="table_companies">
         <thead>

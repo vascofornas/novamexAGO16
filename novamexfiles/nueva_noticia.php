@@ -24,7 +24,7 @@ if ($_POST['title_news']) {
   
     $user_news = $_POST['user_news'];    
   
-    $link = new PDO("mysql:host=$dbhost;dbname=$dbname",$dbusername,$dbpassword);
+    $link = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8",$dbusername,$dbpassword);
     
     $texto = "USUARIO ESCRIBE UNA NOTICIA";
     $codigo = "010";

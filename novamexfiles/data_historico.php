@@ -64,18 +64,14 @@ if ($job != ''){
       $result  = 'success';
       $message = 'query success';
       while ($company = mysqli_fetch_array($query)){
-        $functions  = '<div class="function_buttons"><ul>';
-        $functions .= '<li class="function_delete"><a data-id="' . $company['id_historico'] . '" data-name="' . $company['texto'] . '"><span>Delete</span></a></li>';
-		
-        $functions .= '</ul></div>';
+       
         $mysql_data[] = array(
          
           "texto"  => $company['texto'],
         		"codigo"  => $company['codigo'],
         		"fecha"  => $company['fecha'],
         		"usuario"  => $company['usuario'],
-        		"ip"  => $company['ip'],
-                    "functions"     => $functions
+        		"ip"  => $company['ip']
         );
       }
     }

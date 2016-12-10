@@ -199,7 +199,7 @@ body {
             <th><?php echo $lang['IP']?></th>
             
             
-            <th><?php echo $lang['ACTIONS']?></th>
+            
           </tr>
         </thead>
         <tbody>

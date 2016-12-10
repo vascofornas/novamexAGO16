@@ -9,10 +9,7 @@ $(document).ready(function(){
       { "data": "codigo",  },
       { "data": "fecha",  },
       { "data": "usuario",  },
-      { "data": "ip",  },
-      
-      
-      { "data": "functions",      "sClass": "functions" }
+      { "data": "ip",  }
     ],
     "aoColumnDefs": [
       { "bSortable": false, "aTargets": [-1] }

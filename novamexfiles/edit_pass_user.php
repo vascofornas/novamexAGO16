@@ -47,7 +47,7 @@ if( $_POST ){
     
     	if($stmt->execute())
     	{
-    		$texto = "USUARIO MODIFICA SU CONTRASEÑA";
+    		$texto = "USUARIO MODIFICA SU PASSWORD";
     		$email = get_email($_SESSION['userSession']);
     		$codigo = "401";
     		add_log($texto,$email,$codigo);

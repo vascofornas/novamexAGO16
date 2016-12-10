@@ -230,7 +230,8 @@ function subirimagen()
   <iframe width="560" height="315" src="https://www.youtube.com/embed/7lRJDjZWJQM" frameborder="0" allowfullscreen></iframe>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/4kSDrcrza28" frameborder="0" allowfullscreen></iframe>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/O8tt-Sc_D4g" frameborder="0" allowfullscreen></iframe>
-  
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/jGBWRk0esec" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/rskAqMJSvx8" frameborder="0" allowfullscreen></iframe>
   </div>
          
 
