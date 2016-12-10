@@ -57,7 +57,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_departamentos LEFT JOIN tb_unidades_negocio ON tb_departamentos.unidad_negocio_departamento = tb_unidades_negocio.id_unidades_negocio ORDER BY nombre_departamento";
+    $query = "SELECT * FROM tb_departamentos LEFT JOIN tb_unidades_negocio ON tb_departamentos.unidad_negocio_departamento = tb_unidades_negocio.id_unidades_negocio WHERE region_activa = 1 ORDER BY nombre_departamento";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
