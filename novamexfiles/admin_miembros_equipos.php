@@ -354,7 +354,7 @@ body {
           
         
        
-         <?php   $sqlUSER="SELECT * FROM tbl_users ORDER BY userName";?>
+         <?php   $sqlUSER="SELECT * FROM tbl_users WHERE autorizado = 1 ORDER BY apellidos_usuario";?>
            
 <div class="input_container">
         <label for="usuario"><?php echo $lang['EMPLOYEE']?>: <span class="required">*</span></label>
@@ -368,7 +368,7 @@ body {
   while ($rowuser=mysqli_fetch_row($resultuser))
     {
     printf ("%s (%s)\n",$rowuser[0],$rowuser[1]);
-    echo '<option value='.$rowuser[0].' selected>'.$rowuser[1].'</option>';
+    echo '<option value='.$rowuser[0].' selected>'.$rowuser[8].', '.$rowuser[7].'</option>';
     }
   // Free result set
   mysqli_free_result($resultuser);
@@ -381,7 +381,7 @@ body {
           </div>
           
           
-         <?php   $sqlBU="SELECT * FROM tb_equipos ORDER BY nombre_equipo";?>
+         <?php   $sqlBU="SELECT * FROM tb_equipos WHERE equipo_activo = 1 ORDER BY nombre_equipo";?>
            
 <div class="input_container">
         <label for="equipo"><?php echo $lang['TEAM']?>: <span class="required">*</span></label>

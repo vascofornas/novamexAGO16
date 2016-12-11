@@ -57,7 +57,10 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_miembros_equipos LEFT JOIN tbl_users ON tb_miembros_equipos.usuario = tbl_users.userID LEFT JOIN tb_equipos ON tb_miembros_equipos.equipo = tb_equipos.id_equipo LEFT JOIN tb_unidades_negocio ON tb_equipos.unidad_negocio_equipo = tb_unidades_negocio.id_unidades_negocio  ORDER BY nombre_equipo";
+    $query = "SELECT * FROM tb_miembros_equipos LEFT JOIN tbl_users ON tb_miembros_equipos.usuario = tbl_users.userID 
+    		LEFT JOIN tb_equipos ON tb_miembros_equipos.equipo = tb_equipos.id_equipo
+    		LEFT JOIN tb_unidades_negocio ON tb_equipos.unidad_negocio_equipo = tb_unidades_negocio.id_unidades_negocio
+    		WHERE miembro_activo = 1 ORDER BY nombre_equipo";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -73,7 +76,7 @@ if ($job != ''){
         $functions .= '</ul></div>';
         $mysql_data[] = array(
          
-          "usuario"  => $company['userName'],
+          "usuario"  => $company['apellidos_usuario'].', '.$company['nombre_usuario'],
           "equipo"    => $company['nombre_equipo'],
         		"unidad_negocio"    => $company['unidad_negocio'],
         "fecha_alta"    => $company['fecha_alta'],
@@ -144,6 +147,9 @@ if ($job != ''){
       	
       }
   	
+      
+     
+      
     $query = "INSERT INTO tb_miembros_equipos SET ";
     if (isset($_GET['usuario'])) { $query .= "usuario = '" . mysqli_real_escape_string($db_connection, $_GET['usuario']) . "', "; }
     if (isset($_GET['equipo'])) { $query .= "equipo = '" . mysqli_real_escape_string($db_connection, $_GET['equipo']) . "', "; }

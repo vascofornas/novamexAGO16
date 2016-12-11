@@ -135,6 +135,7 @@ $(document).ready(function(){
   $(document).on('submit', '#form_company.add', function(e){
     e.preventDefault();
     // Validate form
+  
     if (form_company.valid() == true){
       // Send company information to database
       hide_ipad_keyboard();
