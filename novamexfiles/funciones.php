@@ -383,6 +383,49 @@ function send_mail_miembros_equipos_proyecto_revisiones($equipo,$proyecto){
 
 
 }
+
+function send_mail_miembros_equipos_proyecto_evaluaciones($equipo,$proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_miembros_equipos WHERE equipo = '".$equipo."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$usuario = $row_equipos['usuario'];
+		$idioma_usuario = get_idioma($usuario);
+		$email_usuario = get_email($usuario);
+		$nombre_usuario = get_nombre($usuario);
+
+		if ($idioma_usuario == "en"){
+			$message = "Hi, ".$nombre_usuario."!<br><br>";
+			$message .= "The project  ".$proyecto." has new evaluations.";
+
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "The project  ".$proyecto." has new evaluations.";
+			send_mail($email_usuario,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_usuario."!<br><br>";
+			$message .= "El proyecto  ".$proyecto." tiene nuevas evaluaciones.";
+
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "El proyecto  ".$proyecto." tiene nuevas evaluaciones.";
+			send_mail($email_usuario,$message,$subject);
+
+		}
+
+
+
+
+	}
+
+
+}
 function send_mail_miembros_equipos_proyecto_revisiones_editadas($equipo,$proyecto){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
@@ -873,6 +916,74 @@ function get_puntos_ya_otorgados($id_limit){
 					
 			}
 			return $nim;
+
+}
+
+function get_puntos_ya_otorgados_proyectos($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_evaluaciones_proyectos WHERE proyecto_evaluado = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+				$puntos = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+
+				$puntos = $puntos + $row_equipos['puntos_obtenidos'];
+					
+			}
+			return $puntos;
+
+}
+function get_puntos_proyecto($id_limit){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_proyectos LEFT JOIN tb_tipos_proyectos ON tb_proyectos.tipo_proyecto = tb_tipos_proyectos.id_tipo_proyecto
+			WHERE id_proyecto = '".$id_limit."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$puntos = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+
+				$puntos = $row_equipos['puntos_tipo_proyecto'];
+					
+			}
+			return $puntos;
+
+}
+function get_puntos_revision_proyecto($revision,$proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT *
+			FROM tb_evaluaciones_proyectos WHERE revision_evaluada = '".$revision."' AND proyecto_evaluado = '".$proyecto."'
+			")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			$puntos = 0;
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+
+				$puntos = $row_equipos['puntos_obtenidos'];
+					
+			}
+			return $puntos;
 
 }
 

@@ -254,6 +254,7 @@ $lang['PROJECT_REVISIONS_CREATING'] = 'CREATING REVISIONS FOR THIS PROJECT';
 $lang['#_REVISIONS'] = 'NUMBER OF REVISIONS FOR THIS PROJECT';
 $lang['REVISION_CREATED'] = 'created successfully';
 $lang['FECHA_ERRONEA'] = 'Wrong date, please check Project End Date';
+$lang['ERROR_PUNTOS'] = 'Wrong number of Points, please the Points assigned to the Project';
 
 $lang['CONFIGURAR_REVISIONES'] = 'REVISIONS SETTINGS';
 $lang['PROJECT_REVISIONS_EDITING'] = 'EDITING REVISIONS FOR THIS PROJECT';

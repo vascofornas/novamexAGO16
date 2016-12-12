@@ -332,6 +332,7 @@ $lang['REJECT_REQUEST'] = 'RECHAZAR REQUERIMIENTO';
 $lang['RCI_REVISIONS'] = 'CREAR FASES DE LA EVALUACION A PROVEEDOR INTERNO';
 $lang['FECHA_ERRONEA'] = 'Fecha no correcta, comprueba la fecha final del proyecto';
 $lang['EVALUATION_DATE'] = 'Fecha de la evaluación';
+$lang['ERROR_PUNTOS'] = 'Error en puntos asignados, comprueba los puntos asignados al Proyecto';
 
 $lang['EVALUATION_STATE'] = 'Estado de la evaluación ';
 $lang['NOT_EVALUATED'] = 'Sin evaluar';

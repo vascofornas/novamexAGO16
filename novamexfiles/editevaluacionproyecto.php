@@ -10,9 +10,31 @@ if( $_POST ){
    $id_evaluacion_proyectos = $_POST['id_evaluacion_proyectos'];
 
    $proyecto_evaluado = $_POST['proyecto_evaluado'];
+   $equipo_proyecto = get_equipo_proyecto($proyecto_evaluado);
+   $nombre_proyecto = get_nombre_proyecto($proyecto_evaluado);
    $revision_evaluada = $_POST['revision_evaluada'];
    $codigo_opcion_evaluacion = $_POST['codigo_opcion_evaluacion'];
    
+  $puntos_ya_otorgados = get_puntos_ya_otorgados_proyectos($proyecto_evaluado);
+  $puntos_maximos = get_puntos_proyecto($proyecto_evaluado);
+   $puntos_anteriores = get_puntos_revision_proyecto($revision_evaluada,$proyecto_evaluado);
+  
+  if (($puntos_obtenidos+ $puntos_ya_otorgados-$puntos_anteriores)>$puntos_maximos){
+  	?>
+  	<table class="table table-striped" border="0">
+  	
+  	<tr>
+  	<td colspan="2">
+  	<div class="alert alert-danger">
+  	<strong><?php echo $lang['ERROR_PUNTOS']?>
+  	    	</div>
+  	    </td>
+  	    </tr>
+  	    <?php 
+  }
+  else {
+  	
+ 
    // Change the line below to your timezone!
    date_default_timezone_set('America/Chihuahua');
    $date = date('Y-m-d H:i:s');
@@ -33,6 +55,17 @@ $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
+
+$texto = "USUARIO EVALUA REVISIONES DE  PROYECTO";
+$codigo = "033";
+$miemail = get_email($_SESSION['userSession']);
+add_log($texto,$miemail,$codigo);
+send_mail_miembros_equipos_proyecto_revisiones($equipo_proyecto,$nombre_proyecto);
+//email a superadmin
+$super = get_email_superadmin();
+$pro = $nombre_proyecto;
+$men = "El proyecto ".$pro." tiene nuevas evaluaciones";
+send_mail($super,$men,$pro);
 
 if ($stmt = $conn->prepare("UPDATE tb_evaluaciones_proyectos SET puntos_obtenidos = ?, comentarios_evaluados = ?, 
 		estado_evaluacion = ? , fecha_evaluacion = ?
@@ -206,9 +239,9 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
     <td><strong><?php echo $lang['EVALUATION_COMMENTS']?>: </strong></td>
     <td><?php echo $comentarios_evaluados ?></td>
     </tr>
-
+    
     
     </table>
     <?php
-	
+  }
 }
