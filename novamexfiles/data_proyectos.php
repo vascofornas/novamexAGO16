@@ -59,7 +59,7 @@ if ($job != ''){
     $query = "SELECT * FROM tb_proyectos LEFT JOIN tb_tipos_proyectos ON 
     		tb_proyectos.tipo_proyecto = tb_tipos_proyectos.id_tipo_proyecto LEFT JOIN tb_equipos ON 
     		tb_proyectos.equipo_proyecto =  tb_equipos.id_equipo LEFT JOIN tbl_users ON
-    		tb_proyectos.evaluador_proyecto =  tbl_users.userID";
+    		tb_proyectos.evaluador_proyecto =  tbl_users.userID WHERE proyecto_activo = 1";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';
@@ -85,7 +85,7 @@ if ($job != ''){
           "descripcion_proyecto"    => $company['descripcion_proyecto'],
         		"tipo_proyecto"    => $company['nombre_tipo_proyecto'],
         		"equipo_proyecto"    => $company['nombre_equipo'],
-        		"evaluador_proyecto"    => $company['userName'],
+        		"evaluador_proyecto"    => $company['nombre_usuario'].' '.$company['apellidos_usuario'],
         		
         		"fecha_inicio_proyecto"    => $company['fecha_inicio_proyecto'],
         		"fecha_final_proyecto"    => $company['fecha_final_proyecto'],

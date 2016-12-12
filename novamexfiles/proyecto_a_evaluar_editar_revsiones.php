@@ -524,7 +524,8 @@ while ($row_proyectos = mysqli_fetch_array($loop))
             <div class="field_container">
               <input type="text" class="text" name="nombre_revision" id="nombre_revision" value="<?php echo $row_proyectos['nombre_revision'] ?>" required>
            <input type="hidden" class="text" name="id_revisiones_proyectos" id="id_revisiones_proyectos" value="<?php echo $row_proyectos['id_revisiones_proyectos'] ?>" >
-           
+            <input type="hidden" class="text" name="id_proyecto" id="id_proyecto" value="<?php echo $_GET['id'] ?>" >
+          
             </div>
           </div>	
   	

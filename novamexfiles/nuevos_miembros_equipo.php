@@ -61,103 +61,78 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 //gestion ed la form
 
 
-if (isset($_POST["submit"])) {
-	$titulo = $_POST['titulo'];
-	$texto = $_POST['texto'];
-	$message = $_POST['message'];
+if (isset($_POST["submit"])) {//submit
 	
-	
-	$emisor =  $row['userID'];
-	
-	$leido = "NO";
-	$contestado = "NO";
-	$receptores=$_POST["receptor"]; 
-	$receptores_equipo=$_POST["receptor_equipo"]; 
+	$usuarios=$_POST["usuarios"]; 
+	 
 
-	if (isset($_POST['receptor'])){
-		for ($i=0;$i<count($receptores);$i++)
-		{
-			$query = "INSERT INTO tb_mensajes SET ";
-			if (isset($_POST['titulo'])) { $query .= "titulo = '" . mysqli_real_escape_string($conexion, $_POST['titulo']) . "', "; }
-			if (isset($_POST['texto'])) { $query .= "texto = '" . mysqli_real_escape_string($conexion, $_POST['texto']) . "', "; }
-			if (isset($_POST['receptor'])) { $query .= "receptor = '" . $receptores[$i] . "', "; }
+	if (isset($_POST['usuarios'])){//usuarios
+		for ($i=0;$i<count($usuarios);$i++)
+		{//for
+			$query = "INSERT INTO tb_miembros_equipos SET ";
+			if (isset($_POST['equipo'])) { $query .= "equipo = '" . mysqli_real_escape_string($conexion, $_POST['equipo']) . "', "; }
+			if (isset($_POST['fecha_alta'])) { $query .= "fecha_alta = '" . mysqli_real_escape_string($conexion, $_POST['fecha_alta']) . "', "; }
+			if (isset($_POST['fecha_baja'])) { $query .= "fecha_baja = '" . mysqli_real_escape_string($conexion, $_POST['fecha_baja']) . "', "; }
+			
+		
 			 
-			 
-			$query .= "emisor = '" . $row['userID'] . "'";
+			$query .= "usuario = '" . $usuarios[$i] . "'";
 			
 			
 			$query = mysqli_query($conexion, $query);
-			if (!$query){
+			if (!$query){//query
 				$result  = 'error';
 				$message = 'query error';
-			} else {
+			
+			} 
+			else 
+			{
 				$result  = 'success';
 				$message = 'query success';
-			}
-		}
-	}
-	if (isset($_POST['receptor_equipo'])){
-	
-		
-
-	for ($j=0;$j<count($receptores_equipo);$j++)
-	{
-		
-		$team = $receptores_equipo[$j];
-	
-	
-	$sql = "SELECT usuario FROM tb_miembros_equipos WHERE equipo = '".$team."'";
-$result = $conexion->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    
-    while($row1 = $result->fetch_assoc()) {
-    	$user =  $row1['usuario'];
-    	
-    	mysqli_query($conexion,"INSERT INTO tb_mensajes (`titulo`, `texto`, `emisor`, `receptor`)
-VALUES ('$titulo','$texto', '$emisor', '$user')")
-    	or die(mysqli_error($link));
-    }
-} else {
-
-}
-		
-		
-		
-		
-		
-		
-			
-		
-		
+				// Add company
+				//add log
+				$texto = "USUARIO CREA NUEVO MIEMBRO DE EQUIPO";
+				$codigo = "022";
+				$miemail = get_email($_SESSION['userSession']);
+				add_log($texto,$miemail,$codigo);
 				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	}
-		
-	}
+				$usuario_miembro = $usuarios[$i];
+				$email_usuario = get_email($usuario_miembro);
+				$idioma_miembro =  get_idioma($usuario_miembro);
+				$nombre_usuario = get_nombre($usuario_miembro);
+				$equipo = get_team($_POST['equipo']);
+				if ($idioma_miembro == "en"){
+					$message = "Hi, ".$nombre_usuario."!<br><br>";
+					$message .= "You have been assigned to Team: ".$equipo.".";
+					$message .= "<br>from ".$_POST['fecha_alta']." to ".$_POST['fecha_baja'];
+					$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+					$subject = "You have been assigned to Team ".$equipo;
+					send_mail($email_usuario,$message,$subject);
+				}
+				else {
+					$message = "Hola, ".$nombre_usuario."!<br><br>";
+					$message .= "Te han asignado al equipo: ".$equipo.".";
+					$message .= "<br>desde el ".$_POST['fecha_alta']." al ".$_POST['fecha_baja'];
+					$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+					$subject = "Te han asignado al equipo ".$equipo;
+					send_mail($email_usuario,$message,$subject);
+				
+				}
+				 
+				header("Location: admin_miembros_equipos.php" );
+			}
+		}//for
+	}//usuarios
 	
 	
 	
+}	//submit
 	
-	header("Location: mensajes.php" );
 	
-	}
-	else {
-		
-	}
 
 	
 
-	
+
 	
 
 
@@ -189,14 +164,14 @@ div.logo {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oxygen:400,700">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="layout.css">
     <script charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script charset="utf-8" src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script charset="utf-8" src="//cdn.jsdelivr.net/jquery.validation/1.13.1/jquery.validate.min.js"></script>
-    <script charset="utf-8" src="webapp_mensajes.js"></script>
    
 
 
@@ -280,19 +255,30 @@ body {
     animation: blink normal 2s infinite ease-in-out; /* Opera and prob css3 final iteration */
 }
 </style>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<script type="text/javascript">
-$(".js-example-basic-multiple").select2();
-</script>
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
-//<![CDATA[
-        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-  //]]>
+
+
+<script>
+  $(document).ready(function() {
+
+    var date = new Date();
+    var currentMonth = date.getMonth();
+    var currentDate = date.getDate();
+    var currentYear = date.getFullYear();
+
+    $('#fecha_alta').datepicker({
+        minDate: new Date(currentYear, currentMonth, currentDate),
+        dateFormat: 'yy-mm-dd'
+    });;
+    $('#fecha_baja').datepicker({
+        minDate: new Date(currentYear, currentMonth, currentDate),
+        dateFormat: 'yy-mm-dd'
+    });;
+  });
   </script>
+
 </head> 
 <body>
-<?php include 'menu.php'?>
+<?php include 'menu_admin.php'?>
 
 <div class="container">
 	<div class="row">
@@ -306,15 +292,15 @@ $(".js-example-basic-multiple").select2();
     <div class="container">
   		<div class="row">
   			<div class="col-md-6 col-md-offset-3">
-  				<h1 class="page-header text-center"><?php echo $lang['ADD_MESSAGE']?></h1>
-				<form class="form-horizontal" role="form" method="post" action="nuevo_mensaje.php">
+  				<h1 class="page-header text-center"><?php echo $lang['ADD_TEAM_MEMBER_MULTIPLE']?></h1>
+				<form class="form-horizontal" role="form" method="post" action="nuevos_miembros_equipo.php">
 				
 							<div class="form-group">
-						   <?php   $sqlBU="SELECT * FROM tbl_users ORDER BY apellidos_usuario";?>
+						   <?php   $sqlBU="SELECT * FROM tbl_users WHERE autorizado = 1 ORDER BY apellidos_usuario";?>
 						   
-        <label for="expertise" class="col-sm-2 control-label">Para (seleccionar uno o varios destinatarios):</label>
+        <label for="expertise" class="col-sm-2 control-label"><?php echo $lang['TEAM_MEMBERS']?></label>
         <div class="col-sm-10">
-        <select class="form-control inputstl" id="receptor" name="receptor[]" multiple>
+        <select class="form-control inputstl" id="usuarios" name="usuarios[]" multiple>
 
          <?php   if ($resultusers=mysqli_query($conexion,$sqlBU))
   {
@@ -334,11 +320,11 @@ $(".js-example-basic-multiple").select2();
                   
 						</div>
 											<div class="form-group">
-						   <?php   $sqlTE="SELECT * FROM tb_equipos ORDER BY nombre_equipo";?>
+						   <?php   $sqlTE="SELECT * FROM tb_equipos WHERE equipo_activo = 1 ORDER BY nombre_equipo";?>
 						   
-        <label for="expertise" class="col-sm-2 control-label">Para (seleccionar uno o varios equipos):</label>
+        <label for="expertise" class="col-sm-2 control-label"><?php echo $lang['TEAM']?></label>
         <div class="col-sm-10">
-        <select class="form-control inputstl" id="receptor_equipo" name="receptor_equipo[]" multiple>
+        <select class="form-control inputstl" id="equipo" name="equipo" required>
        
          <?php   if ($resultteams=mysqli_query($conexion,$sqlTE))
   {
@@ -358,21 +344,20 @@ $(".js-example-basic-multiple").select2();
                   
 						</div>
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">Titulo</label>
+						<label for="name" class="col-sm-2 control-label"><?php echo $lang['START_DATE']?></label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" value="<?php echo htmlspecialchars($_POST['titulo']); ?>">
-							<?php echo "<p class='text-danger'>$errTitulo</p>";?>
+							<input type="text" class="form-control" id="fecha_alta" name="fecha_alta" placeholder="<?php echo $lang['START_DATE']?>" >
+						
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-sm-2 control-label"><?php echo $lang['END_DATE']?></label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="fecha_baja" name="fecha_baja" placeholder="<?php echo $lang['END_DATE']?>" >
+							
 						</div>
 					</div>
 				
-					<div class="form-group">
-						<label for="message" class="col-sm-2 control-label">Mensaje</label>
-						<div class="col-sm-10">
-							<textarea class="form-control" rows="10" name="texto" id="texto"  placeholder="Texto"><?php echo htmlspecialchars($_POST['texto']);?></textarea>
-							<?php echo "<p class='text-danger'>$errTexto</p>";?>
-						</div>
-					</div>
-					
 		
 					
 					
@@ -381,7 +366,7 @@ $(".js-example-basic-multiple").select2();
 					
 					<div class="form-group">
 						<div class="col-sm-10 col-sm-offset-2">
-							<input id="submit" name="submit" type="submit" value="Enviar Mensaje" class="btn btn-primary">
+							<input id="submit" name="submit" type="submit" value="<?php echo $lang['GO']?>" class="btn btn-primary">
 						</div>
 					</div>
 					

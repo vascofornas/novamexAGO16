@@ -56,7 +56,7 @@ if ($job != ''){
   if ($job == 'get_companies'){
     
     // Get companies
-    $query = "SELECT * FROM tb_tipos_proyectos";
+    $query = "SELECT * FROM tb_tipos_proyectos WHERE tipo_proyecto_activo = 1";
     $query = mysqli_query($db_connection, $query);
     if (!$query){
       $result  = 'error';

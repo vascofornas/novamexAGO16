@@ -314,7 +314,19 @@ if ($row_proyectos['porcentaje1'] >0){//if porcentaje1
 		VALUES ('$last_id','$porcentajetipo1','$opcion1','$id','$puntostotales1',0,'$num_revisiones1','$codigo1')";
 		
 		if ($conexion->query($sql1) === TRUE) {
-		
+			
+			
+			
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if 
 		else {
 			echo "Error: " . $sql1 . "<br>" . $conexion->error;
@@ -352,6 +364,16 @@ if ($row_proyectos['porcentaje2'] >0){//if porcentaje2
 		VALUES ('$last_id','$porcentajetipo2','$opcion2','$id','$puntostotales2',0,'$num_revisiones2','$codigo2')";
 
 		if ($conexion->query($sql2) === TRUE) {
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 
 		}//if
 		else {
@@ -390,6 +412,16 @@ if ($row_proyectos['porcentaje3'] >0){//if porcentaje3
 		VALUES ('$last_id','$porcentajetipo3','$opcion3','$id','$puntostotales3',0,'$num_revisiones3','$codigo3')";
 
 		if ($conexion->query($sql3) === TRUE) {
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 
 		}//if
 		else {
@@ -427,7 +459,16 @@ if ($row_proyectos['porcentaje4'] >0){//if porcentaje4
 		VALUES ('$last_id','$porcentajetipo4','$opcion4','$id','$puntostotales4',0,'$num_revisiones4','$codigo4')";
 
 		if ($conexion->query($sql4) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql4 . "<br>" . $conexion->error;
@@ -464,7 +505,16 @@ if ($row_proyectos['porcentaje5'] >0){//if porcentaje5
 		VALUES ('$last_id','$porcentajetipo5','$opcion5','$id','$puntostotales5',0,'$num_revisiones5','$codigo5')";
 
 		if ($conexion->query($sql5) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql5 . "<br>" . $conexion->error;
@@ -502,7 +552,16 @@ if ($row_proyectos['porcentaje6'] >0){//if porcentaje6
 		VALUES ('$last_id','$porcentajetipo6','$opcion6','$id','$puntostotales6',0,'$num_revisiones6','$codigo6')";
 
 		if ($conexion->query($sql6) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql6 . "<br>" . $conexion->error;
@@ -539,7 +598,16 @@ if ($row_proyectos['porcentaje7'] >0){//if porcentaje7
 		VALUES ('$last_id','$porcentajetipo7','$opcion7','$id','$puntostotales7',0,'$num_revisiones7','$codigo7')";
 
 		if ($conexion->query($sql7) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql7 . "<br>" . $conexion->error;
@@ -576,7 +644,16 @@ if ($row_proyectos['porcentaje8'] >0){//if porcentaje8
 		VALUES ('$last_id','$porcentajetipo8','$opcion8','$id','$puntostotales8',0,'$num_revisiones8','$codigo8')";
 
 		if ($conexion->query($sql8) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql8 . "<br>" . $conexion->error;
@@ -613,7 +690,16 @@ if ($row_proyectos['porcentaje9'] >0){//if porcentaje9
 		VALUES ('$last_id','$porcentajetipo9','$opcion9','$id','$puntostotales9',0,'$num_revisiones9','$codigo9')";
 
 		if ($conexion->query($sql9) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql9 . "<br>" . $conexion->error;
@@ -650,7 +736,16 @@ if ($row_proyectos['porcentaje10'] >0){//if porcentaje10
 		VALUES ('$last_id','$porcentajetipo10','$opcion10','$id','$puntostotales10',0,'$num_revisiones10','$codigo10')";
 
 		if ($conexion->query($sql10) === TRUE) {
-
+			$texto = "USUARIO CREA REVISIONES DE  PROYECTO";
+			$codigo = "031";
+			$miemail = get_email($_SESSION['userSession']);
+			add_log($texto,$miemail,$codigo);
+			send_mail_miembros_equipos_proyecto_revisiones($row_Recordset3['equipo_proyecto'],$row_Recordset3['nombre_proyecto']);
+			//email a superadmin
+			$super = get_email_superadmin();
+			$pro = $row_Recordset3['nombre_proyecto'];
+			$men = "El proyecto ".$pro." tiene nuevas revisiones";
+			send_mail($super,$men,$pro);
 		}//if
 		else {
 			echo "Error: " . $sql10 . "<br>" . $conexion->error;

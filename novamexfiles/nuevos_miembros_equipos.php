@@ -306,7 +306,7 @@ $(".js-example-basic-multiple").select2();
     <div class="container">
   		<div class="row">
   			<div class="col-md-6 col-md-offset-3">
-  				<h1 class="page-header text-center"><?php echo $lang['ADD_MESSAGE']?></h1>
+  				<h1 class="page-header text-center"><?php echo $lang['ADD_NEW_MEMBER']?></h1>
 				<form class="form-horizontal" role="form" method="post" action="nuevo_mensaje.php">
 				
 							<div class="form-group">

@@ -139,6 +139,7 @@ $lang['TEAM_NAME'] = 'Team Name';
 
 //MIEMBROS EQUIPO
 $lang['ADD_TEAM_MEMBER'] = 'Add Team Member';
+$lang['ADD_TEAM_MEMBER_MULTIPLE'] = 'Add Multiple Team Members';
 $lang['EMPLOYEE'] = 'Employee';
 $lang['START_DATE'] = 'Start Date';
 $lang['END_DATE'] = 'End Date';
@@ -252,6 +253,7 @@ $lang['NO_REVISIONS'] = 'CREATE REVISIONS FOR THIS PROJECT';
 $lang['PROJECT_REVISIONS_CREATING'] = 'CREATING REVISIONS FOR THIS PROJECT';
 $lang['#_REVISIONS'] = 'NUMBER OF REVISIONS FOR THIS PROJECT';
 $lang['REVISION_CREATED'] = 'created successfully';
+$lang['FECHA_ERRONEA'] = 'Wrong date, please check Project End Date';
 
 $lang['CONFIGURAR_REVISIONES'] = 'REVISIONS SETTINGS';
 $lang['PROJECT_REVISIONS_EDITING'] = 'EDITING REVISIONS FOR THIS PROJECT';

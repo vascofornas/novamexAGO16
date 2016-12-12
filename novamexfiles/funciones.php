@@ -49,6 +49,23 @@ function get_email_superadmin(){
 	return $email_del_usuario;
 
 }
+function get_fecha_fin_proyecto($id){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop = mysqli_query($mysqli, "SELECT * FROM tb_proyectos WHERE id_proyecto = $id")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop))
+	{
+		$fechafin = $row_usua['fecha_final_proyecto'];
+	}
+	return $fechafin;
+
+}
 function get_email($usuario){
 	
 	$email_del_usuario = "modestovasco@gmail.com";
@@ -323,6 +340,92 @@ function get_ambito_rubro($team){
 	return $equipo;
 
 }
+
+function send_mail_miembros_equipos_proyecto_revisiones($equipo,$proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_miembros_equipos WHERE equipo = '".$equipo."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$usuario = $row_equipos['usuario'];
+		$idioma_usuario = get_idioma($usuario);
+		$email_usuario = get_email($usuario);
+		$nombre_usuario = get_nombre($usuario);
+
+		if ($idioma_usuario == "en"){
+			$message = "Hi, ".$nombre_usuario."!<br><br>";
+			$message .= "The project  ".$proyecto." has new revisions.";
+
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "The project  ".$proyecto." has new revisions.";
+			send_mail($email_usuario,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_usuario."!<br><br>";
+			$message .= "El proyecto  ".$proyecto." tiene nuevas revisiones.";
+				
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "El proyecto  ".$proyecto." tiene nuevas revisiones.";
+			send_mail($email_usuario,$message,$subject);
+
+		}
+
+
+
+
+	}
+
+
+}
+function send_mail_miembros_equipos_proyecto_revisiones_editadas($equipo,$proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_miembros_equipos WHERE equipo = '".$equipo."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$usuario = $row_equipos['usuario'];
+		$idioma_usuario = get_idioma($usuario);
+		$email_usuario = get_email($usuario);
+		$nombre_usuario = get_nombre($usuario);
+
+		if ($idioma_usuario == "en"){
+			$message = "Hi, ".$nombre_usuario."!<br><br>";
+			$message .= "The project  ".$proyecto." has edited revisions.";
+
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "The project  ".$proyecto." has edited revisions.";
+			send_mail($email_usuario,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_usuario."!<br><br>";
+			$message .= "El proyecto  ".$proyecto." tiene revisiones editadas.";
+
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "El proyecto  ".$proyecto." tiene revisiones editadas.";
+			send_mail($email_usuario,$message,$subject);
+
+		}
+
+
+
+
+	}
+
+
+}
+
 function send_mail_miembros_equipos_proyecto_editado($equipo,$proyecto,$fecha_inicio,$fecha_final){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');

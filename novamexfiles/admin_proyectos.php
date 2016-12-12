@@ -378,7 +378,7 @@ body {
             </div>
           </div>
        
-         <?php   $sqltipo="SELECT * FROM tb_tipos_proyectos ORDER BY nombre_tipo_proyecto";?>
+         <?php   $sqltipo="SELECT * FROM tb_tipos_proyectos WHERE tipo_proyecto_activo = 1 ORDER BY nombre_tipo_proyecto";?>
            
 <div class="input_container">
         <label for="tipo_proyecto"><?php echo $lang['PROJECT_TYPE']?>: <span class="required">*</span></label>
@@ -425,7 +425,9 @@ body {
           </div>
        
        
-                <?php   $sqlteam="SELECT * FROM tb_equipos ORDER BY nombre_equipo";?>
+                <?php   $sqlteam="SELECT * FROM tb_equipos 
+		LEFT JOIN tb_unidades_negocio ON tb_equipos.unidad_negocio_equipo = tb_unidades_negocio.id_unidades_negocio
+		WHERE equipo_activo = 1  ORDER BY nombre_equipo";?>
            
 <div class="input_container">
         <label for="equipo_proyecto"><?php echo $lang['TEAM']?>: <span class="required">*</span></label>
@@ -439,7 +441,7 @@ body {
   while ($rowteam=mysqli_fetch_row($resultteam))
     {
     printf ("%s (%s)\n",$rowteam[0],$rowteam[1]);
-    echo '<option value='.$rowteam[0].' selected>'.$rowteam[1].'</option>';
+    echo '<option value='.$rowteam[0].' selected>'.$rowteam[1].' / '.$rowteam[6].'</option>';
     }
   // Free result set
   mysqli_free_result($resultteam);
@@ -458,7 +460,7 @@ body {
        
        
        
-        <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY userName";?>
+        <?php   $sqlevaluador="SELECT * FROM tbl_users WHERE autorizado = 1 ORDER BY apellidos_usuario";?>
            
 <div class="input_container">
         <label for="evaluador_proyecto"><?php echo $lang['EVALUATOR']?>: <span class="required">*</span></label>
@@ -472,7 +474,7 @@ body {
   while ($rowevaluador=mysqli_fetch_row($resultevaluador))
     {
     printf ("%s (%s)\n",$rowevaluador[0],$rowevaluador[1]);
-    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[1].'</option>';
+    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[8].', '.$rowevaluador[7].'</option>';
     }
   // Free result set
   mysqli_free_result($resultevaluador);

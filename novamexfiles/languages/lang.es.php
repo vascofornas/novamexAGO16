@@ -142,6 +142,7 @@ $lang['TEAM_NAME'] = 'Nombre del Equipo';
 
 //MIEMBROS EQUIPO
 $lang['ADD_TEAM_MEMBER'] = 'Nuevo Miembro de Equipos';
+$lang['ADD_TEAM_MEMBER_MULTIPLE'] = 'Nuevos Miembros de Equipos, Selección múltiple';
 $lang['EMPLOYEE'] = 'Empleado';
 $lang['START_DATE'] = 'Fecha de Alta';
 $lang['END_DATE'] = 'Fecha de Baja';
@@ -329,7 +330,7 @@ $lang['APPROVED_SUPERADMIN'] = 'Autorizado por Super Administrador?';
 $lang['AUTHORIZE_REQUEST'] = 'AUTORIZAR REQUERIMIENTO';
 $lang['REJECT_REQUEST'] = 'RECHAZAR REQUERIMIENTO';
 $lang['RCI_REVISIONS'] = 'CREAR FASES DE LA EVALUACION A PROVEEDOR INTERNO';
-$lang['NO_REVISIONS'] = 'CREATE PHASES FOR THIS INTERNAL CUSTOMER REQUIREMENT';
+$lang['FECHA_ERRONEA'] = 'Fecha no correcta, comprueba la fecha final del proyecto';
 $lang['EVALUATION_DATE'] = 'Fecha de la evaluación';
 
 $lang['EVALUATION_STATE'] = 'Estado de la evaluación ';

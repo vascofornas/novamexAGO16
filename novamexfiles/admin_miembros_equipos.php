@@ -319,7 +319,14 @@ body {
       
 
       <div align="center">
+       <div align="center">
+        <input type="button" class="btn btn-info" value="<?php echo $lang['ADD_TEAM_MEMBER_MULTIPLE']?>" onclick="location.href = 'nuevos_miembros_equipo.php';">
+    
+      </div>
+       <br>
         <button type="button" class="button" id="add_company"><?php echo $lang['ADD_TEAM_MEMBER']?></button>
+        
+    
         
       </div>
       <table class="datatable" id="table_companies">
@@ -381,7 +388,9 @@ body {
           </div>
           
           
-         <?php   $sqlBU="SELECT * FROM tb_equipos WHERE equipo_activo = 1 ORDER BY nombre_equipo";?>
+         <?php   $sqlBU="SELECT * FROM tb_equipos 
+		LEFT JOIN tb_unidades_negocio ON tb_equipos.unidad_negocio_equipo=tb_unidades_negocio.id_unidades_negocio 
+		WHERE equipo_activo = 1 ORDER BY nombre_equipo";?>
            
 <div class="input_container">
         <label for="equipo"><?php echo $lang['TEAM']?>: <span class="required">*</span></label>
@@ -400,7 +409,7 @@ body {
     	
     	
     printf ("%s (%s)\n",$rowBU[0],$rowBU[1]);
-    echo '<option value='.$rowBU[0].' selected>'.$rowBU[1].'</option>';
+    echo '<option value='.$rowBU[0].' selected>'.$rowBU[1].' / '.$rowBU[6].'</option>';
     }
   // Free result set
   mysqli_free_result($resultBU);
