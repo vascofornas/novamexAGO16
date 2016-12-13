@@ -2,6 +2,7 @@
 
 header('Content-type: text/html; charset=utf-8' , true );
 include_once 'common.php';
+include_once 'funciones.php';
 
 require_once('Connections/conexion.php');
 if (!function_exists("GetSQLValueString")) {
@@ -259,7 +260,39 @@ function subirimagen()
 	<input type="hidden" class="form-control" name="proyecto_entregable" id="proyecto_entregable" placeholder="<?php echo $lang['LAST_NAME']?>" value ="<?php echo $_GET['id']?>"required />
 	
 	</div>
-			
+	
+                <?php  
+                $proyecto = $_GET['id'];
+                $sqlteam="SELECT * FROM tb_revisiones_proyectos
+		WHERE proyecto_revisado = '".$proyecto."'  ORDER BY id_revisiones_proyectos";?>
+			<div class="input_container">
+        <label for="equipo_proyecto"><?php echo $lang['PROJECT_REVISIONS']?>: <span class="required">*</span></label>
+            <div class="styled-select slate">
+              <select  id="revision_entregable" name="revision_entregable" class="selectpicker"  required>
+           
+           
+        <?php   if ($resultteam=mysqli_query($conexion,$sqlteam))
+  {
+  // Fetch one and one row
+  while ($rowteam=mysqli_fetch_row($resultteam))
+    {
+    printf ("%s (%s)\n",$rowteam[0],$rowteam[1]);
+    echo '<option value='.$rowteam[0].' selected>'.$rowteam[2].' / '.$rowteam[4].'</option>';
+    }
+  // Free result set
+  mysqli_free_result($resultteam);
+}
+     ?>           
+                
+                
+                
+               
+                
+                
+                
+              </select>
+            </div>
+          </div>
 				
  <div class="form-group" id="imagenTicket">
         <label><?php echo $lang['FILE_DELIVERABLE']?></label>
@@ -294,7 +327,7 @@ function subirimagen()
 <?php
 $id = $_GET['id'];
 //run the query
-$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE proyecto_entregable = $id")
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE proyecto_entregable = $id ORDER BY revision_entregable")
     or die (mysqli_error($dbh));
 
 
@@ -302,8 +335,9 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE pro
 //display the results
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
-	
-echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
+	$no = get_nombre_revision($row_proyectos['revision_entregable']);
+	echo "<br>".$no."<br>";
+echo "<strong><a href='entregables_proyectos/".$row_proyectos['nombre_entregable']."' target='_blank'>".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."  ";
 	}
 	
 	

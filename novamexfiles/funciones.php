@@ -204,6 +204,7 @@ function get_evaluador_proyecto($proyecto){
 	return $proyecto;
 
 }
+
 function get_nombre_proyecto($proyecto){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
