@@ -66,6 +66,42 @@ function get_fecha_fin_proyecto($id){
 	return $fechafin;
 
 }
+function get_cliente_interno($usuario){
+
+	$email_del_usuario = "modestovasco@gmail.com";
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop = mysqli_query($mysqli, "SELECT * FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop))
+	{
+		$email_del_usuario = $row_usua['cliente_req_interno'];
+	}
+	return $email_del_usuario;
+
+}
+function get_proveedor_interno($usuario){
+
+	$email_del_usuario = "modestovasco@gmail.com";
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop = mysqli_query($mysqli, "SELECT * FROM tb_requerimientos_cliente_interno WHERE id_req_interno = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop))
+	{
+		$email_del_usuario = $row_usua['proveedor_req_interno'];
+	}
+	return $email_del_usuario;
+
+}
 function get_email($usuario){
 	
 	$email_del_usuario = "modestovasco@gmail.com";

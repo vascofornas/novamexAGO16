@@ -74,6 +74,16 @@ if($_POST)
     
     };
     
+    
+    
+
+    //add log
+    $texto = "USUARIO CREA NUEVO REQUERIMIENTO DE CLIENTE INTERNO";
+    $codigo = "036";
+    $miemail = get_email($_SESSION['userSession']);
+    add_log($texto,$miemail,$codigo);
+    
+    
     $idioma_miembro =  get_idioma($supervisor);
     $nombre_usuario = get_nombre($supervisor);
     $email_usuario = get_email($supervisor);

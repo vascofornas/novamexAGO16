@@ -363,7 +363,7 @@ body {
         
         <h2><?php echo $lang['ADD_PROJECT']?></h2>
         <form class="form add" id="form_company" data-id="" novalidate>
-           <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY nombre_usuario";?>
+           <?php   $sqlevaluador="SELECT * FROM tbl_users WHERE autorizado = 1 ORDER BY apellidos_usuario";?>
         <div class="input_container">
         <label for="cliente_req_interno"><?php echo $lang['CUSTOMER']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
@@ -376,7 +376,7 @@ body {
   while ($rowevaluador=mysqli_fetch_row($resultevaluador))
     {
     printf ("%s (%s)\n",$rowevaluador[0],$rowevaluador[1]);
-    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[7].' '.$rowevaluador[8].'</option>';
+    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[8].', '.$rowevaluador[7].'</option>';
     }
   // Free result set
   mysqli_free_result($resultevaluador);
@@ -395,7 +395,7 @@ body {
           
           
           
-                 <?php   $sqlevaluador="SELECT * FROM tbl_users ORDER BY nombre_usuario";?>
+                 <?php   $sqlevaluador="SELECT * FROM tbl_users WHERE autorizado = 1 ORDER BY apellidos_usuario";?>
         <div class="input_container">
         <label for="proveedor_req_interno"><?php echo $lang['INTERNAL_SUPPLIER']?>: <span class="required">*</span></label>
             <div class="styled-select slate">
@@ -408,7 +408,7 @@ body {
   while ($rowevaluador=mysqli_fetch_row($resultevaluador))
     {
     printf ("%s (%s)\n",$rowevaluador[0],$rowevaluador[1]);
-    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[7].' '.$rowevaluador[8].'</option>';
+    echo '<option value='.$rowevaluador[0].' selected>'.$rowevaluador[8].', '.$rowevaluador[7].'</option>';
     }
   // Free result set
   mysqli_free_result($resultevaluador);

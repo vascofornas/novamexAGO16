@@ -369,7 +369,7 @@ color: white"></div>
         </div>
 	</div>
 
-		<?php   $sqlBU="SELECT * FROM tbl_users ORDER BY nombre_usuario";?>
+		<?php   $sqlBU="SELECT * FROM tbl_users WHERE autorizado = 1 ORDER BY apellidos_usuario ASC";?>
  
    <div class="col-md-6">
          <div class="form-group">
@@ -387,7 +387,7 @@ color: white"></div>
     	
     	
     	 	printf ("%s (%s)\n",$row[0],$row[1]);
-    	 	echo '<option value='.$row[0].' selected>'.$row[7].' '.$row[8].'</option>';
+    	 	echo '<option value='.$row[0].' selected>'.$row[8].',  '.$row[7].'</option>';
     	 	
     	
     }

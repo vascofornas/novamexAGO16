@@ -28,7 +28,7 @@ $(document).ready(function(){
         "sLast":        " ",
       },
       "sLengthMenu":    "Show / Mostrar: _MENU_",
-      "sInfo":          "Total of _TOTAL_ team members (showing from _START_ to _END_)",
+      "sInfo":          "Total of _TOTAL_ Internal Customer Requirements (showing from _START_ to _END_)",
       "sInfoFiltered":  "(filtered _MAX_ team members)"
     }
   });
