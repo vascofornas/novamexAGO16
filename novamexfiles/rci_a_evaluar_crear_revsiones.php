@@ -2,6 +2,7 @@
 
 header('Content-type: text/html; charset=utf-8' , true );
 include_once 'common.php';
+include_once 'funciones.php';
 
 require_once('Connections/conexion.php');
 if (!function_exists("GetSQLValueString")) {
@@ -354,6 +355,12 @@ if ($periodicidad == 2){//if periodicidad EVERY DAY
 		if ($conexion->query($sql) === TRUE) {
 			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
 		$last_id = mysqli_insert_id($conexion);
+		
+		
+	
+		
+		
+		
 		}//if 
 		else {
 			echo "Error: " . $sql . "<br>" . $conexion->error;
@@ -389,7 +396,45 @@ if ($periodicidad == 3){//if periodicidad EVERY WEEK
 			echo "Error: " . $sql . "<br>" . $conexion->error;
 		}//else
 		$last_id = mysqli_insert_id($conexion);
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 
 	}//for
 
@@ -420,7 +465,45 @@ if ($periodicidad == 4){//if periodicidad EVERY TWO WEEKS
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 	}//for
 
 }//FIN PERIODICIDAD EVERY TWO WEEKS
@@ -450,7 +533,45 @@ if ($periodicidad == 5){//if periodicidad EVERY MONTH
 			echo "Error: " . $sql . "<br>" . $conexion->error;
 		}//else
 		$last_id = mysqli_insert_id($conexion);
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 
 	}//for
 
@@ -476,12 +597,58 @@ if ($periodicidad == 6){//if periodicidad two MONTHs
 		if ($conexion->query($sql) === TRUE) {
 			echo " Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
 			$last_id = mysqli_insert_id($conexion);
+			
+			
+			
+			
+			
+			
+			
+			
 		}//if
 		else {
 			echo "Error: " . $sql . "<br>" . $conexion->error;
 		}//else
 		$last_id = mysqli_insert_id($conexion);
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 
 	}//for
 
@@ -514,7 +681,45 @@ if ($periodicidad == 7){//if periodicidad three MONTHs
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 	}//for
 
 }//FIN PERIODICIDAD three MONTHs
@@ -545,7 +750,45 @@ if ($periodicidad == 8){//if periodicidad four MONTHs
 			echo "Error: " . $sql . "<br>" . $conexion->error;
 		}//else
 		$last_id = mysqli_insert_id($conexion);
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 
 	}//for
 
@@ -576,7 +819,45 @@ if ($periodicidad == 9){//if periodicidad four MONTHs
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro = get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 	}//for
 
 }//FIN PERIODICIDAD  one year
@@ -606,7 +887,45 @@ if ($periodicidad == 10){//if periodicidad four MONTHs
 		}//else
 		$last_id = mysqli_insert_id($conexion);
 
-
+		$texto = "USUARIO CREA REVISIONES DE RCI";
+		$codigo = "043";
+		$miemail = get_email($_SESSION['userSession']);
+		add_log($texto,$miemail,$codigo);
+		//email a superadmin
+		$super = get_email_superadmin();
+		$r = $_GET['id'];
+		$pro =  get_nombre_rci($r);
+		$men = "El RCI ".$pro." tiene nuevas revisiones";
+		send_mail($super,$men,$pro);
+		
+		
+			
+		$proveedor_interno = get_proveedor_interno($_GET['id']);
+		$email_proveedor_interno = get_email($proveedor_interno);
+		$nombre_proveedor_interno = get_nombre($proveedor_interno);
+		$idioma_proveedor_interno = get_idioma($proveedor_interno);
+		$cliente_interno = get_cliente_interno($_GET['id']);
+		
+		if ($idioma_cliente_interno == "en"){
+			$message = "Hi, ".$nombre_proveedor_interno."!<br><br>";
+		
+			$message .= "INTERNAL CUSTOMER REQUIREMENT has new revisions. Internal Customer: ".$nombre_cliente_interno."";
+		
+			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+			$subject = "INTERNAL CUSTOMER REQUIREMENT has new revisions ";
+			send_mail($email_proveedor_interno,$message,$subject);
+		}
+		else {
+			$message = "Hola, ".$nombre_proveedor_interno."!<br><br>";
+			$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones. Cliente Interno: ".$nombre_cliente_interno.".";
+		
+			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+			$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevas revisiones";
+			send_mail($email_proveedor_interno,$message,$subject);
+		
+		}
+		
+		
 	}//for
 
 }//FIN PERIODICIDAD one year
@@ -628,7 +947,7 @@ if ($periodicidad == 10){//if periodicidad four MONTHs
 	
 
 if ($num >0){
-echo '<br><a href="evaluaciones_rci.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
+echo '<br><a href="evaluaciones_rci.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['EVALUAR_REVISIONES'].'</a>';
 }
 	
 ?>

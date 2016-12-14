@@ -84,6 +84,7 @@ function get_cliente_interno($usuario){
 	return $email_del_usuario;
 
 }
+
 function get_proveedor_interno($usuario){
 
 	$email_del_usuario = "modestovasco@gmail.com";
@@ -356,6 +357,23 @@ function get_nombre_rubro($team){
 	while ($row_equipos = mysqli_fetch_array($loop_equipos))
 	{
 		$equipo = $row_equipos['titulo_tor'];
+	}
+	return $equipo;
+
+}
+function get_nombre_rci($team){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+	mysqli_set_charset($mysqli, 'utf8');
+	$loop_equipos = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE rci_revisado = '".$team."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_equipos = mysqli_fetch_array($loop_equipos))
+	{
+		$equipo = $row_equipos['titulo_rci'];
 	}
 	return $equipo;
 

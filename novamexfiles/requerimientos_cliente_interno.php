@@ -226,7 +226,7 @@ function subirimagen()
 //run the query
 
 	//run the query
-	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_revisiones_rci")
+	$loop_miembros = mysqli_query($conexion, "SELECT * FROM tb_revisiones_rci ORDER BY fecha_inicio_rci")
 	or die (mysqli_error($dbh));
 	while ($row_miembros = mysqli_fetch_array($loop_miembros))
 	{
