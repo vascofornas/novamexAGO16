@@ -193,12 +193,20 @@ div.logo {
 </style>
 <script type="text/javascript">
 $(document).ready(function() {	
-	
+
+	 
 	// submit form using $.ajax() method
 	
 	$('#reg-form1').submit(function(e){
 		
-		e.preventDefault(); // Prevent Default Submission
+		 var x;
+		    x = document.getElementById("fecha_final_proyecto1").value;
+		    
+		    if (x == "") {
+		        alert("<?php echo $lang['FECHA_ERROR']?>");
+		        return false;
+		    };
+		    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 		
 		$.ajax({
 			url: 'editrevisionproyecto.php',
@@ -206,17 +214,22 @@ $(document).ready(function() {
 			data: $(this).serialize() // it will serialize the form data
 		})
 		.done(function(data){
-			$('#form-content1').fadeOut('slow', function(){
-				$('#form-content1').fadeIn('slow').html(data);
-			});
+			
 		})
 		.fail(function(){
-			alert('Ajax Submit Failed ...');	
+				
 		});
 	});
 $('#reg-form2').submit(function(e){
 		
-		e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto2").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 		
 		$.ajax({
 			url: 'editrevisionproyecto.php',
@@ -224,17 +237,22 @@ $('#reg-form2').submit(function(e){
 			data: $(this).serialize() // it will serialize the form data
 		})
 		.done(function(data){
-			$('#form-content2').fadeOut('slow', function(){
-				$('#form-content2').fadeIn('slow').html(data);
-			});
+			
 		})
 		.fail(function(){
-			alert('Ajax Submit Failed ...');	
+			
 		});
 	});
 $('#reg-form3').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto3").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -242,18 +260,23 @@ $('#reg-form3').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content3').fadeOut('slow', function(){
-			$('#form-content3').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
 
 $('#reg-form4').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto4").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -261,17 +284,22 @@ $('#reg-form4').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content4').fadeOut('slow', function(){
-			$('#form-content4').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
 $('#reg-form5').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto5").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -279,17 +307,22 @@ $('#reg-form5').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content5').fadeOut('slow', function(){
-			$('#form-content5').fadeIn('slow').html(data);
-		});
+	
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
 $('#reg-form6').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto6").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -297,9 +330,7 @@ $('#reg-form6').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content6').fadeOut('slow', function(){
-			$('#form-content6').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
 		alert('Ajax Submit Failed ...');	
@@ -307,7 +338,14 @@ $('#reg-form6').submit(function(e){
 });
 $('#reg-form7').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto7").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -315,17 +353,22 @@ $('#reg-form7').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content7').fadeOut('slow', function(){
-			$('#form-content7').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
 $('#reg-form8').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto8").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -333,18 +376,23 @@ $('#reg-form8').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content8').fadeOut('slow', function(){
-			$('#form-content8').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
 
 $('#reg-form9').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto9").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -352,17 +400,22 @@ $('#reg-form9').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content9').fadeOut('slow', function(){
-			$('#form-content9').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
 $('#reg-form10').submit(function(e){
 	
-	e.preventDefault(); // Prevent Default Submission
+	 var x;
+	    x = document.getElementById("fecha_final_proyecto10").value;
+	    
+	    if (x == "") {
+	        alert("<?php echo $lang['FECHA_ERROR']?>");
+	        return false;
+	    };
+	    alert ("<?php echo $lang['FECHA_EDITADA']?>");
 	
 	$.ajax({
 		url: 'editrevisionproyecto.php',
@@ -370,69 +423,88 @@ $('#reg-form10').submit(function(e){
 		data: $(this).serialize() // it will serialize the form data
 	})
 	.done(function(data){
-		$('#form-content10').fadeOut('slow', function(){
-			$('#form-content10').fadeIn('slow').html(data);
-		});
+		
 	})
 	.fail(function(){
-		alert('Ajax Submit Failed ...');	
+			
 	});
 });
+
+
+
 	 var date = new Date();
 	    var currentMonth = date.getMonth();
 	    var currentDate = date.getDate();
 	    var currentYear = date.getFullYear();
 
+	   var fecha_max = new Date('<?php echo $row_Recordset3['fecha_final_proyecto'] ?>');
+	   
+	   var maxMonth = fecha_max.getMonth();
+	    var maxDate = fecha_max.getDate()+1;
+	    var maxYear = fecha_max.getFullYear();
+	   
+
 	    $('#fecha_inicio_proyecto').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	       
 	        dateFormat: 'yy-mm-dd'
 	    });;
 	    $('#fecha_final_proyecto1').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 	    $('#fecha_final_proyecto2').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto3').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto4').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto5').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto6').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto7').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto8').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto9').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 
 	    $('#fecha_final_proyecto10').datepicker({
 	        minDate: new Date(currentYear, currentMonth, currentDate),
+	        maxDate: new Date(maxYear, maxMonth, maxDate),
 	        dateFormat: 'yy-mm-dd'
 	    });;
 	
@@ -498,7 +570,7 @@ function subirimagen()
 $id = $_GET['id'];
 //run the query
 $loop = mysqli_query($conexion, "SELECT * FROM tb_revisiones_proyectos LEFT JOIN tb_proyectos ON 
-		tb_revisiones_proyectos.proyecto_revisado = tb_proyectos.id_proyecto WHERE proyecto_revisado = $id")
+		tb_revisiones_proyectos.proyecto_revisado = tb_proyectos.id_proyecto WHERE proyecto_revisado = $id ORDER BY id_revisiones_proyectos")
     or die (mysqli_error($dbh));
 
 
@@ -515,14 +587,16 @@ while ($row_proyectos = mysqli_fetch_array($loop))
  <p><strong><?php echo $row_proyectos['opcion_revision']?><strong></p>
  
 <div id="form-content<?php echo $num;?>">
-     <form method="post" id="reg-form<?php echo $num;?>" name="form1" autocomplete="off">
+     <form method="post" id="reg-form<?php echo $num;?>" name="form1" autocomplete="off" >
 			
 
 	
 	<div class="input_container">
-            <label for="nombre_revision"><?php echo $lang['REVISION_NAME']?>: <span class="required">*</span></label>
+            <label for="nombre_revision"><?php echo $lang['REVISION_NAME']?>: </label>
             <div class="field_container">
-              <input type="text" class="text" name="nombre_revision" id="nombre_revision" value="<?php echo $row_proyectos['nombre_revision'] ?>" required>
+            <label for="nombre_revision"><?php echo $row_proyectos['nombre_revision'] ?></label>
+           
+              <input type="hidden" class="text" name="nombre_revision" id="nombre_revision" value="<?php echo $row_proyectos['nombre_revision'] ?>" required>
            <input type="hidden" class="text" name="id_revisiones_proyectos" id="id_revisiones_proyectos" value="<?php echo $row_proyectos['id_revisiones_proyectos'] ?>" >
             <input type="hidden" class="text" name="id_proyecto" id="id_proyecto" value="<?php echo $_GET['id'] ?>" >
           
@@ -532,7 +606,7 @@ while ($row_proyectos = mysqli_fetch_array($loop))
 <div class="input_container">
             <label for="fecha_revision"><?php echo $lang['REVISION_DATE']?>: <span class="required">*</span></label>
             <div class="field_container">
-              <input type="text" class="text" name="fecha_revision" id="fecha_final_proyecto<?php echo $num;?>" value="<?php echo $row_proyectos['fecha_revision'] ?>" required>
+              <input type="text" class="text" name="fecha_revision"  id="fecha_final_proyecto<?php echo $num;?>" value="<?php echo $row_proyectos['fecha_revision'] ?>" required readonly>
             </div>
           </div>
 				

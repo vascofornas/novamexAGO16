@@ -440,7 +440,7 @@ color: white"></div>
 		<div class="form-group">
                       <label><?php echo $lang['REPEATS']?></label>
                       <select id="repeticiones" name="repeticiones" class="form-control select2" style="width: 100%;">
-                      <option selected="selected">1</option>
+                      <option >1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>

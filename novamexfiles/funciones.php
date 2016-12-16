@@ -66,6 +66,23 @@ function get_fecha_fin_proyecto($id){
 	return $fechafin;
 
 }
+function get_rci_de_revision($id){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE id_revisiones_rci = $id")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop))
+	{
+		$fechafin = $row_usua['rci_revisado'];
+	}
+	return $fechafin;
+
+}
 function get_cliente_interno($usuario){
 
 	$email_del_usuario = "modestovasco@gmail.com";
@@ -161,6 +178,23 @@ function get_nombre_revision($usuario){
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_proyectos WHERE id_revisiones_proyectos = '".$usuario."'")
+	or die (mysqli_error($dbh));
+
+
+
+	//display the results
+	while ($row_usua = mysqli_fetch_array($loop_idioma))
+	{
+		$nombre_del_usuario = $row_usua['nombre_revision'];
+	}
+	return $nombre_del_usuario;
+
+}
+function get_nombre_revision_rci($usuario){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_idioma = mysqli_query($mysqli, "SELECT * FROM tb_revisiones_rci WHERE id_revisiones_rci = '".$usuario."'")
 	or die (mysqli_error($dbh));
 
 
@@ -414,7 +448,7 @@ function send_mail_miembros_equipos_proyecto_revisiones($equipo,$proyecto){
 		$nombre_usuario = get_nombre($usuario);
 
 		if ($idioma_usuario == "en"){
-			$message = "Hi, ".$nombre_usuario."!<br><br>";
+			$message = "Hi, ".$nombre_usuario."!<br><br>".$proy;
 			$message .= "The project  ".$proyecto." has new revisions.";
 
 			$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
@@ -423,10 +457,10 @@ function send_mail_miembros_equipos_proyecto_revisiones($equipo,$proyecto){
 		}
 		else {
 			$message = "Hola, ".$nombre_usuario."!<br><br>";
-			$message .= "El proyecto  ".$proyecto." tiene nuevas revisiones.";
+			$message .= "El proyecto  ".$proy." tiene nuevas revisiones.";
 				
 			$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
-			$subject = "El proyecto  ".$proyecto." tiene nuevas revisiones.";
+			$subject = "El proyecto  ".$proy." tiene nuevas revisiones.";
 			send_mail($email_usuario,$message,$subject);
 
 		}

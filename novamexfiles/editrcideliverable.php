@@ -1,5 +1,6 @@
 <?php
 include_once 'common.php';
+include_once 'funciones.php';
 
 if( $_POST ){
 	
@@ -30,7 +31,46 @@ $sql = "INSERT INTO tb_entregables_rci (titulo_entregable, descripcion_entregabl
 VALUES ('$titulo_entregable', '$descripcion_entregable', '$proyecto_entregable', '$nombre_entregable')";
 
 if ($conn->query($sql) === TRUE) {
-    
+	$texto = "USUARIO ENVIA ENTREGABLES DE REVISIONES DE RCI";
+	$codigo = "044";
+	$miemail = get_email($_SESSION['userSession']);
+	add_log($texto,$miemail,$codigo);
+	//email a superadmin
+	$super = get_email_superadmin();
+	$r = $_GET['id'];
+	$rev = get_rci_de_revision($proyecto_entregable);
+	$pro =  get_nombre_rci($rev);
+	$men = "El RCI: ".$pro.", tiene nuevos entregables de revisiones";
+	send_mail($super,$men,$pro);
+	//email al cliente interno
+	
+	$cliente_interno = get_cliente_interno($rev);
+	$proveedor_interno = get_proveedor_interno($rev);
+	$email_cliente_interno = get_email($cliente_interno);
+	$nombre_cliente_interno = get_nombre($cliente_interno);
+	$nombre_proveedor_interno = get_nombre($proveedor_interno);
+	
+	$idioma_cliente_interno = get_idioma($cliente_interno);
+	
+	if ($idioma_cliente_interno == "en"){
+		$message = "Hi, ".$nombre_cliente_interno."!<br><br>";
+	
+		$message .= "INTERNAL CUSTOMER REQUIREMENT has new deliverables. Internal Provider: ".$nombre_proveedor_interno."";
+	
+		$message .= "<br><br>Best regards.<br> Your NOVAMEX Team";
+		$subject = "INTERNAL CUSTOMER REQUIREMENT has new deliverables ";
+		send_mail($email_cliente_interno,$message,$subject);
+	}
+	else {
+		$message = "Hola, ".$nombre_cliente_interno."!<br><br>";
+		$message .= "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevos entregables. Proveedor Interno: ".$nombre_proveedor_interno.".";
+	
+		$message .= "<br><br>Saludos.<br> Tu equipo NOVAMEX";
+		$subject = "REQUERIMIENTO DE CLIENTE INTERNO tiene nuevos entregables";
+		send_mail($email_cliente_interno,$message,$subject);
+	
+	}
+	
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

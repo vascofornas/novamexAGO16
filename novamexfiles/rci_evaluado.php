@@ -340,7 +340,7 @@ $loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_rci WHERE rci_entr
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
 	
-echo "<strong><a href='entregables_rci/".$row_proyectos['nombre_entregable']."' target='_blank'>".get_nombre_rci($id)." - ".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
+echo "<strong><a href='entregables_rci/".$row_proyectos['nombre_entregable']."' target='_blank'>".get_nombre_revision_rci($id)." - ".$row_proyectos['titulo_entregable'].'  ('.$row_proyectos['fecha_entregable'].")</strong></a><br>".$row_proyectos['descripcion_entregable']."<br>  <hr>";
 	}
 	
 	

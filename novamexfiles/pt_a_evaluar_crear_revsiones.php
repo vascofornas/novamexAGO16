@@ -627,7 +627,7 @@ if ($periodicidad == 10){//if periodicidad four MONTHs
 	
 
 if ($num >0){
-echo '<br><a href="evaluaciones_rci.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
+echo '<br><a href="evaluaciones_tp.php?id='.$_GET['id'].'" class="btn btn-primary btn-lg active" role="button">'.$lang['CONFIGURAR_REVISIONES'].'</a>';
 }
 	
 ?>

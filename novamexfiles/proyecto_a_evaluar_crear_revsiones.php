@@ -297,9 +297,9 @@ if ($row_proyectos['porcentaje1'] >0){//if porcentaje1
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones1; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion1." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion1','$codigo1')";
+		VALUES ('$id', '$nom','$opcion1','$codigo1')";
 		
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion1']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -347,9 +347,9 @@ if ($row_proyectos['porcentaje2'] >0){//if porcentaje2
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones2; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion2." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion2','$codigo2')";
+		VALUES ('$id','$nom','$opcion2','$codigo2')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion2']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -395,9 +395,9 @@ if ($row_proyectos['porcentaje3'] >0){//if porcentaje3
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones3; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion3." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion3','$codigo3')";
+		VALUES ('$id','$nom','$opcion3','$codigo3')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion3']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -442,9 +442,9 @@ if ($row_proyectos['porcentaje4'] >0){//if porcentaje4
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones4; $x++) {//for
 		$num = $x+1;
-	
+		$nom = $opcion4." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion4','$codigo4')";
+		VALUES ('$id','$nom','$opcion4','$codigo4')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion4']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -488,9 +488,9 @@ if ($row_proyectos['porcentaje5'] >0){//if porcentaje5
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones5; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion5." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion5','$codigo5')";
+		VALUES ('$id','$nom','$opcion5','$codigo5')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion5']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -535,9 +535,9 @@ if ($row_proyectos['porcentaje6'] >0){//if porcentaje6
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones6; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion6." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion6','$codigo6')";
+		VALUES ('$id','$nom','$opcion6','$codigo6')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion6']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -581,9 +581,9 @@ if ($row_proyectos['porcentaje7'] >0){//if porcentaje7
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones7; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion7." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion7','$codigo7')";
+		VALUES ('$id','$nom','$opcion7','$codigo7')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion7']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -627,9 +627,9 @@ if ($row_proyectos['porcentaje8'] >0){//if porcentaje8
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones8; $x++) {//for
 		$num = $x+1;
-		
+		$nom = $opcion8." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion8','$codigo8')";
+		VALUES ('$id','$nom','$opcion8','$codigo8')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion8']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -673,9 +673,9 @@ if ($row_proyectos['porcentaje9'] >0){//if porcentaje9
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones9; $x++) {//for
 		$num = $x+1;
-	
+		$nom = $opcion9." - Revision # ".$num;
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion9','$codigo9')";
+		VALUES ('$id','$nom','$opcion9','$codigo9')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion9']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
@@ -719,9 +719,10 @@ if ($row_proyectos['porcentaje10'] >0){//if porcentaje10
 	$num_revision = 1;
 	for ($x = 0; $x < $num_revisiones10; $x++) {//for
 		$num = $x+1;
+		$nom = $opcion10." - Revision # ".$num;
 		
 		$sql = "INSERT INTO tb_revisiones_proyectos (proyecto_revisado,nombre_revision,opcion_revision,codigo_opcion)
-		VALUES ('$id','Revision # .$num','$opcion10','$codigo10')";
+		VALUES ('$id','$nom','$opcion10','$codigo10')";
 
 		if ($conexion->query($sql) === TRUE) {
 			echo $row_proyectos['opcion10']." - Revision # ".$num."  ".$lang['REVISION_CREATED']."<br>";
