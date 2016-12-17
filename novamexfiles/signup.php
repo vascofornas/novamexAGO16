@@ -112,6 +112,7 @@ div.fixed {
   <div class="fixed">
 <a href="signup.php?lang=en"><img src="usa.png" width="45" height="45" /></a>
 <a href="signup.php?lang=es"><img src="mexico.png" width="45" height="45" /></a>
+ <a href="videos/video001.mp4"><img src="videohelp.png" width="45" height="45" /></a>
 
 </div>
   <div class="container">
@@ -134,7 +135,7 @@ div.fixed {
         <a href="index.php" style="float:right;" class="btn btn-large"><?php echo $lang['SIGN_IN']?></a>
      <br><br><br>
         <img src="logonovamex100.png" alt="Mountain View" style="width:414px;height:110px;">
-     
+    
       </form>
 
     </div> <!-- /container -->
