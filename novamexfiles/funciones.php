@@ -740,12 +740,51 @@ function get_puntos_temporales_proyectos($team){
 	return $equipo;
 
 }
+function get_puntos_temporales_proyecto($team,$proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT SUM(puntos_temporales) as ptos
+			FROM tb_puntos_temporales WHERE (usuario_puntos_temporales = '".$team."'
+			AND proyecto_puntos_temporales = '".$proyecto."')")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['ptos'];
+			}
+			return $equipo;
+
+}
 function get_puntos_consolidados_proyectos($team){
 
 	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
 
 	$loop_equipos = mysqli_query($mysqli, "SELECT SUM(consolidados_puntos_temporales) as ptos
 			FROM tb_puntos_temporales WHERE (usuario_puntos_temporales = '".$team."'
+			)")
+			or die (mysqli_error($dbh));
+
+
+
+			//display the results
+			while ($row_equipos = mysqli_fetch_array($loop_equipos))
+			{
+				$equipo = $row_equipos['ptos'];
+			}
+			return $equipo;
+
+}
+function get_puntos_consolidados_proyecto($team,$proyecto){
+
+	$mysqli = new mysqli('localhost', 'herasosj_novamex', 'Papa020432', 'herasosj_novamex');
+
+	$loop_equipos = mysqli_query($mysqli, "SELECT SUM(consolidados_puntos_temporales) as ptos
+			FROM tb_puntos_temporales WHERE (usuario_puntos_temporales = '".$team."' 
+			AND proyecto_puntos_temporales = '".$proyecto."'
 			)")
 			or die (mysqli_error($dbh));
 

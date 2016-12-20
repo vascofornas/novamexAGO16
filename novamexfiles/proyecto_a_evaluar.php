@@ -288,7 +288,7 @@ $num = 0;
 while ($row_proyectos = mysqli_fetch_array($loop))
 {
 	$num = $num+1;
-	echo $num." - ".get_nombre_revision($row_proyectos['revision_entregable'])." -> ".$row_proyectos['fecha_entregable']." - ".$row_proyectos['titulo_entregable'].'  <a href="entregables_proyectos/'.$row_proyectos['nombre_entregable'].' "  target="_blank"  class="btn btn-info btn-lg active " role="button" > <span class="glyphicon glyphicon-download-alt"></span></a><br><br>';;
+	echo $num." - ".get_nombre_revision($row_proyectos['revision_entregable'])." <br>".$row_proyectos['fecha_entregable']." <br> ".$row_proyectos['titulo_entregable'].' <br> <a href="entregables_proyectos/'.$row_proyectos['nombre_entregable'].' "  target="_blank"  class="btn btn-info btn-lg active " role="button" > <span class="glyphicon glyphicon-download-alt"></span></a><br>';;
 }
     ?>
   </div>

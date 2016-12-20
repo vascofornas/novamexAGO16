@@ -256,7 +256,7 @@ function subirimagen()
                 <div class="icon">
                  <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="misreconocimientos_proyectos.php" class="small-box-footer">
+                <a href="misreconocimientos_proyectos_1.php" class="small-box-footer">
                   <?php echo $lang['MORE_INFO']?> <i class="fa fa-arrow-circle-right"></i>
                 </a>
               </div>

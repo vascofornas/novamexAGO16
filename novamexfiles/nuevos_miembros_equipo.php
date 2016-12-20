@@ -71,8 +71,8 @@ if (isset($_POST["submit"])) {//submit
 		{//for
 			$query = "INSERT INTO tb_miembros_equipos SET ";
 			if (isset($_POST['equipo'])) { $query .= "equipo = '" . mysqli_real_escape_string($conexion, $_POST['equipo']) . "', "; }
+
 			if (isset($_POST['fecha_alta'])) { $query .= "fecha_alta = '" . mysqli_real_escape_string($conexion, $_POST['fecha_alta']) . "', "; }
-			if (isset($_POST['fecha_baja'])) { $query .= "fecha_baja = '" . mysqli_real_escape_string($conexion, $_POST['fecha_baja']) . "', "; }
 			
 		
 			 
@@ -350,13 +350,7 @@ body {
 						
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label"><?php echo $lang['END_DATE']?></label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="fecha_baja" name="fecha_baja" placeholder="<?php echo $lang['END_DATE']?>" >
-							
-						</div>
-					</div>
+				
 				
 		
 					

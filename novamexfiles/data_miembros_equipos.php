@@ -154,9 +154,8 @@ if ($job != ''){
     if (isset($_GET['usuario'])) { $query .= "usuario = '" . mysqli_real_escape_string($db_connection, $_GET['usuario']) . "', "; }
     if (isset($_GET['equipo'])) { $query .= "equipo = '" . mysqli_real_escape_string($db_connection, $_GET['equipo']) . "', "; }
 
-    if (isset($_GET['fecha_alta'])) { $query .= "fecha_alta = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_alta']) . "', "; }
    
-    if (isset($_GET['fecha_baja'])) { $query .= "fecha_baja = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_baja']) . "'";   }
+    if (isset($_GET['fecha_alta'])) { $query .= "fecha_alta = '" . mysqli_real_escape_string($db_connection, $_GET['fecha_alta']) . "'";   }
 	 
     $query = mysqli_query($db_connection, $query);
     if (!$query){

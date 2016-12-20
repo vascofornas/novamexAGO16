@@ -37,8 +37,8 @@ if( $_POST ){
  
    // Change the line below to your timezone!
    date_default_timezone_set('America/Chihuahua');
-   $date = date('Y-m-d H:i:s');
-   
+   $date = date('Y-m-d');
+
    
  $estado_evaluacion = 1;
     
@@ -89,12 +89,12 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 			
 			$loop_usuarios_editados = mysqli_query($conn, "SELECT * FROM tb_miembros_equipos
 					LEFT JOIN tb_proyectos ON tb_miembros_equipos.equipo = tb_proyectos.equipo_proyecto
-					WHERE tb_proyectos.id_proyecto =   '$proyecto_evaluado'")
+					WHERE tb_proyectos.id_proyecto =   '$proyecto_evaluado' AND fecha_baja > '".$date."'")
 					or die (mysqli_error($dbh));
 					$suma_puntos = 0;
 					while ($row_usuarios_editados = mysqli_fetch_array($loop_usuarios_editados))
 					{
-			
+
 						$usuario_editado= $row_usuarios_editados['usuario'];
 			
 			if ($stmt = $conn->prepare("UPDATE tb_puntos_temporales SET puntos_temporales = ?, comentarios_puntos_temporales = ?
@@ -148,7 +148,7 @@ $loop_puntos = mysqli_query($conn, "SELECT * FROM tb_puntos_temporales WHERE rev
 			
 			$loop_usuarios = mysqli_query($conn, "SELECT * FROM tb_miembros_equipos
 					LEFT JOIN tb_proyectos ON tb_miembros_equipos.equipo = tb_proyectos.equipo_proyecto 
-					WHERE tb_proyectos.id_proyecto =   '$proyecto_evaluado'")
+					WHERE tb_proyectos.id_proyecto =   '$proyecto_evaluado' AND fecha_baja > '".$date."'")
 			or die (mysqli_error($dbh));
 			$suma_puntos = 0;
 			while ($row_usuarios = mysqli_fetch_array($loop_usuarios))

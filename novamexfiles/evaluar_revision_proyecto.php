@@ -404,7 +404,27 @@ function subirimagen()
   <p><strong><?php echo $lang['PROJECT_EVALUATOR']?>: </strong><?php echo $row_Recordset3['nombre_usuario']." ".$row_Recordset3['apellidos_usuario']?></p>
   		</h4>   <br>
  
-    
+     <img src="entregables.png" width="60" height="60" /></a>
+    <bR><bR>
+    <?php 
+   
+    $id = $_GET['id'];
+    $rev = $_GET['rev'];
+//run the query
+$loop = mysqli_query($conexion, "SELECT * FROM tb_entregables_proyecto WHERE proyecto_entregable = $id AND revision_entregable = $rev")
+    or die (mysqli_error($dbh));
+
+
+
+//display the results
+$num = 0;
+while ($row_proyectos = mysqli_fetch_array($loop))
+{
+	$num = $num+1;
+	echo $num." - ".get_nombre_revision($row_proyectos['revision_entregable'])." <br>".$row_proyectos['fecha_entregable']." <br> ".$row_proyectos['titulo_entregable'].' <br> <a href="entregables_proyectos/'.$row_proyectos['nombre_entregable'].' "  target="_blank"  class="btn btn-info btn-lg active " role="button" > <span class="glyphicon glyphicon-download-alt"></span></a><br>';;
+}
+    ?>
+ 
     
   </div>
   <?php 
